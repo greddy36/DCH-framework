@@ -1,0 +1,3 @@
+[submodule "TauPOG/TauIDSFs"]
+	path = TauPOG/TauIDSFs
+	url = https://gitlab.cern.ch/greddy/dch-framework.git
