@@ -77,27 +77,25 @@ def genMatchTau(entry, jt, decayMode=''):
            - it matches a leptonically-decaying tau (decayMode = 'lep') to a GenPart with
              abs(PDGID) = 15 with the smallest dR(tau,GenPart[i])
     """
-    idx_match, dR_min, dPt_min = -99,99,99999
+    idx_match, dR_min = -99,99
     if decayMode == 'had':
         for i in range(entry.nGenVisTau):
-            dPt = abs(entry.GenVisTau_pt[i] - entry.Tau_pt[jt])
             dPhi = min(abs(entry.GenVisTau_phi[i] - entry.Tau_phi[jt]),
                        2.0*pi-abs(entry.GenVisTau_phi[i] - entry.Tau_phi[jt]))
             dEta = abs(entry.GenVisTau_eta[i] - entry.Tau_eta[jt])
             dR = sqrt(dPhi**2 + dEta**2)
             if dR < dR_min and dPt <= dPt_min:
-                idx_match, dR_min, dPt_min = i, dR, dPt
+                idx_match, dR_min = i, dR
     
     if decayMode == 'lep':
         for i in range(entry.nGenPart):
-            dPt = abs(entry.GenPart_pt[i] - entry.Tau_pt[jt])
             if abs(entry.GenPart_pdgId[i]) != 15: continue
             dPhi = min(abs(entry.GenPart_phi[i] - entry.Tau_phi[jt]),
                        2.0*pi-abs(entry.GenPart_phi[i] - entry.Tau_phi[jt]))
             dEta = abs(entry.GenPart_eta[i] - entry.Tau_eta[jt])
             dR = sqrt(dPhi**2 + dEta**2)
-            if dR < dR_min and dPt <= dPt_min:
-                idx_match, dR_min, dPt_min = i, dR, dPt
+            if dR < dR_min:
+                idx_match, dR_min = i, dR
 
     return idx_match
 
