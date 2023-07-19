@@ -36,7 +36,7 @@ def printTriggerObjects(e) :
             i,e.TrigObj_pt[i],  e.TrigObj_phi[i], e.TrigObj_eta[i], e.TrigObj_id[i], e.TrigObj_filterBits[i]))
     return
 
-def genMatchLep(entry, jl,lep_type):#matches lepton to a gen paricle regardless of pID
+def genMatch(entry, jl,lep_type):#matches e/m/t to a gen paricle regardless of pID
     idx_match, dR_min, dPt_min = -99,99,99999
     if lep_type == 'e':
         for i in range(entry.nGenPart):
@@ -47,7 +47,7 @@ def genMatchLep(entry, jl,lep_type):#matches lepton to a gen paricle regardless 
             dEta = abs(entry.GenPart_eta[i] - entry.Electron_eta[jl])
             dR = sqrt(dPhi**2 + dEta**2)
             if dR <= dR_min and dPt <= dPt_min:
-                idx_match, dR_min = i, dR
+                idx_match, dR_min, dPt_min = i, dR, dPt
     if lep_type == 'm':
         for i in range(entry.nGenPart):
             if entry.GenPart_status[i] != 1: continue
@@ -57,8 +57,17 @@ def genMatchLep(entry, jl,lep_type):#matches lepton to a gen paricle regardless 
             dEta = abs(entry.GenPart_eta[i] - entry.Muon_eta[jl])
             dR = sqrt(dPhi**2 + dEta**2)
             if dR <= dR_min and dPt <= dPt_min:
-                idx_match, dR_min = i, dR
-
+                idx_match, dR_min, dPt_min = i, dR, dPt
+    if lep_type == 't':
+        for i in range(entry.nGenPart):
+            #if entry.GenPart_status[i] != 2 : continue
+            dPt = abs(entry.GenPart_pt[i] - entry.Tau_pt[jl])
+            dPhi = min(abs(entry.GenPart_phi[i] - entry.Tau_phi[jl]),
+                       2.0*pi-abs(entry.GenPart_phi[i] - entry.Tau_phi[jl]))
+            dEta = abs(entry.GenPart_eta[i] - entry.Tau_eta[jl])
+            dR = sqrt(dPhi**2 + dEta**2)
+            if dR <= dR_min and dPt <= dPt_min:
+                idx_match, dR_min, dPt_min = i, dR, dPt
     return idx_match
 
 def genMatchTau(entry, jt, decayMode=''):
@@ -68,26 +77,27 @@ def genMatchTau(entry, jt, decayMode=''):
            - it matches a leptonically-decaying tau (decayMode = 'lep') to a GenPart with
              abs(PDGID) = 15 with the smallest dR(tau,GenPart[i])
     """
-    
-    idx_match, dR_min = -99, 99
+    idx_match, dR_min, dPt_min = -99,99,99999
     if decayMode == 'had':
         for i in range(entry.nGenVisTau):
+            dPt = abs(entry.GenVisTau_pt[i] - entry.Tau_pt[jt])
             dPhi = min(abs(entry.GenVisTau_phi[i] - entry.Tau_phi[jt]),
                        2.0*pi-abs(entry.GenVisTau_phi[i] - entry.Tau_phi[jt]))
             dEta = abs(entry.GenVisTau_eta[i] - entry.Tau_eta[jt])
             dR = sqrt(dPhi**2 + dEta**2)
-            if dR < dR_min:
-                idx_match, dR_min = i, dR
+            if dR < dR_min and dPt <= dPt_min:
+                idx_match, dR_min, dPt_min = i, dR, dPt
     
     if decayMode == 'lep':
         for i in range(entry.nGenPart):
+            dPt = abs(entry.GenPart_pt[i] - entry.Tau_pt[jt])
             if abs(entry.GenPart_pdgId[i]) != 15: continue
             dPhi = min(abs(entry.GenPart_phi[i] - entry.Tau_phi[jt]),
                        2.0*pi-abs(entry.GenPart_phi[i] - entry.Tau_phi[jt]))
             dEta = abs(entry.GenPart_eta[i] - entry.Tau_eta[jt])
             dR = sqrt(dPhi**2 + dEta**2)
-            if dR < dR_min:
-                idx_match, dR_min = i, dR
+            if dR < dR_min and dPt <= dPt_min:
+                idx_match, dR_min, dPt_min = i, dR, dPt
 
     return idx_match
 

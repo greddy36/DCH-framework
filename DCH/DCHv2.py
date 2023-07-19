@@ -492,11 +492,11 @@ for count, e in enumerate( inTree) :
             #print 'Channel: ',cat
             #cat_yield[cat] += 1
             for i in goodElectronList:
-                print 'Ele ', i, GF.genMatchLep(e,i,'e')
+                print 'Ele ', i, GF.genMatch(e,i,'e')
             for i in goodMuonList:
-                print 'Mu ', i, GF.genMatchLep(e,i,'m')
-            #for i in goodTauList:
-            #    print 'Tau ', i, GF.genMatchTau(e,i,'e')
+                print 'Mu ', i, GF.genMatch(e,i,'m')
+            for i in goodTauList:
+                print 'Tau ', i, GF.genMatch(e,i,'t')
 	    GF.printMC(e)
             continue
 
