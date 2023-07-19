@@ -37,24 +37,26 @@ def printTriggerObjects(e) :
     return
 
 def genMatchLep(entry, jl,lep_type):#matches lepton to a gen paricle regardless of pID
-    idx_match, dR_min = -99, 99
+    idx_match, dR_min, dPt_min = -99,99,99999
     if lep_type == 'e':
         for i in range(entry.nGenPart):
             if entry.GenPart_status[i] != 1: continue#make sure to look at visible gen particle
+            dPt = abs(entry.GenPart_pt[i] - entry.Electron_pt[jl])
             dPhi = min(abs(entry.GenPart_phi[i] - entry.Electron_phi[jl]),
                        2.0*pi-abs(entry.GenPart_phi[i] - entry.Electron_phi[jl]))
             dEta = abs(entry.GenPart_eta[i] - entry.Electron_eta[jl])
             dR = sqrt(dPhi**2 + dEta**2)
-            if dR < dR_min:
+            if dR <= dR_min and dPt <= dPt_min:
                 idx_match, dR_min = i, dR
     if lep_type == 'm':
         for i in range(entry.nGenPart):
             if entry.GenPart_status[i] != 1: continue
+            dPt = abs(entry.GenPart_pt[i] - entry.Muon_pt[jl])
             dPhi = min(abs(entry.GenPart_phi[i] - entry.Muon_phi[jl]),
                        2.0*pi-abs(entry.GenPart_phi[i] - entry.Muon_phi[jl]))
             dEta = abs(entry.GenPart_eta[i] - entry.Muon_eta[jl])
             dR = sqrt(dPhi**2 + dEta**2)
-            if dR < dR_min:
+            if dR <= dR_min and dPt <= dPt_min:
                 idx_match, dR_min = i, dR
 
     return idx_match

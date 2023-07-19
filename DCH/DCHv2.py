@@ -369,14 +369,6 @@ for count, e in enumerate( inTree) :
         if len(goodElectronList)+len(goodMuonList)+len(goodTauList) < 4: veto_evts += 1
         print 'Event: ', count, ' #e: ',len(goodElectronList), ' #mu: ',len(goodMuonList), ' #t: ', len(goodTauList)
         #its faster to modify the pair functions to use these good lists rather than passing all the candidates through the cuts. 
-	e4vec, m4vec, t4vec = TLorentzVector(), TLorentzVector(), TLorentzVector()
-        if len(goodElectronList) < 1:continue
-	for i in goodElectronList:
-	    #e4vec.SetPtEtaPhiM(e.Electron_pt[goodElectronList[i]],e.Electron_eta[goodElectronList[i]],e.Electron_phi[goodElectronList[i]],0.0005)
-	    #print 'e ', i, GF.getLepIdxFrom4Vec(e,e4vec,'e')
-	    print 'e ', i, GF.genMatchLep(e,i,'e')
-	GF.printMC(e)
-        continue;
 	for cat in cats :
             dch1 = cat[:2]
             dch2 = cat[2:]
@@ -499,7 +491,13 @@ for count, e in enumerate( inTree) :
             if  MC:   cutCounterGenWeight[cat].countGenWeight(dch1+dch2, e.genWeight)
             #print 'Channel: ',cat
             #cat_yield[cat] += 1
-            #GF.printMC(e)
+            for i in goodElectronList:
+                print 'Ele ', i, GF.genMatchLep(e,i,'e')
+            for i in goodMuonList:
+                print 'Mu ', i, GF.genMatchLep(e,i,'m')
+            #for i in goodTauList:
+            #    print 'Tau ', i, GF.genMatchTau(e,i,'e')
+	    GF.printMC(e)
             continue
 
             '''
