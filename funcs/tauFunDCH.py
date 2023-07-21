@@ -1390,7 +1390,8 @@ def goodMuonDCH(entry, j ):
     if abs(entry.Muon_dz[j]) > mm['mu_dz']: return False
     if mm['mu_type'] :
         if not (entry.Muon_isGlobal[j] or entry.Muon_isTracker[j]) : return False
-             
+    if mm['mu_ID'] :
+        if not entry.Muon_tightId[j] : return False         
     return True 
 
 def makeGoodMuonListDCH(entry) :

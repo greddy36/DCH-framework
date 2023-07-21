@@ -116,7 +116,7 @@ mm:
   mu_iso: 0.4
   mu_dxy: 0.2 #was 0.045
   mu_dz: 0.5 #as 0.5
-  mu_type: false
+  mu_type: true
   ll_DR: 0.3
 ee: 
   ele_pt: 20.
