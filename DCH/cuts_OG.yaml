@@ -124,7 +124,7 @@ ee:
   ele_dxy: 0.05
   ele_dz: 0.1
   ele_lostHits: 0
-  ele_convVeto: true
+  ele_convVeto: false
   ele_ID: true
   ele_iso_f : true
   ele_iso : 0.4

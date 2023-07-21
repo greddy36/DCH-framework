@@ -1275,8 +1275,7 @@ def goodElectron(entry, j) :
     if ee['ele_convVeto']:
         if not entry.Electron_convVeto[j]: return False
     #if ee['ele_ID']:
-    #    if not entry.Electron_mvaFall17V2noIso_WP90[j] : return False
-
+        #if not entry.Electron_mvaFall17V2noIso_WP90[j] : return False
     return True 
 
 def goodElectronWjets(entry, j) :
@@ -1362,8 +1361,9 @@ def goodElectronDCH(entry, j) :
     if ee['ele_convVeto']:
         if not entry.Electron_convVeto[j]: return False
     if ee['ele_ID']:
-        if not entry.Electron_cutBased_HEEP[j] : return False
-
+        #if not entry.Electron_cutBased_HEEP[j] : return False
+        #if not entry.Electron_mvaFall17V2noIso_WP90[j] : return False
+        if entry.Electron_cutBased[j] != 4 : return False
     return True 
 
 def makeGoodElectronListDCH(entry) :
