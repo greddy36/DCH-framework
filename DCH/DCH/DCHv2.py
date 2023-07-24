@@ -372,7 +372,7 @@ for count, e in enumerate( inTree) :
         #its faster to modify the pair functions to use these good lists rather than passing all the candidates through the cuts. 
 	for cat in cats :
             if(e.nElectron < cat.count('e') or e.nMuon < cat.count('m') or e.nTau < cat.count('t')): continue
-            if(len(goodElectronList) < cat.count('e') or len(goodMuonList) < cat.count('m') or len(goodTauList) < cat.count('t')): continue
+            #if(len(goodElectronList) < cat.count('e') or len(goodMuonList) < cat.count('m') or len(goodTauList) < cat.count('t')): continue
             dch1 = cat[:2]
             dch2 = cat[2:]
 	    if args.category != 'none' and not dch1 in args.category : continue
@@ -438,8 +438,8 @@ for count, e in enumerate( inTree) :
                 netS = e.Muon_charge[bestDCH1[0]] + e.Tau_charge[bestDCH1[1]]
                 print "DCH1 charge:",netS
             if dch1 == 'tt':
-                tauList = TF.getTauList(dch1, entry=e, pairList=[])
-                bestDCH1 = TF.getBestTauPair(dch1, entry=e, tauList=tauList)
+                tauList = TF.getTauList(cat, entry=e, pairList=[])
+                bestDCH1 = TF.getBestTauPair(cat, entry=e, tauList=tauList)
                 if len(bestDCH1) < 2: continue
                 signC = e.Tau_charge[bestDCH1[0]]
                 netS = e.Tau_charge[bestDCH1[0]] + e.Tau_charge[bestDCH1[1]]
@@ -478,8 +478,8 @@ for count, e in enumerate( inTree) :
                 netS = e.Muon_charge[bestDCH2[0]] + e.Tau_charge[bestDCH2[1]]
                 print "DCH2 charge:",netS
             if dch2 == 'tt':
-                tauList = TF.getTauList(dch2, entry=e, pairList=pairList1, isDCH2=True,signC=signC)
-                bestDCH2 = TF.getBestTauPair(dch2, entry=e, tauList=tauList)
+                tauList = TF.getTauList(cat, entry=e, pairList=pairList1, isDCH2=True,signC=signC)
+                bestDCH2 = TF.getBestTauPair(cat, entry=e, tauList=tauList)
                 if len(bestDCH2) < 2: continue
                 signC = e.Tau_charge[bestDCH2[0]]
                 netS = e.Tau_charge[bestDCH2[0]] + e.Tau_charge[bestDCH2[1]]
@@ -561,9 +561,9 @@ for count, e in enumerate( inTree) :
             bestTauPair=[]
             #print("ddddddddddddddddddddddddddddddddd ",cat)#ggr
             if dch2 == 'tt' :
-                tauList = TF.getTauList(dch2, e, pairList=pairList, isDCH2=True, signC=signC)
+                tauList = TF.getTauList(cat, e, pairList=pairList, isDCH2=True, signC=signC)
                 print "len of tauList", tauList
-                bestTauPair = TF.getBestTauPair(dch1, e, tauList)
+                bestTauPair = TF.getBestTauPair(cat, e, tauList)
                 if len(bestTauPair) > 1 :
                     if dch1=='mm': print cat, dch2, e.Muon_charge[lepList[0]], e.Muon_charge[lepList[1]], e.Tau_charge[bestTauPair[0]], e.Tau_charge[bestTauPair[1]], lepList, bestTauPair
                     if dch1=='ee': print cat, dch2, e.Electron_charge[lepList[0]], e.Electron_charge[lepList[1]], e.Tau_charge[bestTauPair[0]], e.Tau_charge[bestTauPair[1]], lepList, bestTauPair

@@ -49,6 +49,7 @@ doJME  = args.doSystematics.lower() == 'true' or args.doSystematics.lower() == '
 #doJME = True
 
 #cats = ['mmtt', 'mmet', 'mmmt', 'mmem']
+#cats = ['eeee','eeem','eeet','eemm','eemt','eett','mmmm','mmem','mmmt','mmtt','mmet','tttt','ttet','ttmt','ttem']#ggr
 '''
 cats_4l = ['eeee','eemm','mmmm']
 cats_2l2t = ['eeee','eemm','mmmm',#tau(lep)+tau(lep)
@@ -64,14 +65,7 @@ cats_4t = ['tttt',#all hadr tau
            ]
 cats = cats_4l+cats_2l2t+cats_4t
 '''
-cats = ['eeee','eeem','eeet','eemm','eemt','eett',
-               'emem','emet','emmm','emmt','emtt',
-                      'etet','etmm','etmt','ettt',
-                             'mmmm','mmmt','mmtt',
-                                    'mtmt','mttt',
-                                           'tttt']#ggr
-
-#cats = ['eeee','eeem','eeet','eemm','eemt','eett','mmmm','mmem','mmmt','mmtt','mmet']
+cats = ['eeee','eeem','eeet','eemm','eemt','eett','mmmm','mmem','mmmt','mmtt','mmet']
 for cat in cats : 
     cutCounter[cat] = GF.cutCounter()
     cutCounterGenWeight[cat] = GF.cutCounter()
@@ -223,12 +217,6 @@ for i,j in enumerate(outTuple.allsystMET):
 
 Weights=Weights.Weights(args.year)
 
-cat_yield = {} #empty dictoinary
-n_lepton = {}
-veto_evts = 0
-for cat in cats:
-    cat_yield[cat] = 0
-    n_lepton[cat]=[0,0,0]
 for count, e in enumerate( inTree) :
     
     if count % countMod == 0 :
@@ -265,24 +253,12 @@ for count, e in enumerate( inTree) :
 
     for cat in cats: 
         isTrig=False
+	if cat[:2] =='mm': isTrig = e.HLT_IsoMu24 or e.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ
 	if cat[:2] =='ee' : isTrig = e.HLT_Ele27_WPTight_Gsf or e.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ 
-        if cat[:2] =='em' : isTrig = e.HLT_Ele27_WPTight_Gsf and e.HLT_IsoMu24
-        if cat[:2] =='et' : isTrig = e.HLT_Ele27_WPTight_Gsf 
-        if cat[:2] =='mm' : isTrig = e.HLT_IsoMu24 or e.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ
-        if cat[:2] =='mt' : isTrig = e.HLT_Ele27_WPTight_Gsf  
+        
 	if isTrig : 
-            cutCounter[cat].count('Lep_Trig1')
-	    if  MC :   cutCounterGenWeight[cat].countGenWeight('Lep_Trig1', e.genWeight)
-
-        isTrig=False
-        if cat[2:] =='ee' : isTrig = e.HLT_Ele27_WPTight_Gsf or e.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ
-        if cat[2:] =='em' : isTrig = e.HLT_Ele27_WPTight_Gsf and e.HLT_IsoMu24
-        if cat[2:] =='et' : isTrig = e.HLT_Ele27_WPTight_Gsf
-        if cat[2:] =='mm' : isTrig = e.HLT_IsoMu24 or e.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ
-        if cat[2:] =='mt' : isTrig = e.HLT_Ele27_WPTight_Gsf
-        if isTrig :
-            cutCounter[cat].count('Lep_Trig2')
-            if  MC :   cutCounterGenWeight[cat].countGenWeight('Lep_Trig2', e.genWeight)
+            cutCounter[cat].count('Trigger')
+	    if  MC :   cutCounterGenWeight[cat].countGenWeight('Trigger', e.genWeight)
 
 
     met_pt = float(e.MET_pt)
@@ -347,6 +323,7 @@ for count, e in enumerate( inTree) :
 	    for j in range(e.nTau): 
                 e.Tau_pt[j] = tauPt[j]
                 e.Tau_mass[j] = tauMass[j]
+             
 
         
 	if isMC: 
@@ -361,160 +338,62 @@ for count, e in enumerate( inTree) :
 		    outTuple.list_of_arrays[i+len(metlist)][0] = philist[i]
 
 
+
 	goodElectronList = TF.makeGoodElectronListDCH(e)
 	goodMuonList = TF.makeGoodMuonListDCH(e)
-        goodTauList = TF.makeGoodTauList(e)
-        if len(goodElectronList)+len(goodMuonList)+len(goodTauList) < 4: 
-            veto_evts += 1
-            continue# remove to print details of all the vetoed evts
-        print 'Event: ', count, ' #e: ',len(goodElectronList), ' #mu: ',len(goodMuonList), ' #t: ', len(goodTauList)
-        print 'Event: ', count, ' #e: ',e.nElectron, ' #mu: ',e.nMuon, ' #t: ', e.nTau
-        #its faster to modify the pair functions to use these good lists rather than passing all the candidates through the cuts. 
-	for cat in cats :
-            if(e.nElectron < cat.count('e') or e.nMuon < cat.count('m') or e.nTau < cat.count('t')): continue
-            if(len(goodElectronList) < cat.count('e') or len(goodMuonList) < cat.count('m') or len(goodTauList) < cat.count('t')): continue
-            dch1 = cat[:2]
-            dch2 = cat[2:]
-	    if args.category != 'none' and not dch1 in args.category : continue
-            if args.category != 'none' and not dch2 in args.category : continue
 
-            '''if (dch1 == 'ee' or dch2 == 'ee') and len(goodElectronList) < 2 :
-                if printOn:   print cat, e.run, e.luminosityBlock,  e.event, 'failed as you have < 2 goodElectronList'
-                continue
-            if (dch1 == 'em' or dch2 == 'em') and (len(goodElectronList) < 1 or len(goodMuonList) < 1) :
-                if printOn:   print cat, e.run, e.luminosityBlock,  e.event, 'failed as you have < 1 goodElectron or < 1 goodMuon'
-                continue
-            if (dch1 == 'et' or dch2 == 'et') and (len(goodElectronList) < 1 or len(goodTauList) < 1) :
-                if printOn:   print cat, e.run, e.luminosityBlock,  e.event, 'failed as you have < 1 goodElectronList or < 1 goodTauList'
-                continue
-            if (dch1 == 'mm' or dch2 == 'mm') and len(goodMuonList) < 2 :
-                if printOn:   print cat, e.run, e.luminosityBlock,  e.event, 'failed as you have < 2 goodMuonList'
-                continue
-            if (dch1 == 'mt' or dch2 == 'mt') and (len(goodMuonList) < 1 or len(goodTauList) < 1) :
-                if printOn:   print cat, e.run, e.luminosityBlock,  e.event, 'failed as you have < 1 goodMuonList or < 1 goodTauList'
-                continue
-            if (dch1 == 'tt' or dch2 == 'tt') and  len(goodTauList) < 2 :
-                if printOn:   print cat, e.run, e.luminosityBlock,  e.event, 'failed as you have < 2 goodTauList'
-                continue
-            '''
+	#for cat in cats :
+            #lepMode = cat[:2]#ggr
+            #print ("lepMode ",lepMode)
+	for lepMode in ['mm','ee'] :
+	    if args.category != 'none' and not lepMode in args.category : continue
 
-            cat_yield[cat] += 1
-            n_lepton[cat] = np.array(n_lepton[cat]) + np.array([len(goodElectronList), len(goodMuonList), len(goodTauList)])
-            ## pairListP -> containes the TLV of the ++ pair  
-            ## lepListP -> containes the indices of the ++ pair  
-            #lepList, lepListP, lepListM = [], [], []
-            pairList1, pairListP, pairListM =[], [], []
+            if lepMode == 'ee' :
+                if e.nElectron < 2 : continue
+            if lepMode == 'mm' :
+                if e.nMuon < 2 : continue
+
+	    #uncomment below for the dR cuts            
+
+	    lepList=[]
+	    lepListP=[]
+	    lepListM=[]
+
+
+            pairList=[]
+            lepList=[]
             signC=0
             netS=-99
-            bestDCH1 = []#contains indices
-            if dch1 == 'ee':
-                bestDCH1 = TF.getBestEEPair(entry=e, dch=dch1, pairList=[])
-                if len(bestDCH1) < 2: continue
-                signC = e.Electron_charge[bestDCH1[0]]
-                netS = e.Electron_charge[bestDCH1[0]] + e.Electron_charge[bestDCH1[1]]
-                print "DCH1 charge:",netS
-            if dch1 == 'em':
-                bestDCH1 = TF.getBestEMuTauPair(entry=e, dch=dch1, pairList=[])
-                if len(bestDCH1) < 2: continue
-                signC = e.Electron_charge[bestDCH1[0]]
-                netS = e.Electron_charge[bestDCH1[0]] + e.Muon_charge[bestDCH1[1]]
-                print "DCH1 charge:",netS
-            if dch1 == 'et':
-                bestDCH1 = TF.getBestETauPair(entry=e, dch=dch1, pairList=[])
-                if len(bestDCH1) < 2: continue
-                signC = e.Electron_charge[bestDCH1[0]]
-                netS = e.Electron_charge[bestDCH1[0]] + e.Tau_charge[bestDCH1[1]]
-                print "DCH1 charge:",netS
-            if dch1 == 'mm':
-                bestDCH1 = TF.getBestMuMuPair(entry=e, dch=dch1, pairList=[])
-                if len(bestDCH1) < 2: continue 
-                signC = e.Muon_charge[bestDCH1[0]]
-                netS = e.Muon_charge[bestDCH1[0]] + e.Muon_charge[bestDCH1[1]]
-                print "DCH1 charge:",netS
-            if dch1 == 'mt':
-                bestDCH1 = TF.getBestMuTauPair(entry=e, dch=dch1, pairList=[])
-                if len(bestDCH1) < 2: continue
-                signC = e.Muon_charge[bestDCH1[0]]
-                netS = e.Muon_charge[bestDCH1[0]] + e.Tau_charge[bestDCH1[1]]
-                print "DCH1 charge:",netS
-            if dch1 == 'tt':
-                tauList = TF.getTauList(dch1, entry=e, pairList=[])
-                bestDCH1 = TF.getBestTauPair(dch1, entry=e, tauList=tauList)
-                if len(bestDCH1) < 2: continue
-                signC = e.Tau_charge[bestDCH1[0]]
-                netS = e.Tau_charge[bestDCH1[0]] + e.Tau_charge[bestDCH1[1]]
-                print "DCH1 charge:",netS
-            #print 'signC ',signC
-            pairList1 = TF.make4Vec(bestDCH1,dch1,e)
-            bestDCH2 = []
-            if dch2 == 'ee':
-                bestDCH2 = TF.getBestEEPair(entry=e, dch=dch2, pairList=pairList1, isDCH2=True,signC=signC)
-                if len(bestDCH2) < 2: continue
-                signC = e.Electron_charge[bestDCH2[0]]
-                netS = e.Electron_charge[bestDCH2[0]] + e.Electron_charge[bestDCH2[1]]
-                print "DCH2 charge:",netS
-            if dch2 == 'em':
-                bestDCH2 = TF.getBestEMuTauPair(entry=e, dch=dch2, pairList=pairList1, isDCH2=True,signC=signC)
-                if len(bestDCH2) < 2: continue
-                signC = e.Electron_charge[bestDCH2[0]]
-                netS = e.Electron_charge[bestDCH2[0]] + e.Muon_charge[bestDCH2[1]]
-                print "DCH2 charge:",netS
-            if dch2 == 'et':
-                bestDCH2 = TF.getBestETauPair(entry=e, dch=dch2, pairList=pairList1, isDCH2=True,signC=signC)
-                if len(bestDCH2) < 2: continue
-                signC = e.Electron_charge[bestDCH2[0]]
-                netS = e.Electron_charge[bestDCH2[0]] + e.Tau_charge[bestDCH2[1]]
-                print "DCH2 charge:",netS
-            if dch2 == 'mm':
-                bestDCH2 = TF.getBestMuMuPair(entry=e, dch=dch2, pairList=pairList1, isDCH2=True,signC=signC)
-                if len(bestDCH2) < 2: continue
-                signC = e.Muon_charge[bestDCH2[0]]
-                netS = e.Muon_charge[bestDCH2[0]] + e.Muon_charge[bestDCH2[1]]
-                print "DCH2 charge:",netS
-            if dch2 == 'mt':
-                bestDCH2 = TF.getBestMuTauPair(entry=e, dch=dch2, pairList=pairList1, isDCH2=True,signC=signC)
-                if len(bestDCH2) < 2: continue
-                signC = e.Muon_charge[bestDCH2[0]]
-                netS = e.Muon_charge[bestDCH2[0]] + e.Tau_charge[bestDCH2[1]]
-                print "DCH2 charge:",netS
-            if dch2 == 'tt':
-                tauList = TF.getTauList(dch2, entry=e, pairList=pairList1, isDCH2=True,signC=signC)
-                bestDCH2 = TF.getBestTauPair(dch2, entry=e, tauList=tauList)
-                if len(bestDCH2) < 2: continue
-                signC = e.Tau_charge[bestDCH2[0]]
-                netS = e.Tau_charge[bestDCH2[0]] + e.Tau_charge[bestDCH2[1]]
-                print "DCH2 charge:",netS
+	    if lepMode=='mm' and len(goodMuonList) < 2 :
+		if printOn:   print lepMode, e.run, e.luminosityBlock,  e.event, 'failed as you have < 2 goodMuonList'
+		continue
 
-            pairList2 = TF.make4Vec(bestDCH2,dch2,e)
-            print count, cat, 'e:', len(goodElectronList), 'm:',len(goodMuonList), 't:',len(goodTauList)
+	    if lepMode=='ee' and len(goodElectronList) < 2 :
+		if printOn:   print lepMode, e.run, e.luminosityBlock,  e.event, 'failed as you have < 2 goodElectronList'
+		continue
 
-            cutCounter[cat].count(dch1+dch2)
-            if  MC:   cutCounterGenWeight[cat].countGenWeight(dch1+dch2, e.genWeight)
-            #print 'Channel: ',cat
-            #cat_yield[cat] += 1
-            #continue
-            for i in goodElectronList:
-                print 'Ele ', i, GF.genMatch(e,i,'e')
-            for i in goodMuonList:
-                print 'Mu ', i, GF.genMatch(e,i,'m')
-            for i in goodTauList:
-                print 'Tau ', i, GF.genMatch(e,i,'t')
-	    GF.printMC(e)
-            continue
+	    #mm + tau tau decays
+	    ## pairListP -> containes the TLV of the ++ pair  
+	    ## lepListP -> containes the indices of the ++ pair  
+	    if lepMode=='mm' :#this is giving 4 muons. But why??ggr
+		pairListP, lepListP, pairListM, lepListM = TF.findHpair([],goodMuonList,e)
+                print'good muon list length ', len(goodMuonList) 
+	    if lepMode=='ee' :
+		pairListP, lepListP, pairListM, lepListM = TF.findHpair(goodElectronList,[],e)
 
-            '''
-            if dch1=='mm' :#this is giving 4 muons. But why??ggr
-                pairListP, lepListP, pairListM, lepListM = TF.findHpair([],goodMuonList,e)
-                #print'good muon list length ', len(goodMuonList)
-            if dch1=='ee' :
-                pairListP, lepListP, pairListM, lepListM = TF.findHpair(goodElectronList,[],e)
+            for lepMode2 in ['mm','ee'] :#ggr
+                if lepMode=='ee' and lepMode2=='ee' and len(goodElectronList) < 4 : continue
+                if lepMode=='ee' and lepMode2=='mm' and len(goodElectronList) < 2 and len(goodMuonList) < 2 : continue
+                if lepMode=='mm' and lepMode2=='mm' and len(goodMuonList) < 4 : continue
+            
 
-            #print 'lepmode is:',dch1,', cat is :',cat 
+            #print 'lepmode is:',lepMode,', cat is :',cat 
             #print 'len(lepListP) = ',len(lepListP),'len(lepListM) = ',len(lepListM)#ggr  
 	    #if not (  (len(lepListP) ==2 and len(lepListM) == 0) or (len(lepListP) == 0 and len(lepListM) == 2) ) : continue
             if not ( (len(lepListP) ==2 and len(lepListM) == 0) or (len(lepListP) == 0 and len(lepListM) == 2) or (len(lepListP) == 2 and len(lepListM) == 2) or (len(lepListP) == 2 and len(lepListM) == 1) or (len(lepListP) == 1 and len(lepListM) == 2) or (len(lepListP) == 4 and len(lepListM) == 0) or (len(lepListP) == 0 and len(lepListM) == 4)) : continue#ggr
 	    lepList=[]
 	    if len(lepListP) ==2 and len(lepListM) == 0 : 
+                continue
 		pairList=pairListP
 		lepList=lepListP
 		print 'we have a pair of ++'
@@ -542,61 +421,83 @@ for count, e in enumerate( inTree) :
                 pairList=pairListM#+pairListP #merges two lists
                 lepList=lepListM#+lepListP
                 print 'we have a pair of ++ and --', lepList
-
-
-            if dch1 =='mm' : 
+            '''
+            if lepMode=='mm' : 
                 signC=e.Muon_charge[lepList[0]]
                 netS = e.Muon_charge[lepList[0]] + e.Muon_charge[lepList[1]]
-            if dch1 == 'ee':
+            if lepMode=='ee' : 
                 signC=e.Electron_charge[lepList[0]]
                 netS = e.Electron_charge[lepList[0]] + e.Electron_charge[lepList[1]]
-            print 'pairList checking------------------->', pairList,lepList, dch1, signC, netS#ggr
-
-            cutCounter[cat].count('TwoLeptons')
-	    if  MC :   cutCounterGenWeight[cat].countGenWeight('TwoLeptons', e.genWeight)
-
-            #for dch2 in ['em','et','mt','tt'] :
-
-            if args.category != 'none' and dch2 != args.category[2:] : continue
-            bestTauPair=[]
-            #print("ddddddddddddddddddddddddddddddddd ",cat)#ggr
-            if dch2 == 'tt' :
-                tauList = TF.getTauList(dch2, e, pairList=pairList, isDCH2=True, signC=signC)
-                print "len of tauList", tauList
-                bestTauPair = TF.getBestTauPair(dch1, e, tauList)
-                if len(bestTauPair) > 1 :
-                    if dch1=='mm': print cat, dch2, e.Muon_charge[lepList[0]], e.Muon_charge[lepList[1]], e.Tau_charge[bestTauPair[0]], e.Tau_charge[bestTauPair[1]], lepList, bestTauPair
-                    if dch1=='ee': print cat, dch2, e.Electron_charge[lepList[0]], e.Electron_charge[lepList[1]], e.Tau_charge[bestTauPair[0]], e.Tau_charge[bestTauPair[1]], lepList, bestTauPair
-            elif dch2 == 'et' :
-                if dch1=='ee' and len(goodElectronList)<3 : continue
-                bestTauPair = TF.getBestETauPair(e,dch=dch1,pairList=pairList, isDCH2=True, signC=signC)
-                if len(bestTauPair) > 1 :
-                    if dch1=='mm': print cat, dch2, e.Muon_charge[lepList[0]], e.Muon_charge[lepList[1]], e.Electron_charge[bestTauPair[0]], e.Tau_charge[bestTauPair[1]], lepList, bestTauPair
-                    if dch1=='ee': print cat, dch2, e.Electron_charge[lepList[0]], e.Electron_charge[lepList[1]], e.Electron_charge[bestTauPair[0]], e.Tau_charge[bestTauPair[1]], lepList, bestTauPair
-            elif dch2 == 'mt' :
-                if dch1=='mm' and len(goodMuonList)<3 : continue
-                bestTauPair = TF.getBestMuTauPair(e,dch=dch1,pairList=pairList, isDCH2=True, signC=signC)
-                if len(bestTauPair) > 1 :
-                    if dch1=='mm': print cat, dch2, e.Muon_charge[lepList[0]], e.Muon_charge[lepList[1]], e.Muon_charge[bestTauPair[0]], e.Tau_charge[bestTauPair[1]], lepList, bestTauPair
-                    if dch1=='ee': print cat, dch2, e.Electron_charge[lepList[0]], e.Electron_charge[lepList[1]], e.Muon_charge[bestTauPair[0]], e.Tau_charge[bestTauPair[1]], lepList, bestTauPair
-            elif dch2 == 'em' :
-                if dch1=='mm' and len(goodMuonList)<3 : continue
-                if dch1=='ee' and len(goodElectronList)<3 : continue
-                bestTauPair = TF.getBestEMuTauPair(e,dch=dch1,pairList=pairList, isDCH2=True, signC=signC)
-                if len(bestTauPair) > 1 :
-                    if dch1=='mm': print cat, dch2, e.Muon_charge[lepList[0]], e.Muon_charge[lepList[1]], e.Electron_charge[bestTauPair[0]], e.Muon_charge[bestTauPair[1]], lepList, bestTauPair
-                    if dch1=='ee': print cat, dch2, e.Electron_charge[lepList[0]], e.Electron_charge[lepList[1]], e.Electron_charge[bestTauPair[0]], e.Muon_charge[bestTauPair[1]], lepList, bestTauPair
-            else : continue
-	    #continue
+            print 'pairList checking------------------->', pairList, pairList[0].Px(), pairList[0].Pt(), lepMode, signC, netS
             '''
-	    '''if len(bestTauPair) < 1 : 
+            if lepMode=='mm' : 
+                signC=e.Muon_charge[lepList[0]]
+                netS = e.Muon_charge[lepList[0]] + e.Muon_charge[lepList[1]]
+            if lepMode == 'ee':
+                signC=e.Electron_charge[lepList[0]]
+                netS = e.Electron_charge[lepList[0]] + e.Electron_charge[lepList[1]]
+            print 'pairList checking------------------->', pairList,lepList, lepMode, signC, netS#ggr
+            
+            for cat in cats : 
+		cutCounter[cat].count('TwoLeptons')
+		if  MC :   cutCounterGenWeight[cat].countGenWeight('TwoLeptons', e.genWeight)
+
+            #for tauMode in ['em','et','mt','tt'] :
+            for tauMode in ['ee','em','et','mm','mt','tt'] :
+                if args.category != 'none' and tauMode != args.category[2:] : continue
+                cat = lepMode + tauMode
+                #if not cat == lepMode + tauMode : continue#ggr
+		bestTauPair=[]
+                #print("ddddddddddddddddddddddddddddddddd ",cat)#ggr
+                if tauMode == 'ee' :
+                    if lepMode=='ee' and len(goodElectronList)<4 : continue
+                    bestTauPair = TF.getBestEEPair(e,cat=cat,pairList=pairList)
+                    if len(bestTauPair) > 1 :
+                        if lepMode=='mm': print cat, tauMode, e.Muon_charge[lepList[0]], e.Muon_charge[lepList[1]], e.Electron_charge[bestTauPair[0]], e.Electron_charge[bestTauPair[1]], lepList, bestTauPair
+                        if lepMode=='ee': print cat, tauMode, e.Electron_charge[lepList[0]], e.Electron_charge[lepList[1]], e.Electron_charge[bestTauPair[0]], e.Electron_charge[bestTauPair[1]], lepList, bestTauPair
+                if tauMode == 'mm' :
+                    if lepMode=='mm' and len(goodMuonList)<4 : continue
+                    bestTauPair = TF.getBestMuMuPair(e,cat=cat,pairList=pairList)
+                    if len(bestTauPair) > 1 :
+                        if lepMode=='mm': print cat, tauMode, e.Muon_charge[lepList[0]], e.Muon_charge[lepList[1]], e.Muon_charge[bestTauPair[0]], e.Muon_charge[bestTauPair[1]], lepList, bestTauPair
+                        if lepMode=='ee': print cat, tauMode, e.Electron_charge[lepList[0]], e.Electron_charge[lepList[1]], e.Muon_charge[bestTauPair[0]], e.Muon_charge[bestTauPair[1]], lepList, bestTauPair
+                if tauMode == 'tt' :
+                    tauList = TF.getTauList(cat, e, pairList=pairList, signC=signC)
+                    print "len of tauList", tauList
+                    bestTauPair = TF.getBestTauPair(cat, e, tauList)
+                    if len(bestTauPair) > 1 :
+                        if lepMode=='mm': print cat, tauMode, e.Muon_charge[lepList[0]], e.Muon_charge[lepList[1]], e.Tau_charge[bestTauPair[0]], e.Tau_charge[bestTauPair[1]], lepList, bestTauPair
+                        if lepMode=='ee': print cat, tauMode, e.Electron_charge[lepList[0]], e.Electron_charge[lepList[1]], e.Tau_charge[bestTauPair[0]], e.Tau_charge[bestTauPair[1]], lepList, bestTauPair
+                elif tauMode == 'et' :
+                    if lepMode=='ee' and len(goodElectronList)<3 : continue
+                    bestTauPair = TF.getBestETauPair(e,cat=cat,pairList=pairList, signC=signC)
+                    if len(bestTauPair) > 1 :
+                        if lepMode=='mm': print cat, tauMode, e.Muon_charge[lepList[0]], e.Muon_charge[lepList[1]], e.Electron_charge[bestTauPair[0]], e.Tau_charge[bestTauPair[1]], lepList, bestTauPair
+                        if lepMode=='ee': print cat, tauMode, e.Electron_charge[lepList[0]], e.Electron_charge[lepList[1]], e.Electron_charge[bestTauPair[0]], e.Tau_charge[bestTauPair[1]], lepList, bestTauPair
+                elif tauMode == 'mt' :
+                    if lepMode=='mm' and len(goodMuonList)<3 : continue
+                    bestTauPair = TF.getBestMuTauPair(e,cat=cat,pairList=pairList, signC=signC)
+                    if len(bestTauPair) > 1 :
+                        if lepMode=='mm': print cat, tauMode, e.Muon_charge[lepList[0]], e.Muon_charge[lepList[1]], e.Muon_charge[bestTauPair[0]], e.Tau_charge[bestTauPair[1]], lepList, bestTauPair
+                        if lepMode=='ee': print cat, tauMode, e.Electon_charge[lepList[0]], e.Electron_charge[lepList[1]], e.Muon_charge[bestTauPair[0]], e.Tau_charge[bestTauPair[1]], lepList, bestTauPair
+                elif tauMode == 'em' :
+                    if lepMode=='mm' and len(goodMuonList)<3 : continue
+                    if lepMode=='ee' and len(goodElectronList)<3 : continue
+                    bestTauPair = TF.getBestEMuTauPair(e,cat=cat,pairList=pairList, signC=signC)
+                    if len(bestTauPair) > 1 :
+                        if lepMode=='mm': print cat, tauMode, e.Muon_charge[lepList[0]], e.Muon_charge[lepList[1]], e.Electron_charge[bestTauPair[0]], e.Muon_charge[bestTauPair[1]], lepList, bestTauPair
+                        if lepMode=='ee': print cat, tauMode, e.Electron_charge[lepList[0]], e.Electron_charge[lepList[1]], e.Electron_charge[bestTauPair[0]], e.Muon_charge[bestTauPair[1]], lepList, bestTauPair
+                else : continue
+	    #continue
+
+	    if len(bestTauPair) < 1 : 
                 continue#ggr
 		if unique :
 		    print("Tau Pair Fail: Event ID={0:d} cat={1:s}".format(e.event,cat))
-		    bestTauPair = TF.getBestEMuTauPair(e,dch=dch1,pairList=LeptV,printOn=True) 
+		    bestTauPair = TF.getBestEMuTauPair(e,cat=cat,pairList=LeptV,printOn=True) 
 		    GF.printEvent(e)
 				    
-		if False and maxPrint > 0 and (dch2 == GF.eventID(e)[2:4]) :
+		if False and maxPrint > 0 and (tauMode == GF.eventID(e)[2:4]) :
 		    maxPrint -= 1
 		    print("Failed tau-pair cut")
 		    print("Event={0:d} cat={1:s}".format(e.event,cat))
@@ -606,7 +507,7 @@ for count, e in enumerate( inTree) :
 		    GF.printEvent(e)
 		    GF.printMC(e)
 		#continue
-            
+
 	    if len(bestTauPair) > 1 :
 		jt1, jt2 = bestTauPair[0], bestTauPair[1]
 	    else :
@@ -614,7 +515,6 @@ for count, e in enumerate( inTree) :
             print("ddddddddddddddddddddddddddddddddd")#ggr
 	    cutCounter[cat].count("GoodTauPair")
 	    if  MC:   cutCounterGenWeight[cat].countGenWeight('GoodTauPair', e.genWeight)
-            '''
 	    if MC :
 		outTuple.setWeight(PU.getWeight(e.PV_npvs)) 
 		outTuple.setWeightPU(PU.getWeight(e.Pileup_nPU)) 
@@ -629,7 +529,7 @@ for count, e in enumerate( inTree) :
 	    SVFit = False
 	    
 	    if not MC : isMC = False
- 
+	     
 	    outTuple.Fill(e,SVFit,cat,jt1,jt2,pairList[0],pairList[1],lepList,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
 
 	    if maxPrint > 0 :
@@ -641,19 +541,18 @@ for count, e in enumerate( inTree) :
 		GF.printEvent(e)
 		print("Event ID={0:s} cat={1:s}".format(GF.eventID(e),cat))
 
+
 dT = time.time() - tStart
 print("Run time={0:.2f} s  time/event={1:.1f} us".format(dT,1000000.*dT/count))
-
 
 hLabels=[]
 hLabels.append('All')
 hLabels.append('inJSON')
 hLabels.append('METfilter')
-hLabels.append('Lep_Trig1')
-hLabels.append('Lep_Trig2')
-#hLabels.append('TwoLeptons')
-#hLabels.append('GoodTauPair')
-hLabels.append('channel')
+#hLabels.append('0bTag')
+hLabels.append('Trigger')
+hLabels.append('TwoLeptons')
+hLabels.append('GoodTauPair')
 
 hCutFlow=[]
 hCutFlowW=[]
@@ -669,9 +568,9 @@ for icat,cat in enumerate(cats) :
     cutCounter[cat].printSummary()
     hName="hCutFlow_"+str(cat)
     hNameW="hCutFlowWeighted_"+str(cat)
+    hCutFlow.append( TH1D(hName,hName,20,0.5,20.5))
+    if MC  : hCutFlowW.append( TH1D(hNameW,hNameW,20,0.5,20.5))
     lcount=len(hLabels)
-    hCutFlow.append( TH1D(hName,hName,lcount,0.5,lcount+0.5))
-    if MC  : hCutFlowW.append( TH1D(hNameW,hNameW,lcount,0.5,lcount+0.5))
     print lcount, cat, icat
     for i in range(len(hLabels)) :
         hCutFlow[icat].GetXaxis().SetBinLabel(i+1,hLabels[i])
@@ -696,7 +595,3 @@ for icat,cat in enumerate(cats) :
     icat+=1
 
 if not MC : CJ.printJSONsummary()
-
-print 'Yields in each channel ', cat_yield
-print 'n_leptons in each channel [e, mu, tau]',n_lepton
-print '# of < 4 lepton events', veto_evts

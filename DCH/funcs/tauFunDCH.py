@@ -56,13 +56,16 @@ def goodPhotonTrigger(e, year):
 
     
 
-def getTauList(dch, entry, pairList=[],printOn=False, isDCH2=False, signC=0) :
+def getTauList(channel, entry, pairList=[],printOn=False, isDCH2=False, signC=0) :
     """ tauFun.getTauList(): return a list of taus that 
                              pass the basic selection cuts               
     """
 
-    if not dch in ['et','mt','tt'] :
-        print("Warning: invalid dch={0:s} in tauFun.getTauList()".format(dch))
+    if not channel in ['eeet','eemt','eett',
+                       'emet','emmt','emtt',
+                       'etet','etmm','etmt','ettt',
+                       'mmmt','mmtt','mtmt','mttt','tttt'] :
+        print("Warning: invalid channel={0:s} in tauFun.getTauList()".format(channel))
         exit()
 
     if printOn : print ' getTauList : will be checking nTau', entry.nTau
@@ -305,13 +308,13 @@ def comparePair(entry, pair1, pair2) :
 
 
 
-def getBestTauPair(dch, entry, tauList,printOn=False) :
+def getBestTauPair(channel, entry, tauList,printOn=False) :
     """ tauFun.getBestTauPair(): return two taus that 
                                  best represent H->tt
     """ 
 
-    if dch != 'tt' : 
-        if printOn : print("Invalid dch={0:s} in tauFun.getBestTauPair()".format(dch))
+    if not channel in ['eett','emtt','ettt','mmtt','mttt','tttt'] : 
+        if printOn : print("Invalid channel={0:s} in tauFun.getBestTauPair()".format(channel))
         exit()
 
     if len(tauList) < 2: 
