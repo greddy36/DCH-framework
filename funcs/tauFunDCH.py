@@ -160,13 +160,20 @@ def makeGoodTauList(entry, printOn=False) :
         if tt['tau_vJet'] > 0  and not ord(entry.Tau_idDeepTau2017v2p1VSjet[j]) & tt['tau_vJet'] > 0 :
             if printOn : print("        fail DeepTau vs. Jet={0:d}".format(ord(entry.Tau_idDeepTau2017v2p1VSjet[j])))
             continue
+<<<<<<< HEAD
 	if tt['tau_vEle'] > 0 and not ord(entry.Tau_idDeepTau2017v2p1VSe[j]) & tt['tau_vEle'] > 0 :
+=======
+        if tt['tau_vEle'] > 0 and not ord(entry.Tau_idDeepTau2017v2p1VSe[j]) & tt['tau_vEle'] > 0 :
+>>>>>>> work
             if printOn : print("        fail DeepTau vs. ele={0:d}".format(ord(entry.Tau_idDeepTau2017v2p1VSe[j])))
             continue
         if tt['tau_vMu'] > 0 and not ord(entry.Tau_idDeepTau2017v2p1VSmu[j]) & tt['tau_vMu'] > 0 :
             if printOn : print("        fail DeepTau vs.  mu={0:d}".format(ord(entry.Tau_idDeepTau2017v2p1VSmu[j])))
             continue
+<<<<<<< HEAD
 
+=======
+>>>>>>> work
         tauList.append(j)
     
     return tauList
@@ -1275,8 +1282,12 @@ def goodElectron(entry, j) :
     if ee['ele_convVeto']:
         if not entry.Electron_convVeto[j]: return False
     #if ee['ele_ID']:
+<<<<<<< HEAD
     #    if not entry.Electron_mvaFall17V2noIso_WP90[j] : return False
 
+=======
+        #if not entry.Electron_mvaFall17V2noIso_WP90[j] : return False
+>>>>>>> work
     return True 
 
 def goodElectronWjets(entry, j) :
@@ -1362,8 +1373,14 @@ def goodElectronDCH(entry, j) :
     if ee['ele_convVeto']:
         if not entry.Electron_convVeto[j]: return False
     if ee['ele_ID']:
+<<<<<<< HEAD
         if not entry.Electron_cutBased_HEEP[j] : return False
 
+=======
+        #if not entry.Electron_cutBased_HEEP[j] : return False
+        #if not entry.Electron_mvaFall17V2noIso_WP90[j] : return False
+        if entry.Electron_cutBased[j] != 4 : return False
+>>>>>>> work
     return True 
 
 def makeGoodElectronListDCH(entry) :
@@ -1390,7 +1407,12 @@ def goodMuonDCH(entry, j ):
     if abs(entry.Muon_dz[j]) > mm['mu_dz']: return False
     if mm['mu_type'] :
         if not (entry.Muon_isGlobal[j] or entry.Muon_isTracker[j]) : return False
+<<<<<<< HEAD
              
+=======
+    if mm['mu_ID'] :
+        if not entry.Muon_tightId[j] : return False         
+>>>>>>> work
     return True 
 
 def makeGoodMuonListDCH(entry) :

@@ -225,10 +225,7 @@ Weights=Weights.Weights(args.year)
 
 cat_yield = {} #empty dictoinary
 n_lepton = {}
-<<<<<<< HEAD
-=======
 veto_evts = 0
->>>>>>> work
 for cat in cats:
     cat_yield[cat] = 0
     n_lepton[cat]=[0,0,0]
@@ -350,10 +347,6 @@ for count, e in enumerate( inTree) :
 	    for j in range(e.nTau): 
                 e.Tau_pt[j] = tauPt[j]
                 e.Tau_mass[j] = tauMass[j]
-<<<<<<< HEAD
-             
-=======
->>>>>>> work
 
         
 	if isMC: 
@@ -368,19 +361,12 @@ for count, e in enumerate( inTree) :
 		    outTuple.list_of_arrays[i+len(metlist)][0] = philist[i]
 
 
-<<<<<<< HEAD
-
-	goodElectronList = TF.makeGoodElectronListDCH(e)
-	goodMuonList = TF.makeGoodMuonListDCH(e)
-        goodTauList = TF.makeGoodTauList(e)
-=======
 	goodElectronList = TF.makeGoodElectronListDCH(e)
 	goodMuonList = TF.makeGoodMuonListDCH(e)
         goodTauList = TF.makeGoodTauList(e)
         if len(goodElectronList)+len(goodMuonList)+len(goodTauList) < 4: 
             veto_evts += 1
             continue# remove to print details of all the vetoed evts
->>>>>>> work
         print 'Event: ', count, ' #e: ',len(goodElectronList), ' #mu: ',len(goodMuonList), ' #t: ', len(goodTauList)
         #its faster to modify the pair functions to use these good lists rather than passing all the candidates through the cuts. 
 	for cat in cats :
@@ -409,11 +395,7 @@ for count, e in enumerate( inTree) :
                 continue
             '''
             if(len(goodElectronList) < cat.count('e') or len(goodMuonList) < cat.count('m') or len(goodTauList) < cat.count('t')): continue
-<<<<<<< HEAD
-            
-=======
 
->>>>>>> work
             #print cat, 'e :', len(goodElectronList), 'm :',len(goodMuonList), 't :',len(goodTauList)
             cat_yield[cat] += 1
             n_lepton[cat] = np.array(n_lepton[cat]) + np.array([len(goodElectronList), len(goodMuonList), len(goodTauList)])
@@ -509,9 +491,6 @@ for count, e in enumerate( inTree) :
             if  MC:   cutCounterGenWeight[cat].countGenWeight(dch1+dch2, e.genWeight)
             #print 'Channel: ',cat
             #cat_yield[cat] += 1
-<<<<<<< HEAD
-            GF.printMC(e)
-=======
             #continue
             for i in goodElectronList:
                 print 'Ele ', i, GF.genMatch(e,i,'e')
@@ -520,7 +499,6 @@ for count, e in enumerate( inTree) :
             for i in goodTauList:
                 print 'Tau ', i, GF.genMatch(e,i,'t')
 	    GF.printMC(e)
->>>>>>> work
             continue
 
             '''
@@ -720,7 +698,4 @@ if not MC : CJ.printJSONsummary()
 
 print 'Yields in each channel ', cat_yield
 print 'n_leptons in each channel [e, mu, tau]',n_lepton
-<<<<<<< HEAD
-=======
 print '# of < 4 lepton events', veto_evts
->>>>>>> work
