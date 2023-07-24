@@ -397,7 +397,6 @@ def getMuTauPairs(entry,dch='mt',pairList=[],printOn=False,isDCH2=False,signC=0)
     if entry.nMuon < dch.count('m') or entry.nTau < dch.count('t'):
         #if printOn : print("Entering getMuTauPairs failing nMuon={0:d} nTau={1:d} lumi={2:s} run={3:s} event={4:s}".format(entry.nMuon,entry.nTau, str(entry.luminosityBlock), str(entry.run), str(entry.event)))
         return []
-    if dch== 'mmmt' and entry.nMuon < 3: return []
 
     muTauPairs = []
     mt = selections['mt'] # H->tau(mu)+tau(h) selections
@@ -767,7 +766,6 @@ def getETauPairs(entry,dch='et',pairList=[],printOn=False, isDCH2=False, signC=0
 
     if printOn : print("Entering getETauPairs() nElectron={0:d} nTau={1:d}".format(entry.nElectron,entry.nTau)) 
     if entry.nElectron < 1 or entry.nTau < 1: return []
-    if dch== 'eeet' and entry.nElectron < 3: return []
     
     eTauPairs = []
     leptOverlap = False
@@ -944,7 +942,6 @@ def getEEPairs(entry, dch='ee', pairList=[], printOn=False, isDCH2=False, signC=
 
     # need a sufficient number of leptons
     if entry.nElectron < 2: return []
-    if dch == 'eeee' and entry.nElectron < 4: return []
     
     selected_elecs = []
     ee = selections['et'] # impose selections for tau(ele) on each electron
@@ -1058,7 +1055,6 @@ def getMuMuPairs(entry, dch='mm', pairList=[], printOn=False, isDCH2=False,signC
     if entry.nMuon < 2:
         if printOn: print ("Entering getMuMuPairs, failing nMuon={0:d}".format(entry.nMuon))
         return []
-    if dch == 'mmmm' and entry.nMuon < 4: return []
 
     if printOn: print("Entering tauFun.getMuMuPairs() nMuon={0:d}".format(entry.nMuon))
 
