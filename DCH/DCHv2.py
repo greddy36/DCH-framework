@@ -347,7 +347,6 @@ for count, e in enumerate( inTree) :
 	    for j in range(e.nTau): 
                 e.Tau_pt[j] = tauPt[j]
                 e.Tau_mass[j] = tauMass[j]
-             
 
         
 	if isMC: 
@@ -362,11 +361,12 @@ for count, e in enumerate( inTree) :
 		    outTuple.list_of_arrays[i+len(metlist)][0] = philist[i]
 
 
-
 	goodElectronList = TF.makeGoodElectronListDCH(e)
 	goodMuonList = TF.makeGoodMuonListDCH(e)
         goodTauList = TF.makeGoodTauList(e)
-        if len(goodElectronList)+len(goodMuonList)+len(goodTauList) < 4: veto_evts += 1
+        if len(goodElectronList)+len(goodMuonList)+len(goodTauList) < 4: 
+            veto_evts += 1
+            continue# remove to print details of all the vetoed evts
         print 'Event: ', count, ' #e: ',len(goodElectronList), ' #mu: ',len(goodMuonList), ' #t: ', len(goodTauList)
         #its faster to modify the pair functions to use these good lists rather than passing all the candidates through the cuts. 
 	for cat in cats :
@@ -491,6 +491,7 @@ for count, e in enumerate( inTree) :
             if  MC:   cutCounterGenWeight[cat].countGenWeight(dch1+dch2, e.genWeight)
             #print 'Channel: ',cat
             #cat_yield[cat] += 1
+            #continue
             for i in goodElectronList:
                 print 'Ele ', i, GF.genMatch(e,i,'e')
             for i in goodMuonList:
