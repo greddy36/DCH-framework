@@ -325,30 +325,40 @@ def getBestTauPair(dch, entry, tauList,printOn=False) :
     for i in range(len(tauList)) :
         idx_tau1 = tauList[i]
         for j in range(len(tauList)) :
-            if i == j: continue
+            if i <= j: continue
             idx_tau2 = tauList[j]
             if tauDR(entry, idx_tau1, idx_tau2) < tt['tt_DR'] : 
-                tdR= tauDR(entry, idx_tau1, idx_tau2) < tt['tt_DR'] 
+                tdR= tauDR(entry, idx_tau1, idx_tau2) 
                 if printOn : print "failed tDR=",tdR, "tt_DR =", tt['tt_DR']
                 continue
-            #tauPairList.append([idx_tau1, idx_tau2])
-            if idx_tau1 not in tauPairList : tauPairList.append(idx_tau1)
-            if idx_tau2 not in tauPairList : tauPairList.append(idx_tau2)
+            tauPairList.append([idx_tau1, idx_tau2])
+            #if idx_tau1 not in tauPairList : tauPairList.append(idx_tau1)
+            #if idx_tau2 not in tauPairList : tauPairList.append(idx_tau2)
 
 
     if len(tauPairList) == 0 : 
         if printOn : print 'fail tauPairList =0'
         return []
+    if len(tauPairList) >= 1 :
+        '''for i in range(len(tauPairList)-1, 0, -1) :
+            if comparePair(entry, tauPairList[i], tauPairList[i-1]) :
+               tauPairList[i-1], tauPairList[i] = tauPairList[i], tauPairList[i-1]
+        bestPair = tauPairList[0]#best pair is the first element
+        '''
+        bestPair=tauPairList[-1]
+        for i in range(0,len(tauPairList)-1):
+            if not comparePair(entry, tauPairList[i], bestPair) :
+               bestPair=tauPairList[i]
 
+    '''
     c = set(combinations(tauPairList, 2))
     if printOn : print 'these are the combinations', c, 'from', tauPairList
     tauPairList=list(c)
 
     if printOn : print 'Do I need to do the comparePair ? ', len(tauPairList),  tauPairList
-   
+    
     maxI= comparePairvspT(entry, tauPairList, printOn)
     tauPairList=tauPairList[maxI]
-
     if printOn : print 'this is the list of sums', maxI, tauPairList, tauPairList[0], tauPairList[1]
 
     idx_tau1, idx_tau2 = tauPairList[0], tauPairList[1]
@@ -356,10 +366,10 @@ def getBestTauPair(dch, entry, tauList,printOn=False) :
         if printOn : print 'Sorting tt tauPair', entry.Tau_pt[idx_tau2], entry.Tau_pt[idx_tau1], idx_tau2, idx_tau1
         tauPairList = {}
         tauPairList[0] = idx_tau2
-        tauPairList[1] = idx_tau1
-        
+        tauPairList[1] = idx_tau1    
     if printOn : print 'returning tt tauPairList', tauPairList
-    return tauPairList
+    '''
+    return bestPair
 
 def checkOverlapMuon(entry,i,j,checkDR=False,printOn=False) :
 
@@ -404,7 +414,9 @@ def getMuTauPairs(entry,dch='mt',pairList=[],printOn=False,isDCH2=False,signC=0)
     #printOn=True
     if printOn : print("Entering getMuTauPairs some info nMuon={0:d} nTau={1:d} lumi={2:s} run={3:s} event={4:s}".format(entry.nMuon,entry.nTau, str(entry.luminosityBlock), str(entry.run), str(entry.event)))
     leptOverlap = False
-    if (dch=='mmmt' and entry.nMuon>3) or (dch=='eemt' and entry.nMuon>1):
+    if dch==0:
+    #if entry.nMuon>1 and len(pairList)>0:#dropping too many events
+    #if (dch=='mmmt' and entry.nMuon>3) or (dch=='eemt' and entry.nMuon>1):
 	for i in range(entry.nMuon):
 	
 	    if printOn : print 'checking pT with findZ nMuon', entry.nMuon, 'i', i, entry.run, entry.luminosityBlock, entry.event, 'ZpT', pairList[0].Pt(), pairList[1].Pt(), 'vs', entry.Muon_pt[i] ,  pairList[0].Pt()-entry.Muon_pt[i], pairList[1].Pt()-entry.Muon_pt[i], DRobj(entry.Muon_eta[i],entry.Muon_phi[i], pairList[0].Eta(), pairList[0].Phi()), DRobj(entry.Muon_eta[i],entry.Muon_phi[i], pairList[1].Eta(), pairList[1].Phi())
@@ -541,7 +553,7 @@ def compareMuTauPairvspT(entry,tauPairList, printOn=False) :
         j1, j2 = tauPairList[i][0], tauPairList[i][1] # look at leading pt tau in each pair
         if printOn : print 'appending now', entry.Muon_pt[j1] + entry.Tau_pt[j2], j1, j2, tauPairList[i]
         SumList.append(entry.Muon_pt[j1] + entry.Tau_pt[j2])
-    
+
     maxI=SumList.index(max(SumList))
 
     return maxI
@@ -558,11 +570,21 @@ def getBestMuTauPair(entry,dch='mt',pairList=[],printOn=False, isDCH2=False, sig
         if printOn : print 'failed to find good MuTau Pair', dch
         return []
 
-    
-    maxI= compareMuTauPairvspT(entry, tauPairList, printOn)
-    tauPairList=tauPairList[maxI]
+    if len(tauPairList) >= 1 :
+        '''for i in range(len(tauPairList)-1, 0, -1) :
+            if compareMuTauPair(entry, tauPairList[i], tauPairList[i-1]) :
+               tauPairList[i-1], tauPairList[i] = tauPairList[i], tauPairList[i-1]
+        bestPair = tauPairList[0]#best pair is the first element
+        '''
+        bestPair=tauPairList[-1]
+        for i in range(0,len(tauPairList)-1):
+            if not compareMuTauPair(entry, tauPairList[i], bestPair) :
+               bestPair=tauPairList[i]
 
-    return tauPairList
+    #maxI= compareMuTauPairvspT(entry, tauPairList, printOn)
+    #bestPair=tauPairList[maxI]
+
+    return bestPair
 
 
 def getEMuTauPairs(entry,dch='em',pairList=[],printOn=False, isDCH2=False, signC=0) :
@@ -699,8 +721,10 @@ def compareEMuTauPair(entry,pair1,pair2) :
     if entry.Muon_pfRelIso04_all[j2]  < entry.Muon_pfRelIso04_all[j1] : return True
     if entry.Muon_pfRelIso04_all[j1] == entry.Muon_pfRelIso04_all[j2] : 
 	if entry.Muon_pt[j2]  > entry.Muon_pt[j1] : return True 
-	if entry.Muon_pt[j2] == entry.Muon_pt[j1] : 
-	    if entry.Electron_pt[i2] < entry.Electron_pt[i1] : return True   
+	if entry.Muon_pt[j2] == entry.Muon_pt[j1] :
+            if entry.Electron_pfRelIso03_all[i2] < entry.Electron_pfRelIso03_all[i1] : return True
+            if entry.Electron_pfRelIso03_all[i1] == entry.Electron_pfRelIso03_all[i2] :
+	        if entry.Electron_pt[i2] > entry.Electron_pt[i1] : return True   
     return False 
 
 
@@ -715,16 +739,23 @@ def getBestEMuTauPair(entry,dch,pairList=[],printOn=False, isDCH2=False,signC=0)
     # Sort the pair list using a bubble sort
     # The list is not fully sorted, since only the top pairing is needed
 
-
     if len(tauPairList) == 0 : 
         if printOn : print 'failed to find good EMu Pair', dch
         return []
-  
-  
-    maxI= compareEMuPairvspT(entry, tauPairList, printOn)
-    tauPairList=tauPairList[maxI]
+    if len(tauPairList) >= 1 :
+        '''for i in range(len(tauPairList)-1, 0, -1) :
+            if compareEMuTauPair(entry, tauPairList[i], tauPairList[i-1]) :
+               tauPairList[i-1], tauPairList[i] = tauPairList[i], tauPairList[i-1]
+        bestPair = tauPairList[0]#best pair is the first element
+        '''
+        bestPair=tauPairList[-1]
+        for i in range(0,len(tauPairList)-1):
+            if not compareEMuTauPair(entry, tauPairList[i], bestPair) :
+               bestPair=tauPairList[i]
+    #maxI= compareEMuPairvspT(entry, tauPairList, printOn)
+    #bestPair=tauPairList[maxI]
 
-    return tauPairList
+    return bestPair
 
 def checkOverlapElectron(entry,i,j, checkDR=False, printOn=False) :
 
@@ -770,7 +801,8 @@ def getETauPairs(entry,dch='et',pairList=[],printOn=False, isDCH2=False, signC=0
     eTauPairs = []
     leptOverlap = False
     et = selections['et'] # selections for H->tau(ele)+tau(h)
-    if (dch =='eeet' and entry.nElectron>3) or (dch=='mmet' and entry.nElectron>1):
+    if dch ==0:
+    #if entry.nElectron>1 and len(pairList)>0:#dropping too many events
 	for i in range(entry.nElectron) :
 	    #if entry.Electron_pt[i]==pairList[0].Pt() or entry.Electron_pt[i]==pairList[1].Pt() : continue # make sure that you don't consider the findZ leptons
 	    if DRobj(entry.Electron_eta[i],entry.Electron_phi[i], pairList[0].Eta(), pairList[0].Phi())<0.1 or DRobj(entry.Electron_eta[i],entry.Electron_phi[i], pairList[1].Eta(), pairList[1].Phi())<0.1 : continue
@@ -927,12 +959,23 @@ def getBestETauPair(entry,dch,pairList=[],printOn=False, isDCH2=False, signC=0) 
     if len(tauPairList) == 0 : 
         if printOn : print 'failed to find good ETau Pair', dch
         return []
+    if len(tauPairList) >= 1 :
+        '''
+        for i in range(len(tauPairList)-1, 0, -1) :
+            if compareETauPair(entry, tauPairList[i], tauPairList[i-1]) :
+               tauPairList[i-1], tauPairList[i] = tauPairList[i], tauPairList[i-1]
+        bestPair = tauPairList[0]#best pair is the first element
+        '''
+        bestPair=tauPairList[-1]
+        for i in range(0,len(tauPairList)-1):
+            if not compareETauPair(entry, tauPairList[i], bestPair) :
+               bestPair=tauPairList[i]
+        #print bestPair, entry.Electron_pt[bestPair[0]]+entry.Tau_pt[bestPair[1]]
 
+    #maxI= compareETauPairvspT(entry, tauPairList, printOn)
+    #bestPair=tauPairList[maxI]
 
-    maxI= compareETauPairvspT(entry, tauPairList, printOn)
-    tauPairList=tauPairList[maxI]
-
-    return tauPairList
+    return bestPair
 
 
 
@@ -1042,12 +1085,21 @@ def getBestEEPair(entry, dch, pairList=[], printOn=False, isDCH2=False,signC=0):
     if printOn: print("Entering getBestEEPair")
     
     ee_pairs = getEEPairs(entry, dch=dch, pairList=pairList, printOn=printOn,isDCH2=isDCH2,signC=signC)
-    for i in range(len(ee_pairs)-1, 0, -1):
-        if compareEEPairs(entry, ee_pairs[i], ee_pairs[i-1]):
-            ee_pairs[i-1], ee_pairs[i] = ee_pairs[i], ee_pairs[i-1]
-
     if len(ee_pairs) == 0: return []
-    return ee_pairs[0]
+    if len(ee_pairs) >=1:
+        '''
+        for i in range(len(ee_pairs)-1, 0, -1):
+            if compareEEPairs(entry, ee_pairs[i], ee_pairs[i-1]):
+                ee_pairs[i-1], ee_pairs[i] = ee_pairs[i], ee_pairs[i-1]
+        bestPair = ee_pairs[0]
+        '''
+        bestPair=ee_pairs[-1]
+        for i in range(0,len(ee_pairs)-1):
+            if not compareEEPairs(entry, ee_pairs[i], bestPair) :
+                bestPair=ee_pairs[i]
+        #print bestPair, entry.Electron_pt[bestPair[0]]+entry.Electron_pt[bestPair[1]]
+           
+    return bestPair
 
 
 def getMuMuPairs(entry, dch='mm', pairList=[], printOn=False, isDCH2=False,signC=0):
@@ -1149,13 +1201,22 @@ def getBestMuMuPair(entry, dch='mm', pairList=[], printOn=False, isDCH2=False,si
     # form all possible pairs that satisfy DR requirement
     if printOn: print("Entering getBestMuMuPair()")
     mm_pairs = getMuMuPairs(entry,dch=dch, pairList=pairList,printOn=printOn,isDCH2=isDCH2,signC=signC)
+    if len(mm_pairs) == 0: return []
+    if len(mm_pairs) >=1:
+        '''
+        for i in range(len(mm_pairs)-1, 0, -1):
+            if compareMuMuPairs(entry, mm_pairs[i], mm_pairs[i-1]):
+                mm_pairs[i-1], mm_pairs[i] = mm_pairs[i], mm_pairs[i-1]
+        bestPair = mm_pairs[0]
+        '''
+        bestPair=mm_pairs[-1]
+        for i in range(0,len(mm_pairs)-1):
+            if not compareMuMuPairs(entry, mm_pairs[i], bestPair) :
+                bestPair=mm_pairs[i]
+        #print bestPair, entry.Muon_pt[bestPair[0]]+entry.Muon_pt[bestPair[1]]
 
-    for i in range(len(mm_pairs)-1,0,-1) :
-        if compareMuMuPairs(entry, mm_pairs[i], mm_pairs[i-1]) :
-            mm_pairs[i-1], mm_pairs[i] = mm_pairs[i], mm_pairs[i-1]
-    if printOn: print("best MuMu", mm_pairs)
-    if len(mm_pairs) == 0 : return []
-    return mm_pairs[0]
+    return bestPair
+
 
 def goodPhoton(entry, j ):
     
@@ -1957,4 +2018,4 @@ def numberToCat2Lep(number) :
     cat = { 1:'ee', 2:'mm'}
     return cat[number]
 
-    
+

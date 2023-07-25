@@ -14,7 +14,7 @@ tt:
   lt_DR: 0.5
   tt_DR: 0.5
   ll_DR: 0.3
-  tau_vJet: 32
+  tau_vJet: 1
   tau_vMu: 1
   tau_vEle: 4
 mt:

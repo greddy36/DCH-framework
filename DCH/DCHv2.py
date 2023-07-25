@@ -364,11 +364,22 @@ for count, e in enumerate( inTree) :
 	goodElectronList = TF.makeGoodElectronListDCH(e)
 	goodMuonList = TF.makeGoodMuonListDCH(e)
         goodTauList = TF.makeGoodTauList(e)
+        dupl = 0 #to count duplicate channels
         if len(goodElectronList)+len(goodMuonList)+len(goodTauList) < 4: 
             veto_evts += 1
             continue# remove to print details of all the vetoed evts
-        print 'Event: ', count, ' #e: ',len(goodElectronList), ' #mu: ',len(goodMuonList), ' #t: ', len(goodTauList)
-        print 'Event: ', count, ' #e: ',e.nElectron, ' #mu: ',e.nMuon, ' #t: ', e.nTau
+        evt_charge = 0
+        for i in goodElectronList:
+	    evt_charge += e.Electron_charge[i]
+        for i in goodMuonList:
+            evt_charge += e.Muon_charge[i]
+        for i in goodTauList:
+            evt_charge += e.Tau_charge[i]
+        if evt_charge !=0: 
+            veto_evts += 1
+	    continue
+        print 'Event: ', e.event, ' #e: ',len(goodElectronList), ' #mu: ',len(goodMuonList), ' #t: ', len(goodTauList), '--> Good candidates'
+        print 'Event: ', e.event, ' #e: ',e.nElectron, ' #mu: ',e.nMuon, ' #t: ', e.nTau, '--> All reco'
         #its faster to modify the pair functions to use these good lists rather than passing all the candidates through the cuts. 
 	for cat in cats :
             if(e.nElectron < cat.count('e') or e.nMuon < cat.count('m') or e.nTau < cat.count('t')): continue
@@ -398,8 +409,6 @@ for count, e in enumerate( inTree) :
                 continue
             '''
 
-            cat_yield[cat] += 1
-            n_lepton[cat] = np.array(n_lepton[cat]) + np.array([len(goodElectronList), len(goodMuonList), len(goodTauList)])
             ## pairListP -> containes the TLV of the ++ pair  
             ## lepListP -> containes the indices of the ++ pair  
             #lepList, lepListP, lepListM = [], [], []
@@ -488,10 +497,11 @@ for count, e in enumerate( inTree) :
             pairList2 = TF.make4Vec(bestDCH2,dch2,e)
             print count, cat, 'e:', len(goodElectronList), 'm:',len(goodMuonList), 't:',len(goodTauList)
 
+            cat_yield[cat] += 1
+            n_lepton[cat] = np.array(n_lepton[cat]) + np.array([len(goodElectronList), len(goodMuonList), len(goodTauList)])
+
             cutCounter[cat].count(dch1+dch2)
             if  MC:   cutCounterGenWeight[cat].countGenWeight(dch1+dch2, e.genWeight)
-            #print 'Channel: ',cat
-            #cat_yield[cat] += 1
             #continue
             for i in goodElectronList:
                 print 'Ele ', i, GF.genMatch(e,i,'e')
@@ -499,7 +509,10 @@ for count, e in enumerate( inTree) :
                 print 'Mu ', i, GF.genMatch(e,i,'m')
             for i in goodTauList:
                 print 'Tau ', i, GF.genMatch(e,i,'t')
-	    GF.printMC(e)
+	    #GF.printMC(e)
+            dupl+=1
+	    if dupl>1:
+               print 'AHA',e.event,'has a fake channel'
             continue
 
             '''
@@ -699,4 +712,5 @@ if not MC : CJ.printJSONsummary()
 
 print 'Yields in each channel ', cat_yield
 print 'n_leptons in each channel [e, mu, tau]',n_lepton
-print '# of < 4 lepton events', veto_evts
+print '# of veto events', veto_evts
+
