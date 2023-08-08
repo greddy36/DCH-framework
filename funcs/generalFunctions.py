@@ -84,7 +84,7 @@ def genMatchTau(entry, jt, decayMode=''):
                        2.0*pi-abs(entry.GenVisTau_phi[i] - entry.Tau_phi[jt]))
             dEta = abs(entry.GenVisTau_eta[i] - entry.Tau_eta[jt])
             dR = sqrt(dPhi**2 + dEta**2)
-            if dR < dR_min and dPt <= dPt_min:
+            if dR < dR_min:
                 idx_match, dR_min = i, dR
     
     if decayMode == 'lep':
@@ -140,10 +140,6 @@ def checkMETFlags(entry, year, isMC=False, proc="EOY") :
 
     #print metdz, METfilter, 'filters', entry.Flag_goodVertices, entry.Flag_globalSuperTightHalo2016Filter, entry.Flag_HBHENoiseFilter,  entry.Flag_HBHENoiseIsoFilter,entry.Flag_EcalDeadCellTriggerPrimitiveFilter, entry.Flag_BadPFMuonFilter,  entry.Flag_eeBadScFilter,entry.Flag_ecalBadCalibFilter, entry.Flag_BadPFMuonDzFilter
     return METfilter
-
-
-
-
 
 def printEvent(entry) :
 
@@ -244,7 +240,36 @@ def getPDG_ID() :
                 -1:'d_bar',-2:'u_bar',-3:'s_bar',-4:'c_bar', -5:'b_bar', -6:'t_bar',
                 11:'e-',   12:'nue',  13:'mu-',  14:'nu_mu', 15:'tau-',  16:'nu_tau',
                -11:'e+',  -12:'nue', -13:'mu+', -14:'numu', -15:'tau+', -16:'nu_tau',
-                21:'g' ,   25:'H',   211:'pi+', -211:'pi-' }
+                21:'g' ,   25:'H', 111:'pi0',  211:'pi+', -211:'pi-' }
+
+def printGenDecayMode(entry,printOn=False) :#works only for signal MC
+    PDG_ID = getPDG_ID()
+    cat =''
+    if printOn: print("\n Run={0:d} Event={1:d}".format(entry.run,entry.event))
+    try :
+        if entry.nGenPart > 0 :
+            if printOn: print("    \n #  Stat  ID  Mother")
+            for j in range(entry.nGenPart) :
+                pID = entry.GenPart_pdgId[j]
+                if pID in PDG_ID.keys() : pID = PDG_ID[pID]
+                mother = entry.GenPart_genPartIdxMother[j]
+                if mother > 0 and abs(entry.GenPart_pdgId[mother]) == 9900041:
+                   if abs(entry.GenPart_pdgId[j]) == 11 :
+                      cat += 'e'
+                      if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
+                   if abs(entry.GenPart_pdgId[j]) == 13 :
+                      cat += 'm'
+                      if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
+                   if abs(entry.GenPart_pdgId[j]) == 15 :#hadronic tau selection
+                      for i in range(j+1, entry.nGenPart, 1):
+                         if abs(entry.GenPart_pdgId[i])!=11 and abs(entry.GenPart_pdgId[i])!=12 and abs(entry.GenPart_pdgId[i])!=13 and abs(entry.GenPart_pdgId[i])!=14 and abs(entry.GenPart_pdgId[i])!=15 and abs(entry.GenPart_pdgId[i])!=16 and entry.GenPart_pdgId[i]!=22:
+                            cat += 't'
+                            if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
+                            #if printOn: print entry.GenPart_pdgId[i]
+                            break
+    except AttributeError :
+        pass
+    return cat
 
 def printMC(entry) :
     PDG_ID = getPDG_ID() 
