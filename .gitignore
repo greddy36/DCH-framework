@@ -1,2 +1,6 @@
-DCH/HPlusPlusHMinusMinusHTo4L_M-1000.root
+DCH/HPlusPlusHMinusMinusHTo*.root
+DCH/*.log
+DCH/*.root
+MC/*
+tools/*
 TauPOG/TauIDSFs

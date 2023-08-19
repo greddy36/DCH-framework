@@ -1517,7 +1517,6 @@ class outTuple() :
             Lep1 = LepM
             Lep2 = LepP
 
-
         # di-lepton variables.   _p and _m refer to plus and minus charge
         if jt1>-1 and jt2>-1 : self.AMass[0]       = (Lep1 + Lep2 + tau1 + tau2).M() 
         self.mll[0]       = (Lep1 + Lep2).M()

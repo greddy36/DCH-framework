@@ -1,6 +1,68 @@
-Yields in each channel  {'emem': 20, 'eemm': 28, 'etmt': 10, 'mmmm': 32, 'emtt': 6, 'eeet': 15, 'emmm': 46, 'eemt': 19, 'mttt': 6, 'etet': 5, 'eett': 7, 'eeee': 19, 'emmt': 20, 'mtmt': 13, 'tttt': 1, 'mmtt': 8, 'mmmt': 24, 'eeem': 36, 'emet': 19, 'etmm': 18, 'ettt': 2}
-n_leptons in each channel [e, mu, tau] {'emem': array([40, 40,  0]), 'eemm': array([56, 56,  0]), 'etmt': array([10, 10, 20]), 'mmmm': array([  0, 128,   0]), 'emtt': array([ 6,  6, 12]), 'eeet': array([45,  0, 15]), 'emmm': array([ 46, 138,   0]), 'eemt': array([38, 19, 19]), 'mttt': array([ 0,  6, 18]), 'etet': array([10,  0, 10]), 'eett': array([14,  0, 14]), 'eeee': array([76,  0,  0]), 'emmt': array([20, 40, 20]), 'mtmt': array([ 0, 26, 26]), 'tttt': array([0, 0, 4]), 'mmtt': array([ 0, 16, 16]), 'mmmt': array([ 0, 72, 24]), 'eeem': array([108,  36,   0]), 'emet': array([38, 19, 19]), 'etmm': array([18, 36, 18]), 'ettt': array([2, 0, 6])}
-
-Yields in each channel  {'emem': 18, 'eemm': 28, 'etmt': 10, 'mmmm': 32, 'emtt': 6, 'eeet': 15, 'emmm': 45, 'eemt': 19, 'mttt': 6, 'etet': 5, 'eett': 7, 'eeee': 19, 'emmt': 18, 'mtmt': 11, 'tttt': 1, 'mmtt': 8, 'mmmt': 24, 'eeem': 36, 'emet': 20, 'etmm': 18, 'ettt': 2}
-n_leptons in each channel [e, mu, tau] {'emem': array([36, 36,  0]), 'eemm': array([56, 56,  0]), 'etmt': array([10, 10, 20]), 'mmmm': array([  0, 128,   0]), 'emtt': array([ 6,  6, 12]), 'eeet': array([45,  0, 15]), 'emmm': array([ 45, 135,   0]), 'eemt': array([38, 19, 19]), 'mttt': array([ 0,  6, 18]), 'etet': array([10,  0, 10]), 'eett': array([14,  0, 14]), 'eeee': array([76,  0,  0]), 'emmt': array([18, 36, 18]), 'mtmt': array([ 0, 22, 22]), 'tttt': array([0, 0, 4]), 'mmtt': array([ 0, 16, 16]), 'mmmt': array([ 0, 72, 24]), 'eeem': array([108,  36,   0]), 'emet': array([40, 20, 20]), 'etmm': array([18, 36, 18]), 'ettt': array([2, 0, 6])}
-
+        fail DR0=1.090025 or DR1=0.000000
+        fail DR0=1.784416 or DR1=0.000000
+        fail DR0=1.021583 or DR1=0.000000
+        fail DR0=2.077415 or DR1=0.000000
+        fail DR0=2.850786 or DR1=0.000000
+        fail DR0=0.902891 or DR1=0.000000
+        fail DR0=2.837555 or DR1=0.000000
+        fail DR0=1.250562 or DR1=0.000000
+        fail DR0=2.390148 or DR1=0.000000
+        fail DR0=2.546147 or DR1=0.000000
+        fail DR0=1.372804 or DR1=0.000000
+        fail DR0=0.416751 or DR1=0.000000
+        fail DR0=2.005335 or DR1=0.000000
+        fail DR0=1.180690 or DR1=0.000000
+        fail DR0=1.773564 or DR1=0.000000
+        fail DR0=1.206494 or DR1=0.000000
+        fail DR0=0.352444 or DR1=0.854051
+        fail DR0=1.489691 or DR1=0.000000
+        fail DR0=0.696032 or DR1=0.000000
+        fail DR0=2.610458 or DR1=0.000000
+        fail DR0=3.132760 or DR1=0.000000
+        fail DR0=2.013049 or DR1=0.000000
+        fail DR0=2.882399 or DR1=0.000000
+        fail DR0=2.295211 or DR1=0.000000
+        fail DR0=1.730797 or DR1=0.000000
+        fail DR0=0.417446 or DR1=0.000000
+        fail DR0=1.107704 or DR1=0.000000
+        fail DR0=0.227544 or DR1=2.845485
+        fail DR0=2.075519 or DR1=0.000000
+        fail DR0=1.454678 or DR1=0.000000
+        fail DR0=1.479579 or DR1=0.000000
+        fail DR0=0.243643 or DR1=1.710238
+        fail DR0=2.685065 or DR1=0.000000
+        fail DR0=1.815947 or DR1=0.000000
+        fail DR0=0.682288 or DR1=0.000000
+        fail DR0=0.562853 or DR1=0.000000
+        fail DR0=2.362922 or DR1=0.000000
+        fail DR0=1.389836 or DR1=0.000000
+        fail DR0=1.968399 or DR1=0.000000
+        fail DR0=1.263108 or DR1=0.000000
+        fail DR0=1.503095 or DR1=0.000000
+        fail DR0=3.125721 or DR1=0.000000
+        fail DR0=0.433880 or DR1=2.315071
+        fail DR0=1.665874 or DR1=0.000000
+        fail DR0=1.585509 or DR1=0.000000
+        fail DR0=0.247210 or DR1=0.000000
+        fail DR0=2.506025 or DR1=0.000000
+        fail DR0=0.626111 or DR1=0.000000
+        fail DR0=0.331128 or DR1=0.000000
+        fail DR0=2.101146 or DR1=0.000000
+        fail DR0=1.243576 or DR1=0.000000
+        fail DR0=2.091885 or DR1=0.000000
+        fail DR0=0.773147 or DR1=0.000000
+        fail DR0=3.033068 or DR1=0.000000
+        fail DR0=1.919611 or DR1=0.000000
+        fail DR0=0.251792 or DR1=0.000000
+        fail DR0=2.997818 or DR1=0.000000
+        fail DR0=0.388388 or DR1=3.179037
+        fail DR0=0.467715 or DR1=3.046485
+        fail DR0=2.283851 or DR1=0.000000
+        fail DR0=1.204946 or DR1=0.000000
+        fail DR0=1.860375 or DR1=0.000000
+        fail DR0=1.768232 or DR1=0.000000
+        fail DR0=1.644828 or DR1=0.000000
+        fail DR0=2.323057 or DR1=0.000000
+        fail DR0=0.745833 or DR1=0.000000
+        fail DR0=2.476859 or DR1=0.000000
+        fail DR0=1.281199 or DR1=0.000000

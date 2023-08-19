@@ -249,27 +249,69 @@ def printGenDecayMode(entry,printOn=False) :#works only for signal MC
     try :
         if entry.nGenPart > 0 :
             if printOn: print("    \n #  Stat  ID  Mother")
+            tau_idx = []
             for j in range(entry.nGenPart) :
                 pID = entry.GenPart_pdgId[j]
                 if pID in PDG_ID.keys() : pID = PDG_ID[pID]
                 mother = entry.GenPart_genPartIdxMother[j]
-                if mother > 0 and abs(entry.GenPart_pdgId[mother]) == 9900041:
+                if mother > 0 and abs(entry.GenPart_pdgId[mother]) == 9900041:#making sure the particles come from DCH
                    if abs(entry.GenPart_pdgId[j]) == 11 :
                       cat += 'e'
                       if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
                    if abs(entry.GenPart_pdgId[j]) == 13 :
                       cat += 'm'
                       if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
-                   if abs(entry.GenPart_pdgId[j]) == 15 :#hadronic tau selection
+                   if abs(entry.GenPart_pdgId[j]) == 15 :#hadronic tau selection. 
                       for i in range(j+1, entry.nGenPart, 1):
+                         mom = entry.GenPart_genPartIdxMother[i]
+                         if mom <= 0 or abs(entry.GenPart_pdgId[mom]) != 15: continue
+                         if mom in tau_idx : continue#make sure this is not previously recognised tau
                          if abs(entry.GenPart_pdgId[i])!=11 and abs(entry.GenPart_pdgId[i])!=12 and abs(entry.GenPart_pdgId[i])!=13 and abs(entry.GenPart_pdgId[i])!=14 and abs(entry.GenPart_pdgId[i])!=15 and abs(entry.GenPart_pdgId[i])!=16 and entry.GenPart_pdgId[i]!=22:
                             cat += 't'
+                            tau_idx.append(mom)
                             if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
-                            #if printOn: print entry.GenPart_pdgId[i]
+                            if printOn: print entry.GenPart_pdgId[i]
                             break
     except AttributeError :
         pass
     return cat
+
+def printGenDecayModeBkg(entry,bkg,printOn=False) :#works only for bkg MC
+    PDG_ID = getPDG_ID()
+    cat =''
+    if printOn: print("\n Run={0:d} Event={1:d}".format(entry.run,entry.event))
+    try :
+        if entry.nGenPart > 0 :
+            tau_idx = []
+            if printOn: print("    \n #  Stat  ID  Mother")
+            for j in range(entry.nGenPart) :
+                pID = entry.GenPart_pdgId[j]
+                if pID in PDG_ID.keys() : pID = PDG_ID[pID]
+                mother = entry.GenPart_genPartIdxMother[j]
+                if bkg=='TTTo2L' and not (mother > 0 and abs(entry.GenPart_pdgId[mother]) == 24): continue#making sure leptons come from W (top decay)
+                if bkg=='WZ' and not (mother > 0 and (abs(entry.GenPart_pdgId[mother]) == 24 or abs(entry.GenPart_pdgId[mother]) == 23)): continue#making sure leptons come from W and Z   
+                if bkg=='DY' and not (mother in [0,1] and abs(entry.GenPart_pdgId[mother]) in [23, 1,2,3,4,5,6,21]): continue#making sure leptons come Z or from virutal photons  
+                if abs(entry.GenPart_pdgId[j]) == 11 :
+                   cat += 'e'
+                   if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
+                if abs(entry.GenPart_pdgId[j]) == 13 :
+                   cat += 'm'
+                   if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
+                if abs(entry.GenPart_pdgId[j]) == 15 :#hadronic tau selection. 
+                   for i in range(j+1, entry.nGenPart, 1):
+                      mom = entry.GenPart_genPartIdxMother[i]
+                      if mom <= 0 or abs(entry.GenPart_pdgId[mom]) != 15: continue
+                      if mom in tau_idx : continue#make sure this is not previously recognised tau
+                      if abs(entry.GenPart_pdgId[i])!=11 and abs(entry.GenPart_pdgId[i])!=12 and abs(entry.GenPart_pdgId[i])!=13 and abs(entry.GenPart_pdgId[i])!=14 and abs(entry.GenPart_pdgId[i])!=15 and abs(entry.GenPart_pdgId[i])!=16 and entry.GenPart_pdgId[i]!=22:
+                         cat += 't'
+                         tau_idx.append(mom)
+                         if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
+                         if printOn: print entry.GenPart_pdgId[i]
+                         break
+    except AttributeError :
+        pass
+    return cat
+
 
 def printMC(entry) :
     PDG_ID = getPDG_ID() 
