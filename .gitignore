@@ -1,4 +1,5 @@
 DCH/HPlusPlusHMinusMinusHTo*.root
+*/*.pyc
 DCH/*.log
 DCH/*.root
 MC/*
