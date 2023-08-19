@@ -36,9 +36,6 @@ def printTriggerObjects(e) :
             i,e.TrigObj_pt[i],  e.TrigObj_phi[i], e.TrigObj_eta[i], e.TrigObj_id[i], e.TrigObj_filterBits[i]))
     return
 
-<<<<<<< HEAD
-
-=======
 def genMatch(entry, jl,lep_type):#matches e/m/t to a gen paricle regardless of pID
     idx_match, dR_min, dPt_min = -99,99,99999
     if lep_type == 'e':
@@ -72,7 +69,6 @@ def genMatch(entry, jl,lep_type):#matches e/m/t to a gen paricle regardless of p
             if dR <= dR_min and dPt <= dPt_min:
                 idx_match, dR_min, dPt_min = i, dR, dPt
     return idx_match
->>>>>>> work
 
 def genMatchTau(entry, jt, decayMode=''):
     """ Classification: genMatching
@@ -81,23 +77,14 @@ def genMatchTau(entry, jt, decayMode=''):
            - it matches a leptonically-decaying tau (decayMode = 'lep') to a GenPart with
              abs(PDGID) = 15 with the smallest dR(tau,GenPart[i])
     """
-<<<<<<< HEAD
-    
-    idx_match, dR_min = -99, 99
-=======
     idx_match, dR_min = -99,99
->>>>>>> work
     if decayMode == 'had':
         for i in range(entry.nGenVisTau):
             dPhi = min(abs(entry.GenVisTau_phi[i] - entry.Tau_phi[jt]),
                        2.0*pi-abs(entry.GenVisTau_phi[i] - entry.Tau_phi[jt]))
             dEta = abs(entry.GenVisTau_eta[i] - entry.Tau_eta[jt])
             dR = sqrt(dPhi**2 + dEta**2)
-<<<<<<< HEAD
-            if dR < dR_min:
-=======
             if dR < dR_min and dPt <= dPt_min:
->>>>>>> work
                 idx_match, dR_min = i, dR
     
     if decayMode == 'lep':

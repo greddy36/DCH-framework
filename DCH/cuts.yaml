@@ -14,11 +14,7 @@ tt:
   lt_DR: 0.5
   tt_DR: 0.5
   ll_DR: 0.3
-<<<<<<< HEAD
-  tau_vJet: 1
-=======
   tau_vJet: 32
->>>>>>> work
   tau_vMu: 1
   tau_vEle: 4
 mt:
@@ -120,11 +116,7 @@ mm:
   mu_iso: 0.4
   mu_dxy: 0.2 #was 0.045
   mu_dz: 0.5 #as 0.5
-<<<<<<< HEAD
-  mu_type: false
-=======
   mu_type: true
->>>>>>> work
   ll_DR: 0.3
 ee: 
   ele_pt: 20.
@@ -132,11 +124,7 @@ ee:
   ele_dxy: 0.05
   ele_dz: 0.1
   ele_lostHits: 0
-<<<<<<< HEAD
-  ele_convVeto: false
-=======
   ele_convVeto: true
->>>>>>> work
   ele_ID: true
   ele_iso_f : true
   ele_iso : 0.4
