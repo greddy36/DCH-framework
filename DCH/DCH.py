@@ -40,6 +40,8 @@ def getArgs() :
 args = getArgs()
 print("args={0:s}".format(str(args)))
 maxPrint = args.maxPrint 
+file = open(args.nickName+'.txt', 'a')
+sys.stdout = file
 
 cutCounter = {}
 cutCounterGenWeight = {}
@@ -225,7 +227,7 @@ Weights=Weights.Weights(args.year)
 
 cat_yield = {} #empty dictoinary
 n_lepton = {}
-veto_evts , evts_3lep , evts_5lep = 0,0,0
+selected_evts, veto_evts , evts_3lep , evts_5lep = 0,0,0,0
 pass_evts = 0
 for cat in cats:
     cat_yield[cat] = 0
@@ -337,7 +339,7 @@ for count, e in enumerate( inTree) :
        #if not 't' in GF.printGenDecayMode(e): continue
        if not GF.printGenDecayMode(e)=='tttt': continue
        #GF.printMC(e)
-       print 'Gen channel is', GF.printGenDecayMode(e)
+       #print 'Gen channel is', GF.printGenDecayMode(e)
     else:
        if not GF.printGenDecayModeBkg(e,bkg=args.nickName) == args.category : continue
        #GF.printMC(e)
@@ -373,10 +375,10 @@ for count, e in enumerate( inTree) :
 	goodMuonList = TF.makeGoodMuonListDCH(e)
         goodTauList = TF.makeGoodTauList(e)
         dupl = 0 #to count duplicate channels
+        selected_evts += 1
         if len(goodElectronList)+len(goodMuonList)+len(goodTauList) == 5:
             evts_5lep += 1
         if len(goodElectronList)+len(goodMuonList)+len(goodTauList) < 4: 
-            veto_evts +=1
             if len(goodElectronList)+len(goodMuonList)+len(goodTauList) <= 3:
                 evts_3lep += 1
             continue# remove to #print details of all the vetoed evts
@@ -388,7 +390,6 @@ for count, e in enumerate( inTree) :
         for i in goodTauList:
             evt_charge += e.Tau_charge[i]
         if evt_charge !=0: 
-            veto_evts += 1
 	    continue
         print 'Event: ', count, ' #e: ',len(goodElectronList), ' #mu: ',len(goodMuonList), ' #t: ', len(goodTauList), '--> Good candidates'
         #print 'Event: ', count, ' #e: ',e.nElectron, ' #mu: ',e.nMuon, ' #t: ', e.nTau, '--> All reco'
@@ -506,8 +507,15 @@ for count, e in enumerate( inTree) :
                 #print "DCH2 charge:",netS
 
             pairList2 = TF.make4Vec(bestDCH2,dch2,e)
-            print count, cat, 'e:', len(goodElectronList), 'm:',len(goodMuonList), 't:',len(goodTauList)
-            GF.printMC(e)
+            if GF.printGenDecayModeBkg(e,bkg=args.nickName) == args.category :
+                print count, cat, 'e:', len(goodElectronList), 'm:',len(goodMuonList), 't:',len(goodTauList)
+                GF.printMC(e)
+                for i in goodElectronList:
+                    print 'Ele ', i, GF.genMatch(e,i,'e')
+                for i in goodMuonList:
+                    print 'Mu ', i, GF.genMatch(e,i,'m')
+                for i in goodTauList:
+                    print 'Tau ', i, GF.genMatch(e,i,'t')
 
             cat_yield[cat] += 1
             n_lepton[cat] = np.array(n_lepton[cat]) + np.array([len(goodElectronList), len(goodMuonList), len(goodTauList)])
@@ -515,12 +523,6 @@ for count, e in enumerate( inTree) :
             cutCounter[cat].count(dch1+dch2)
             if  MC:   cutCounterGenWeight[cat].countGenWeight(dch1+dch2, e.genWeight)
             #continue
-            for i in goodElectronList:
-                print 'Ele ', i, GF.genMatch(e,i,'e')
-            for i in goodMuonList:
-                print 'Mu ', i, GF.genMatch(e,i,'m')
-            for i in goodTauList:
-                print 'Tau ', i, GF.genMatch(e,i,'t')
 	    #GF.printMC(e)
             
             dupl+=1
@@ -639,5 +641,5 @@ if not MC : CJ.printJSONsummary()
 
 print '# Yields in each channel ', cat_yield, 'Total entries ',nentries
 #print 'n_leptons in each channel [e, mu, tau]',n_lepton
-print '# of veto events', veto_evts,'\n# of 3 lep events', evts_3lep, '\n# of 5 lep evts',evts_5lep,'\n# of passed events',pass_evts 
-
+print '# of selected events', selected_evts,'\n# of 3 lep events', evts_3lep, '\n# of 5 lep evts',evts_5lep,'\n# of passed events',pass_evts 
+file.close()  # Close the file
