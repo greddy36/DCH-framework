@@ -40,7 +40,7 @@ def getArgs() :
 args = getArgs()
 print("args={0:s}".format(str(args)))
 maxPrint = args.maxPrint 
-file = open(args.nickName+'.txt', 'a')
+file = open(args.nickName+'_'+args.category+'.csv', 'a')
 sys.stdout = file
 
 cutCounter = {}
@@ -337,7 +337,7 @@ for count, e in enumerate( inTree) :
 
     if 'Hpp' in  args.nickName :
        #if not 't' in GF.printGenDecayMode(e): continue
-       if not GF.printGenDecayMode(e)=='tttt': continue
+       if not GF.printGenDecayMode(e)=='mmmm': continue
        #GF.printMC(e)
        #print 'Gen channel is', GF.printGenDecayMode(e)
     else:
@@ -389,8 +389,8 @@ for count, e in enumerate( inTree) :
             evt_charge += e.Muon_charge[i]
         for i in goodTauList:
             evt_charge += e.Tau_charge[i]
-        if evt_charge !=0: 
-	    continue
+        #if evt_charge !=0: 
+	#    continue
         print 'Event: ', count, ' #e: ',len(goodElectronList), ' #mu: ',len(goodMuonList), ' #t: ', len(goodTauList), '--> Good candidates'
         #print 'Event: ', count, ' #e: ',e.nElectron, ' #mu: ',e.nMuon, ' #t: ', e.nTau, '--> All reco'
         #its faster to modify the pair functions to use these good lists rather than passing all the candidates through the cuts. 
@@ -507,7 +507,7 @@ for count, e in enumerate( inTree) :
                 #print "DCH2 charge:",netS
 
             pairList2 = TF.make4Vec(bestDCH2,dch2,e)
-            if GF.printGenDecayModeBkg(e,bkg=args.nickName) == args.category :
+            '''if GF.printGenDecayModeBkg(e,bkg=args.nickName) == args.category :
                 print count, cat, 'e:', len(goodElectronList), 'm:',len(goodMuonList), 't:',len(goodTauList)
                 GF.printMC(e)
                 for i in goodElectronList:
@@ -516,7 +516,7 @@ for count, e in enumerate( inTree) :
                     print 'Mu ', i, GF.genMatch(e,i,'m')
                 for i in goodTauList:
                     print 'Tau ', i, GF.genMatch(e,i,'t')
-
+            '''
             cat_yield[cat] += 1
             n_lepton[cat] = np.array(n_lepton[cat]) + np.array([len(goodElectronList), len(goodMuonList), len(goodTauList)])
 
@@ -639,7 +639,8 @@ for icat,cat in enumerate(cats) :
 '''
 if not MC : CJ.printJSONsummary()
 
-print '# Yields in each channel ', cat_yield, 'Total entries ',nentries
+#print '# Yields in each channel ', cat_yield, 'Total entries ',nentries
 #print 'n_leptons in each channel [e, mu, tau]',n_lepton
-print '# of selected events', selected_evts,'\n# of 3 lep events', evts_3lep, '\n# of 5 lep evts',evts_5lep,'\n# of passed events',pass_evts 
+#print '# of selected events', selected_evts,'\n# of 3 lep events', evts_3lep, '\n# of 5 lep evts',evts_5lep,'\n# of passed events',pass_evts 
+print '# Yields in each channel ', cat_yield,selected_evts,evts_3lep,evts_5lep,pass_evts
 file.close()  # Close the file
