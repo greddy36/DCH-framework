@@ -1,0 +1,2049 @@
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=867540 nMax=867540
+hData=<ROOT.TH1D object ("pileup") at 0x92b2da0>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x82fbfc0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Event:  255  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Event:  15020  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=20000
+Event:  21312  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=30000
+Event:  39046  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Count=90000
+Event:  97395  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=100000
+Count=110000
+Count=120000
+Count=130000
+Count=140000
+Count=150000
+Event:  154795  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=160000
+Event:  165918  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=170000
+Count=180000
+Count=190000
+Event:  196677  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  199761  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=200000
+Event:  201083  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=210000
+Count=220000
+Count=230000
+Count=240000
+Count=250000
+Event:  254957  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=260000
+Count=270000
+Count=280000
+Count=290000
+Count=300000
+Count=310000
+Event:  314147  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  319004  #e:  2  #mu:  2  #t:  0 --> Good candidates
+Count=320000
+Count=330000
+Event:  337640  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  339115  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=340000
+Count=350000
+Count=360000
+Count=370000
+Count=380000
+Count=390000
+Count=400000
+Event:  402685  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=410000
+Event:  417440  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  419629  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=420000
+Count=430000
+Count=440000
+Event:  447201  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=450000
+Event:  450766  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=460000
+Event:  464862  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=470000
+Count=480000
+Count=490000
+Count=500000
+Event:  505204  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=510000
+Count=520000
+Event:  522347  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  523936  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  524446  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=530000
+Count=540000
+Event:  545567  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  545920  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=550000
+Count=560000
+Count=570000
+Event:  571063  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=580000
+Count=590000
+Event:  595121  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=600000
+Count=610000
+Count=620000
+Event:  621232  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  629514  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=630000
+Count=640000
+Event:  644330  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  647480  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=650000
+Event:  651310  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=660000
+Count=670000
+Count=680000
+Count=690000
+Event:  697070  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=700000
+Event:  700197  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=710000
+Event:  714099  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  718397  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=720000
+Event:  726662  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=730000
+Count=740000
+Event:  747594  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=750000
+Count=760000
+Count=770000
+Count=780000
+Event:  780242  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  784247  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  785106  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=790000
+Count=800000
+Count=810000
+Event:  819008  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=820000
+Event:  823550  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  829603  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=830000
+Count=840000
+Count=850000
+Count=860000
+Run time=12617.97 s  time/event=14544.6 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 29, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 66998 66952 0 29
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=8332 nMax=8332
+hData=<ROOT.TH1D object ("pileup") at 0x8b10900>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x8371930>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Run time=77.27 s  time/event=9275.5 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 657 657 0 0
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=714243 nMax=714243
+hData=<ROOT.TH1D object ("pileup") at 0x82172b0>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x73f20d0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Event:  66453  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=70000
+Event:  72339  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Event:  79881  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=80000
+Event:  81618  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=90000
+Event:  99024  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  99810  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=100000
+Count=110000
+Event:  110818  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  114147  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=120000
+Count=130000
+Event:  130735  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=140000
+Count=150000
+Count=160000
+Event:  164845  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  169422  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=170000
+Event:  172012  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  172387  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=180000
+Event:  181281  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Event:  188013  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=190000
+Count=200000
+Event:  204223  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  204961  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=210000
+Count=220000
+Event:  229522  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=230000
+Count=240000
+Count=250000
+Event:  253823  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=260000
+Event:  263427  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=270000
+Event:  270315  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=280000
+Event:  280622  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  282475  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=290000
+Event:  292185  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=300000
+Event:  307659  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  309916  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=310000
+Event:  319641  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=320000
+Event:  325365  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  328235  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=330000
+Event:  334856  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=340000
+Event:  348121  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  349080  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=350000
+Count=360000
+Event:  361312  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=370000
+Event:  373732  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=380000
+Count=390000
+Event:  396219  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=400000
+Event:  406578  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=410000
+Count=420000
+Count=430000
+Event:  438371  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=440000
+Count=450000
+Count=460000
+Event:  468316  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=470000
+Count=480000
+Event:  480901  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=490000
+Count=500000
+Count=510000
+Event:  511431  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  515999  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=520000
+Count=530000
+Event:  530235  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  538391  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=540000
+Event:  541892  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=550000
+Count=560000
+Count=570000
+Count=580000
+Event:  580035  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=590000
+Event:  592405  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=600000
+Event:  603968  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=610000
+Count=620000
+Count=630000
+Event:  631021  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  632884  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=640000
+Event:  644042  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=650000
+Event:  655903  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  658499  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=660000
+Event:  668451  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=670000
+Event:  672148  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  673739  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=680000
+Count=690000
+Count=700000
+Count=710000
+Run time=10275.18 s  time/event=14386.1 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 35, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 54904 54849 0 35
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=289687 nMax=289687
+hData=<ROOT.TH1D object ("pileup") at 0x8aea480>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x817f690>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Event:  12201  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  14901  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=20000
+Count=30000
+Event:  32699  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=40000
+Count=50000
+Count=60000
+Event:  64589  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=70000
+Count=80000
+Count=90000
+Count=100000
+Count=110000
+Count=120000
+Event:  125644  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  125830  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=130000
+Event:  138603  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=140000
+Count=150000
+Count=160000
+Count=170000
+Count=180000
+Event:  182327  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=190000
+Count=200000
+Count=210000
+Event:  213804  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=220000
+Count=230000
+Event:  232212  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=240000
+Event:  241136  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  244466  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=250000
+Count=260000
+Event:  264496  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=270000
+Count=280000
+Event:  282018  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Run time=3631.81 s  time/event=12537.1 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 9, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 22539 22525 0 9
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=88407 nMax=88407
+hData=<ROOT.TH1D object ("pileup") at 0x8e363d0>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x8e76b50>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Event:  30993  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=40000
+Event:  46409  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=50000
+Event:  50898  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=60000
+Count=70000
+Count=80000
+Run time=924.43 s  time/event=10456.6 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 3, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 6868 6865 0 3
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=223520 nMax=223520
+hData=<ROOT.TH1D object ("pileup") at 0x7fcaa40>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x88ae420>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Event:  6779  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=7000
+Event:  7103  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  7364  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=8000
+Count=9000
+Event:  9197  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=10000
+Event:  16104  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  19842  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=20000
+Event:  24669  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=30000
+Event:  30895  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  39674  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=40000
+Event:  46974  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=50000
+Count=60000
+Count=70000
+Event:  74246  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=80000
+Event:  81780  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  85085  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  85580  #e:  0  #mu:  4  #t:  0 --> Good candidates
+Count=90000
+Count=100000
+Count=110000
+Event:  116836  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=120000
+Count=130000
+Event:  130553  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=140000
+Count=150000
+Count=160000
+Count=170000
+Event:  173924  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=180000
+Event:  188433  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=190000
+Count=200000
+Count=210000
+Event:  213800  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=220000
+Run time=2568.96 s  time/event=11493.3 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 1, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 16, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 17408 17389 0 17
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=1491264 nMax=1491264
+hData=<ROOT.TH1D object ("pileup") at 0xaf720a0>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0xaf7c140>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Event:  42578  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Event:  89056  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=90000
+Event:  90443  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  94161  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  96710  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=100000
+Event:  107532  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=110000
+Event:  113773  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=120000
+Count=130000
+Event:  137366  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  138371  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=140000
+Event:  140418  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Event:  140544  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  149467  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=150000
+Count=160000
+Event:  162014  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=170000
+Event:  176121  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=180000
+Count=190000
+Event:  196787  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=200000
+Event:  204633  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=210000
+Count=220000
+Count=230000
+Event:  233824  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  237699  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=240000
+Event:  240851  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  247037  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  249542  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=250000
+Event:  253597  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=260000
+Event:  264405  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=270000
+Event:  271195  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=280000
+Event:  280098  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Event:  289634  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=290000
+Count=300000
+Count=310000
+Event:  311893  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  313909  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=320000
+Event:  325305  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=330000
+Count=340000
+Count=350000
+Event:  355852  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=360000
+Event:  369121  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=370000
+Event:  371438  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=380000
+Event:  388753  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=390000
+Count=400000
+Event:  406553  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=410000
+Event:  418778  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=420000
+Event:  425505  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=430000
+Event:  431050  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  438148  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=440000
+Count=450000
+Event:  451241  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=460000
+Count=470000
+Event:  473168  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=480000
+Event:  485490  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=490000
+Count=500000
+Event:  503203  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=510000
+Event:  518288  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=520000
+Count=530000
+Count=540000
+Count=550000
+Event:  557705  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=560000
+Event:  560009  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  561798  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=570000
+Count=580000
+Count=590000
+Event:  590144  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=600000
+Event:  608812  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=610000
+Event:  613208  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=620000
+Count=630000
+Count=640000
+Count=650000
+Count=660000
+Count=670000
+Count=680000
+Count=690000
+Event:  694359  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=700000
+Count=710000
+Event:  716938  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  717838  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=720000
+Count=730000
+Event:  737399  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=740000
+Count=750000
+Event:  754381  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  756151  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=760000
+Count=770000
+Event:  775754  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  778723  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  779938  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=780000
+Count=790000
+Event:  793131  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  796081  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=800000
+Event:  804508  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  806117  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=810000
+Event:  814258  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=820000
+Count=830000
+Event:  832998  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  837284  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=840000
+Event:  849382  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=850000
+Event:  857068  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=860000
+Event:  864864  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=870000
+Event:  874788  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=880000
+Count=890000
+Event:  891113  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=900000
+Event:  905299  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=910000
+Count=920000
+Event:  921351  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  924843  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=930000
+Count=940000
+Count=950000
+Count=960000
+Count=970000
+Count=980000
+Event:  983841  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=990000
+Event:  995261  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1000000
+Count=1010000
+Event:  1016995  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1020000
+Count=1030000
+Count=1040000
+Event:  1040010  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  1045941  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1050000
+Count=1060000
+Count=1070000
+Event:  1075398  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=1080000
+Event:  1080274  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  1087436  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1090000
+Event:  1093765  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=1100000
+Count=1110000
+Count=1120000
+Count=1130000
+Count=1140000
+Count=1150000
+Event:  1151374  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  1153207  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  1153523  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1160000
+Count=1170000
+Event:  1173692  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1180000
+Event:  1180421  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  1182300  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  1182993  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1190000
+Count=1200000
+Event:  1201459  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=1210000
+Count=1220000
+Count=1230000
+Event:  1232796  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  1238188  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  1238517  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1240000
+Event:  1243556  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  1246859  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1250000
+Count=1260000
+Count=1270000
+Event:  1276171  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1280000
+Event:  1287431  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1290000
+Event:  1293625  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1300000
+Event:  1308254  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1310000
+Count=1320000
+Count=1330000
+Count=1340000
+Count=1350000
+Count=1360000
+Count=1370000
+Event:  1376978  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1380000
+Event:  1385240  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1390000
+Count=1400000
+Event:  1409986  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1410000
+Event:  1410635  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1420000
+Event:  1420399  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  1426496  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1430000
+Event:  1438624  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  1439839  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1440000
+Count=1450000
+Event:  1452205  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  1454778  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  1455397  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1460000
+Count=1470000
+Count=1480000
+Event:  1484082  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1490000
+Run time=23570.81 s  time/event=15805.9 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 4, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 68, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 115334 115223 0 72
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=1082099 nMax=1082099
+hData=<ROOT.TH1D object ("pileup") at 0x93744c0>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x815bb60>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Event:  31410  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=40000
+Event:  43305  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  49864  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=50000
+Event:  59970  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=60000
+Event:  65863  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=70000
+Count=80000
+Event:  81585  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  86805  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  88144  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=90000
+Count=100000
+Event:  109765  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=110000
+Count=120000
+Event:  124739  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=130000
+Count=140000
+Count=150000
+Event:  159443  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=160000
+Count=170000
+Count=180000
+Event:  184060  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=190000
+Count=200000
+Event:  208800  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=210000
+Event:  218760  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=220000
+Count=230000
+Count=240000
+Event:  241997  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  243266  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  243570  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  244665  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=250000
+Count=260000
+Count=270000
+Count=280000
+Event:  283591  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=290000
+Event:  296783  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=300000
+Count=310000
+Count=320000
+Count=330000
+Count=340000
+Count=350000
+Event:  351936  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=360000
+Count=370000
+Count=380000
+Count=390000
+Event:  391096  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  398873  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=400000
+Event:  405657  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Event:  407693  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  408526  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=410000
+Event:  416007  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  416656  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=420000
+Event:  420064  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=430000
+Count=440000
+Count=450000
+Count=460000
+Count=470000
+Event:  470961  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=480000
+Event:  487173  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=490000
+Count=500000
+Event:  500384  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=510000
+Count=520000
+Event:  527532  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=530000
+Count=540000
+Count=550000
+Event:  551515  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  556394  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=560000
+Count=570000
+Count=580000
+Count=590000
+Event:  595002  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=600000
+Event:  604607  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=610000
+Count=620000
+Event:  621818  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=630000
+Count=640000
+Event:  648955  #e:  1  #mu:  2  #t:  1 --> Good candidates
+Count=650000
+Event:  652449  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=660000
+Count=670000
+Event:  675104  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=680000
+Event:  689255  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=690000
+Count=700000
+Event:  709110  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=710000
+Event:  718706  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=720000
+Count=730000
+Count=740000
+Event:  742532  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=750000
+Event:  757494  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=760000
+Count=770000
+Event:  772936  #e:  0  #mu:  4  #t:  0 --> Good candidates
+Event:  774125  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=780000
+Event:  783101  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=790000
+Event:  790567  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  791345  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  798425  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  798857  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=800000
+Event:  809730  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=810000
+Count=820000
+Count=830000
+Count=840000
+Event:  841360  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  841806  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  848708  #e:  0  #mu:  5  #t:  0 --> Good candidates
+Event:  849020  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=850000
+Count=860000
+Count=870000
+Count=880000
+Event:  889668  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=890000
+Event:  890958  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=900000
+Count=910000
+Event:  919977  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=920000
+Event:  927040  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=930000
+Count=940000
+Count=950000
+Count=960000
+Count=970000
+Event:  973183  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  975210  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=980000
+Event:  981135  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=990000
+Event:  995403  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=1000000
+Event:  1006225  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1010000
+Event:  1018877  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1020000
+Count=1030000
+Event:  1034178  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  1034716  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1040000
+Count=1050000
+Count=1060000
+Event:  1065802  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1070000
+Count=1080000
+Run time=16016.47 s  time/event=14801.3 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 1, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 44, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 84101 84030 1 45
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=163276 nMax=163276
+hData=<ROOT.TH1D object ("pileup") at 0x7dafb60>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x85f6fd0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Event:  18347  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Event:  68846  #e:  0  #mu:  4  #t:  0 --> Good candidates
+Count=70000
+Event:  77554  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=80000
+Event:  89399  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=90000
+Event:  93543  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=100000
+Event:  103337  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=110000
+Event:  119109  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=120000
+Event:  123927  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=130000
+Event:  138257  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=140000
+Count=150000
+Count=160000
+Run time=1752.02 s  time/event=10730.5 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 5, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 12594 12585 0 5
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=948328 nMax=948328
+hData=<ROOT.TH1D object ("pileup") at 0x9e30bb0>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x8d988f0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Event:  5807  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Event:  12950  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=20000
+Count=30000
+Event:  31269  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  35855  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=40000
+Event:  43830  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  49082  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Event:  80074  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  81808  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=90000
+Count=100000
+Count=110000
+Event:  117676  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  117695  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=120000
+Event:  120436  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=130000
+Count=140000
+Count=150000
+Count=160000
+Event:  161683  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=170000
+Count=180000
+Event:  184044  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=190000
+Count=200000
+Event:  207294  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=210000
+Count=220000
+Event:  223337  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  225820  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  229877  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=230000
+Event:  235504  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=240000
+Event:  240721  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  249050  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=250000
+Event:  255779  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  256154  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  258629  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=260000
+Event:  260321  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=270000
+Count=280000
+Event:  286204  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=290000
+Event:  299490  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  299774  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=300000
+Event:  305671  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=310000
+Event:  316676  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=320000
+Event:  328681  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=330000
+Event:  330015  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  336585  #e:  0  #mu:  4  #t:  0 --> Good candidates
+Count=340000
+Event:  341273  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  342325  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=350000
+Event:  358181  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=360000
+Event:  360005  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  365260  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=370000
+Count=380000
+Count=390000
+Count=400000
+Event:  406201  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  409619  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=410000
+Count=420000
+Count=430000
+Count=440000
+Count=450000
+Count=460000
+Event:  463139  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  466555  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=470000
+Count=480000
+Event:  488387  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=490000
+Event:  495216  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=500000
+Event:  504222  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  506483  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=510000
+Event:  516333  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=520000
+Count=530000
+Count=540000
+Event:  543225  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=550000
+Count=560000
+Count=570000
+Count=580000
+Count=590000
+Event:  592231  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=600000
+Event:  601180  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  606446  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=610000
+Count=620000
+Count=630000
+Event:  636929  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=640000
+Event:  646809  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=650000
+Count=660000
+Count=670000
+Event:  673973  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=680000
+Event:  682264  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=690000
+Count=700000
+Count=710000
+Count=720000
+Event:  727577  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=730000
+Count=740000
+Count=750000
+Event:  757030  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=760000
+Count=770000
+Count=780000
+Count=790000
+Count=800000
+Count=810000
+Count=820000
+Count=830000
+Event:  831737  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=840000
+Event:  841111  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  841507  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  846639  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=850000
+Event:  859846  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=860000
+Count=870000
+Count=880000
+Event:  882074  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  885524  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=890000
+Count=900000
+Event:  900571  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=910000
+Count=920000
+Event:  924448  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Event:  929436  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=930000
+Event:  937799  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=940000
+Event:  946189  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Run time=13817.39 s  time/event=14570.3 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 1, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 50, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 73096 73028 0 51
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=324633 nMax=324633
+hData=<ROOT.TH1D object ("pileup") at 0x906cb30>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x86a8020>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Event:  30298  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=40000
+Event:  44772  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  47814  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=50000
+Count=60000
+Event:  62424  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=70000
+Count=80000
+Count=90000
+Count=100000
+Event:  108004  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=110000
+Event:  115224  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=120000
+Event:  127631  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=130000
+Count=140000
+Event:  142118  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  147336  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  148368  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=150000
+Count=160000
+Count=170000
+Event:  170068  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=180000
+Count=190000
+Count=200000
+Count=210000
+Count=220000
+Event:  225742  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=230000
+Event:  235899  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Event:  235914  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=240000
+Count=250000
+Event:  259343  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=260000
+Event:  268005  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=270000
+Count=280000
+Count=290000
+Event:  297547  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=300000
+Count=310000
+Event:  316413  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Event:  316919  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=320000
+Run time=3973.02 s  time/event=12238.5 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 1, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 12, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 25293 25274 0 13
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=468336 nMax=468336
+hData=<ROOT.TH1D object ("pileup") at 0x9caeb20>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x91292a0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Event:  50239  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  51351  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=60000
+Event:  62741  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=70000
+Count=80000
+Event:  80535  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=90000
+Count=100000
+Event:  105822  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=110000
+Count=120000
+Event:  127456  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=130000
+Count=140000
+Count=150000
+Count=160000
+Count=170000
+Count=180000
+Count=190000
+Event:  193998  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  196894  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=200000
+Event:  206403  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=210000
+Count=220000
+Event:  223578  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Event:  226971  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=230000
+Event:  238472  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=240000
+Count=250000
+Count=260000
+Count=270000
+Count=280000
+Event:  288806  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=290000
+Event:  291933  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  292356  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  296838  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=300000
+Event:  304622  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  305352  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=310000
+Count=320000
+Count=330000
+Event:  332255  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Event:  336875  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=340000
+Event:  347746  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=350000
+Event:  359260  #e:  1  #mu:  2  #t:  1 --> Good candidates
+Count=360000
+Event:  363612  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=370000
+Event:  374464  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=380000
+Event:  384251  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=390000
+Count=400000
+Event:  405707  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=410000
+Event:  418462  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=420000
+Count=430000
+Count=440000
+Count=450000
+Event:  457728  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=460000
+Event:  461295  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  468001  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Run time=6164.59 s  time/event=13162.8 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 17, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 36343 36313 0 17
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=826323 nMax=826323
+hData=<ROOT.TH1D object ("pileup") at 0x8fc4e00>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x8074cb0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Event:  3771  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Event:  16483  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=20000
+Count=30000
+Event:  37436  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Event:  71931  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=80000
+Count=90000
+Count=100000
+Count=110000
+Event:  110235  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=120000
+Count=130000
+Event:  135583  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  136617  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  139490  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=140000
+Count=150000
+Count=160000
+Count=170000
+Count=180000
+Count=190000
+Event:  191351  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Event:  192458  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  199192  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=200000
+Count=210000
+Event:  211685  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=220000
+Count=230000
+Count=240000
+Event:  241685  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  248531  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=250000
+Count=260000
+Count=270000
+Event:  278270  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=280000
+Count=290000
+Count=300000
+Event:  301717  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=310000
+Count=320000
+Event:  328484  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=330000
+Event:  337813  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=340000
+Count=350000
+Event:  351764  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=360000
+Event:  360655  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  362612  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  369070  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=370000
+Count=380000
+Count=390000
+Event:  392935  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=400000
+Event:  403417  #e:  0  #mu:  4  #t:  0 --> Good candidates
+Event:  403780  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  406598  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=410000
+Event:  414517  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=420000
+Count=430000
+Count=440000
+Count=450000
+Count=460000
+Count=470000
+Event:  479877  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=480000
+Event:  480764  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=490000
+Count=500000
+Event:  506461  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=510000
+Count=520000
+Count=530000
+Count=540000
+Event:  544525  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  549059  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=550000
+Event:  555523  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=560000
+Count=570000
+Event:  576066  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=580000
+Count=590000
+Event:  593184  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=600000
+Event:  602151  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=610000
+Count=620000
+Count=630000
+Event:  633097  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  633458  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=640000
+Event:  648747  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=650000
+Count=660000
+Event:  662715  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=670000
+Count=680000
+Event:  680975  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  685947  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=690000
+Event:  692888  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=700000
+Count=710000
+Count=720000
+Count=730000
+Event:  736365  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=740000
+Event:  744449  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=750000
+Event:  756372  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  757002  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=760000
+Count=770000
+Count=780000
+Count=790000
+Event:  793500  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  796182  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=800000
+Count=810000
+Count=820000
+Run time=11847.78 s  time/event=14338.0 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 1, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 31, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 63943 63894 0 32
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=799863 nMax=799863
+hData=<ROOT.TH1D object ("pileup") at 0x96e7940>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x96f21e0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Event:  1478  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Event:  38122  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=40000
+Event:  41265  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=50000
+Event:  55500  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=60000
+Count=70000
+Count=80000
+Event:  81832  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  82714  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=90000
+Event:  93814  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=100000
+Count=110000
+Count=120000
+Count=130000
+Event:  136943  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=140000
+Count=150000
+Event:  153962  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  159732  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=160000
+Count=170000
+Count=180000
+Event:  184742  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=190000
+Event:  193553  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=200000
+Event:  204534  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  206873  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=210000
+Event:  216040  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=220000
+Count=230000
+Event:  235091  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  239873  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=240000
+Event:  248511  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=250000
+Count=260000
+Event:  260889  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=270000
+Count=280000
+Count=290000
+Count=300000
+Event:  301303  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=310000
+Count=320000
+Event:  321962  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=330000
+Event:  338928  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  339096  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=340000
+Count=350000
+Count=360000
+Event:  362592  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=370000
+Event:  371350  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=380000
+Count=390000
+Count=400000
+Count=410000
+Event:  416273  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=420000
+Count=430000
+Event:  439371  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=440000
+Event:  449076  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=450000
+Event:  453720  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=460000
+Count=470000
+Count=480000
+Count=490000
+Event:  498536  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=500000
+Event:  503382  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=510000
+Event:  515021  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=520000
+Count=530000
+Count=540000
+Count=550000
+Event:  557258  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=560000
+Count=570000
+Count=580000
+Event:  581378  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=590000
+Count=600000
+Count=610000
+Event:  612205  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  619966  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=620000
+Event:  625385  #e:  0  #mu:  4  #t:  0 --> Good candidates
+Count=630000
+Event:  631793  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Event:  632535  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=640000
+Count=650000
+Event:  651612  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=660000
+Event:  666369  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=670000
+Count=680000
+Event:  680396  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=690000
+Event:  690678  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=700000
+Event:  706275  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=710000
+Event:  717529  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=720000
+Count=730000
+Count=740000
+Event:  741851  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=750000
+Event:  750727  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  757201  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=760000
+Count=770000
+Event:  778892  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=780000
+Count=790000
+Event:  795164  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  797647  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Run time=11552.06 s  time/event=14442.6 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 1, 'emtt': 0, 'eeet': 0, 'emmm': 2, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 35, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 62136 62085 0 38
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=607444 nMax=607444
+hData=<ROOT.TH1D object ("pileup") at 0x8c905c0>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x7f8fb20>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Event:  13583  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=20000
+Event:  23308  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  24065  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  24408  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=30000
+Event:  36148  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=40000
+Count=50000
+Event:  50147  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=60000
+Event:  69819  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=70000
+Event:  79186  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=80000
+Event:  80651  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=90000
+Event:  96606  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=100000
+Count=110000
+Event:  113866  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=120000
+Count=130000
+Count=140000
+Event:  143644  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=150000
+Count=160000
+Count=170000
+Event:  177542  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=180000
+Count=190000
+Event:  194337  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=200000
+Count=210000
+Event:  213779  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=220000
+Count=230000
+Event:  235522  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=240000
+Count=250000
+Count=260000
+Event:  267244  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=270000
+Count=280000
+Event:  281212  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  283783  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=290000
+Count=300000
+Event:  305180  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=310000
+Event:  313608  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=320000
+Count=330000
+Count=340000
+Event:  345098  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  349492  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=350000
+Event:  355769  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  356191  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=360000
+Event:  364197  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  366210  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Event:  368994  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=370000
+Count=380000
+Event:  385353  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  387096  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=390000
+Count=400000
+Event:  402198  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=410000
+Count=420000
+Event:  421715  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  426925  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  428537  #e:  1  #mu:  3  #t:  1 --> Good candidates
+AHA 428537 has a fake channel
+AHA 428537 has a fake channel
+Count=430000
+Count=440000
+Count=450000
+Event:  459165  #e:  0  #mu:  3  #t:  2 --> Good candidates
+AHA 459165 has a fake channel
+Count=460000
+Count=470000
+Count=480000
+Count=490000
+Event:  497985  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=500000
+Event:  504238  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=510000
+Event:  513435  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  515186  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=520000
+Count=530000
+Count=540000
+Event:  541462  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  543100  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  549463  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=550000
+Event:  553728  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  555928  #e:  0  #mu:  4  #t:  0 --> Good candidates
+Count=560000
+Event:  569043  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=570000
+Count=580000
+Event:  581088  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  582453  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  587940  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=590000
+Count=600000
+Run time=8519.10 s  time/event=14024.5 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 1, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 1, 'tttt': 0, 'mmtt': 0, 'mmmt': 30, 'eeem': 0, 'emet': 0, 'etmm': 1, 'ettt': 0} 47031 46983 2 30
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=93776 nMax=93776
+hData=<ROOT.TH1D object ("pileup") at 0x7571490>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x7d199c0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Event:  881  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Event:  4874  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Event:  16448  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Event:  51313  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=60000
+Count=70000
+Event:  70173  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  72379  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  72921  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=80000
+Count=90000
+Run time=1018.22 s  time/event=10858.2 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 5, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 7169 7162 0 5
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=789642 nMax=789642
+hData=<ROOT.TH1D object ("pileup") at 0x9f633f0>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x903d0a0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Event:  29349  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=30000
+Event:  36401  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  38950  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=40000
+Count=50000
+Event:  51778  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  51784  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=60000
+Count=70000
+Count=80000
+Event:  86254  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=90000
+Event:  90466  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  91079  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  95083  #e:  0  #mu:  4  #t:  0 --> Good candidates
+Count=100000
+Count=110000
+Count=120000
+Count=130000
+Event:  136299  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=140000
+Event:  149685  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=150000
+Count=160000
+Count=170000
+Count=180000
+Event:  182263  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Count=190000
+Event:  195992  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=200000
+Count=210000
+Count=220000
+Event:  225812  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=230000
+Count=240000
+Event:  245441  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=250000
+Count=260000
+Count=270000
+Count=280000
+Event:  286713  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=290000
+Count=300000
+Event:  309729  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=310000
+Count=320000
+Count=330000
+Event:  330786  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  331153  #e:  1  #mu:  3  #t:  0 --> Good candidates
+Event:  337735  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=340000
+Count=350000
+Count=360000
+Count=370000
+Count=380000
+Event:  380873  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=390000
+Count=400000
+Event:  407160  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=410000
+Count=420000
+Count=430000
+Count=440000
+Event:  442596  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  446796  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  447636  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=450000
+Event:  457981  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=460000
+Count=470000
+Event:  471956  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=480000
+Count=490000
+Count=500000
+Count=510000
+Count=520000
+Count=530000
+Count=540000
+Event:  544749  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  545654  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=550000
+Count=560000
+Event:  561770  #e:  0  #mu:  4  #t:  0 --> Good candidates
+Count=570000
+Count=580000
+Count=590000
+Event:  597225  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=600000
+Count=610000
+Event:  612309  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  617305  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=620000
+Event:  620919  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=630000
+Count=640000
+Event:  640260  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=650000
+Count=660000
+Count=670000
+Count=680000
+Count=690000
+Count=700000
+Event:  708319  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=710000
+Count=720000
+Count=730000
+Event:  730052  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Event:  733652  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=740000
+Count=750000
+Event:  758608  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=760000
+Event:  767688  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=770000
+Count=780000
+Run time=11395.45 s  time/event=14431.2 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 27, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 60931 60891 0 27
+Opening inFile1_mmm_del12.root as input.  Event category tttt
+nentries=34570 nMax=34570
+hData=<ROOT.TH1D object ("pileup") at 0x84a1210>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x7d197d0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_mmm_del12.root
+Opening WZ_mmm_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Event:  4589  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Event:  9942  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=10000
+Count=20000
+Event:  21247  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Count=30000
+Event:  33280  #e:  0  #mu:  3  #t:  1 --> Good candidates
+Run time=378.63 s  time/event=10952.9 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 4, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 2729 2725 0 4

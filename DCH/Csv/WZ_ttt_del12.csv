@@ -1,0 +1,1425 @@
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=867540 nMax=867540
+hData=<ROOT.TH1D object ("pileup") at 0x9f651b0>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x90152b0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Count=90000
+Count=100000
+Count=110000
+Count=120000
+Count=130000
+Count=140000
+Count=150000
+Count=160000
+Count=170000
+Count=180000
+Count=190000
+Count=200000
+Count=210000
+Count=220000
+Count=230000
+Count=240000
+Count=250000
+Count=260000
+Count=270000
+Count=280000
+Count=290000
+Count=300000
+Count=310000
+Count=320000
+Count=330000
+Count=340000
+Count=350000
+Count=360000
+Count=370000
+Count=380000
+Count=390000
+Count=400000
+Count=410000
+Count=420000
+Count=430000
+Count=440000
+Event:  442610  #e:  1  #mu:  1  #t:  2 --> Good candidates
+Count=450000
+Count=460000
+Count=470000
+Count=480000
+Count=490000
+Count=500000
+Count=510000
+Count=520000
+Count=530000
+Count=540000
+Count=550000
+Count=560000
+Count=570000
+Count=580000
+Count=590000
+Count=600000
+Count=610000
+Count=620000
+Event:  625499  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=630000
+Count=640000
+Count=650000
+Count=660000
+Count=670000
+Count=680000
+Count=690000
+Count=700000
+Count=710000
+Count=720000
+Count=730000
+Count=740000
+Count=750000
+Count=760000
+Count=770000
+Count=780000
+Count=790000
+Count=800000
+Count=810000
+Count=820000
+Count=830000
+Count=840000
+Count=850000
+Count=860000
+Run time=22958.99 s  time/event=26464.5 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 1, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 18176 18174 0 1
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=8332 nMax=8332
+hData=<ROOT.TH1D object ("pileup") at 0x7528840>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x6dc8860>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Run time=149.38 s  time/event=17930.6 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 184 184 0 0
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=714243 nMax=714243
+hData=<ROOT.TH1D object ("pileup") at 0x8f147e0>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x813dc00>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Count=90000
+Count=100000
+Count=110000
+Event:  119223  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=120000
+Count=130000
+Count=140000
+Count=150000
+Count=160000
+Count=170000
+Count=180000
+Count=190000
+Count=200000
+Count=210000
+Count=220000
+Count=230000
+Count=240000
+Count=250000
+Count=260000
+Count=270000
+Count=280000
+Count=290000
+Count=300000
+Count=310000
+Count=320000
+Count=330000
+Count=340000
+Count=350000
+Count=360000
+Count=370000
+Count=380000
+Count=390000
+Count=400000
+Count=410000
+Count=420000
+Count=430000
+Count=440000
+Count=450000
+Count=460000
+Count=470000
+Count=480000
+Count=490000
+Count=500000
+Count=510000
+Count=520000
+Count=530000
+Count=540000
+Count=550000
+Event:  554674  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=560000
+Count=570000
+Count=580000
+Count=590000
+Count=600000
+Count=610000
+Count=620000
+Count=630000
+Event:  637328  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=640000
+Count=650000
+Count=660000
+Count=670000
+Count=680000
+Count=690000
+Count=700000
+Count=710000
+Run time=18413.15 s  time/event=25780.0 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 1, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 14932 14929 0 1
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=289687 nMax=289687
+hData=<ROOT.TH1D object ("pileup") at 0x8162140>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x747a890>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Count=90000
+Count=100000
+Count=110000
+Count=120000
+Count=130000
+Count=140000
+Count=150000
+Count=160000
+Event:  163965  #e:  1  #mu:  0  #t:  3 --> Good candidates
+Count=170000
+Count=180000
+Count=190000
+Count=200000
+Count=210000
+Count=220000
+Count=230000
+Count=240000
+Count=250000
+Count=260000
+Count=270000
+Count=280000
+Run time=6259.21 s  time/event=21606.9 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 6126 6125 0 0
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=88407 nMax=88407
+hData=<ROOT.TH1D object ("pileup") at 0x9716a30>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x8e95e30>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Run time=1833.43 s  time/event=20738.8 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 1810 1810 0 0
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=223520 nMax=223520
+hData=<ROOT.TH1D object ("pileup") at 0x86dcfa0>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x8438b10>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Count=90000
+Count=100000
+Count=110000
+Count=120000
+Event:  121285  #e:  1  #mu:  0  #t:  3 --> Good candidates
+Count=130000
+Count=140000
+Count=150000
+Count=160000
+Count=170000
+Count=180000
+Count=190000
+Count=200000
+Count=210000
+Count=220000
+Run time=4805.18 s  time/event=21497.9 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 4699 4698 0 0
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=1491264 nMax=1491264
+hData=<ROOT.TH1D object ("pileup") at 0xa5e3360>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x8fb0ba0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Count=90000
+Count=100000
+Count=110000
+Count=120000
+Count=130000
+Count=140000
+Count=150000
+Count=160000
+Count=170000
+Count=180000
+Count=190000
+Count=200000
+Count=210000
+Count=220000
+Count=230000
+Count=240000
+Count=250000
+Count=260000
+Count=270000
+Count=280000
+Count=290000
+Count=300000
+Count=310000
+Count=320000
+Count=330000
+Count=340000
+Count=350000
+Count=360000
+Count=370000
+Count=380000
+Count=390000
+Count=400000
+Count=410000
+Count=420000
+Count=430000
+Count=440000
+Count=450000
+Count=460000
+Count=470000
+Count=480000
+Count=490000
+Count=500000
+Count=510000
+Count=520000
+Count=530000
+Count=540000
+Count=550000
+Count=560000
+Count=570000
+Count=580000
+Count=590000
+Count=600000
+Count=610000
+Count=620000
+Count=630000
+Count=640000
+Count=650000
+Count=660000
+Count=670000
+Count=680000
+Count=690000
+Count=700000
+Count=710000
+Count=720000
+Count=730000
+Count=740000
+Count=750000
+Count=760000
+Count=770000
+Count=780000
+Count=790000
+Count=800000
+Count=810000
+Count=820000
+Count=830000
+Count=840000
+Count=850000
+Count=860000
+Count=870000
+Count=880000
+Count=890000
+Count=900000
+Count=910000
+Count=920000
+Count=930000
+Count=940000
+Count=950000
+Count=960000
+Count=970000
+Event:  973891  #e:  0  #mu:  0  #t:  5 --> Good candidates
+Count=980000
+Count=990000
+Count=1000000
+Count=1010000
+Count=1020000
+Count=1030000
+Count=1040000
+Count=1050000
+Count=1060000
+Count=1070000
+Count=1080000
+Count=1090000
+Count=1100000
+Count=1110000
+Count=1120000
+Count=1130000
+Count=1140000
+Count=1150000
+Count=1160000
+Count=1170000
+Count=1180000
+Count=1190000
+Count=1200000
+Count=1210000
+Count=1220000
+Count=1230000
+Count=1240000
+Count=1250000
+Count=1260000
+Count=1270000
+Count=1280000
+Count=1290000
+Count=1300000
+Count=1310000
+Count=1320000
+Count=1330000
+Count=1340000
+Count=1350000
+Count=1360000
+Count=1370000
+Count=1380000
+Count=1390000
+Count=1400000
+Count=1410000
+Count=1420000
+Count=1430000
+Count=1440000
+Count=1450000
+Count=1460000
+Count=1470000
+Count=1480000
+Count=1490000
+Run time=43653.31 s  time/event=29272.7 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 1, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 31350 31349 1 1
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=1082099 nMax=1082099
+hData=<ROOT.TH1D object ("pileup") at 0x9c8a770>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x6cff4b0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Count=90000
+Count=100000
+Count=110000
+Count=120000
+Count=130000
+Count=140000
+Count=150000
+Count=160000
+Count=170000
+Count=180000
+Count=190000
+Count=200000
+Count=210000
+Count=220000
+Count=230000
+Count=240000
+Event:  246936  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=250000
+Count=260000
+Count=270000
+Count=280000
+Count=290000
+Count=300000
+Count=310000
+Count=320000
+Count=330000
+Count=340000
+Count=350000
+Count=360000
+Count=370000
+Count=380000
+Count=390000
+Count=400000
+Count=410000
+Count=420000
+Count=430000
+Count=440000
+Count=450000
+Count=460000
+Count=470000
+Event:  479979  #e:  1  #mu:  0  #t:  3 --> Good candidates
+Count=480000
+Count=490000
+Count=500000
+Count=510000
+Count=520000
+Count=530000
+Count=540000
+Count=550000
+Count=560000
+Count=570000
+Count=580000
+Count=590000
+Count=600000
+Count=610000
+Count=620000
+Count=630000
+Count=640000
+Count=650000
+Count=660000
+Count=670000
+Count=680000
+Count=690000
+Count=700000
+Count=710000
+Count=720000
+Count=730000
+Count=740000
+Count=750000
+Count=760000
+Count=770000
+Count=780000
+Count=790000
+Count=800000
+Count=810000
+Count=820000
+Count=830000
+Count=840000
+Count=850000
+Count=860000
+Count=870000
+Count=880000
+Count=890000
+Count=900000
+Count=910000
+Count=920000
+Count=930000
+Count=940000
+Event:  942732  #e:  1  #mu:  0  #t:  3 --> Good candidates
+Count=950000
+Count=960000
+Count=970000
+Count=980000
+Count=990000
+Count=1000000
+Count=1010000
+Count=1020000
+Count=1030000
+Count=1040000
+Count=1050000
+Count=1060000
+Count=1070000
+Count=1080000
+Run time=30956.61 s  time/event=28608.0 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 1, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 22827 22824 0 1
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=163276 nMax=163276
+hData=<ROOT.TH1D object ("pileup") at 0x811ef90>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x893c260>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Count=90000
+Count=100000
+Count=110000
+Count=120000
+Count=130000
+Count=140000
+Count=150000
+Count=160000
+Run time=3389.39 s  time/event=20758.8 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 3487 3487 0 0
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=948328 nMax=948328
+hData=<ROOT.TH1D object ("pileup") at 0x9612170>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x85d6d70>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Event:  4213  #e:  1  #mu:  0  #t:  3 --> Good candidates
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Count=90000
+Count=100000
+Count=110000
+Count=120000
+Count=130000
+Count=140000
+Count=150000
+Count=160000
+Count=170000
+Count=180000
+Count=190000
+Count=200000
+Count=210000
+Count=220000
+Count=230000
+Count=240000
+Count=250000
+Count=260000
+Count=270000
+Count=280000
+Count=290000
+Count=300000
+Count=310000
+Count=320000
+Count=330000
+Count=340000
+Count=350000
+Count=360000
+Count=370000
+Count=380000
+Count=390000
+Count=400000
+Count=410000
+Count=420000
+Count=430000
+Count=440000
+Count=450000
+Count=460000
+Count=470000
+Count=480000
+Count=490000
+Count=500000
+Count=510000
+Count=520000
+Count=530000
+Count=540000
+Count=550000
+Count=560000
+Count=570000
+Event:  574174  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=580000
+Count=590000
+Count=600000
+Count=610000
+Count=620000
+Count=630000
+Count=640000
+Count=650000
+Count=660000
+Count=670000
+Count=680000
+Count=690000
+Event:  699417  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=700000
+Count=710000
+Count=720000
+Count=730000
+Count=740000
+Count=750000
+Count=760000
+Count=770000
+Count=780000
+Count=790000
+Count=800000
+Count=810000
+Count=820000
+Count=830000
+Count=840000
+Count=850000
+Count=860000
+Count=870000
+Count=880000
+Count=890000
+Count=900000
+Count=910000
+Count=920000
+Count=930000
+Count=940000
+Run time=25900.63 s  time/event=27311.9 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 2, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 19858 19855 0 2
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=324633 nMax=324633
+hData=<ROOT.TH1D object ("pileup") at 0x8d4bc80>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x7f88b00>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Count=90000
+Count=100000
+Count=110000
+Count=120000
+Count=130000
+Count=140000
+Count=150000
+Count=160000
+Count=170000
+Count=180000
+Count=190000
+Count=200000
+Count=210000
+Count=220000
+Count=230000
+Count=240000
+Count=250000
+Count=260000
+Count=270000
+Count=280000
+Count=290000
+Count=300000
+Count=310000
+Count=320000
+Run time=7457.81 s  time/event=22973.1 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 6850 6850 0 0
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=468336 nMax=468336
+hData=<ROOT.TH1D object ("pileup") at 0x7f4d8b0>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x7f4e750>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Count=90000
+Count=100000
+Count=110000
+Count=120000
+Count=130000
+Count=140000
+Count=150000
+Count=160000
+Count=170000
+Count=180000
+Event:  186145  #e:  1  #mu:  0  #t:  3 --> Good candidates
+Count=190000
+Count=200000
+Count=210000
+Count=220000
+Count=230000
+Count=240000
+Count=250000
+Count=260000
+Count=270000
+Count=280000
+Event:  287419  #e:  1  #mu:  0  #t:  3 --> Good candidates
+Count=290000
+Count=300000
+Count=310000
+Count=320000
+Count=330000
+Count=340000
+Count=350000
+Count=360000
+Count=370000
+Count=380000
+Count=390000
+Count=400000
+Count=410000
+Count=420000
+Count=430000
+Count=440000
+Count=450000
+Count=460000
+Run time=11435.92 s  time/event=24418.3 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 9933 9931 0 0
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=826323 nMax=826323
+hData=<ROOT.TH1D object ("pileup") at 0x976bbe0>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x97a80a0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Event:  22756  #e:  1  #mu:  0  #t:  3 --> Good candidates
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Count=90000
+Count=100000
+Count=110000
+Count=120000
+Count=130000
+Count=140000
+Count=150000
+Count=160000
+Count=170000
+Count=180000
+Count=190000
+Count=200000
+Count=210000
+Count=220000
+Count=230000
+Count=240000
+Count=250000
+Count=260000
+Count=270000
+Count=280000
+Count=290000
+Count=300000
+Count=310000
+Count=320000
+Count=330000
+Count=340000
+Count=350000
+Count=360000
+Count=370000
+Count=380000
+Count=390000
+Count=400000
+Count=410000
+Count=420000
+Count=430000
+Count=440000
+Count=450000
+Count=460000
+Count=470000
+Count=480000
+Count=490000
+Count=500000
+Count=510000
+Count=520000
+Count=530000
+Count=540000
+Count=550000
+Count=560000
+Count=570000
+Count=580000
+Count=590000
+Count=600000
+Event:  604203  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=610000
+Count=620000
+Count=630000
+Count=640000
+Event:  644484  #e:  0  #mu:  1  #t:  3 --> Good candidates
+Count=650000
+Count=660000
+Count=670000
+Count=680000
+Count=690000
+Count=700000
+Count=710000
+Count=720000
+Count=730000
+Count=740000
+Count=750000
+Count=760000
+Count=770000
+Count=780000
+Count=790000
+Count=800000
+Count=810000
+Count=820000
+Run time=22511.58 s  time/event=27243.1 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 17495 17492 0 0
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=799863 nMax=799863
+hData=<ROOT.TH1D object ("pileup") at 0x8c0c120>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x7d87590>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Count=90000
+Count=100000
+Count=110000
+Count=120000
+Count=130000
+Count=140000
+Count=150000
+Count=160000
+Count=170000
+Count=180000
+Count=190000
+Count=200000
+Count=210000
+Count=220000
+Count=230000
+Count=240000
+Count=250000
+Count=260000
+Count=270000
+Count=280000
+Count=290000
+Event:  292743  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=300000
+Count=310000
+Count=320000
+Count=330000
+Count=340000
+Count=350000
+Count=360000
+Count=370000
+Count=380000
+Count=390000
+Count=400000
+Count=410000
+Count=420000
+Count=430000
+Count=440000
+Count=450000
+Count=460000
+Count=470000
+Count=480000
+Count=490000
+Count=500000
+Count=510000
+Count=520000
+Count=530000
+Count=540000
+Count=550000
+Count=560000
+Count=570000
+Count=580000
+Count=590000
+Count=600000
+Count=610000
+Count=620000
+Count=630000
+Count=640000
+Count=650000
+Count=660000
+Count=670000
+Count=680000
+Count=690000
+Count=700000
+Count=710000
+Count=720000
+Count=730000
+Count=740000
+Count=750000
+Count=760000
+Count=770000
+Count=780000
+Count=790000
+Run time=22559.13 s  time/event=28203.8 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 16988 16987 0 0
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=607444 nMax=607444
+hData=<ROOT.TH1D object ("pileup") at 0x96a34c0>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x89f1ab0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Count=90000
+Count=100000
+Count=110000
+Count=120000
+Count=130000
+Count=140000
+Count=150000
+Count=160000
+Count=170000
+Count=180000
+Count=190000
+Count=200000
+Count=210000
+Count=220000
+Count=230000
+Count=240000
+Count=250000
+Event:  252956  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=260000
+Count=270000
+Count=280000
+Count=290000
+Count=300000
+Count=310000
+Count=320000
+Count=330000
+Count=340000
+Count=350000
+Count=360000
+Count=370000
+Count=380000
+Count=390000
+Count=400000
+Count=410000
+Count=420000
+Count=430000
+Count=440000
+Count=450000
+Count=460000
+Count=470000
+Count=480000
+Count=490000
+Count=500000
+Count=510000
+Count=520000
+Count=530000
+Count=540000
+Count=550000
+Count=560000
+Count=570000
+Count=580000
+Count=590000
+Count=600000
+Run time=16045.37 s  time/event=26414.6 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 12866 12865 0 0
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=93776 nMax=93776
+hData=<ROOT.TH1D object ("pileup") at 0x8839420>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x80d1740>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Count=90000
+Run time=1955.50 s  time/event=20853.1 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 2038 2038 0 0
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=789642 nMax=789642
+hData=<ROOT.TH1D object ("pileup") at 0x9ec4110>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x9004540>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Count=90000
+Count=100000
+Count=110000
+Count=120000
+Count=130000
+Count=140000
+Count=150000
+Count=160000
+Count=170000
+Count=180000
+Count=190000
+Count=200000
+Count=210000
+Count=220000
+Count=230000
+Count=240000
+Count=250000
+Count=260000
+Count=270000
+Count=280000
+Count=290000
+Count=300000
+Count=310000
+Count=320000
+Count=330000
+Count=340000
+Event:  345456  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=350000
+Count=360000
+Count=370000
+Count=380000
+Count=390000
+Count=400000
+Count=410000
+Count=420000
+Count=430000
+Count=440000
+Count=450000
+Count=460000
+Count=470000
+Count=480000
+Count=490000
+Count=500000
+Count=510000
+Count=520000
+Count=530000
+Count=540000
+Count=550000
+Count=560000
+Count=570000
+Count=580000
+Count=590000
+Count=600000
+Count=610000
+Count=620000
+Count=630000
+Count=640000
+Count=650000
+Count=660000
+Count=670000
+Count=680000
+Count=690000
+Count=700000
+Count=710000
+Count=720000
+Count=730000
+Count=740000
+Count=750000
+Count=760000
+Count=770000
+Count=780000
+Event:  785956  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Run time=19954.31 s  time/event=25270.1 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 2, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 16404 16402 0 2
+Opening inFile1_ttt_del12.root as input.  Event category tttt
+nentries=34570 nMax=34570
+hData=<ROOT.TH1D object ("pileup") at 0x7a0d4c0>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x72ab5c0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=WZ_ttt_del12.root
+Opening WZ_ttt_del12.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Run time=285.94 s  time/event=8271.5 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 0, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 0} 726 726 0 0

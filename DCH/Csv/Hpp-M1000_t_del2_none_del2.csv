@@ -1,0 +1,69 @@
+Opening HPlusPlusHMinusMinusHTo4L_M-1000.root as input.  Event category tttt
+nentries=40000 nMax=40000
+hData=<ROOT.TH1D object ("pileup") at 0x460a460>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x6367760>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=skim_HDC_t_del2.root
+Opening skim_HDC_t_del2.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Event:  200  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Event:  4170  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  4658  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=5000
+Count=6000
+Event:  6170  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=7000
+Count=8000
+Event:  8437  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=9000
+Event:  9717  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=10000
+Event:  11030  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  11109  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  12157  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  12848  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  13342  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  13875  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  14185  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  14276  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  15477  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  16632  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  17223  #e:  0  #mu:  1  #t:  3 --> Good candidates
+Event:  17621  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  18164  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  18628  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  18729  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=20000
+Event:  20627  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  21035  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  23130  #e:  1  #mu:  0  #t:  3 --> Good candidates
+Event:  25466  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  25796  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  26225  #e:  1  #mu:  0  #t:  4 --> Good candidates
+AHA 26225 has a fake channel
+Event:  26509  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  26709  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  26723  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  28709  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  29995  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=30000
+Event:  30129  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  30171  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  30462  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  33704  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  34102  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  38594  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  38604  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  39508  #e:  1  #mu:  0  #t:  4 --> Good candidates
+Event:  39555  #e:  1  #mu:  0  #t:  3 --> Good candidates
+Run time=342.39 s  time/event=8560.1 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 1, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 30, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 1} 187 146 2 31
