@@ -1,0 +1,272 @@
+Opening ttw.root as input.  Event category tttt
+nentries=545132 nMax=545132
+hData=<ROOT.TH1D object ("pileup") at 0xa187550>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0xa189e50>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=TTW_out.root
+Opening TTW_out.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000
+AHA 46207 has a fake channel
+Count=50000
+Count=60000
+Count=70000
+Count=80000
+Count=90000
+Count=100000
+Count=110000
+Count=120000
+Count=130000
+Count=140000
+Count=150000
+Count=160000
+Count=170000
+Count=180000
+Count=190000
+Count=200000
+Count=210000
+Count=220000
+Count=230000
+Count=240000
+Count=250000
+Count=260000
+Count=270000
+Count=280000
+Count=290000
+Count=300000
+Count=310000
+Count=320000
+Count=330000
+Count=340000
+Count=350000
+Count=360000
+AHA 366907 has a fake channel
+Count=370000
+AHA 370403 has a fake channel
+Count=380000
+Count=390000
+Count=400000
+Count=410000
+Count=420000
+Count=430000
+Count=440000
+Count=450000
+Count=460000
+Count=470000
+Count=480000
+Count=490000
+Count=500000
+Count=510000
+Count=520000
+Count=530000
+Count=540000
+Run time=6290.67 s  time/event=11539.7 us
+In outTuple.writeTree() entries=36
+
+Summary for eeee
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig1        90040   16.5%
+Lep_Trig2        90040    N/A
+eeee                 1  0.001%
+
+Summary for eeem
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig1        90040   16.5%
+Lep_Trig2        12930   14.4%
+eeem                 6  0.046%
+
+Summary for eeet
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig1        90040   16.5%
+Lep_Trig2        90040    N/A
+eeet                 8  0.009%
+
+Summary for eemm
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig2       110823   20.4%
+Lep_Trig1        90040   81.2%
+eemm                 1  0.001%
+
+Summary for eemt
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig2       110823   20.4%
+Lep_Trig1        90040   81.2%
+eemt                 7  0.008%
+
+Summary for eett
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig1        90040   16.5%
+eett                 5  0.006%
+
+Summary for emem
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig1        12930    2.4%
+Lep_Trig2        12930    N/A
+emem                 6  0.046%
+
+Summary for emet
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig2        90040   16.5%
+Lep_Trig1        12930   14.4%
+emet                 7  0.054%
+
+Summary for emmm
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig2       110823   20.4%
+Lep_Trig1        12930   11.7%
+emmm                 4  0.031%
+
+Summary for emmt
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig2       110823   20.4%
+Lep_Trig1        12930   11.7%
+emmt                10  0.077%
+
+Summary for emtt
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig1        12930    2.4%
+emtt                 6  0.046%
+
+Summary for etet
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig1        90040   16.5%
+Lep_Trig2        90040    N/A
+etet                 3  0.003%
+
+Summary for etmm
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig2       110823   20.4%
+Lep_Trig1        90040   81.2%
+etmm                 5  0.006%
+
+Summary for etmt
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig2       110823   20.4%
+Lep_Trig1        90040   81.2%
+etmt                 9  0.010%
+
+Summary for ettt
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig1        90040   16.5%
+ettt                 1  0.001%
+
+Summary for mmmm
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig1       110823   20.4%
+Lep_Trig2       110823    N/A
+
+Summary for mmmt
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig1       110823   20.4%
+Lep_Trig2       110823    N/A
+mmmt                 7  0.006%
+
+Summary for mmtt
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig1       110823   20.4%
+mmtt                 4  0.004%
+
+Summary for mtmt
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig1       110823   20.4%
+Lep_Trig2       110823    N/A
+mtmt                 2  0.002%
+
+Summary for mttt
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+Lep_Trig1       110823   20.4%
+mttt                 1  0.001%
+
+Summary for tttt
+All             545132    N/A
+InJSON          545132    N/A
+METfilter       544382   99.9%
+tttt                 1  0.000%
+# Yields in each channel  {'emem': 6, 'eemm': 1, 'etmt': 9, 'mmmm': 0, 'emtt': 6, 'eeet': 8, 'emmm': 4, 'eemt': 7, 'mttt': 1, 'etet': 3, 'eett': 5, 'eeee': 1, 'emmt': 10, 'mtmt': 2, 'tttt': 1, 'mmtt': 4, 'mmmt': 7, 'eeem': 6, 'emet': 7, 'etmm': 5, 'ettt': 1} Total entries  545132
+# of selected events 544382 
+# of 3 lep events 544170 
+# of 5 lep evts 5 
+# of passed events 91
+Opening ttw.root as input.  Event category tttt
+nentries=545132 nMax=545132
+hData=<ROOT.TH1D object ("pileup") at 0x8ec47f0>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x8f06ac0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=TTW_out.root
+Opening TTW_out.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Count=5000
+Count=6000
+Count=7000
+Count=8000
+Count=9000
+Count=10000
+Count=20000
+Count=30000
+Count=40000

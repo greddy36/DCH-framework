@@ -6,6 +6,7 @@ DCH/Csv
 DCH/*csv
 DCH/*.log
 DCH/*.root
-MC/*
-tools/*
+MC_og
+MC/DCH
 TauPOG/TauIDSFs
+

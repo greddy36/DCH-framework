@@ -1,0 +1,1900 @@
+Opening HPlusPlusHMinusMinusHTo4L_M-1000.root as input.  Event category tttt
+nentries=40000 nMax=40000
+hData=<ROOT.TH1D object ("pileup") at 0x743d310>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x74dd590>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=skim_HDC.root
+Opening skim_HDC.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+AHA 45 has a fake channel
+AHA 55 has a fake channel
+AHA 66 has a fake channel
+AHA 404 has a fake channel
+AHA 523 has a fake channel
+AHA 523 has a fake channel
+AHA 544 has a fake channel
+AHA 758 has a fake channel
+AHA 913 has a fake channel
+AHA 939 has a fake channel
+Run time=15.35 s  time/event=15369.8 us
+In outTuple.writeTree() entries=134
+
+Summary for eeee
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeee                25    3.5%
+
+Summary for eeem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          477   66.5%
+eeem                42    8.8%
+
+Summary for eeet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeet                31    4.3%
+
+Summary for eemm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemm                38    5.3%
+
+Summary for eemt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemt                22    3.1%
+
+Summary for eett
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+eett                 9    1.3%
+
+Summary for emem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          477    N/A
+emem                22    4.6%
+
+Summary for emet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          717    N/A
+emet                27    3.8%
+
+Summary for emmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmm                48   10.1%
+
+Summary for emmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmt                32    6.7%
+
+Summary for emtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+emtt                 8    1.7%
+
+Summary for etet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+etet                 8    1.1%
+
+Summary for etmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmm                33    4.6%
+
+Summary for etmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmt                18    2.5%
+
+Summary for ettt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+ettt                10    1.4%
+
+Summary for mmmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmm                32    4.4%
+
+Summary for mmmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmt                25    3.5%
+
+Summary for mmtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mmtt                 8    1.1%
+
+Summary for mtmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mtmt                14    1.9%
+
+Summary for mttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mttt                 8    1.1%
+
+Summary for tttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+# Yields in each channel  {'emem': 22, 'eemm': 38, 'etmt': 18, 'mmmm': 32, 'emtt': 8, 'eeet': 31, 'emmm': 48, 'eemt': 22, 'mttt': 8, 'etet': 8, 'eett': 9, 'eeee': 25, 'emmt': 32, 'mtmt': 14, 'tttt': 0, 'mmtt': 8, 'mmmt': 25, 'eeem': 42, 'emet': 27, 'etmm': 33, 'ettt': 10} Total entries  40000
+# of selected events 978 
+# of 3 lep events 472 
+# of 5 lep evts 12 
+# of passed events 450
+Opening HPlusPlusHMinusMinusHTo4L_M-1000.root as input.  Event category tttt
+nentries=40000 nMax=40000
+hData=<ROOT.TH1D object ("pileup") at 0x7004670>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x5d68550>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=skim_HDC.root
+Opening skim_HDC.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+AHA 45 has a fake channel
+AHA 55 has a fake channel
+AHA 66 has a fake channel
+AHA 404 has a fake channel
+AHA 523 has a fake channel
+AHA 523 has a fake channel
+AHA 544 has a fake channel
+AHA 758 has a fake channel
+AHA 913 has a fake channel
+AHA 939 has a fake channel
+Run time=14.04 s  time/event=14058.9 us
+In outTuple.writeTree() entries=134
+
+Summary for eeee
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeee                25    3.5%
+
+Summary for eeem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          477   66.5%
+eeem                42    8.8%
+
+Summary for eeet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeet                31    4.3%
+
+Summary for eemm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemm                38    5.3%
+
+Summary for eemt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemt                22    3.1%
+
+Summary for eett
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+eett                 9    1.3%
+
+Summary for emem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          477    N/A
+emem                22    4.6%
+
+Summary for emet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          717    N/A
+emet                27    3.8%
+
+Summary for emmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmm                48   10.1%
+
+Summary for emmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmt                32    6.7%
+
+Summary for emtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+emtt                 8    1.7%
+
+Summary for etet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+etet                 8    1.1%
+
+Summary for etmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmm                33    4.6%
+
+Summary for etmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmt                18    2.5%
+
+Summary for ettt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+ettt                10    1.4%
+
+Summary for mmmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmm                32    4.4%
+
+Summary for mmmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmt                25    3.5%
+
+Summary for mmtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mmtt                 8    1.1%
+
+Summary for mtmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mtmt                14    1.9%
+
+Summary for mttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mttt                 8    1.1%
+
+Summary for tttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+# Yields in each channel  {'emem': 22, 'eemm': 38, 'etmt': 18, 'mmmm': 32, 'emtt': 8, 'eeet': 31, 'emmm': 48, 'eemt': 22, 'mttt': 8, 'etet': 8, 'eett': 9, 'eeee': 25, 'emmt': 32, 'mtmt': 14, 'tttt': 0, 'mmtt': 8, 'mmmt': 25, 'eeem': 42, 'emet': 27, 'etmm': 33, 'ettt': 10} Total entries  40000
+# of selected events 978 
+# of 3 lep events 472 
+# of 5 lep evts 12 
+# of passed events 450
+Opening HPlusPlusHMinusMinusHTo4L_M-1000.root as input.  Event category tttt
+nentries=40000 nMax=40000
+hData=<ROOT.TH1D object ("pileup") at 0x86de0d0>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x74149c0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=skim_HDC.root
+Opening skim_HDC.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+AHA 45 has a fake channel
+AHA 55 has a fake channel
+AHA 66 has a fake channel
+AHA 404 has a fake channel
+AHA 523 has a fake channel
+AHA 523 has a fake channel
+AHA 544 has a fake channel
+AHA 758 has a fake channel
+AHA 913 has a fake channel
+AHA 939 has a fake channel
+Run time=14.28 s  time/event=14298.0 us
+In outTuple.writeTree() entries=134
+
+Summary for eeee
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeee                25    3.5%
+
+Summary for eeem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          477   66.5%
+eeem                42    8.8%
+
+Summary for eeet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeet                31    4.3%
+
+Summary for eemm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemm                38    5.3%
+
+Summary for eemt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemt                22    3.1%
+
+Summary for eett
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+eett                 9    1.3%
+
+Summary for emem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          477    N/A
+emem                22    4.6%
+
+Summary for emet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          717    N/A
+emet                27    3.8%
+
+Summary for emmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmm                48   10.1%
+
+Summary for emmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmt                32    6.7%
+
+Summary for emtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+emtt                 8    1.7%
+
+Summary for etet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+etet                 8    1.1%
+
+Summary for etmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmm                33    4.6%
+
+Summary for etmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmt                18    2.5%
+
+Summary for ettt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+ettt                10    1.4%
+
+Summary for mmmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmm                32    4.4%
+
+Summary for mmmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmt                25    3.5%
+
+Summary for mmtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mmtt                 8    1.1%
+
+Summary for mtmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mtmt                14    1.9%
+
+Summary for mttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mttt                 8    1.1%
+
+Summary for tttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+# Yields in each channel  {'emem': 22, 'eemm': 38, 'etmt': 18, 'mmmm': 32, 'emtt': 8, 'eeet': 31, 'emmm': 48, 'eemt': 22, 'mttt': 8, 'etet': 8, 'eett': 9, 'eeee': 25, 'emmt': 32, 'mtmt': 14, 'tttt': 0, 'mmtt': 8, 'mmmt': 25, 'eeem': 42, 'emet': 27, 'etmm': 33, 'ettt': 10} Total entries  40000
+# of selected events 978 
+# of 3 lep events 472 
+# of 5 lep evts 12 
+# of passed events 450
+Opening HPlusPlusHMinusMinusHTo4L_M-1000.root as input.  Event category tttt
+nentries=40000 nMax=40000
+hData=<ROOT.TH1D object ("pileup") at 0x89f6680>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x771ebe0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=skim_HDC.root
+Opening skim_HDC.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+AHA 45 has a fake channel
+AHA 55 has a fake channel
+AHA 66 has a fake channel
+AHA 404 has a fake channel
+AHA 523 has a fake channel
+AHA 523 has a fake channel
+AHA 544 has a fake channel
+AHA 758 has a fake channel
+AHA 913 has a fake channel
+AHA 939 has a fake channel
+Run time=14.09 s  time/event=14106.2 us
+In outTuple.writeTree() entries=134
+
+Summary for eeee
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeee                25    3.5%
+
+Summary for eeem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          477   66.5%
+eeem                42    8.8%
+
+Summary for eeet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeet                31    4.3%
+
+Summary for eemm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemm                38    5.3%
+
+Summary for eemt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemt                22    3.1%
+
+Summary for eett
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+eett                 9    1.3%
+
+Summary for emem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          477    N/A
+emem                22    4.6%
+
+Summary for emet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          717    N/A
+emet                27    3.8%
+
+Summary for emmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmm                48   10.1%
+
+Summary for emmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmt                32    6.7%
+
+Summary for emtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+emtt                 8    1.7%
+
+Summary for etet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+etet                 8    1.1%
+
+Summary for etmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmm                33    4.6%
+
+Summary for etmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmt                18    2.5%
+
+Summary for ettt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+ettt                10    1.4%
+
+Summary for mmmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmm                32    4.4%
+
+Summary for mmmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmt                25    3.5%
+
+Summary for mmtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mmtt                 8    1.1%
+
+Summary for mtmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mtmt                14    1.9%
+
+Summary for mttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mttt                 8    1.1%
+
+Summary for tttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+# Yields in each channel  {'emem': 22, 'eemm': 38, 'etmt': 18, 'mmmm': 32, 'emtt': 8, 'eeet': 31, 'emmm': 48, 'eemt': 22, 'mttt': 8, 'etet': 8, 'eett': 9, 'eeee': 25, 'emmt': 32, 'mtmt': 14, 'tttt': 0, 'mmtt': 8, 'mmmt': 25, 'eeem': 42, 'emet': 27, 'etmm': 33, 'ettt': 10} Total entries  40000
+# of selected events 978 
+# of 3 lep events 472 
+# of 5 lep evts 12 
+# of passed events 450
+Opening HPlusPlusHMinusMinusHTo4L_M-1000.root as input.  Event category tttt
+nentries=40000 nMax=40000
+hData=<ROOT.TH1D object ("pileup") at 0x8b6dc80>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x8c16ef0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=skim_HDC.root
+Opening skim_HDC.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+AHA 45 has a fake channel
+AHA 55 has a fake channel
+AHA 66 has a fake channel
+AHA 404 has a fake channel
+AHA 523 has a fake channel
+AHA 523 has a fake channel
+AHA 544 has a fake channel
+AHA 758 has a fake channel
+AHA 913 has a fake channel
+AHA 939 has a fake channel
+Run time=14.25 s  time/event=14263.8 us
+In outTuple.writeTree() entries=134
+
+Summary for eeee
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeee                25    3.5%
+
+Summary for eeem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          477   66.5%
+eeem                42    8.8%
+
+Summary for eeet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeet                31    4.3%
+
+Summary for eemm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemm                38    5.3%
+
+Summary for eemt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemt                22    3.1%
+
+Summary for eett
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+eett                 9    1.3%
+
+Summary for emem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          477    N/A
+emem                22    4.6%
+
+Summary for emet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          717    N/A
+emet                27    3.8%
+
+Summary for emmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmm                48   10.1%
+
+Summary for emmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmt                32    6.7%
+
+Summary for emtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+emtt                 8    1.7%
+
+Summary for etet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+etet                 8    1.1%
+
+Summary for etmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmm                33    4.6%
+
+Summary for etmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmt                18    2.5%
+
+Summary for ettt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+ettt                10    1.4%
+
+Summary for mmmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmm                32    4.4%
+
+Summary for mmmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmt                25    3.5%
+
+Summary for mmtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mmtt                 8    1.1%
+
+Summary for mtmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mtmt                14    1.9%
+
+Summary for mttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mttt                 8    1.1%
+
+Summary for tttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+# Yields in each channel  {'emem': 22, 'eemm': 38, 'etmt': 18, 'mmmm': 32, 'emtt': 8, 'eeet': 31, 'emmm': 48, 'eemt': 22, 'mttt': 8, 'etet': 8, 'eett': 9, 'eeee': 25, 'emmt': 32, 'mtmt': 14, 'tttt': 0, 'mmtt': 8, 'mmmt': 25, 'eeem': 42, 'emet': 27, 'etmm': 33, 'ettt': 10} Total entries  40000
+# of selected events 978 
+# of 3 lep events 472 
+# of 5 lep evts 12 
+# of passed events 450
+Opening HPlusPlusHMinusMinusHTo4L_M-1000.root as input.  Event category tttt
+nentries=40000 nMax=40000
+hData=<ROOT.TH1D object ("pileup") at 0x7869c50>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x78deb10>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=skim_HDC.root
+Opening skim_HDC.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+AHA 45 has a fake channel
+AHA 55 has a fake channel
+AHA 66 has a fake channel
+AHA 404 has a fake channel
+AHA 523 has a fake channel
+AHA 523 has a fake channel
+AHA 544 has a fake channel
+AHA 758 has a fake channel
+AHA 913 has a fake channel
+AHA 939 has a fake channel
+Run time=14.18 s  time/event=14198.6 us
+In outTuple.writeTree() entries=134
+
+Summary for eeee
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeee                25    3.5%
+
+Summary for eeem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          477   66.5%
+eeem                42    8.8%
+
+Summary for eeet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeet                31    4.3%
+
+Summary for eemm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemm                38    5.3%
+
+Summary for eemt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemt                22    3.1%
+
+Summary for eett
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+eett                 9    1.3%
+
+Summary for emem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          477    N/A
+emem                22    4.6%
+
+Summary for emet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          717    N/A
+emet                27    3.8%
+
+Summary for emmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmm                48   10.1%
+
+Summary for emmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmt                32    6.7%
+
+Summary for emtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+emtt                 8    1.7%
+
+Summary for etet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+etet                 8    1.1%
+
+Summary for etmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmm                33    4.6%
+
+Summary for etmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmt                18    2.5%
+
+Summary for ettt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+ettt                10    1.4%
+
+Summary for mmmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmm                32    4.4%
+
+Summary for mmmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmt                25    3.5%
+
+Summary for mmtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mmtt                 8    1.1%
+
+Summary for mtmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mtmt                14    1.9%
+
+Summary for mttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mttt                 8    1.1%
+
+Summary for tttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+# Yields in each channel  {'emem': 22, 'eemm': 38, 'etmt': 18, 'mmmm': 32, 'emtt': 8, 'eeet': 31, 'emmm': 48, 'eemt': 22, 'mttt': 8, 'etet': 8, 'eett': 9, 'eeee': 25, 'emmt': 32, 'mtmt': 14, 'tttt': 0, 'mmtt': 8, 'mmmt': 25, 'eeem': 42, 'emet': 27, 'etmm': 33, 'ettt': 10} Total entries  40000
+# of selected events 978 
+# of 3 lep events 472 
+# of 5 lep evts 12 
+# of passed events 450
+Opening HPlusPlusHMinusMinusHTo4L_M-1000.root as input.  Event category tttt
+nentries=40000 nMax=40000
+hData=<ROOT.TH1D object ("pileup") at 0x7416530>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x74ea2a0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=skim_HDC.root
+Opening skim_HDC.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+AHA 45 has a fake channel
+AHA 55 has a fake channel
+AHA 66 has a fake channel
+AHA 404 has a fake channel
+AHA 523 has a fake channel
+AHA 523 has a fake channel
+AHA 544 has a fake channel
+AHA 758 has a fake channel
+AHA 913 has a fake channel
+AHA 939 has a fake channel
+Run time=14.46 s  time/event=14475.1 us
+In outTuple.writeTree() entries=134
+
+Summary for eeee
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeee                25    3.5%
+
+Summary for eeem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          477   66.5%
+eeem                42    8.8%
+
+Summary for eeet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeet                31    4.3%
+
+Summary for eemm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemm                38    5.3%
+
+Summary for eemt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemt                22    3.1%
+
+Summary for eett
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+eett                 9    1.3%
+
+Summary for emem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          477    N/A
+emem                22    4.6%
+
+Summary for emet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          717    N/A
+emet                27    3.8%
+
+Summary for emmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmm                48   10.1%
+
+Summary for emmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmt                32    6.7%
+
+Summary for emtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+emtt                 8    1.7%
+
+Summary for etet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+etet                 8    1.1%
+
+Summary for etmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmm                33    4.6%
+
+Summary for etmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmt                18    2.5%
+
+Summary for ettt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+ettt                10    1.4%
+
+Summary for mmmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmm                32    4.4%
+
+Summary for mmmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmt                25    3.5%
+
+Summary for mmtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mmtt                 8    1.1%
+
+Summary for mtmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mtmt                14    1.9%
+
+Summary for mttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mttt                 8    1.1%
+
+Summary for tttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+# Yields in each channel  {'emem': 22, 'eemm': 38, 'etmt': 18, 'mmmm': 32, 'emtt': 8, 'eeet': 31, 'emmm': 48, 'eemt': 22, 'mttt': 8, 'etet': 8, 'eett': 9, 'eeee': 25, 'emmt': 32, 'mtmt': 14, 'tttt': 0, 'mmtt': 8, 'mmmt': 25, 'eeem': 42, 'emet': 27, 'etmm': 33, 'ettt': 10} Total entries  40000
+# of selected events 978 
+# of 3 lep events 472 
+# of 5 lep evts 12 
+# of passed events 450
+Opening HPlusPlusHMinusMinusHTo4L_M-1000.root as input.  Event category tttt
+nentries=40000 nMax=40000
+hData=<ROOT.TH1D object ("pileup") at 0x89c2520>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x8a3d5d0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=skim_HDC.root
+Opening skim_HDC.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+AHA 45 has a fake channel
+AHA 55 has a fake channel
+AHA 66 has a fake channel
+AHA 404 has a fake channel
+AHA 523 has a fake channel
+AHA 523 has a fake channel
+AHA 544 has a fake channel
+AHA 758 has a fake channel
+AHA 913 has a fake channel
+AHA 939 has a fake channel
+Run time=14.22 s  time/event=14238.5 us
+In outTuple.writeTree() entries=134
+
+Summary for eeee
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeee                25    3.5%
+
+Summary for eeem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          477   66.5%
+eeem                42    8.8%
+
+Summary for eeet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeet                31    4.3%
+
+Summary for eemm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemm                38    5.3%
+
+Summary for eemt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemt                22    3.1%
+
+Summary for eett
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+eett                 9    1.3%
+
+Summary for emem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          477    N/A
+emem                22    4.6%
+
+Summary for emet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          717    N/A
+emet                27    3.8%
+
+Summary for emmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmm                48   10.1%
+
+Summary for emmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmt                32    6.7%
+
+Summary for emtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+emtt                 8    1.7%
+
+Summary for etet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+etet                 8    1.1%
+
+Summary for etmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmm                33    4.6%
+
+Summary for etmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmt                18    2.5%
+
+Summary for ettt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+ettt                10    1.4%
+
+Summary for mmmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmm                32    4.4%
+
+Summary for mmmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmt                25    3.5%
+
+Summary for mmtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mmtt                 8    1.1%
+
+Summary for mtmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mtmt                14    1.9%
+
+Summary for mttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mttt                 8    1.1%
+
+Summary for tttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+# Yields in each channel  {'emem': 22, 'eemm': 38, 'etmt': 18, 'mmmm': 32, 'emtt': 8, 'eeet': 31, 'emmm': 48, 'eemt': 22, 'mttt': 8, 'etet': 8, 'eett': 9, 'eeee': 25, 'emmt': 32, 'mtmt': 14, 'tttt': 0, 'mmtt': 8, 'mmmt': 25, 'eeem': 42, 'emet': 27, 'etmm': 33, 'ettt': 10} Total entries  40000
+# of selected events 978 
+# of 3 lep events 472 
+# of 5 lep evts 12 
+# of passed events 450
+Opening HPlusPlusHMinusMinusHTo4L_M-1000.root as input.  Event category tttt
+nentries=40000 nMax=40000
+hData=<ROOT.TH1D object ("pileup") at 0x83f0520>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x84a6760>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=skim_HDC.root
+Opening skim_HDC.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+AHA 45 has a fake channel
+AHA 55 has a fake channel
+AHA 66 has a fake channel
+AHA 404 has a fake channel
+AHA 523 has a fake channel
+AHA 523 has a fake channel
+AHA 544 has a fake channel
+AHA 758 has a fake channel
+AHA 913 has a fake channel
+AHA 939 has a fake channel
+Run time=14.03 s  time/event=14042.1 us
+In outTuple.writeTree() entries=134
+
+Summary for eeee
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeee                25    3.5%
+
+Summary for eeem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          477   66.5%
+eeem                42    8.8%
+
+Summary for eeet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeet                31    4.3%
+
+Summary for eemm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemm                38    5.3%
+
+Summary for eemt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemt                22    3.1%
+
+Summary for eett
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+eett                 9    1.3%
+
+Summary for emem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          477    N/A
+emem                22    4.6%
+
+Summary for emet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          717    N/A
+emet                27    3.8%
+
+Summary for emmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmm                48   10.1%
+
+Summary for emmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmt                32    6.7%
+
+Summary for emtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+emtt                 8    1.7%
+
+Summary for etet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+etet                 8    1.1%
+
+Summary for etmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmm                33    4.6%
+
+Summary for etmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmt                18    2.5%
+
+Summary for ettt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+ettt                10    1.4%
+
+Summary for mmmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmm                32    4.4%
+
+Summary for mmmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmt                25    3.5%
+
+Summary for mmtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mmtt                 8    1.1%
+
+Summary for mtmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mtmt                14    1.9%
+
+Summary for mttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mttt                 8    1.1%
+
+Summary for tttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+# Yields in each channel  {'emem': 22, 'eemm': 38, 'etmt': 18, 'mmmm': 32, 'emtt': 8, 'eeet': 31, 'emmm': 48, 'eemt': 22, 'mttt': 8, 'etet': 8, 'eett': 9, 'eeee': 25, 'emmt': 32, 'mtmt': 14, 'tttt': 0, 'mmtt': 8, 'mmmt': 25, 'eeem': 42, 'emet': 27, 'etmm': 33, 'ettt': 10} Total entries  40000
+# of selected events 978 
+# of 3 lep events 472 
+# of 5 lep evts 12 
+# of passed events 450
+Opening HPlusPlusHMinusMinusHTo4L_M-1000.root as input.  Event category tttt
+nentries=40000 nMax=40000
+hData=<ROOT.TH1D object ("pileup") at 0x7d83b60>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x64483e0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=skim_HDC.root
+Opening skim_HDC.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+AHA 45 has a fake channel
+AHA 55 has a fake channel
+AHA 66 has a fake channel
+AHA 404 has a fake channel
+AHA 523 has a fake channel
+AHA 523 has a fake channel
+AHA 544 has a fake channel
+AHA 758 has a fake channel
+AHA 913 has a fake channel
+AHA 939 has a fake channel
+Run time=14.24 s  time/event=14258.2 us
+In outTuple.writeTree() entries=134
+
+Summary for eeee
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeee                25    3.5%
+
+Summary for eeem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          477   66.5%
+eeem                42    8.8%
+
+Summary for eeet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+eeet                31    4.3%
+
+Summary for eemm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemm                38    5.3%
+
+Summary for eemt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+eemt                22    3.1%
+
+Summary for eett
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+eett                 9    1.3%
+
+Summary for emem
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          477    N/A
+emem                22    4.6%
+
+Summary for emet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+Lep_Trig2          717    N/A
+emet                27    3.8%
+
+Summary for emmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmm                48   10.1%
+
+Summary for emmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          477   66.2%
+emmt                32    6.7%
+
+Summary for emtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          477   48.8%
+emtt                 8    1.7%
+
+Summary for etet
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+Lep_Trig2          717    N/A
+etet                 8    1.1%
+
+Summary for etmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmm                33    4.6%
+
+Summary for etmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig2          720   73.6%
+Lep_Trig1          717   99.6%
+etmt                18    2.5%
+
+Summary for ettt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          717   73.3%
+ettt                10    1.4%
+
+Summary for mmmm
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmm                32    4.4%
+
+Summary for mmmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mmmt                25    3.5%
+
+Summary for mmtt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mmtt                 8    1.1%
+
+Summary for mtmt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+Lep_Trig2          720    N/A
+mtmt                14    1.9%
+
+Summary for mttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+Lep_Trig1          720   73.6%
+mttt                 8    1.1%
+
+Summary for tttt
+All                999    N/A
+InJSON             999    N/A
+METfilter          978   97.9%
+# Yields in each channel  {'emem': 22, 'eemm': 38, 'etmt': 18, 'mmmm': 32, 'emtt': 8, 'eeet': 31, 'emmm': 48, 'eemt': 22, 'mttt': 8, 'etet': 8, 'eett': 9, 'eeee': 25, 'emmt': 32, 'mtmt': 14, 'tttt': 0, 'mmtt': 8, 'mmmt': 25, 'eeem': 42, 'emet': 27, 'etmm': 33, 'ettt': 10} Total entries  40000
+# of selected events 978 
+# of 3 lep events 472 
+# of 5 lep evts 12 
+# of passed events 450
