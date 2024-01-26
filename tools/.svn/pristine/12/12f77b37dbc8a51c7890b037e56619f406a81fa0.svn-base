@@ -1,0 +1,47 @@
+# this is a comment
+keep * # start with all
+drop *AK8*
+drop Chs*
+drop Fat*
+drop IsoTrack*
+drop Soft*
+drop Sub*
+drop *ZeroBias*
+drop *Jpsi*
+drop *Upsilon*
+drop L1*
+keep *PreFir*
+drop Calo*
+drop *TkMET*
+drop *Zero*
+drop HTXS*
+drop boosted*
+drop *Fsr*
+drop *LowPt*
+drop *GenDresse*
+drop *Soft*
+drop *jesRelativ*
+drop *jesBBEC1*
+drop *jesFlavorQCD*
+drop *jesHF*
+drop *jesEC2*
+drop *jesAbsolute*
+drop *photon*
+keep *Tau*
+keep Tau_*
+keep nTau
+drop HLT*
+### ONLY FOR GJETS
+keep HLT_Photon*HE10*
+#keep *Photon*
+#keep *photon*
+drop *PPS*
+drop *HLT_Ele30WP60*
+drop *HLT*MET30*
+keep *genWeight*
+keep *DeepMET*
+drop *TOTEM*
+drop *Cosmics*
+drop L1*
+drop HTXS*
+drop Sub*
