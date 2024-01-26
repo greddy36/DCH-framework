@@ -1,0 +1,11 @@
+universe = vanilla
+Executable = all_HppMM500_001.sh
+Output = all_HppMM500_001.out
+Error = all_HppMM500_001.err
+Log = all_HppMM500_001.log
+transfer_input_files = /eos/uscms/store/user/greddy/KSU/CMSSW_10_6_5/src//DCH/DCH.py, /eos/uscms/store/user/greddy/KSU/CMSSW_10_6_5/src//MC/pileup_2018UL_MC.root, /eos/uscms/store/user/greddy/KSU/CMSSW_10_6_5/src//MC/pileup_2018UL_data.root, /eos/uscms/store/user/greddy/KSU/CMSSW_10_6_5/src//MC/cuts_DCH_2018.yaml, /eos/uscms/store/user/greddy/KSU/CMSSW_10_6_5/src//funcs/tauFunDCH.py, /eos/uscms/store/user/greddy/KSU/CMSSW_10_6_5/src//funcs/generalFunctions.py, /eos/uscms/store/user/greddy/KSU/CMSSW_10_6_5/src//funcs/outTuple.py, /eos/uscms/store/user/greddy/KSU/CMSSW_10_6_5/src//funcs/Weights.py, /eos/uscms/store/user/greddy/KSU/CMSSW_10_6_5/src//tools/Electron_RunUL2016postVFP_Ele25_EtaLt2p1.root, /eos/uscms/store/user/greddy/KSU/CMSSW_10_6_5/src//tools/Electron_RunUL2016preVFP_Ele25_EtaLt2p1.root,  /eos/uscms/store/user/greddy/KSU/CMSSW_10_6_5/src//tools/Electron_RunUL2017_Ele35.root, /eos/uscms/store/user/greddy/KSU/CMSSW_10_6_5/src//tools/Electron_RunUL2018_Ele35.root, /eos/uscms/store/user/greddy/KSU/CMSSW_10_6_5/src//tools/muon_Z_2018.json.gz, /eos/uscms/store/user/greddy/KSU/CMSSW_10_6_5/src//tools/electron_2018.json.gz, /eos/uscms/store/user/greddy/KSU/CMSSW_10_6_5/src//tools/photon_2018.json.gz, /eos/uscms/store/user/greddy/KSU/CMSSW_10_6_5/src//tools/correctionlib.tar.gz
+priority = 2
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+x509userproxy = $ENV(X509_USER_PROXY)
+Queue 1
