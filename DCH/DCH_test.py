@@ -10,10 +10,10 @@ from math import sqrt, pi
 
 # import from ZH_Run2/funcs/
 sys.path.insert(1,'../funcs/')
-import tauFunDCH as TF
-import generalFunctions as GF 
+import tauFunDCH_test as TF
+import generalFunctions_test as GF 
 import Weights 
-import outTuple
+import outTuple_test
 import time
 
 def getArgs() :
@@ -40,12 +40,12 @@ def getArgs() :
 args = getArgs()
 print("args={0:s}".format(str(args)))
 maxPrint = args.maxPrint 
-file = open(args.nickName+'_'+args.category+'.csv', 'a')
+file = open(args.nickName+'_'+args.category+'.txt', 'a')
 sys.stdout = file
 
 cutCounter = {}
 cutCounterGenWeight = {}
-
+cutflow = {}
 doJME  = args.doSystematics.lower() == 'true' or args.doSystematics.lower() == 'yes' or args.doSystematics == '1'
 
 #doJME = True
@@ -72,11 +72,14 @@ cats = ['eeee','eeem','eeet','eemm','eemt','eett',
                              'mmmm','mmmt','mmtt',
                                     'mtmt','mttt',
                                            'tttt']#ggr
-
-#cats = ['eeee','eeem','eeet','eemm','eemt','eett','mmmm','mmem','mmmt','mmtt','mmet']
+#cats = ['etet','eeet','eett']
 for cat in cats : 
     cutCounter[cat] = GF.cutCounter()
     cutCounterGenWeight[cat] = GF.cutCounter()
+
+cutflow['ele'] = GF.cutCounter()
+cutflow['muon'] = GF.cutCounter()
+cutflow['tau'] = GF.cutCounter()
 
 inFileName = args.inFileName
 print("Opening {0:s} as input.  Event category {1:s}".format(inFileName,cat))
@@ -208,7 +211,7 @@ if not MC :
 
 #sysT = ["Central"]
 doSyst= False
-outTuple = outTuple.outTuple(outFileName, era, doSyst, sysT, isMC)
+outTuple = outTuple_test.outTuple(outFileName, era, doSyst, sysT, isMC)
 
 
 
@@ -232,12 +235,13 @@ pass_evts = 0
 for cat in cats:
     cat_yield[cat] = 0
     n_lepton[cat]=[0,0,0]
+
 for count, e in enumerate( inTree) :
+    if count != 70957: continue 
     if count % countMod == 0 :
         print("Count={0:d}".format(count))
         if count >= 10000 : countMod = 10000
     if count == nMax : break    
-    #if count !=172213: continue    
     printOn=False
 
     '''for cat in cats : 
@@ -337,7 +341,7 @@ for count, e in enumerate( inTree) :
 
     if 'Hpp' in  args.nickName :
        #if not 't' in GF.printGenDecayMode(e): continue
-       if not GF.printGenDecayMode(e)=='mmmm': continue
+       if not GF.printGenDecayMode(e)=='eeee': continue
        #GF.printMC(e)
        #print 'Gen channel is', GF.printGenDecayMode(e)
     else:
@@ -370,10 +374,9 @@ for count, e in enumerate( inTree) :
 		for i, j in enumerate (philist): 
 		    outTuple.list_of_arrays[i+len(metlist)][0] = philist[i]
 
-
-	goodElectronList = TF.makeGoodElectronListDCH(e)
-	goodMuonList = TF.makeGoodMuonListDCH(e)
-        goodTauList = TF.makeGoodTauList(e)
+	goodElectronList = TF.makeGoodElectronListDCH(e,cutflow['ele'])
+	goodMuonList = TF.makeGoodMuonListDCH(e,cutflow['muon'])
+        goodTauList = TF.makeGoodTauList(e,cutflow['tau'])
         dupl = 0 #to count duplicate channels
         selected_evts += 1
         if len(goodElectronList)+len(goodMuonList)+len(goodTauList) == 5:
@@ -507,16 +510,16 @@ for count, e in enumerate( inTree) :
                 #print "DCH2 charge:",netS
 
             pairList2 = TF.make4Vec(bestDCH2,dch2,e)
-            '''if GF.printGenDecayModeBkg(e,bkg=args.nickName) == args.category :
+            if 1>0:# GF.printGenDecayModeBkg(e,bkg=args.nickName) == args.category :
                 print count, cat, 'e:', len(goodElectronList), 'm:',len(goodMuonList), 't:',len(goodTauList)
                 GF.printMC(e)
                 for i in goodElectronList:
-                    print 'Ele ', i, GF.genMatch(e,i,'e')
+                    print 'Ele ',e.Electron_charge[i], i, GF.genMatch(e,i,'e'),e.Electron_pt[i],e.Electron_eta[i],e.Electron_phi[i]
                 for i in goodMuonList:
-                    print 'Mu ', i, GF.genMatch(e,i,'m')
+                    print 'Mu ',e.Muon_charge[i], i, GF.genMatch(e,i,'m'),e.Muon_pt[i],e.Muon_eta[i],e.Muon_phi[i]
                 for i in goodTauList:
-                    print 'Tau ', i, GF.genMatch(e,i,'t')
-            '''
+                    print 'Tau ',e.Tau_charge[i], i, GF.genMatch(e,i,'t'),e.Tau_pt[i],e.Tau_eta[i],e.Tau_phi[i]
+           
             cat_yield[cat] += 1
             n_lepton[cat] = np.array(n_lepton[cat]) + np.array([len(goodElectronList), len(goodMuonList), len(goodTauList)])
 
@@ -600,11 +603,11 @@ hLabels.append('channel')
 hCutFlow=[]
 hCutFlowW=[]
 
-
+'''
 outTuple.writeTree()
 fW = TFile( outFileName, 'update' )
 fW.cd()
-
+'''
 #print '------------------------->',fW, outFileName
 for icat,cat in enumerate(cats) :
     print('\nSummary for {0:s}'.format(cat))
@@ -639,8 +642,17 @@ for icat,cat in enumerate(cats) :
 '''
 if not MC : CJ.printJSONsummary()
 
-#print '# Yields in each channel ', cat_yield, 'Total entries ',nentries
+print '# Yields in each channel ', cat_yield, 'Total entries ',nentries
 #print 'n_leptons in each channel [e, mu, tau]',n_lepton
-#print '# of selected events', selected_evts,'\n# of 3 lep events', evts_3lep, '\n# of 5 lep evts',evts_5lep,'\n# of passed events',pass_evts 
-print '# Yields in each channel ', cat_yield,selected_evts,evts_3lep,evts_5lep,pass_evts
+cutflow_ele   = TH1D( 'cutflow_ele', 'Good Ele cutflow', 15, 0., 15 )
+cutflow_mu   = TH1D( 'cutflow_mu', 'Good Muon cutflow', 15, 0., 15 )
+cutflow_tau   = TH1D( 'cutflow_tau', 'Good Tau cutflow', 15, 0., 15 )
+for icut in range(0,8): 
+   cutflow_ele.Fill(icut,cutflow['ele'].getYield()[icut])
+   #cutflow_mu.Fill(icut,cutflow['muon'].getYield()[icut])
+   cutflow_tau.Fill(icut,cutflow['tau'].getYield()[icut])
+cutflow_ele.Write()
+cutflow_mu.Write()
+cutflow_tau.Write()
+print '# of selected events', selected_evts,'\n# of 3 lep events', evts_3lep, '\n# of 5 lep evts',evts_5lep,'\n# of passed events',pass_evts 
 file.close()  # Close the file

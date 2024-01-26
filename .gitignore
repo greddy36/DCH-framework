@@ -2,6 +2,8 @@ DCH/HPlusPlusHMinusMinusHTo*.root
 DCH/*csv
 DCH/*/*csv
 */*.pyc
+DCH/Csv
+DCH/*csv
 DCH/*.log
 DCH/*.root
 MC/*

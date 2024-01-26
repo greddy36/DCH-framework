@@ -40,13 +40,13 @@ def genMatch(entry, jl,lep_type):#matches e/m/t to a gen paricle regardless of p
     idx_match, dR_min, dPt_min = -99,99,99999
     if lep_type == 'e':
         for i in range(entry.nGenPart):
-            if entry.GenPart_status[i] != 1: continue#make sure to look at visible gen particle
+            if entry.GenPart_status[i] != 1 or entry.GenPart_pdgId[i] == 22: continue#make sure to look at visible gen particle and also not photon
             dPt = abs(entry.GenPart_pt[i] - entry.Electron_pt[jl])
             dPhi = min(abs(entry.GenPart_phi[i] - entry.Electron_phi[jl]),
                        2.0*pi-abs(entry.GenPart_phi[i] - entry.Electron_phi[jl]))
             dEta = abs(entry.GenPart_eta[i] - entry.Electron_eta[jl])
             dR = sqrt(dPhi**2 + dEta**2)
-            if dR <= dR_min and dPt <= dPt_min:
+            if dR <= dR_min:# and dPt <= dPt_min:
                 idx_match, dR_min, dPt_min = i, dR, dPt
     if lep_type == 'm':
         for i in range(entry.nGenPart):
@@ -56,7 +56,7 @@ def genMatch(entry, jl,lep_type):#matches e/m/t to a gen paricle regardless of p
                        2.0*pi-abs(entry.GenPart_phi[i] - entry.Muon_phi[jl]))
             dEta = abs(entry.GenPart_eta[i] - entry.Muon_eta[jl])
             dR = sqrt(dPhi**2 + dEta**2)
-            if dR <= dR_min and dPt <= dPt_min:
+            if dR <= dR_min:# and dPt <= dPt_min:
                 idx_match, dR_min, dPt_min = i, dR, dPt
     if lep_type == 't':
         for i in range(entry.nGenPart):
@@ -66,9 +66,9 @@ def genMatch(entry, jl,lep_type):#matches e/m/t to a gen paricle regardless of p
                        2.0*pi-abs(entry.GenPart_phi[i] - entry.Tau_phi[jl]))
             dEta = abs(entry.GenPart_eta[i] - entry.Tau_eta[jl])
             dR = sqrt(dPhi**2 + dEta**2)
-            if dR <= dR_min and dPt <= dPt_min:
+            if dR <= dR_min:# and dPt <= dPt_min:
                 idx_match, dR_min, dPt_min = i, dR, dPt
-    return idx_match
+    return idx_match, dR_min, dPt_min
 
 def genMatchTau(entry, jt, decayMode=''):
     """ Classification: genMatching

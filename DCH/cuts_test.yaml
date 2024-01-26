@@ -14,7 +14,7 @@ tt:
   lt_DR: 0.5
   tt_DR: 0.5
   ll_DR: 0.3
-  tau_vJet: 16
+  tau_vJet: 4
   tau_vMu: 2
   tau_vEle: 2
 mt:
@@ -24,7 +24,7 @@ mt:
   mu_dxy: 0.045
   mu_dz: 0.2
   mu_iso_f: true
-  mu_iso: 0.2
+  mu_iso : 0.2
   mt_DR: 0.5
   mu_type: true
   tau_pt: 20
@@ -37,7 +37,7 @@ mt:
   tau_dz: 0.2
   lt_DR: 0.5
   ll_DR: 0.3
-  tau_vJet: 16
+  tau_vJet: 4
   tau_vMu: 2
   tau_vEle: 2
 
@@ -48,7 +48,7 @@ mmoverlap:
   mu_dxy: 0.045
   mu_dz: 0.2
   mu_iso_f: true
-  mu_iso: 0.2
+  mu_iso : 0.2
   mu_type: true
   ll_DR: 0.3
 
@@ -71,7 +71,7 @@ em:
   ele_lostHits: 1
   ele_convVeto: true
   ele_ID: true
-  ele_iso_f: true
+  ele_iso_f: false
   ele_iso: 0.2
 et:
   ele_dxy: 0.045
@@ -92,9 +92,9 @@ et:
   tau_decayMode: true
   tau_dz: 0.2
   tt_DR: 0.5
-  ele_iso_f: true
+  ele_iso_f: false
   ele_iso: 0.2
-  tau_vJet: 16
+  tau_vJet: 4
   tau_vMu: 2
   tau_vEle: 2
 eeoverlap:
@@ -106,7 +106,7 @@ eeoverlap:
   ele_pt: 20
   ele_eta: 2.5
   ll_DR: 0.3
-  ele_iso_f: true
+  ele_iso_f: false
   ele_iso: 0.2
 mm:
   mu_pt: 20
@@ -127,7 +127,7 @@ ee:
   ele_convVeto: true
   ele_ID: true
   ele_iso_f : false
-  ele_iso: 0.2
+  ele_iso : 0.3
   ll_DR: 0.3
 mextra:
   mu_pt: 20
@@ -148,5 +148,5 @@ eextra:
   ele_convVeto: true
   ele_ID: true
   ele_iso_f : false
-  ele_iso: 0.2
+  ele_iso : 0.3
   ll_DR: 0.3
