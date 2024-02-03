@@ -40,8 +40,8 @@ def getArgs() :
 args = getArgs()
 print("args={0:s}".format(str(args)))
 maxPrint = args.maxPrint 
-file = open(args.nickName+'_'+args.category+'.txt', 'a')
-sys.stdout = file
+#file = open(args.nickName+'_'+args.category+'.txt', 'a')
+#sys.stdout = file
 
 cutCounter = {}
 cutCounterGenWeight = {}
@@ -226,7 +226,7 @@ for i,j in enumerate(outTuple.allsystMET):
 
 
 
-Weights=Weights.Weights(args.year)
+#Weights=Weights.Weights(args.year)
 
 cat_yield = {} #empty dictoinary
 n_lepton = {}
@@ -237,14 +237,14 @@ for cat in cats:
     n_lepton[cat]=[0,0,0]
 
 for count, e in enumerate( inTree) :
-    if count != 70957: continue 
+    #if count != 70957: continue #to run only over a single event
     if count % countMod == 0 :
         print("Count={0:d}".format(count))
         if count >= 10000 : countMod = 10000
     if count == nMax : break    
     printOn=False
 
-    '''for cat in cats : 
+    for cat in cats : 
         cutCounter[cat].count('All')
 	if  MC :   cutCounterGenWeight[cat].countGenWeight('All', e.genWeight)
  
@@ -263,7 +263,6 @@ for count, e in enumerate( inTree) :
     for cat in cats: 
         cutCounter[cat].count('METfilter') 
 	if  MC :   cutCounterGenWeight[cat].countGenWeight('METfilter', e.genWeight)
-    '''
 
     if not TF.goodTrigger(e,args.year) and printOn :   print cat, e.run, e.luminosityBlock,  e.event, 'Triggers not present...'
     if not TF.goodTrigger(e, args.year) : continue
@@ -338,7 +337,7 @@ for count, e in enumerate( inTree) :
 	    for j in range(e.nTau):
 		tauMass.append(e.Tau_mass[j])
 		tauPt.append(e.Tau_pt[j])
-
+    '''
     if 'Hpp' in  args.nickName :
        #if not 't' in GF.printGenDecayMode(e): continue
        if not GF.printGenDecayMode(e)=='eeee': continue
@@ -348,7 +347,7 @@ for count, e in enumerate( inTree) :
        if not GF.printGenDecayModeBkg(e,bkg=args.nickName) == args.category : continue
        #GF.printMC(e)
        #print 'Gen channel is', GF.printGenDecayMode(e)
-
+    '''
     for isyst, systematic in enumerate(sysT) : 
 	if isyst>0 : #use the default pT/mass for Ele/Muon/Taus before doing any systematic
 	#if 'Central' in systematic or 'prong' in systematic : #use the default pT/mass for Ele/Muon/Taus before doing the Central or the tau_scale systematics ; otherwise keep the correction
@@ -364,7 +363,7 @@ for count, e in enumerate( inTree) :
                 e.Tau_mass[j] = tauMass[j]
 
         
-	if isMC: 
+	'''if isMC: 
 
 	    met_pt, met_phi, metlist, philist = Weights.applyES(e, args.year, systematic, metPtPhi, allMET)
 	    
@@ -373,7 +372,7 @@ for count, e in enumerate( inTree) :
 		    outTuple.list_of_arrays[i][0] = metlist[i]
 		for i, j in enumerate (philist): 
 		    outTuple.list_of_arrays[i+len(metlist)][0] = philist[i]
-
+        ''' 
 	goodElectronList = TF.makeGoodElectronListDCH(e,cutflow['ele'])
 	goodMuonList = TF.makeGoodMuonListDCH(e,cutflow['muon'])
         goodTauList = TF.makeGoodTauList(e,cutflow['tau'])
@@ -394,7 +393,7 @@ for count, e in enumerate( inTree) :
             evt_charge += e.Tau_charge[i]
         #if evt_charge !=0: 
 	#    continue
-        print 'Event: ', count, ' #e: ',len(goodElectronList), ' #mu: ',len(goodMuonList), ' #t: ', len(goodTauList), '--> Good candidates'
+        #print 'Event: ', count, ' #e: ',len(goodElectronList), ' #mu: ',len(goodMuonList), ' #t: ', len(goodTauList), '--> Good candidates'
         #print 'Event: ', count, ' #e: ',e.nElectron, ' #mu: ',e.nMuon, ' #t: ', e.nTau, '--> All reco'
         #its faster to modify the pair functions to use these good lists rather than passing all the candidates through the cuts. 
 	for cat in cats :
@@ -510,7 +509,7 @@ for count, e in enumerate( inTree) :
                 #print "DCH2 charge:",netS
 
             pairList2 = TF.make4Vec(bestDCH2,dch2,e)
-            if 1>0:# GF.printGenDecayModeBkg(e,bkg=args.nickName) == args.category :
+            '''if 1>0:# GF.printGenDecayModeBkg(e,bkg=args.nickName) == args.category :
                 print count, cat, 'e:', len(goodElectronList), 'm:',len(goodMuonList), 't:',len(goodTauList)
                 GF.printMC(e)
                 for i in goodElectronList:
@@ -519,7 +518,7 @@ for count, e in enumerate( inTree) :
                     print 'Mu ',e.Muon_charge[i], i, GF.genMatch(e,i,'m'),e.Muon_pt[i],e.Muon_eta[i],e.Muon_phi[i]
                 for i in goodTauList:
                     print 'Tau ',e.Tau_charge[i], i, GF.genMatch(e,i,'t'),e.Tau_pt[i],e.Tau_eta[i],e.Tau_phi[i]
-           
+            '''
             cat_yield[cat] += 1
             n_lepton[cat] = np.array(n_lepton[cat]) + np.array([len(goodElectronList), len(goodMuonList), len(goodTauList)])
 
@@ -533,9 +532,9 @@ for count, e in enumerate( inTree) :
                print 'AHA',count,'has a fake channel'
                continue
             pass_evts += 1
-            continue
-            '''
-	    if len(bestTauPair) < 1 : 
+            #continue
+
+	    '''if len(bestTauPair) < 1 : 
 		if unique :
 		    print("Tau Pair Fail: Event ID={0:d} cat={1:s}".format(e.event,cat))
 		    bestTauPair = TF.getBestEMuTauPair(e,dch=dch1,pairList=LeptV,printOn=True)#change bestTauPair to bestDCH 
@@ -550,7 +549,6 @@ for count, e in enumerate( inTree) :
 		    GF.printEvent(e)
 		    GF.printMC(e)
 		#continue
-            
 	    if len(bestTauPair) > 1 :
 		jt1, jt2 = bestTauPair[0], bestTauPair[1]
 	    else :
@@ -559,6 +557,7 @@ for count, e in enumerate( inTree) :
 	    cutCounter[cat].count("GoodTauPair")
 	    if  MC:   cutCounterGenWeight[cat].countGenWeight('GoodTauPair', e.genWeight)
             '''
+
 	    if MC :
 		outTuple.setWeight(PU.getWeight(e.PV_npvs)) 
 		outTuple.setWeightPU(PU.getWeight(e.Pileup_nPU)) 
@@ -571,10 +570,10 @@ for count, e in enumerate( inTree) :
             #print("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT")#ggr
 
 	    SVFit = False
-            continue	    
+            #continue	    
 	    if not MC : isMC = False
-            if cat[:2] != 'mm' and cat[:2] != 'ee': continue 
-            if cat[2:] !='em' and cat[2:] !='et' and cat[2:] !='mt' and cat[2:] !='tt': continue
+
+            #if cat[2:] !='et' and cat[2:] !='mt' and cat[2:] !='tt': continue
 	    outTuple.Fill(e,SVFit,cat,bestDCH2[0],bestDCH2[1],pairList1[0],pairList1[1],bestDCH1,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
             '''
 	    if maxPrint > 0 :
@@ -589,7 +588,6 @@ for count, e in enumerate( inTree) :
 dT = time.time() - tStart
 print("Run time={0:.2f} s  time/event={1:.1f} us".format(dT,1000000.*dT/count))
 
-'''
 hLabels=[]
 hLabels.append('All')
 hLabels.append('inJSON')
@@ -603,11 +601,9 @@ hLabels.append('channel')
 hCutFlow=[]
 hCutFlowW=[]
 
-'''
 outTuple.writeTree()
 fW = TFile( outFileName, 'update' )
 fW.cd()
-'''
 #print '------------------------->',fW, outFileName
 for icat,cat in enumerate(cats) :
     print('\nSummary for {0:s}'.format(cat))
@@ -622,16 +618,16 @@ for icat,cat in enumerate(cats) :
         hCutFlow[icat].GetXaxis().SetBinLabel(i+1,hLabels[i])
         if MC : hCutFlowW[icat].GetXaxis().SetBinLabel(i+1,hLabels[i])
 
-    for i in range(lcount) :
+    '''for i in range(lcount) :
         #hCutFlow[cat].Fill(1, float(cutCounter[cat].getYield()[i]))
         yields = cutCounter[cat].getYield()[i]
         hCutFlow[icat].Fill(i+1, float(yields))
-
+    
         if MC : 
 	    yieldsW = cutCounterGenWeight[cat].getYieldWeighted()[i]
             hCutFlowW[icat].Fill(i+1, float(yieldsW))
         ##print cutCounter[cat].getYield()[i], i, cutCounter[cat].getLabels()[i]
-
+    '''
        
     hCutFlow[icat].Sumw2()
     hCutFlow[icat].Write()
@@ -639,12 +635,11 @@ for icat,cat in enumerate(cats) :
         hCutFlowW[icat].Sumw2()
         hCutFlowW[icat].Write()
     icat+=1
-'''
 if not MC : CJ.printJSONsummary()
 
 print '# Yields in each channel ', cat_yield, 'Total entries ',nentries
 #print 'n_leptons in each channel [e, mu, tau]',n_lepton
-cutflow_ele   = TH1D( 'cutflow_ele', 'Good Ele cutflow', 15, 0., 15 )
+'''cutflow_ele   = TH1D( 'cutflow_ele', 'Good Ele cutflow', 15, 0., 15 )
 cutflow_mu   = TH1D( 'cutflow_mu', 'Good Muon cutflow', 15, 0., 15 )
 cutflow_tau   = TH1D( 'cutflow_tau', 'Good Tau cutflow', 15, 0., 15 )
 for icut in range(0,8): 
@@ -654,5 +649,6 @@ for icut in range(0,8):
 cutflow_ele.Write()
 cutflow_mu.Write()
 cutflow_tau.Write()
+'''
 print '# of selected events', selected_evts,'\n# of 3 lep events', evts_3lep, '\n# of 5 lep evts',evts_5lep,'\n# of passed events',pass_evts 
-file.close()  # Close the file
+#file.close()  # Close the file
