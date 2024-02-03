@@ -2035,11 +2035,21 @@ def findZee(goodElectronList, entry) :
 
 
 def catToNumber(cat) :
-    number = { 'eeet':1, 'eemt':2, 'eett':3, 'eeem':4, 'mmet':5, 'mmmt':6, 'mmtt':7, 'mmem':8}
+    number = {'eeee':1,'eeem':2,'eeet':3,'eemm':4,'eemt':5,'eett':6,
+               'emem':7,'emet':8,'emmm':9,'emmt':10,'emtt':11,
+                      'etet':12,'etmm':13,'etmt':14,'ettt':15,
+                             'mmmm':16,'mmmt':17,'mmtt':18,
+                                    'mtmt':19,'mttt':20,
+                                           'tttt':21}
     return number[cat]
 
 def numberToCat(number) :
-    cat = { 1:'eeet', 2:'eemt', 3:'eett', 4:'eeem', 5:'mmet', 6:'mmmt', 7:'mmtt', 8:'mmem'}
+    cat = {1:'eeee',2:'eeem',3:'eeet',4:'eemm',5:'eemt',6:'eett',
+               7:'emem',8:'emet',9:'emmm',10:'emmt',11:'emtt',
+                      12:'etet',13:'etmm',14:'etmt',15:'ettt',
+                             16:'mmmm',17:'mmmt',18:'mmtt',
+                                    19:'mtmt',20:'mttt',
+                                           21:'tttt'}
     return cat[number]
 
 

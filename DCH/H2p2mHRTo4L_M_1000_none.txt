@@ -1898,3 +1898,27 @@ METfilter          978   97.9%
 # of 3 lep events 472 
 # of 5 lep evts 12 
 # of passed events 450
+Opening HPlusPlusHMinusMinusHTo4L_M-1000.root as input.  Event category tttt
+nentries=40000 nMax=40000
+hData=<ROOT.TH1D object ("pileup") at 0x795d560>
+Opening MC pileup file = pileup_2017UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2017UL_MC.root") at 0x73095d0>
+sum of pData=1.000000
+sum of pMC=1.000312
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=skim_HDC.root
+Opening skim_HDC.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Opening HPlusPlusHMinusMinusHTo4L_M-1000.root as input.  Event category tttt
+nentries=40000 nMax=40000
+hData=<ROOT.TH1D object ("pileup") at 0x8cf2e10>
+Opening MC pileup file = pileup_2017UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2017UL_MC.root") at 0x8d98660>
+sum of pData=1.000000
+sum of pMC=1.000312
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=skim_HDC.root
+Opening skim_HDC.ntup as output.
+------>systematics list []
+------>jetssystematics list []

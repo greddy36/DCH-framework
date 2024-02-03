@@ -11,6 +11,7 @@ from itertools import combinations
 import os
 import os.path
 import sys
+import generalFunctions as GF
 sys.path.append('../TauPOG')
 
 
@@ -128,9 +129,7 @@ def getTauList(dch, entry, pairList=[],printOn=False, isDCH2=False, signC=0) :
     if printOn  : print 'returning with tauList from getTauList', tauList
     return tauList
 
-
-
-def makeGoodTauList(entry, printOn=False) :
+def makeGoodTauList(entry, cutflow, printOn=False) :
     """ tauFun.makeGoodTauList(): return a list of taus that 
                              pass the basic selection cuts               
     """
@@ -147,24 +146,37 @@ def makeGoodTauList(entry, printOn=False) :
     '''
     for j in range(entry.nTau):    
         # apply tau(h) selections 
-        if entry.Tau_pt[j] < tt['tau_pt']: continue
-        if abs(entry.Tau_eta[j]) > tt['tau_eta']: continue
-        if abs(entry.Tau_dz[j]) > tt['tau_dz']: continue
+        cutflow.count('cut0')
+        if entry.Tau_pt[j] < tt['tau_pt']:
+            cutflow.count('cut1')
+            continue
+        if abs(entry.Tau_eta[j]) > tt['tau_eta']:
+            cutflow.count('cut2')
+            continue
+        if abs(entry.Tau_dz[j]) > tt['tau_dz']:
+            cutflow.count('cut3')
+            continue
         #if not entry.Tau_idDecayModeNewDMs[j]: continue
-	if  entry.Tau_decayMode[j] == 5 or entry.Tau_decayMode[j] == 6 : continue
-        if abs(entry.Tau_charge[j]) != 1: continue
+	if  entry.Tau_decayMode[j] == 5 or entry.Tau_decayMode[j] == 6 :
+            cutflow.count('cut4')
+            continue
+        if abs(entry.Tau_charge[j]) != 1:
+            cutflow.count('cut5')
+            continue
 
         if tt['tau_vJet'] > 0  and not ord(entry.Tau_idDeepTau2017v2p1VSjet[j]) & tt['tau_vJet'] > 0 :
+            cutflow.count('cut6')
             if printOn : print("        fail DeepTau vs. Jet={0:d}".format(ord(entry.Tau_idDeepTau2017v2p1VSjet[j])))
             continue
         if tt['tau_vEle'] > 0 and not ord(entry.Tau_idDeepTau2017v2p1VSe[j]) & tt['tau_vEle'] > 0 :
+            cutflow.count('cut7')
             if printOn : print("        fail DeepTau vs. ele={0:d}".format(ord(entry.Tau_idDeepTau2017v2p1VSe[j])))
             continue
         if tt['tau_vMu'] > 0 and not ord(entry.Tau_idDeepTau2017v2p1VSmu[j]) & tt['tau_vMu'] > 0 :
+            cutflow.count('cut8')
             if printOn : print("        fail DeepTau vs.  mu={0:d}".format(ord(entry.Tau_idDeepTau2017v2p1VSmu[j])))
             continue
         tauList.append(j)
-    
     return tauList
 
 def makeGoodTauListWjets(channel, entry, muIndex,  printOn=False) :
@@ -378,7 +390,7 @@ def checkOverlapMuon(entry,i,j,checkDR=False,printOn=False) :
     
     mt = selections['mmoverlap'] 
     if mt['mu_type'] and (entry.Muon_isGlobal[i] or entry.Muon_isTracker[i]) : 
-	if mt['mu_ID'] and entry.Muon_mediumId[i] : 
+	if mt['mu_ID'] and entry.Muon_tightId[i] : 
 	    if abs(entry.Muon_dxy[i]) < mt['mu_dxy'] :
 		if abs(entry.Muon_dz[i]) < mt['mu_dz']:
 		    if entry.Muon_pt[i] > mt['mu_pt']:
@@ -386,7 +398,7 @@ def checkOverlapMuon(entry,i,j,checkDR=False,printOn=False) :
 			    if  mt['mu_iso_f'] and entry.Muon_pfRelIso04_all[i] < mt['mu_iso']:
 
 				if mt['mu_type'] and (entry.Muon_isGlobal[j] or entry.Muon_isTracker[j]) : 
-				    if mt['mu_ID'] and  entry.Muon_mediumId[j] : 
+				    if mt['mu_ID'] and  entry.Muon_tightId[j] : 
 					if abs(entry.Muon_dxy[j]) < mt['mu_dxy'] :
 					    if abs(entry.Muon_dz[j]) < mt['mu_dz']:
 						if entry.Muon_pt[j] > mt['mu_pt']:
@@ -444,9 +456,9 @@ def getMuTauPairs(entry,dch='mt',pairList=[],printOn=False,isDCH2=False,signC=0)
                 if printOn : print("    fail mu_type Global or Tracker={0}".format(entry.Muon_isGlobal[i]))
                 continue
         if mt['mu_ID']:
-            #if not (entry.Muon_looseId[i] or entry.Muon_mediumId[i] or entry.Muon_mediumId[i]) :
-            if not (entry.Muon_mediumId[i]):
-                if printOn : print("    fail mu_ID mediumId={0}".format(entry.Muon_mediumId[i]))
+            #if not (entry.Muon_looseId[i] or entry.Muon_mediumId[i] or entry.Muon_tightId[i]) :
+            if not (entry.Muon_tightId[i]):
+                if printOn : print("    fail mu_ID mediumId={0}".format(entry.Muon_tightId[i]))
                 continue
         if abs(entry.Muon_dxy[i]) > mt['mu_dxy']:
             if printOn : print("    fail mu_dxy={0:f}".format(entry.Muon_dxy[i]))
@@ -604,9 +616,9 @@ def getEMuTauPairs(entry,dch='em',pairList=[],printOn=False, isDCH2=False, signC
         # selections for tau(mu)
         if printOn : print("Muon i={0:d}".format(i))
         if em['mu_ID']:
-            #if not (entry.Muon_looseId[i] or entry.Muon_mediumId[i] or entry.Muon_mediumId[i]) :
-            if not (entry.Muon_mediumId[i]):
-                if printOn : print("    failed muID={0}".format(entry.Muon_mediumId[i]))
+            #if not (entry.Muon_looseId[i] or entry.Muon_mediumId[i] or entry.Muon_tightId[i]) :
+            if not (entry.Muon_tightId[i]):
+                if printOn : print("    failed muID={0}".format(entry.Muon_tightId[i]))
                 continue
 
         if em['mu_type']:
@@ -1127,9 +1139,9 @@ def getMuMuPairs(entry, dch='mm', pairList=[], printOn=False, isDCH2=False,signC
                 if printOn: print("\t fail mu_type Global or Tracker={0}".format(entry.Muon_isGlobal[i]))
                 continue
         if mm['mu_ID']:
-            #if not (entry.Muon_looseId[i] or entry.Muon_mediumId[i] or entry.Muon_mediumId[i]) :
-            if not (entry.Muon_mediumId[i]):
-                if printOn: print("\t fail mu_ID mediumId={0}".format(entry.Muon_mediumId[i]))
+            #if not (entry.Muon_looseId[i] or entry.Muon_mediumId[i] or entry.Muon_tightId[i]) :
+            if not (entry.Muon_tightId[i]):
+                if printOn: print("\t fail mu_ID mediumId={0}".format(entry.Muon_tightId[i]))
                 continue
         if abs(entry.Muon_dxy[i]) > mm['mu_dxy']:
             if printOn: print("\t fail mu_dxy={0:f}".format(entry.Muon_dxy[i]))
@@ -1247,8 +1259,8 @@ def goodMuon(entry, j ):
     if abs(entry.Muon_eta[j]) > mm['mu_eta']: return False
     if mm['mu_iso_f'] and entry.Muon_pfRelIso04_all[j] >  mm['mu_iso']: return False
     if mm['mu_ID'] :
-        #if not (entry.Muon_looseId[j] or entry.Muon_mediumId[j] or entry.Muon_mediumId[j]): return False
-        if not (entry.Muon_mediumId[j]): return False
+        #if not (entry.Muon_looseId[j] or entry.Muon_mediumId[j] or entry.Muon_tightId[j]): return False
+        if not (entry.Muon_tightId[j]): return False
     if abs(entry.Muon_dxy[j]) > mm['mu_dxy']: return False 
     if abs(entry.Muon_dz[j]) > mm['mu_dz']: return False
     if mm['mu_type'] :
@@ -1266,7 +1278,7 @@ def goodMuonWjets(entry, j ):
     if abs(entry.Muon_eta[j]) > mm['mu_eta']: return False
     if mm['mu_iso_f'] and entry.Muon_pfRelIso04_all[j] >  mm['mu_iso']: return False
     if mm['mu_ID'] :
-        if not (entry.Muon_mediumId[j]) or ord(entry.Muon_pfIsoId[j]) < 4: return False
+        if not (entry.Muon_tightId[j]) or ord(entry.Muon_pfIsoId[j]) < 4: return False
         #if not (entry.Muon_looseId[j]): return False
     if abs(entry.Muon_dxy[j]) > mm['mu_dxy']: return False 
     if abs(entry.Muon_dz[j]) > mm['mu_dz']: return False
@@ -1405,55 +1417,87 @@ def makeGoodElectronListWjets(entry) :
     return goodElectronList
 
 #Double Charged Higgs cuts
-def goodElectronDCH(entry, j) :
+def goodElectronDCH(entry, j,cutflow) :
     """ tauFun.goodElectron(): select good electrons 
                                for Z -> ele + ele
     """
     ee = selections['ee'] # selections for Z->ee
-    if entry.Electron_pt[j] < ee['ele_pt']: return False
-    if abs(entry.Electron_eta[j]) > ee['ele_eta']: return False
-    if abs(entry.Electron_dxy[j]) > ee['ele_dxy']: return False
-    if abs(entry.Electron_dz[j]) > ee['ele_dz']: return False
+    cutflow.count('cut0')
+
+    if entry.Electron_pt[j] < ee['ele_pt']: 
+        cutflow.count('cut1')
+        return False
+    if abs(entry.Electron_eta[j]) > ee['ele_eta']:
+        cutflow.count('cut2')
+        return False
+    if abs(entry.Electron_dxy[j]) > ee['ele_dxy']:
+        cutflow.count('cut3')
+        return False
+    if abs(entry.Electron_dz[j]) > ee['ele_dz']:
+        cutflow.count('cut4')
+        return False
 
     #if ord(entry.Electron_lostHits[j]) > ee['ele_lostHits']: return False
-    if ee['ele_iso_f'] and entry.Electron_pfRelIso03_all[j] >  ee['ele_iso']: return False
+    if ee['ele_iso_f'] and entry.Electron_pfRelIso03_all[j] >  ee['ele_iso']:
+        cutflow.count('cut5')
+        return False
     if ee['ele_convVeto']:
-        if not entry.Electron_convVeto[j]: return False
+        if not entry.Electron_convVeto[j]:
+            cutflow.count('cut6')
+            return False
     if ee['ele_ID']:
         #if not entry.Electron_cutBased_HEEP[j] : return False
-        if not entry.Electron_mvaFall17V2noIso_WP90[j] : return False
+        if not entry.Electron_mvaFall17V2noIso_WP90[j] :
+            cutflow.count('cut7')
+            return False
         #if entry.Electron_cutBased[j] < 2 : return False
     return True 
 
-def makeGoodElectronListDCH(entry) :
+def makeGoodElectronListDCH(entry,cutflow) :
     goodElectronList = []
     for i in range(entry.nElectron) :
-        if goodElectronDCH(entry, i) : goodElectronList.append(i)
+        if goodElectronDCH(entry, i,cutflow) : goodElectronList.append(i)
     return goodElectronList
 
-def goodMuonDCH(entry, j ):
+def goodMuonDCH(entry, j ,cutflow):
     """ tauFun.goodMuon(): select good muons
                            for Z -> mu + mu
     """
     
     mm = selections['mm'] # selections for Z->mumu
-    if entry.Muon_pt[j] < mm['mu_pt']: return False
-    if abs(entry.Muon_eta[j]) > mm['mu_eta']: return False
-    if mm['mu_iso_f'] and entry.Muon_pfRelIso04_all[j] >  mm['mu_iso']: return False
+    cutflow.count('cut0')
+
+    if entry.Muon_pt[j] < mm['mu_pt']:
+        cutflow.count('cut1')
+        return False
+    if abs(entry.Muon_eta[j]) > mm['mu_eta']:
+        cutflow.count('cut2')
+        return False
+    if mm['mu_iso_f'] and entry.Muon_pfRelIso04_all[j] >  mm['mu_iso']:
+        cutflow.count('cut3')
+        return False
     #if mm['mu_iso_f'] and entry.Muon_tkRelIso[j] >  mm['mu_iso']: return False
     #if mm['mu_ID'] and not entry.Muon_looseId[j] : return False
-    if abs(entry.Muon_dxy[j]) > mm['mu_dxy']: return False 
-    if abs(entry.Muon_dz[j]) > mm['mu_dz']: return False
+    if abs(entry.Muon_dxy[j]) > mm['mu_dxy']:
+        cutflow.count('cut4')
+        return False
+    if abs(entry.Muon_dz[j]) > mm['mu_dz']:
+        cutflow.count('cut5')
+        return False
     if mm['mu_type'] :
-        if not (entry.Muon_isGlobal[j] or entry.Muon_isTracker[j]) : return False
+        if not (entry.Muon_isGlobal[j] or entry.Muon_isTracker[j]) :
+            cutflow.count('cut6')
+            return False
     if mm['mu_ID'] :
-        if not entry.Muon_mediumId[j] : return False         
+        if not entry.Muon_tightId[j] :
+            cutflow.count('cut7')
+            return False 
     return True 
 
-def makeGoodMuonListDCH(entry) :
+def makeGoodMuonListDCH(entry,cutflow) :
     goodMuonList = []
     for i in range(entry.nMuon) :
-        if goodMuonDCH(entry, i) : goodMuonList.append(i)
+        if goodMuonDCH(entry, i,cutflow) : goodMuonList.append(i)
     #print("In tauFun.makeGoodMuonList = {0:s}".format(str(goodMuonList)))
     return goodMuonList
 
@@ -1470,7 +1514,7 @@ def goodMuonExtraLepton(entry, j):
     if entry.Muon_pt[j] < mm['mu_pt']: return False
     if abs(entry.Muon_eta[j]) > mm['mu_eta']: return False
     if mm['mu_iso_f'] and entry.Muon_pfRelIso04_all[j] >  mm['mu_iso']: return False
-    if mm['mu_ID'] and not (entry.Muon_mediumId[j] or entry.Muon_mediumId[j]): return False
+    if mm['mu_ID'] and not (entry.Muon_mediumId[j] or entry.Muon_tightId[j]): return False
     if abs(entry.Muon_dxy[j]) > mm['mu_dxy']: return False 
     if abs(entry.Muon_dz[j]) > mm['mu_dz']: return False
     if mm['mu_type'] :
@@ -1991,11 +2035,21 @@ def findZee(goodElectronList, entry) :
 
 
 def catToNumber(cat) :
-    number = { 'eeet':1, 'eemt':2, 'eett':3, 'eeem':4, 'mmet':5, 'mmmt':6, 'mmtt':7, 'mmem':8}
+    number = {'eeee':1,'eeem':2,'eeet':3,'eemm':4,'eemt':5,'eett':6,
+               'emem':7,'emet':8,'emmm':9,'emmt':10,'emtt':11,
+                      'etet':12,'etmm':13,'etmt':14,'ettt':15,
+                             'mmmm':16,'mmmt':17,'mmtt':18,
+                                    'mtmt':19,'mttt':20,
+                                           'tttt':21}
     return number[cat]
 
 def numberToCat(number) :
-    cat = { 1:'eeet', 2:'eemt', 3:'eett', 4:'eeem', 5:'mmet', 6:'mmmt', 7:'mmtt', 8:'mmem'}
+    cat = {1:'eeee',2:'eeem',3:'eeet',4:'eemm',5:'eemt',6:'eett',
+               7:'emem',8:'emet',9:'emmm',10:'emmt',11:'emtt',
+                      12:'etet',13:'etmm',14:'etmt',15:'ettt',
+                             16:'mmmm',17:'mmmt',18:'mmtt',
+                                    19:'mtmt',20:'mttt',
+                                           21:'tttt'}
     return cat[number]
 
 
