@@ -72,7 +72,14 @@ cats = ['eeee','eeem','eeet','eemm','eemt','eett',
                              'mmmm','mmmt','mmtt',
                                     'mtmt','mttt',
                                            'tttt']#ggr
-#cats = ['etet','eeet','eett']
+
+cats3L = ['eee', 'eem', 'eet',
+          'eme', 'emm', 'emt',
+          'ete', 'etm', 'ett',
+          'mme', 'mmm', 'mmt',
+          'mte', 'mtm', 'mtt',
+          'tte', 'ttm', 'ttt']
+
 for cat in cats : 
     cutCounter[cat] = GF.cutCounter()
     cutCounterGenWeight[cat] = GF.cutCounter()
@@ -116,6 +123,8 @@ era=str(args.year)
 
 #outFileName = GF.getOutFileName(args).replace(".root",".ntup")
 outFileName = args.outFileName
+
+
 if MC : 
     if "WJetsToLNu" in outFileName and 'TWJets' not in outFileName:
 	hWxGenweightsArr = []
@@ -372,17 +381,92 @@ for count, e in enumerate( inTree) :
 		    outTuple.list_of_arrays[i][0] = metlist[i]
 		for i, j in enumerate (philist): 
 		    outTuple.list_of_arrays[i+len(metlist)][0] = philist[i]
-        '''
+        ''' 
 	goodElectronList = TF.makeGoodElectronListDCH(e,cutflow['ele'])
 	goodMuonList = TF.makeGoodMuonListDCH(e,cutflow['muon'])
-        goodTauList = TF.makeGoodTauList(e,cutflow['tau'])
+	goodTauList = TF.makeGoodTauList(e,cutflow['tau'])
         dupl = 0 #to count duplicate channels
-        selected_evts += 1
-        if len(goodElectronList)+len(goodMuonList)+len(goodTauList) == 5:
+	selected_evts += 1
+	#=============3-lep=====================================
+	if len(goodElectronList)+len(goodMuonList)+len(goodTauList) == 3:
+		evts_3lep += 1
+		for cat3L in cats3L :
+			if(e.nElectron < cat3L.count('e') or e.nMuon < cat3L.count('m') or e.nTau < cat3L.count('t')): continue
+			if(len(goodElectronList) < cat3L.count('e') or len(goodMuonList) < cat3L.count('m') or len(goodTauList) < cat3L.count('t')): continue
+			dch1 = cat3L[:2]
+			dch2 = cat3L[2:]
+			#if args.category != 'none' and not dch1 in args.category : continue
+			#if args.category != 'none' and not dch2 in args.category : continue
+
+			## pairListP -> containes the TLV of the ++ pair  
+			## lepListP -> containes the indices of the ++ pair  
+			#lepList, lepListP, lepListM = [], [], []
+			signC=0
+			netS=-99
+			bestDCH1 = []#contains indices
+			if dch1 == 'ee':
+				bestDCH1 = TF.getBestEEPair(entry=e, dch=dch1, pairList=[])
+				if len(bestDCH1) < 2: continue
+				signC = e.Electron_charge[bestDCH1[0]]
+				netS = e.Electron_charge[bestDCH1[0]] + e.Electron_charge[bestDCH1[1]]
+				#print "DCH1 charge:",netS
+			if dch1 == 'em':
+				bestDCH1 = TF.getBestEMuTauPair(entry=e, dch=dch1, pairList=[])
+				if len(bestDCH1) < 2: continue
+				signC = e.Electron_charge[bestDCH1[0]]
+				netS = e.Electron_charge[bestDCH1[0]] + e.Muon_charge[bestDCH1[1]]
+				#print "DCH1 charge:",netS
+			if dch1 == 'et':
+				bestDCH1 = TF.getBestETauPair(entry=e, dch=dch1, pairList=[])
+				if len(bestDCH1) < 2: continue
+				signC = e.Electron_charge[bestDCH1[0]]
+				netS = e.Electron_charge[bestDCH1[0]] + e.Tau_charge[bestDCH1[1]]
+				#print "DCH1 charge:",netS
+			if dch1 == 'mm':
+				bestDCH1 = TF.getBestMuMuPair(entry=e, dch=dch1, pairList=[])
+				if len(bestDCH1) < 2: continue 
+				signC = e.Muon_charge[bestDCH1[0]]
+				netS = e.Muon_charge[bestDCH1[0]] + e.Muon_charge[bestDCH1[1]]
+				#print "DCH1 charge:",netS
+			if dch1 == 'mt':
+				bestDCH1 = TF.getBestMuTauPair(entry=e, dch=dch1, pairList=[])
+				if len(bestDCH1) < 2: continue
+				signC = e.Muon_charge[bestDCH1[0]]
+				netS = e.Muon_charge[bestDCH1[0]] + e.Tau_charge[bestDCH1[1]]
+				#print "DCH1 charge:",netS
+			if dch1 == 'tt':
+				tauList = TF.getTauList(dch1, entry=e, pairList=[])
+				bestDCH1 = TF.getBestTauPair(dch1, entry=e, tauList=tauList)
+				if len(bestDCH1) < 2: continue
+				signC = e.Tau_charge[bestDCH1[0]]
+				netS = e.Tau_charge[bestDCH1[0]] + e.Tau_charge[bestDCH1[1]]
+				#print "DCH1 charge:",netS
+			##print 'signC ',signC
+			pairList1 = TF.make4Vec(bestDCH1,dch1,e)
+                        list1 = goodElectronList+goodMuonList+goodTauList
+			if dch2 =='e':
+				for i in goodElectronList:
+					if e.Electron_charge[i] == signC : continue 
+					else: lep_3 = i 
+                        elif dch2 =='m':
+                                for i in goodMuonList:
+                                        if e.Muon_charge[i] == signC : continue         
+                                        else: lep_3 = i
+                        elif dch2  =='t':
+                                for i in goodTauList:
+                                        if e.Tau_charge[i] == signC : continue
+                                        else: lep_3 = i
+                        print(lep_3,list1,bestDCH1)
+
+			SVFit = False
+			if not MC : isMC = False 
+			outTuple.Fill3L(e,SVFit,cat3L,pairList1[0],pairList1[1],bestDCH1,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+			#=========================================================	
+
+        if len(goodElectronList)+len(goodMuonList)+len(goodTauList) > 4:
             evts_5lep += 1
-        if len(goodElectronList)+len(goodMuonList)+len(goodTauList) < 4: 
-            if len(goodElectronList)+len(goodMuonList)+len(goodTauList) <= 3:
-                evts_3lep += 1
+            continue;#can be recovered for signal
+        elif len(goodElectronList)+len(goodMuonList)+len(goodTauList) < 3:
             continue# remove to #print details of all the vetoed evts
         evt_charge = 0
         for i in goodElectronList:
@@ -468,6 +552,7 @@ for count, e in enumerate( inTree) :
                 netS = e.Tau_charge[bestDCH1[0]] + e.Tau_charge[bestDCH1[1]]
                 #print "DCH1 charge:",netS
             ##print 'signC ',signC
+
             pairList1 = TF.make4Vec(bestDCH1,dch1,e)
             bestDCH2 = []
             if dch2 == 'ee':
@@ -652,3 +737,4 @@ cutflow_tau.Write()
 '''
 print '# of selected events', selected_evts,'\n# of 3 lep events', evts_3lep, '\n# of 5 lep evts',evts_5lep,'\n# of passed events',pass_evts 
 #file.close()  # Close the file
+
