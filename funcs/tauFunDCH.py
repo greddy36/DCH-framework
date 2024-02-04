@@ -2056,7 +2056,12 @@ def numberToCat(number) :
 def catToNumber3L(cat) :
     #number = { 'eee':1, 'eem':2, 'eet':3, 'mme':4, 'mmm':5, 'mmt':6}
     #number = { 'ee':1, 'mm':2}
-    number = { 'eeee':1, 'eemm':2 , 'mmee':3, 'mmmm':4, 'eee':5, 'eem':6, 'mme':7, 'mmm':8,'ee':9, 'mm':10 , 'eet':11,'eett':12, 'mmt':13, 'mmtt':14}
+    number = { 'eee':22, 'eem':23, 'eet':24, 
+               'eme':25, 'emm':26, 'emt':27, 
+               'ete':28, 'etm':29, 'ett':30, 
+               'mme':31, 'mmm':32, 'mmt':33, 
+               'mte':34, 'mtm':35, 'mtt':36, 
+               'tte':37, 'ttm':38, 'ttt':39}
     return number[cat]
 
 def catToNumberW(cat) :
@@ -2066,7 +2071,12 @@ def catToNumberW(cat) :
 def numberToCat3L(number) :
     #cat = { 1:'eee', 2:'eem', 3:'eet', 4:'mme', 5:'mmm', 6:'mmt' }
     #cat = { 1:'ee', 2:'mm' }
-    cat= { 1:'eeee', 2:'eemm' , 3:'mmee', 4:'mmmm', 5:'eee', 6:'eem', 7:'mme', 8:'mmm', 9:'ee', 10:'mm', 11:'eet', 12:'eett', 13:'mmt', 14:'mmtt'}
+    cat  = {   22:'eee', 23:'eem', 24:'eet',  
+               25:'eme', 26:'emm', 27:'emt', 
+               28:'ete', 29:'etm', 30:'ett', 
+               31:'mme', 32:'mmm', 33:'mmt', 
+               34:'mte', 35:'mtm', 36:'mtt',
+               37:'tte', 38:'ttm', 39:'ttt'}
     return cat[number]
 
 
