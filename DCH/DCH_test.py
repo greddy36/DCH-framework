@@ -442,6 +442,7 @@ for count, e in enumerate( inTree) :
 			##print 'signC ',signC
 			pairList1 = TF.make4Vec(bestDCH1,dch1,e)
                         list1 = goodElectronList+goodMuonList+goodTauList
+			lep_3 = -99
 			if dch2 =='e':
 				for i in goodElectronList:
 					if e.Electron_charge[i] == signC : continue 
@@ -454,7 +455,7 @@ for count, e in enumerate( inTree) :
                                 for i in goodTauList:
                                         if e.Tau_charge[i] == signC : continue
                                         else: lep_3 = i
-                        print(lep_3,list1,bestDCH1)
+                        if lep_3 == -99: continue
 
 			SVFit = False
 			if not MC : isMC = False 
@@ -657,7 +658,8 @@ for count, e in enumerate( inTree) :
 	    if not MC : isMC = False
 
             #if cat[2:] !='et' and cat[2:] !='mt' and cat[2:] !='tt': continue
-	    outTuple.Fill(e,SVFit,cat,bestDCH2[0],bestDCH2[1],pairList1[0],pairList1[1],bestDCH1,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+            #outTuple.Fill(e,SVFit,cat,bestDCH2[0],bestDCH2[1],pairList1[0],pairList1[1],bestDCH1,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+	    outTuple.Fill(e,SVFit,cat,pairList1[0],pairList1[1],bestDCH1,bestDCH2[0],bestDCH2[1],isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
             '''
 	    if maxPrint > 0 :
 		maxPrint -= 1

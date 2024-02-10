@@ -246,7 +246,7 @@ for cat in cats:
     n_lepton[cat]=[0,0,0]
 
 for count, e in enumerate( inTree) :
-    #if count != 70957: continue #to run only over a single event
+    #if count != 31156: continue #to run only over a single event
     if count % countMod == 0 :
         print("Count={0:d}".format(count))
         if count >= 10000 : countMod = 10000
@@ -443,7 +443,7 @@ for count, e in enumerate( inTree) :
 				#print "DCH1 charge:",netS
 			##print 'signC ',signC
 			pairList1 = TF.make4Vec(bestDCH1,dch1,e)
-                        list1 = goodElectronList+goodMuonList+goodTauList
+                        lep_3 = -99
 			if dch2 =='e':
 				for i in goodElectronList:
 					if e.Electron_charge[i] == signC : continue 
@@ -456,8 +456,9 @@ for count, e in enumerate( inTree) :
                                 for i in goodTauList:
                                         if e.Tau_charge[i] == signC : continue
                                         else: lep_3 = i
-                        print(lep_3,list1,bestDCH1)
-
+                        if lep_3 == -99: continue
+			#print(lep_3,count)
+                        
 			SVFit = False
 			if not MC : isMC = False 
 			outTuple.Fill3L(e,SVFit,cat3L,pairList1[0],pairList1[1],bestDCH1,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
