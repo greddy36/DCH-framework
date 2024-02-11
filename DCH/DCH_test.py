@@ -459,7 +459,7 @@ for count, e in enumerate( inTree) :
 
 			SVFit = False
 			if not MC : isMC = False 
-			outTuple.Fill3L(e,SVFit,cat3L,pairList1[0],pairList1[1],bestDCH1,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+			outTuple.Fill3L(e,SVFit,cat3L,bestDCH1,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
 			#=========================================================	
 
         if len(goodElectronList)+len(goodMuonList)+len(goodTauList) > 4:
@@ -653,13 +653,12 @@ for count, e in enumerate( inTree) :
 		outTuple.setWeightPUtrue(1.)
             #print("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT")#ggr
 
-	    SVFit = False
+	    SVFit = True
             #continue	    
 	    if not MC : isMC = False
 
-            #if cat[2:] !='et' and cat[2:] !='mt' and cat[2:] !='tt': continue
             #outTuple.Fill(e,SVFit,cat,bestDCH2[0],bestDCH2[1],pairList1[0],pairList1[1],bestDCH1,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
-	    outTuple.Fill(e,SVFit,cat,pairList1[0],pairList1[1],bestDCH1,pairList2[0],pairList2[1],bestDCH2,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+	    outTuple.Fill(e,SVFit,cat,bestDCH1,bestDCH2,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
             '''
 	    if maxPrint > 0 :
 		maxPrint -= 1

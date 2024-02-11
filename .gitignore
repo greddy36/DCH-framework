@@ -4,6 +4,7 @@ DCH/Csv
 DCH/*csv
 DCH/*.log
 DCH/*.root
+DCH/*.ntup
 MC_og
 MC/DCH
 TauPOG/TauIDSFs

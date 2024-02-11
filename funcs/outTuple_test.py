@@ -1056,7 +1056,7 @@ class outTuple() :
         ttP4 = FMTT.getBestP4()
         return ttP4.M(), ttP4.Mt() 
     
-    def Fill(self, entry, SVFit, cat, Lep1, Lep2, idx_DCH1, Lep3, Lep4, idx_DCH2,  isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0, tMass=[], tPt=[], eMass=[], ePt=[], mMass=[], mPt=[], proc="EOY") : 
+    def Fill(self, entry, SVFit, cat, idx_DCH1, idx_DCH2, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0, tMass=[], tPt=[], eMass=[], ePt=[], mMass=[], mPt=[], proc="EOY") : 
     #def Fill(self, entry, SVFit, cat, jl3, jl4, Lep1, Lep2, idx_DCH1, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0) : 
     #def Fill(self, entry, SVFit, cat, jl3, jl4, Lep1, Lep2, idx_DCH1, isMC, era,  doUncertainties=False , sysVariations=[]) :
         ''' - jl3 and jl4 point to the selected tau candidates according to the table below.
@@ -1471,7 +1471,7 @@ class outTuple() :
 	    Lep1.SetPtEtaPhiM(entry.Electron_pt[jl1],entry.Electron_eta[jl1], entry.Electron_phi[jl1], entry.Electron_mass[jl1])
 	    tmass= self.tauMass
 	    if entry.Tau_decayMode[jl2] == 0 : tmass= 0.13960 #pion mass
-	    Lep4.SetPtEtaPhiM(entry.Tau_pt[jl2],entry.Tau_eta[jl2],entry.Tau_phi[jl2],entry.Tau_mass[jl2])
+	    Lep2.SetPtEtaPhiM(entry.Tau_pt[jl2],entry.Tau_eta[jl2],entry.Tau_phi[jl2],entry.Tau_mass[jl2])
 
 	# Fill variables for Leg3 and Leg4, where 3->tau(mu) and 4->tau(mu)
 	elif dch_1 == 'mm' :
@@ -1637,9 +1637,9 @@ class outTuple() :
 	    print("Invalid channel={0:s} in outTuple(). Exiting.".format(channel))
 	    exit()
 	    
-	self.mt_3[0]      = self.get_mt('MVAMet',   entry,Lep3)
-	self.pfmt_3[0]    = self.get_mt('PFMet',    entry,Lep3)
-	#self.puppimt_3[0] = self.get_mt('PUPPIMet', entry,Lep3)
+	#self.mt_1[0]      = self.get_mt('MVAMet',   entry,Lep1)
+	#self.pfmt_1[0]    = self.get_mt('PFMet',    entry,Lep1)
+	#self.puppimt_1[0] = self.get_mt('PUPPIMet', entry,Lep1)
 
 	
 	# Fill variables for Leg4, where 4->tau(had)
@@ -1653,9 +1653,9 @@ class outTuple() :
 	    '''
 	    phi, pt = entry.Tau_phi[jl2], entry.Tau_pt[jl2]
 	    
-	    #self.mt_2[0]      = self.get_mt('MVAMet',   entry, Lep4) 
-	    #self.pfmt_2[0]    = self.get_mt('PFMet',    entry, Lep4)
-	    #self.puppimt_2[0] = self.get_mt('PUPPIMet', entry, Lep4) 
+	    #self.mt_2[0]      = self.get_mt('MVAMet',   entry, Lep2) 
+	    #self.pfmt_2[0]    = self.get_mt('PFMet',    entry, Lep2)
+	    #self.puppimt_2[0] = self.get_mt('PUPPIMet', entry, Lep2) 
 
 	    # genMatch the hadronic tau candidate
 	    if isMC:
@@ -2481,7 +2481,7 @@ class outTuple() :
 
 	return
 
-    def Fill3L(self, entry, SVFit, cat, Lep1, Lep2, idx_DCH1, jl3, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0, tMass=[], tPt=[], eMass=[], ePt=[], mMass=[], mPt=[], proc="EOY") :
+    def Fill3L(self, entry, SVFit, cat, idx_DCH1, jl3, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0, tMass=[], tPt=[], eMass=[], ePt=[], mMass=[], mPt=[], proc="EOY") :
 
         ''' - jl3 and jl4 point to the selected tau candidates according to the table below.
             - if e.g., dch_2 = 'et', the jl3 points to the electron list and jl4 points to the tau list.
@@ -2744,33 +2744,6 @@ class outTuple() :
         # di-lepton variables.   _p and _m refer to plus and minus charge
         #if jl3>-1 and jl4>-1 : self.AMass[0]       = (Lep1 + Lep2 + Lep3 + Lep4).M() 
         self.cat[0]  = tauFunDCH.catToNumber3L(cat)
-        self.mll[0]       = (Lep1 + Lep2).M()
-        self.mll2[0]      = -1
-        '''
-        self.Z_DR[0]       = self.getDR(entry,Lep1,Lep2)
-       
-        self.H_LT[0]       = Lep1.Pt() + Lep2.Pt()
-        self.dRl1H[0]  = self.getDR(entry,Lep1,Lep3+Lep4)
-        self.dRl2H[0]  = self.getDR(entry,Lep2,Lep3+Lep4)
-        self.dRlH[0]  = self.getDR(entry,Lep1+Lep2,Lep3+Lep4)
-
-        self.dPhil1H[0]  = self.getdPhi(entry,Lep1,Lep3+Lep4)
-        self.dPhil2H[0]  = self.getdPhi(entry,Lep2,Lep3+Lep4)
-        self.dPhilH[0]  = self.getdPhi(entry,Lep1+Lep2,Lep3+Lep4)
-        '''
-        self.pt_1[0]   = Lep1.Pt()
-        self.phi_1[0]  = Lep1.Phi()
-        self.eta_1[0]  = Lep1.Eta()
-        self.m_1[0]    = Lep1.M()
-        self.pt_2[0]   = Lep2.Pt()
-        self.phi_2[0]  = Lep2.Phi()
-        self.eta_2[0]  = Lep2.Eta()
-        self.m_2[0]    = Lep2.M()
-
-        self.pt_4[0]   = -1
-        self.phi_4[0]  = -9
-        self.eta_4[0]  = -9
-        self.m_4[0]    = -1
 
 	jl1 = idx_DCH1[0]
 	jl2 = idx_DCH1[1]
@@ -3093,9 +3066,9 @@ class outTuple() :
 	    print("Invalid channel={0:s} in outTuple(). Exiting.".format(channel))
 	    exit()
 	    
-	self.mt_3[0]      = self.get_mt('MVAMet',   entry,Lep1)
-	self.pfmt_3[0]    = self.get_mt('PFMet',    entry,Lep1)
-	#self.puppimt_3[0] = self.get_mt('PUPPIMet', entry,Lep1)
+	#self.mt_1[0]      = self.get_mt('MVAMet',   entry,Lep1)
+	#self.pfmt_1[0]    = self.get_mt('PFMet',    entry,Lep1)
+	#self.puppimt_1[0] = self.get_mt('PUPPIMet', entry,Lep1)
 
 	
 	# Fill variables for Leg4, where 4->tau(had)
@@ -3247,6 +3220,35 @@ class outTuple() :
                 elf.gen_match_3[0] = ord(entry.Tau_genPartFlav[jl3])
                 #self.gen_match_4[0] = ord(entry.Tau_genPartFlav[lep_index_4])
 
+        self.mll[0]       = (Lep1 + Lep2).M()
+        self.mll2[0]      = -1
+        '''
+        self.Z_DR[0]       = self.getDR(entry,Lep1,Lep2)
+       
+        self.H_LT[0]       = Lep1.Pt() + Lep2.Pt()
+        self.dRl1H[0]  = self.getDR(entry,Lep1,Lep3+Lep4)
+        self.dRl2H[0]  = self.getDR(entry,Lep2,Lep3+Lep4)
+        self.dRlH[0]  = self.getDR(entry,Lep1+Lep2,Lep3+Lep4)
+
+        self.dPhil1H[0]  = self.getdPhi(entry,Lep1,Lep3+Lep4)
+        self.dPhil2H[0]  = self.getdPhi(entry,Lep2,Lep3+Lep4)
+        self.dPhilH[0]  = self.getdPhi(entry,Lep1+Lep2,Lep3+Lep4)
+        '''
+        self.pt_1[0]   = Lep1.Pt()
+        self.pt_2[0]   = Lep2.Pt()
+        self.phi_2[0]  = Lep2.Phi()
+        self.phi_1[0]  = Lep1.Phi()
+        self.eta_1[0]  = Lep1.Eta()
+        self.eta_2[0]  = Lep2.Eta()       
+        self.m_1[0]    = Lep1.M()
+        self.m_2[0]    = Lep2.M()
+        
+        
+        self.pt_4[0]   = -1
+        self.phi_4[0]  = -9
+        self.eta_4[0]  = -9
+        self.m_4[0]    = -1
+        
         #self.btagWeightDeepCSVB[0]  = entry.btagWeight_DeepCSVB
         #print 'inside after filling----------------------->', entry.MET_pt,  self.met[0], met_pt
         #self.puppimet[0]    = entry.PuppiMET_pt
