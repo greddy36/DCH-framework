@@ -1,3 +1,6 @@
 [submodule "TauPOG/TauIDSFs"]
 	path = TauPOG/TauIDSFs
-	url = https://github.com/greddy36/DCH-framework
+	url = https://github.com/greddy36/DCH-framework.git
+[submodule "TauAnalysis/ClassicSVfit"]
+        path = TauAnalysis/ClassicSVfit
+        url = https://github.com/greddy36/DCH-framework.git
