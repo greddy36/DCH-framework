@@ -459,7 +459,7 @@ for count, e in enumerate( inTree) :
                         if lep_3 == -99: continue
 			#print(lep_3,count)
                         
-			SVFit = False
+			SVFit = True
 			if not MC : isMC = False 
 			outTuple.Fill3L(e,SVFit,cat3L,pairList1[0],pairList1[1],bestDCH1,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
 			#=========================================================	
