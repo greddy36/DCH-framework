@@ -15,17 +15,7 @@ class outTuple() :
     def __init__(self,fileName, era, doSyst=False,shift=[], isMC=True, onlyNom=False):
         from array import array
         from ROOT import TFile, TTree
-        '''
-        # Tau Decay types
-        self.kUndefinedDecayType, self.kTauToHadDecay,  self.kTauToElecDecay, self.kTauToMuDecay = 0, 1, 2, 3    
-        ROOT.gInterpreter.ProcessLine(".include .")
-        for baseName in ['MeasuredTauLepton','svFitAuxFunctions','FastMTT'] : 
-            if os.path.isfile("{0:s}_cc.so".format(baseName)) :
-                ROOT.gInterpreter.ProcessLine(".L {0:s}_cc.so".format(baseName))
-            else :
-                ROOT.gInterpreter.ProcessLine(".L {0:s}.cc++".format(baseName))   
-                # .L is not just for .so files, also .cc
-        '''
+
         # SVfit / FastMTT for ditau mass reconstruction
         macropath = os.path.expandvars('$CMSSW_BASE/src/TauAnalysis/ClassicSVfit/src/')
         ROOT.gSystem.Load("../TauAnalysis/ClassicSVfit/lib/libTauAnalysis_ClassicSVfit.so")
@@ -37,6 +27,18 @@ class outTuple() :
           except RuntimeError:
             ROOT.gROOT.LoadMacro(macropath + baseName+".cc" + " ++g")
         self.kUndefinedDecayType, self.kTauToHadDecay,  self.kTauToElecDecay, self.kTauToMuDecay = 0, 1, 2, 3  
+
+        # SVfit for 4-tau mass reconstruction
+        macropath_4tau = os.path.expandvars('$CMSSW_BASE/src/TauAnalysis/ClassicSVfit4tau/src/')
+        ROOT.gSystem.Load("TauAnalysis/ClassicSVfit4tau/lib/libTauAnalysis_ClassicSVfit4tau.so")
+        for baseName in ["svFitAuxFunctions", "MeasuredTauLepton", "FastMTT", "ClassicSVfit"]:
+          ROOT.gROOT.SetMacroPath(os.pathsep.join([ROOT.gROOT.GetMacroPath(), macropath_4tau]))
+          try:
+            #ROOT.gROOT.LoadMacro(macropath + baseName+".cc" + " +g") # For some reason this doesn'k work here
+            ROOT.gROOT.ProcessLine(".L " + macropath_4tau + baseName+".cc")
+          except RuntimeError:
+            ROOT.gROOT.LoadMacro(macropath_4tau + baseName+".cc" + " ++g")
+        self.kUndefinedDecayType, self.kTauToHadDecay,  self.kTauToElecDecay, self.kTauToMuDecay = 0, 1, 2, 3
 	
         ########### JetMet systematics
 	#self.listsyst=['njets', 'nbtag', 'jpt', 'jeta', 'jflavour','MET_T1_pt', 'MET_T1_phi', 'MET_pt', 'MET_phi', 'MET_T1Smear_pt', 'MET_T1Smear_phi']
@@ -287,8 +289,14 @@ class outTuple() :
         self.pt_tt  = array('f',[0])
         self.mt_tot = array('f',[0])
         self.m_vis  = array('f',[0])
-        self.m_sv   = array('f',[0])
-        self.mt_sv  = array('f',[0])
+        self.mDCH1_sv   = array('f',[0])
+	self.mDCH2_sv   = array('f',[0])
+	self.mtDCH1_sv  = array('f',[0])
+        self.mtDCH2_sv  = array('f',[0])
+        self.mDCH1_sv4   = array('f',[0])
+        self.mDCH2_sv4   = array('f',[0])
+        self.mtDCH1_sv4  = array('f',[0])
+        self.mtDCH2_sv4  = array('f',[0])
         self.H_DR  = array('f',[0])
         self.AMass   = array('f',[0])
 
@@ -584,8 +592,14 @@ class outTuple() :
         self.t.Branch('pt_tt', self.pt_tt, 'pt_tt/F')
         self.t.Branch('mt_tot', self.mt_tot, 'mt_tot/F')
         self.t.Branch('m_vis', self.m_vis, 'm_vis/F')
-        self.t.Branch('m_sv', self.m_sv, 'm_sv/F')
-        self.t.Branch('mt_sv', self.mt_sv, 'mt_sv/F') 
+        self.t.Branch('mDCH1_sv', self.mDCH1_sv, 'mDCH1_sv/F')
+        self.t.Branch('mtDCH1_sv', self.mtDCH1_sv, 'mtDCH1_sv/F') 
+        self.t.Branch('mDCH2_sv', self.mDCH2_sv, 'mDCH2_sv/F')
+        self.t.Branch('mtDCH2_sv', self.mtDCH2_sv, 'mtDCH2_sv/F')
+        self.t.Branch('mDCH1_sv4', self.mDCH1_sv4, 'mDCH1_sv4/F')
+        self.t.Branch('mtDCH1_sv4', self.mtDCH1_sv4, 'mtDCH1_sv4/F')
+        self.t.Branch('mDCH2_sv4', self.mDCH2_sv4, 'mDCH2_sv4/F')
+        self.t.Branch('mtDCH2_sv4', self.mtDCH2_sv4, 'mtDCH2_sv4/F')
         self.t.Branch('H_DR', self.H_DR, 'H_DR/F')
         self.t.Branch('AMass', self.AMass, 'AMass/F')
 
@@ -1025,7 +1039,7 @@ class outTuple() :
         return jetList, jetListFlav, jetListEta,  jetListPt, bTagListDeep, bJetListL,bJetListM,bJetListT,bJetListFlav
 
 
-    def runSVFit(self, entry, channel, jt1, jt2, tau1, tau2, metpt, metphi) :
+    def runSVFit(self, entry, dch, jt1, jt2, tau1, tau2, metpt, metphi) :
                       
         measuredMETx = metpt*cos(metphi)
         measuredMETy = metpt*sin(metphi)
@@ -1043,39 +1057,118 @@ class outTuple() :
 
         #self.kUndefinedDecayType, self.kTauToHadDecay,  self.kTauToElecDecay, self.kTauToMuDecay = 0, 1, 2, 3
 
-        if channel == 'ee' :
+        if dch == 'ee' :
             measTau1 = ROOT.MeasuredTauLepton(self.kTauToElecDecay, tau1.Pt(), tau1.Eta(), tau1.Phi(), 0.000511) 
             measTau2 = ROOT.MeasuredTauLepton(self.kTauToElecDecay, tau2.Pt(), tau2.Eta(), tau2.Phi(), 0.000511)
-        elif channel == 'em' :
+        elif dch == 'em' :
             measTau1 = ROOT.MeasuredTauLepton(self.kTauToElecDecay, tau1.Pt(), tau1.Eta(), tau1.Phi(), 0.000511)
             measTau2 = ROOT.MeasuredTauLepton(self.kTauToMuDecay, tau2.Pt(), tau2.Eta(), tau2.Phi(), 0.106)
-        elif channel == 'et' :
+        elif dch == 'et' :
             measTau1 = ROOT.MeasuredTauLepton(self.kTauToElecDecay, tau1.Pt(), tau1.Eta(), tau1.Phi(), 0.000511) 
             measTau2 = ROOT.MeasuredTauLepton(self.kTauToHadDecay, tau2.Pt(), tau2.Eta(), tau2.Phi(), tau2.M())
-        elif channel == 'mm' :
+        elif dch == 'mm' :
             measTau1 = ROOT.MeasuredTauLepton(self.kTauToMuDecay, tau1.Pt(), tau1.Eta(), tau1.Phi(), 0.106) 
             measTau2 = ROOT.MeasuredTauLepton(self.kTauToMuDecay, tau2.Pt(), tau2.Eta(), tau2.Phi(), 0.106)
-        elif channel == 'mt' :
+        elif dch == 'mt' :
             measTau1 = ROOT.MeasuredTauLepton(self.kTauToMuDecay, tau1.Pt(), tau1.Eta(), tau1.Phi(), 0.106) 
             measTau2 = ROOT.MeasuredTauLepton(self.kTauToHadDecay, tau2.Pt(), tau2.Eta(), tau2.Phi(), tau2.M())
-        elif channel == 'tt' :
+        elif dch == 'tt' :
             measTau1 = ROOT.MeasuredTauLepton(self.kTauToHadDecay, tau1.Pt(), tau1.Eta(), tau1.Phi(), tau2.M())
             measTau2 = ROOT.MeasuredTauLepton(self.kTauToHadDecay, tau2.Pt(), tau2.Eta(), tau2.Phi(), tau2.M())
                         
         VectorOfTaus = ROOT.std.vector('MeasuredTauLepton')
-        instance = VectorOfTaus()
-        instance.push_back(measTau1)
-        instance.push_back(measTau2)
+        measTaus = VectorOfTaus()
+        measTaus.push_back(measTau1)
+        measTaus.push_back(measTau2)
 
-        '''CSVF = ROOT.ClassicSVfit()
-        CSVF.run(instance, measuredMETx, measuredMETy, covMET)
-        ttP4 = CSVF.getBestP4()
+        CSVF = ROOT.ClassicSVfit()
+        CSVF.integrate(measTaus, measuredMETx, measuredMETy, covMET)
+        dch_mass = CSVF.getHistogramAdapter().getMass()
+	dch_massErr = CSVF.getHistogramAdapter().getMassErr()
+	dch_Tmass = CSVF.getHistogramAdapter().getTransverseMass()
+        dch_TmassErr = CSVF.getHistogramAdapter().getTransverseMassErr()
         '''
         FMTT = ROOT.FastMTT()
-        FMTT.run(instance, measuredMETx, measuredMETy, covMET)
-        ttP4 = FMTT.getBestP4()
-         
-        return ttP4.M(), ttP4.Mt() 
+        FMTT.run(measTaus, measuredMETx, measuredMETy, covMET)
+        dch_4vec = FMTT.getBestP4()         
+        dch_mass = dch_4vec.M()
+	dch_Tmass =  dch_4vec.Mt() 
+	'''
+	return dch_mass, dch_Tmass
+
+    def runSVFit4tau(self, entry, cat, jt1, jt2, tau1, tau2, jt3, jt4, tau3, tau4, metpt, metphi) :
+
+        measuredMETx = metpt*cos(metphi)
+        measuredMETy = metpt*sin(metphi)
+
+        #define MET covariance
+        covMET = ROOT.TMatrixD(2,2)
+        covMET[0][0] = entry.MET_covXX
+        covMET[1][0] = entry.MET_covXY
+        covMET[0][1] = entry.MET_covXY
+        covMET[1][1] = entry.MET_covYY
+        #covMET[0][0] = 787.352
+        #covMET[1][0] = -178.63
+        #covMET[0][1] = -178.63
+        #covMET[1][1] = 179.545
+
+        #self.kUndefinedDecayType, self.kTauToHadDecay,  self.kTauToElecDecay, self.kTauToMuDecay = 0, 1, 2, 3
+ 	dch1 = cat[:-2]
+        dch2 = cat[-2:]
+        if dch1 == 'ee' :
+            measTau1 = ROOT.MeasuredTauLepton(self.kTauToElecDecay, tau1.Pt(), tau1.Eta(), tau1.Phi(), 0.000511)
+            measTau2 = ROOT.MeasuredTauLepton(self.kTauToElecDecay, tau2.Pt(), tau2.Eta(), tau2.Phi(), 0.000511)
+        elif dch1 == 'em' :
+            measTau1 = ROOT.MeasuredTauLepton(self.kTauToElecDecay, tau1.Pt(), tau1.Eta(), tau1.Phi(), 0.000511)
+            measTau2 = ROOT.MeasuredTauLepton(self.kTauToMuDecay, tau2.Pt(), tau2.Eta(), tau2.Phi(), 0.106)
+        elif dch1 == 'et' :
+            measTau1 = ROOT.MeasuredTauLepton(self.kTauToElecDecay, tau1.Pt(), tau1.Eta(), tau1.Phi(), 0.000511)
+            measTau2 = ROOT.MeasuredTauLepton(self.kTauToHadDecay, tau2.Pt(), tau2.Eta(), tau2.Phi(), tau2.M())
+        elif dch1 == 'mm' :
+            measTau1 = ROOT.MeasuredTauLepton(self.kTauToMuDecay, tau1.Pt(), tau1.Eta(), tau1.Phi(), 0.106)
+            measTau2 = ROOT.MeasuredTauLepton(self.kTauToMuDecay, tau2.Pt(), tau2.Eta(), tau2.Phi(), 0.106)
+        elif dch1 == 'mt' :
+            measTau1 = ROOT.MeasuredTauLepton(self.kTauToMuDecay, tau1.Pt(), tau1.Eta(), tau1.Phi(), 0.106)
+            measTau2 = ROOT.MeasuredTauLepton(self.kTauToHadDecay, tau2.Pt(), tau2.Eta(), tau2.Phi(), tau2.M())
+        elif dch1 == 'tt' :
+            measTau1 = ROOT.MeasuredTauLepton(self.kTauToHadDecay, tau1.Pt(), tau1.Eta(), tau1.Phi(), tau2.M())
+            measTau2 = ROOT.MeasuredTauLepton(self.kTauToHadDecay, tau2.Pt(), tau2.Eta(), tau2.Phi(), tau2.M())
+
+        if dch2 == 'ee' :
+            measTau3 = ROOT.MeasuredTauLepton(self.kTauToElecDecay, tau3.Pt(), tau3.Eta(), tau3.Phi(), 0.000511)
+            measTau4 = ROOT.MeasuredTauLepton(self.kTauToElecDecay, tau4.Pt(), tau4.Eta(), tau4.Phi(), 0.000511)
+        elif dch2 == 'em' :
+            measTau3 = ROOT.MeasuredTauLepton(self.kTauToElecDecay, tau3.Pt(), tau3.Eta(), tau3.Phi(), 0.000511)
+            measTau4 = ROOT.MeasuredTauLepton(self.kTauToMuDecay, tau4.Pt(), tau4.Eta(), tau4.Phi(), 0.106)
+        elif dch2 == 'et' :
+            measTau3 = ROOT.MeasuredTauLepton(self.kTauToElecDecay, tau3.Pt(), tau3.Eta(), tau3.Phi(), 0.000511)
+            measTau4 = ROOT.MeasuredTauLepton(self.kTauToHadDecay, tau4.Pt(), tau4.Eta(), tau4.Phi(), tau4.M())
+        elif dch2 == 'mm' :
+            measTau3 = ROOT.MeasuredTauLepton(self.kTauToMuDecay, tau3.Pt(), tau3.Eta(), tau3.Phi(), 0.106)
+            measTau4 = ROOT.MeasuredTauLepton(self.kTauToMuDecay, tau4.Pt(), tau4.Eta(), tau4.Phi(), 0.106)
+        elif dch2 == 'mt' :
+            measTau3 = ROOT.MeasuredTauLepton(self.kTauToMuDecay, tau3.Pt(), tau3.Eta(), tau3.Phi(), 0.106)
+            measTau4 = ROOT.MeasuredTauLepton(self.kTauToHadDecay, tau4.Pt(), tau4.Eta(), tau4.Phi(), tau4.M())
+        elif dch2 == 'tt' :
+            measTau3 = ROOT.MeasuredTauLepton(self.kTauToHadDecay, tau3.Pt(), tau3.Eta(), tau3.Phi(), tau3.M())
+            measTau4 = ROOT.MeasuredTauLepton(self.kTauToHadDecay, tau4.Pt(), tau4.Eta(), tau4.Phi(), tau4.M())
+
+
+        VectorOfTaus = ROOT.std.vector('MeasuredTauLepton')
+        measTaus = VectorOfTaus()
+        measTaus.push_back(measTau1)
+        measTaus.push_back(measTau2)
+	measTaus.push_back(measTau3)
+        measTaus.push_back(measTau4)
+        '''CSVF = ROOT.ClassicSVfit()
+        CSVF.run(measTaus, measuredMETx, measuredMETy, covMET)
+        dch_4vec = CSVF.getBestP4()
+        '''
+        FMTT = ROOT.FastMTT()
+        FMTT.run(measTaus, measuredMETx, measuredMETy, covMET)
+        dch_4vec = FMTT.getBestP4()
+	
+        return dch_4vec.M(), dch_4vec.Mt()
     
     def Fill(self, entry, SVFit, cat, idx_DCH1, idx_DCH2, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0, tMass=[], tPt=[], eMass=[], ePt=[], mMass=[], mPt=[], proc="EOY") : 
     #def Fill(self, entry, SVFit, cat, jl3, jl4, Lep1, Lep2, idx_DCH1, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0) : 
@@ -1710,8 +1803,8 @@ class outTuple() :
 	else :
 	    fastMTTmass, fastMTTtransverseMass = -999., -999.
 	    
-	self.m_sv[0] = fastMTTmass 
-	self.mt_sv[0] = fastMTTtransverseMass  
+	self.mDCH1_sv[0] = fastMTTmass 
+	self.mtDCH1_sv[0] = fastMTTtransverseMass  
 	'''
         '''# genMatch the di-lepton variables
 	if isMC :
@@ -2120,13 +2213,23 @@ class outTuple() :
 	    self.m_vis[0]  = self.getM_vis( entry, Lep3, Lep4)
 		
 	    if SVFit :
-		fastMTTmass, fastMTTtransverseMass = self.runSVFit(entry, dch_1, jl1, jl2, Lep1, Lep2,met_pt,met_phi) 
+		fastMTTmass_1, fastMTTtransverseMass_1 = self.runSVFit(entry, dch_1, jl1, jl2, Lep1, Lep2,met_pt,met_phi) 
+		fastMTTmass_2, fastMTTtransverseMass_2 = self.runSVFit(entry, dch_2, jl3, jl4, Lep3, Lep4,met_pt,met_phi)
+		#SVf_mDCH1, SVf_mDCH2, SVf_mtDCH1, SVf_mtDCH2 = self.runSVFit4tau(entry, cat, jl1, jl2, Lep1, Lep2, jl3, jl4, Lep3, Lep4, met_pt,met_phi)		
 	    else :
-		fastMTTmass, fastMTTtransverseMass = -999., -999.
+		fastMTTmass_1, fastMTTtransverseMass_1 = -999., -999.
+		fastMTTmass_2, fastMTTtransverseMass_2 = -999., -999.
+                #SVf_mDCH1, SVf_mDCH2, SVf_mtDCH1, SVf_mtDCH2 = -999., -999., -999., -999.
 		
-	    self.m_sv[0] = fastMTTmass 
-	    self.mt_sv[0] = fastMTTtransverseMass  
-
+	    self.mDCH1_sv[0] = fastMTTmass_1
+	    self.mtDCH1_sv[0] = fastMTTtransverseMass_1
+            self.mDCH2_sv[0] = fastMTTmass_2
+            self.mtDCH2_sv[0] = fastMTTtransverseMass_2
+            '''self.mDCH1_sv4[0] = SVf_mDCH1
+	    self.mDCH2_sv4[0] = SVf_mDCH2
+            self.mtDCH1_sv4[0] = SVf_mtDCH1
+            self.mtDCH2_sv4[0] = SVf_mtDCH2
+	    '''
         self.pt_1[0]   = Lep1.Pt()
         self.pt_2[0]   = Lep2.Pt()
         self.pt_3[0]   = Lep3.Pt()
@@ -3139,8 +3242,8 @@ class outTuple() :
 	else :
 	    fastMTTmass, fastMTTtransverseMass = -999., -999.
 	    
-	self.m_sv[0] = fastMTTmass 
-	self.mt_sv[0] = fastMTTtransverseMass  
+	self.mDCH1_sv[0] = fastMTTmass 
+	self.mtDCH1_sv[0] = fastMTTtransverseMass  
 	
         '''# genMatch the di-lepton variables
 	if isMC :
