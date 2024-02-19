@@ -19,7 +19,7 @@ class outTuple() :
         # SVfit / FastMTT for ditau mass reconstruction
         macropath = os.path.expandvars('$CMSSW_BASE/src/TauAnalysis/ClassicSVfit/src/')
         ROOT.gSystem.Load("../TauAnalysis/ClassicSVfit/lib/libTauAnalysis_ClassicSVfit.so")
-        for baseName in ["svFitAuxFunctions", "MeasuredTauLepton", "FastMTT", "ClassicSVfit"]:
+        for baseName in ["svFitAuxFunctions", "MeasuredTauLepton", "FastMTT","ClassicSVfit"]:
           ROOT.gROOT.SetMacroPath(os.pathsep.join([ROOT.gROOT.GetMacroPath(), macropath]))
           try:
             #ROOT.gROOT.LoadMacro(macropath + baseName+".cc" + " +g") # For some reason this doesn'k work here
@@ -30,8 +30,8 @@ class outTuple() :
 
         # SVfit for 4-tau mass reconstruction
         macropath_4tau = os.path.expandvars('$CMSSW_BASE/src/TauAnalysis/ClassicSVfit4tau/src/')
-        ROOT.gSystem.Load("TauAnalysis/ClassicSVfit4tau/lib/libTauAnalysis_ClassicSVfit4tau.so")
-        for baseName in ["svFitAuxFunctions", "MeasuredTauLepton", "FastMTT", "ClassicSVfit"]:
+        ROOT.gSystem.Load("../TauAnalysis/ClassicSVfit4tau/lib/libTauAnalysis_ClassicSVfit4tau.so")
+        for baseName in ["svFitHistogramAdapter4Tau","ClassicSVfit4tau "]:
           ROOT.gROOT.SetMacroPath(os.pathsep.join([ROOT.gROOT.GetMacroPath(), macropath_4tau]))
           try:
             #ROOT.gROOT.LoadMacro(macropath + baseName+".cc" + " +g") # For some reason this doesn'k work here
@@ -1073,27 +1073,27 @@ class outTuple() :
             measTau1 = ROOT.MeasuredTauLepton(self.kTauToMuDecay, tau1.Pt(), tau1.Eta(), tau1.Phi(), 0.106) 
             measTau2 = ROOT.MeasuredTauLepton(self.kTauToHadDecay, tau2.Pt(), tau2.Eta(), tau2.Phi(), tau2.M())
         elif dch == 'tt' :
-            measTau1 = ROOT.MeasuredTauLepton(self.kTauToHadDecay, tau1.Pt(), tau1.Eta(), tau1.Phi(), tau2.M())
+            measTau1 = ROOT.MeasuredTauLepton(self.kTauToHadDecay, tau1.Pt(), tau1.Eta(), tau1.Phi(), tau1.M())
             measTau2 = ROOT.MeasuredTauLepton(self.kTauToHadDecay, tau2.Pt(), tau2.Eta(), tau2.Phi(), tau2.M())
                         
         VectorOfTaus = ROOT.std.vector('MeasuredTauLepton')
         measTaus = VectorOfTaus()
         measTaus.push_back(measTau1)
         measTaus.push_back(measTau2)
-
+	
         CSVF = ROOT.ClassicSVfit()
         CSVF.integrate(measTaus, measuredMETx, measuredMETy, covMET)
         dch_mass = CSVF.getHistogramAdapter().getMass()
 	dch_massErr = CSVF.getHistogramAdapter().getMassErr()
 	dch_Tmass = CSVF.getHistogramAdapter().getTransverseMass()
         dch_TmassErr = CSVF.getHistogramAdapter().getTransverseMassErr()
-        '''
+        ''' 
         FMTT = ROOT.FastMTT()
         FMTT.run(measTaus, measuredMETx, measuredMETy, covMET)
         dch_4vec = FMTT.getBestP4()         
         dch_mass = dch_4vec.M()
 	dch_Tmass =  dch_4vec.Mt() 
-	'''
+	'''	
 	return dch_mass, dch_Tmass
 
     def runSVFit4tau(self, entry, cat, jt1, jt2, tau1, tau2, jt3, jt4, tau3, tau4, metpt, metphi) :
@@ -1160,15 +1160,23 @@ class outTuple() :
         measTaus.push_back(measTau2)
 	measTaus.push_back(measTau3)
         measTaus.push_back(measTau4)
-        '''CSVF = ROOT.ClassicSVfit()
-        CSVF.run(measTaus, measuredMETx, measuredMETy, covMET)
-        dch_4vec = CSVF.getBestP4()
+
+        CSVF4 = ROOT.ClassicSVfit4tau()
+        CSVF4.integrate(measTaus, measuredMETx, measuredMETy, covMET)
+        dch1_mass = CSVF4.getHistogramAdapter().ditau1.getMass()
+        dch1_massErr = CSVF4.getHistogramAdapter().ditau1.getMassErr()
+        dch2_mass = CSVF4.getHistogramAdapter().ditau2.getMass()
+        dch2_massErr = CSVF4.getHistogramAdapter().ditau2.getMassErr()
+        #dch_Tmass = CSVF4.getHistogramAdapter().getTransverseMass()
+        #dch_TmassErr = CSVF4.getHistogramAdapter().getTransverseMassErr()
         '''
         FMTT = ROOT.FastMTT()
         FMTT.run(measTaus, measuredMETx, measuredMETy, covMET)
-        dch_4vec = FMTT.getBestP4()
-	
-        return dch_4vec.M(), dch_4vec.Mt()
+        dch_4vec = FMTT.getBestP4()         
+        dch_mass = dch_4vec.M()
+        dch_Tmass =  dch_4vec.Mt() 
+        '''
+        return dch1_mass, dch2_mass
     
     def Fill(self, entry, SVFit, cat, idx_DCH1, idx_DCH2, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0, tMass=[], tPt=[], eMass=[], ePt=[], mMass=[], mPt=[], proc="EOY") : 
     #def Fill(self, entry, SVFit, cat, jl3, jl4, Lep1, Lep2, idx_DCH1, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0) : 
@@ -2215,21 +2223,19 @@ class outTuple() :
 	    if SVFit :
 		fastMTTmass_1, fastMTTtransverseMass_1 = self.runSVFit(entry, dch_1, jl1, jl2, Lep1, Lep2,met_pt,met_phi) 
 		fastMTTmass_2, fastMTTtransverseMass_2 = self.runSVFit(entry, dch_2, jl3, jl4, Lep3, Lep4,met_pt,met_phi)
-		#SVf_mDCH1, SVf_mDCH2, SVf_mtDCH1, SVf_mtDCH2 = self.runSVFit4tau(entry, cat, jl1, jl2, Lep1, Lep2, jl3, jl4, Lep3, Lep4, met_pt,met_phi)		
+		#SVf_mDCH1, SVf_mDCH2 = self.runSVFit4tau(entry, cat, jl1, jl2, Lep1, Lep2, jl3, jl4, Lep3, Lep4, met_pt,met_phi)		
 	    else :
 		fastMTTmass_1, fastMTTtransverseMass_1 = -999., -999.
 		fastMTTmass_2, fastMTTtransverseMass_2 = -999., -999.
-                #SVf_mDCH1, SVf_mDCH2, SVf_mtDCH1, SVf_mtDCH2 = -999., -999., -999., -999.
+                #SVf_mDCH1, SVf_mDCH2 = -999., -999.
 		
 	    self.mDCH1_sv[0] = fastMTTmass_1
 	    self.mtDCH1_sv[0] = fastMTTtransverseMass_1
             self.mDCH2_sv[0] = fastMTTmass_2
             self.mtDCH2_sv[0] = fastMTTtransverseMass_2
-            '''self.mDCH1_sv4[0] = SVf_mDCH1
-	    self.mDCH2_sv4[0] = SVf_mDCH2
-            self.mtDCH1_sv4[0] = SVf_mtDCH1
-            self.mtDCH2_sv4[0] = SVf_mtDCH2
-	    '''
+            #self.mDCH1_sv4[0] = SVf_mDCH1
+	    #self.mDCH2_sv4[0] = SVf_mDCH2
+
         self.pt_1[0]   = Lep1.Pt()
         self.pt_2[0]   = Lep2.Pt()
         self.pt_3[0]   = Lep3.Pt()

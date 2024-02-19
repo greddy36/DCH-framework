@@ -1,10 +1,11 @@
-DCH/HPlusPlusHMinusMinusHTo*.root
+*root
 */*.pyc
 DCH/Csv
 DCH/*csv
 DCH/*.log
 DCH/*.root
 DCH/*.ntup
+MET_stuff/*root
 MC_og
 MC/DCH
 TauPOG/TauIDSFs
