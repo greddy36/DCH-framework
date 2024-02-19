@@ -1,0 +1,15 @@
+
+  * reenable as much PURE and ELEMENTAL as possible and try to make
+    the `poor man's elemental procedures' in pmep.nw obsolete.
+
+Longer term:
+
+  * replace pointers by allocatable arrays (using deep copy?)
+
+  * try to declare WK's PRC_INDEX as OPTIONAL
+
+  * try to declare WK's PRC_INDEX more abstractly
+
+
+
+

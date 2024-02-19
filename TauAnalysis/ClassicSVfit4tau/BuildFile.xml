@@ -1,0 +1,12 @@
+<use   name="TauAnalysis/ClassicSVfit"/>
+<use   name="TauAnalysis/SVfitTF"/>
+<use   name="boost"/>
+<use   name="root"/>
+<use   name="roofit"/>
+<use   name="vamp"/>
+<Flags CPPDEFINES="USE_SVFITTF"/>
+<Flags LDFLAGS="-rdynamic" />
+<Flags ADD_SUBDIR="1"/>
+<export>
+  <lib   name="1"/>
+</export>

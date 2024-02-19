@@ -3085,7 +3085,7 @@ class outTuple() :
 
 
         #fill the un-corrected or just in the case you dont care to doUncertainties       
-        nom_=''
+        '''nom_=''
 	jetList, jetListFlav, jetListEta, jetListPt, bTagListDeep, bJetListL, bJetListM, bJetListT, bJetListFlav = self.getJetsJMEMV(entry,leplist,era,'') 
 	self.njets[0] = len(jetList)
 	self.nbtagL[0] = len(bJetListL)
@@ -3096,7 +3096,7 @@ class outTuple() :
 	    self.jeta[ifl]  = jetListEta[ifl]
 	    self.jpt[ifl]  = jetListPt[ifl]
 	    self.btagDeep[ifl] = bTagListDeep[ifl]
-
+	'''
 
         '''
 	    if len(jetList) > 0 :

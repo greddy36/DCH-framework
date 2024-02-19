@@ -1,0 +1,8 @@
+<tool name="vamp" version="2.3.0">
+  <lib name="vamp"/>
+  <client>
+    <environment name="LIBDIR" default="$CMSSW_BASE/VAMP/vamp-2.3.0/prefix/lib"/>
+    <environment name="INCLUDE" default="$CMSSW_BASE/VAMP/vamp-2.3.0/prefix/include/vamp"/>
+  </client>
+  <use name="f77compiler"/>
+</tool>
