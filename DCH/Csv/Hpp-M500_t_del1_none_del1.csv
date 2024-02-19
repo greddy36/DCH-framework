@@ -1,0 +1,124 @@
+Opening HPlusPlusHMinusMinusHTo2L_M-500.root as input.  Event category tttt
+nentries=176000 nMax=176000
+hData=<ROOT.TH1D object ("pileup") at 0x9854260>
+Opening MC pileup file = pileup_2018UL_MC.root
+fMC=<ROOT.TFile object ("pileup_2018UL_MC.root") at 0x8c5bfc0>
+sum of pData=1.000000
+sum of pMC=1.000294
+In generalFunctions.pileUpWeight.calculateWeights() :
+In generalFunctions.getOutFileName() args.outFileName=skim_HDC_t_del1.root
+Opening skim_HDC_t_del1.ntup as output.
+------>systematics list []
+------>jetssystematics list []
+Count=0
+Count=1000
+Count=2000
+Count=3000
+Count=4000
+Event:  4755  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=5000
+Event:  5671  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=6000
+Count=7000
+Event:  7889  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=8000
+Count=9000
+Event:  9352  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=10000
+Event:  12218  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  15673  #e:  1  #mu:  0  #t:  3 --> Good candidates
+Event:  16952  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  17326  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  19323  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=20000
+Event:  23483  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  24357  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  25204  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  27392  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=30000
+Event:  31505  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  36824  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  38459  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=40000
+Event:  45741  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=50000
+Event:  54183  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  55014  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  58488  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=60000
+Event:  60188  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  61301  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  61684  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  63003  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  63806  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  65916  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  67064  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  68671  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  68913  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  68951  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  69509  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=70000
+Event:  72294  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  78765  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=80000
+Event:  80425  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  85302  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  86167  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  88798  #e:  1  #mu:  0  #t:  3 --> Good candidates
+Count=90000
+Event:  90161  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  90303  #e:  1  #mu:  0  #t:  4 --> Good candidates
+Event:  99173  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  99809  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=100000
+Event:  101322  #e:  1  #mu:  0  #t:  3 --> Good candidates
+Event:  101428  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  101834  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  104837  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  105437  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  106112  #e:  1  #mu:  0  #t:  3 --> Good candidates
+Count=110000
+Event:  110534  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  113747  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  113919  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  116753  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  117744  #e:  1  #mu:  0  #t:  4 --> Good candidates
+Count=120000
+Event:  122619  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  127315  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=130000
+Event:  130290  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  133352  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  134835  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  135013  #e:  1  #mu:  0  #t:  3 --> Good candidates
+Event:  136664  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  139441  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=140000
+Event:  140659  #e:  1  #mu:  0  #t:  4 --> Good candidates
+Event:  141784  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  143281  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=150000
+Event:  151435  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  154758  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  155302  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  157258  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  159516  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  159958  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=160000
+Event:  160401  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  160782  #e:  1  #mu:  0  #t:  5 --> Good candidates
+AHA 160782 has a fake channel
+Event:  161361  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  162187  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  162192  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  166443  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  166643  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  169256  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  169272  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  169358  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Count=170000
+Event:  172213  #e:  1  #mu:  0  #t:  3 --> Good candidates
+Event:  174535  #e:  0  #mu:  0  #t:  4 --> Good candidates
+Event:  174537  #e:  1  #mu:  0  #t:  3 --> Good candidates
+Run time=4002.01 s  time/event=22738.8 us
+# Yields in each channel  {'emem': 0, 'eemm': 0, 'etmt': 0, 'mmmm': 0, 'emtt': 0, 'eeet': 0, 'emmm': 0, 'eemt': 0, 'mttt': 0, 'etet': 0, 'eett': 0, 'eeee': 0, 'emmt': 0, 'mtmt': 0, 'tttt': 57, 'mmtt': 0, 'mmmt': 0, 'eeem': 0, 'emet': 0, 'etmm': 0, 'ettt': 4} 373 291 3 60
