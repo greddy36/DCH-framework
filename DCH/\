@@ -166,7 +166,6 @@ class outTuple() :
         
         self.nGoodElectron    = array('l',[0])
         self.nGoodMuon        = array('l',[0])
-        self.nGoodTau         = array('l',[0])
 
         self.L1PreFiringWeight_Nom        = array('f',[0])
         self.L1PreFiringWeight_Up        = array('f',[0])
@@ -474,8 +473,7 @@ class outTuple() :
         
         self.t.Branch('nGoodElectron',    self.nGoodElectron,     'nGoodElectron/I' )
         self.t.Branch('nGoodMuon',        self.nGoodMuon,         'nGoodMuon/I' )
-        self.t.Branch('nGoodTau',        self.nGoodTau,         'nGoodTau/I' )
- 
+        
         self.t.Branch('GenPart_statusFlags_1',     self.GenPart_statusFlags_1,     'GenPart_statusFlags_1/I')
         self.t.Branch('GenPart_statusFlags_2',     self.GenPart_statusFlags_2,     'GenPart_statusFlags_2/I')
         self.t.Branch('GenPart_statusFlags_3',     self.GenPart_statusFlags_3,     'GenPart_statusFlags_3/I')
@@ -622,7 +620,6 @@ class outTuple() :
         self.t.Branch('Z_DR',       self.Z_DR,       'Z_DR/F')   
         self.t.Branch('Z_SS',       self.Z_SS,       'Z_SS/F')   
         self.t.Branch('pt_1',        self.pt_1,        'pt_1/F')
-        self.t.Branch('m_1',     self.m_1,     'm_1/F')
         self.t.Branch('m_1_tr',     self.m_1_tr,     'm_1_tr/F')
         self.t.Branch('pt_1_tr',     self.pt_1_tr,     'pt_1_tr/F')
         self.t.Branch('phi_1',       self.phi_1,       'phi_1/F')  
@@ -630,7 +627,6 @@ class outTuple() :
         self.t.Branch('eta_1',       self.eta_1,       'eta_1/F')    
         self.t.Branch('eta_1_tr',    self.eta_1_tr,    'eta_1_tr/F')
         self.t.Branch('pt_2',        self.pt_2,        'pt_2/F')      
-        self.t.Branch('m_2',     self.m_2,     'm_2/F')
         self.t.Branch('m_2_tr',     self.m_2_tr,     'm_2_tr/F')
         self.t.Branch('pt_2_tr',     self.pt_2_tr,     'pt_2_tr/F')
         self.t.Branch('phi_2',       self.phi_2,       'phi_2/F')    
@@ -1192,66 +1188,14 @@ class outTuple() :
             - Lep1 and Lep2 are TLorentz vectors for the members of the dilepton pair
         '''
         SystIndex = int(systIndex)
-	'''
-        self.iso_1[0]   = -99
-        self.iso_2[0]   = -99
-        self.iso_3[0]   = -99
-        self.iso_4[0]   = -99
-        self.q_1[0]   = -99
-        self.q_2[0]   = -99
-        self.q_3[0]   = -99
-        self.q_4[0]   = -99
-        self.d0_1[0]   = -99
-        self.d0_2[0]   = -99
-        self.d0_3[0]   = -99
-        self.d0_4[0]   = -99
-        self.dZ_1[0]   = -99
-        self.dZ_2[0]   = -99
-        self.dZ_3[0]   = -99
-        self.dZ_4[0]   = -99
-        self.pt_1_tr[0]   = -99
-        self.pt_2_tr[0]   = -99
-        self.pt_3_tr[0]   = -99
-        self.pt_4_tr[0]   = -99
-        self.phi_1_tr[0]   = -99
-        self.phi_2_tr[0]   = -99
-        self.phi_3_tr[0]   = -99
-        self.phi_4_tr[0]   = -99
-        self.eta_1_tr[0]   = -99
-        self.eta_2_tr[0]   = -99
-        self.eta_3_tr[0]   = -99
-        self.eta_4_tr[0]   = -99
-        self.pt_uncor_1[0]   = -99      
-        self.pt_uncor_2[0]   = -99        
-        self.pt_uncor_3[0]   = -99        
-        self.pt_uncor_4[0]   = -99        
-        self.m_uncor_1[0]   = -99        
-        self.m_uncor_2[0]   = -99        
-        self.m_uncor_3[0]   = -99        
-        self.m_uncor_4[0]   = -99
-        self.pt_1[0]   = -99
-        self.pt_2[0]   = -99
-        self.pt_3[0]   = -99
-        self.pt_4[0]   = -99
-        self.phi_1[0]   = -99
-        self.phi_2[0]   = -99
-        self.phi_3[0]   = -99
-        self.phi_4[0]   = -99
-        self.eta_1[0]   = -99
-        self.eta_2[0]   = -99
-        self.eta_3[0]   = -99
-        self.eta_4[0]   = -99
-        self.m_1[0]   = -99        
-        self.m_2[0]   = -99        
-        self.m_3[0]   = -99        
-        self.m_4[0]   = -99
-        '''           
+
+        
         #if SystIndex >0 : doUncertainties=False
 
         #dch_1 = 'mm' or 'ee'
-        dch_1 = cat[:2]
-	dch_2 = cat[2:]
-        
+        dch_1 = cat[:-2]
+	dch_2 = cat[-2:]
+
         if SystIndex ==0 : 
 
 	    is_trig_1, is_trig_2, is_trig_3, is_trig_4, is_Dtrig_1 = 0., 0., 0., 0., 0.
@@ -1417,16 +1361,14 @@ class outTuple() :
 		self.nPUtrue[0]  = -1
 		self.nPV[0]  = -1
 		self.nPVGood[0]  = -1
-       
+        '''
         goodElectronList = tauFunDCH.makeGoodElectronList(entry)
         goodMuonList = tauFunDCH.makeGoodMuonList(entry)
-        #goodTauList = tauFunDCH.makeGoodTauList(entry) 
+        
         self.nGoodElectron[0] = len(goodElectronList)
         self.nGoodMuon[0]     = len(goodMuonList)
-	#self.nGoodTau[0]      = len(goodTauList)
-
         # pack trigger bits into integer word
-        
+        '''
 
         e = entry
 
@@ -1652,8 +1594,8 @@ class outTuple() :
 	    #print '---------------------------->', self.pt_1[0], ePt[jl1], entry.Tau_pt[jl2], tPt[jl2] , jl1, jl2, cat, entry.event, SystIndex
 	    Lep1.SetPtEtaPhiM(entry.Electron_pt[jl1],entry.Electron_eta[jl1], entry.Electron_phi[jl1], entry.Electron_mass[jl1])
 	    tmass= self.tauMass
-	    if entry.Tau_decayMode[jl2] == 0 : tmass= 0.13957 #pion mass
-	    else: tmass = entry.Tau_mass[jl2]
+	    if entry.Tau_decayMode[jl2] == 0 : tmass= 0.13960 #pion mass
+	    else tmass = entry.Tau_mass[jl2]
 	    Lep2.SetPtEtaPhiM(entry.Tau_pt[jl2],entry.Tau_eta[jl2],entry.Tau_phi[jl2],tmass)
 
 	# Fill variables for Leg3 and Leg4, where 3->tau(mu) and 4->tau(mu)
@@ -1763,8 +1705,8 @@ class outTuple() :
 
 	    Lep1.SetPtEtaPhiM(entry.Muon_pt[jl1], entry.Muon_eta[jl1], entry.Muon_phi[jl1], entry.Muon_mass[jl1])
 	    tmass= self.tauMass
-	    if entry.Tau_decayMode[jl2] == 0 : tmass= 0.13957 #pion mass
-            else: tmass = entry.Tau_mass[jl2]
+	    if entry.Tau_decayMode[jl2] == 0 : tmass= 0.13960 #pion mass
+            else tmass = entry.Tau_mass[jl2]
 	    Lep2.SetPtEtaPhiM(entry.Tau_pt[jl2],  entry.Tau_eta[jl2],  entry.Tau_phi[jl2], tmass)
 
 	
@@ -1811,12 +1753,12 @@ class outTuple() :
 	    except AttributeError : self.decayMode_1[0] = -1
 
 	    tmass= self.tauMass
-	    if entry.Tau_decayMode[jl1] == 0 : tmass= 0.13957 #pion mass
-            else: tmass = entry.Tau_mass[jl1]
+	    if entry.Tau_decayMode[jl1] == 0 : tmass= 0.13960 #pion mass
+            else tmass = entry.Tau_mass[jl1]
 	    Lep1.SetPtEtaPhiM(entry.Tau_pt[jl1], entry.Tau_eta[jl1], entry.Tau_phi[jl1], tmass)
 	    tmass= self.tauMass
-	    if entry.Tau_decayMode[jl2] == 0 : tmass= 0.13957 #pion mass
-            else: tmass = entry.Tau_mass[jl2]
+	    if entry.Tau_decayMode[jl2] == 0 : tmass= 0.13960 #pion mass
+            else tmass = entry.Tau_mass[jl2]
 	    Lep2.SetPtEtaPhiM(entry.Tau_pt[jl2], entry.Tau_eta[jl2], entry.Tau_phi[jl2], tmass)
 	    
 	else :
@@ -2070,9 +2012,8 @@ class outTuple() :
                 #print '---------------------------->', self.pt_3[0], ePt[jl3], entry.Tau_pt[jl4], tPt[jl4] , jl3, jl4, cat, entry.event, SystIndex
 		Lep3.SetPtEtaPhiM(entry.Electron_pt[jl3],entry.Electron_eta[jl3], entry.Electron_phi[jl3], entry.Electron_mass[jl3])
                 tmass= self.tauMass
-                if entry.Tau_decayMode[jl4] == 0 : tmass= 0.13957 #pion mass
-		else: tmass = entry.Tau_mass[jl4]
-		Lep4.SetPtEtaPhiM(entry.Tau_pt[jl4],entry.Tau_eta[jl4],entry.Tau_phi[jl4],tmass)
+                if entry.Tau_decayMode[jl4] == 0 : tmass= 0.13960 #pion mass
+		Lep4.SetPtEtaPhiM(entry.Tau_pt[jl4],entry.Tau_eta[jl4],entry.Tau_phi[jl4],entry.Tau_mass[jl4])
 
 	    # Fill variables for Leg3 and Leg4, where 3->tau(mu) and 4->tau(mu)
 	    elif dch_2 == 'mm' :
@@ -2181,9 +2122,8 @@ class outTuple() :
 
                 Lep3.SetPtEtaPhiM(entry.Muon_pt[jl3], entry.Muon_eta[jl3], entry.Muon_phi[jl3], entry.Muon_mass[jl3])
                 tmass= self.tauMass
-                if entry.Tau_decayMode[jl4] == 0 : tmass= 0.13957 #pion mass
-                else: tmass = entry.Tau_mass[jl4]
-                Lep4.SetPtEtaPhiM(entry.Tau_pt[jl4],  entry.Tau_eta[jl4],  entry.Tau_phi[jl4], tmass)
+                if entry.Tau_decayMode[jl4] == 0 : tmass= 0.13960 #pion mass
+                Lep4.SetPtEtaPhiM(entry.Tau_pt[jl4],  entry.Tau_eta[jl4],  entry.Tau_phi[jl4],  entry.Tau_mass[jl4])
 
 	    
 	    # Fill variables for Leg3 and Leg4, where 3->tau(had) and 4->tau(had)
@@ -2229,13 +2169,11 @@ class outTuple() :
 		except AttributeError : self.decayMode_3[0] = -1
 
                 tmass= self.tauMass
-                if entry.Tau_decayMode[jl3] == 0 : tmass= 0.13957 #pion mass
-		else: tmass = entry.Tau_mass[jl3]
-		Lep3.SetPtEtaPhiM(entry.Tau_pt[jl3], entry.Tau_eta[jl3], entry.Tau_phi[jl3],tmass)
+                if entry.Tau_decayMode[jl3] == 0 : tmass= 0.13960 #pion mass
+		Lep3.SetPtEtaPhiM(entry.Tau_pt[jl3], entry.Tau_eta[jl3], entry.Tau_phi[jl3], entry.Tau_mass[jl3])
                 tmass= self.tauMass
-                if entry.Tau_decayMode[jl4] == 0 : tmass= 0.13957 #pion mass
-		else: tmass = entry.Tau_mass[jl4]
-		Lep4.SetPtEtaPhiM(entry.Tau_pt[jl4], entry.Tau_eta[jl4], entry.Tau_phi[jl4], tmass)
+                if entry.Tau_decayMode[jl4] == 0 : tmass= 0.13960 #pion mass
+		Lep4.SetPtEtaPhiM(entry.Tau_pt[jl4], entry.Tau_eta[jl4], entry.Tau_phi[jl4], entry.Tau_mass[jl4])
 		
 	    else :
 		print("Invalid channel={0:s} in outTuple(). Exiting.".format(channel))
@@ -2302,7 +2240,8 @@ class outTuple() :
             self.mDCH2_sv[0] = fastMTTmass_2
             self.mtDCH2_sv[0] = fastMTTtransverseMass_2
             #self.mDCH1_sv4[0] = SVf_mDCH1
-  	    #self.mDCH2_sv4[0] = SVf_mDCH2
+	    #self.mDCH2_sv4[0] = SVf_mDCH2
+
         self.pt_1[0]   = Lep1.Pt()
         self.pt_2[0]   = Lep2.Pt()
         self.pt_3[0]   = Lep3.Pt()
@@ -2685,66 +2624,14 @@ class outTuple() :
             - Lep1 and Lep2 are TLorentz vectors for the members of the dilepton pair
         '''
         SystIndex = int(systIndex)
-	'''
-	self.iso_1[0]   = -99
-	self.iso_2[0]   = -99
-	self.iso_3[0]   = -99
-	self.iso_4[0]   = -99
-	self.q_1[0]   = -99
-	self.q_2[0]   = -99
-	self.q_3[0]   = -99
-	self.q_4[0]   = -99
-	self.d0_1[0]   = -99
-	self.d0_2[0]   = -99
-	self.d0_3[0]   = -99
-	self.d0_4[0]   = -99
-	self.dZ_1[0]   = -99
-	self.dZ_2[0]   = -99
-	self.dZ_3[0]   = -99
-	self.dZ_4[0]   = -99
-	self.pt_1_tr[0]   = -99
-	self.pt_2_tr[0]   = -99
-	self.pt_3_tr[0]   = -99
-	self.pt_4_tr[0]   = -99
-	self.phi_1_tr[0]   = -99
-	self.phi_2_tr[0]   = -99
-	self.phi_3_tr[0]   = -99
-	self.phi_4_tr[0]   = -99
-	self.eta_1_tr[0]   = -99
-	self.eta_2_tr[0]   = -99
-	self.eta_3_tr[0]   = -99
-	self.eta_4_tr[0]   = -99
-        self.pt_uncor_1[0]   = -99      
-        self.pt_uncor_2[0]   = -99        
-        self.pt_uncor_3[0]   = -99        
-        self.pt_uncor_4[0]   = -99        
-        self.m_uncor_1[0]   = -99        
-        self.m_uncor_2[0]   = -99        
-        self.m_uncor_3[0]   = -99        
-        self.m_uncor_4[0]   = -99
-        self.pt_1[0]   = -99
-	self.pt_2[0]   = -99
-	self.pt_3[0]   = -99
-	self.pt_4[0]   = -99
-	self.phi_1[0]   = -99
-	self.phi_2[0]   = -99
-	self.phi_3[0]   = -99
-	self.phi_4[0]   = -99
-	self.eta_1[0]   = -99
-	self.eta_2[0]   = -99
-	self.eta_3[0]   = -99
-	self.eta_4[0]   = -99
-        self.m_1[0]   = -99        
-        self.m_2[0]   = -99        
-        self.m_3[0]   = -99        
-        self.m_4[0]   = -99       
-	''' 
+
+        
         #if SystIndex >0 : doUncertainties=False
 
         #dch_1 = 'mm' or 'ee'
         dch_1 = cat[:2]
-	dch_2 = cat[2:]
-        
+	dch_2 = cat[1:]
+
         if SystIndex ==0 : 
 
 	    is_trig_1, is_trig_2, is_trig_3, is_trig_4, is_Dtrig_1 = 0., 0., 0., 0., 0.
@@ -2910,14 +2797,14 @@ class outTuple() :
 		self.nPUtrue[0]  = -1
 		self.nPV[0]  = -1
 		self.nPVGood[0]  = -1
-
+        '''
         goodElectronList = tauFunDCH.makeGoodElectronList(entry)
         goodMuonList = tauFunDCH.makeGoodMuonList(entry)
-        #goodTauList = tauFunDCH.makeGoodTauList(entry)
+        
         self.nGoodElectron[0] = len(goodElectronList)
         self.nGoodMuon[0]     = len(goodMuonList)
-        #self.nGoodTau[0]      = len(goodTauList)
         # pack trigger bits into integer word
+        '''
 
         e = entry
 
@@ -2990,6 +2877,10 @@ class outTuple() :
 		if bit : self.muonTriggerWord[0] += 2**i
 		
 		
+        # di-lepton variables.   _p and _m refer to plus and minus charge
+        #if jl3>-1 and jl4>-1 : self.AMass[0]       = (Lep1 + Lep2 + Lep3 + Lep4).M() 
+        self.cat[0]  = tauFunDCH.catToNumber3L(cat)
+
 	jl1 = idx_DCH1[0]
 	jl2 = idx_DCH1[1]
 	Lep1, Lep2 = TLorentzVector(), TLorentzVector()
@@ -3144,9 +3035,8 @@ class outTuple() :
 	    #print '---------------------------->', self.pt_1[0], ePt[jl1], entry.Tau_pt[jl2], tPt[jl2] , jl1, jl2, cat, entry.event, SystIndex
 	    Lep1.SetPtEtaPhiM(entry.Electron_pt[jl1],entry.Electron_eta[jl1], entry.Electron_phi[jl1], entry.Electron_mass[jl1])
 	    tmass= self.tauMass
-	    if entry.Tau_decayMode[jl2] == 0 : tmass= 0.13957 #pion mass
-            else: tmass = entry.Tau_mass[jl2]
-	    Lep2.SetPtEtaPhiM(entry.Tau_pt[jl2],entry.Tau_eta[jl2],entry.Tau_phi[jl2],tmass)
+	    if entry.Tau_decayMode[jl2] == 0 : tmass= 0.13960 #pion mass
+	    Lep2.SetPtEtaPhiM(entry.Tau_pt[jl2],entry.Tau_eta[jl2],entry.Tau_phi[jl2],entry.Tau_mass[jl2])
 
 	# Fill variables for Leg3 and Leg4, where 3->tau(mu) and 4->tau(mu)
 	elif dch_1 == 'mm' :
@@ -3255,9 +3145,8 @@ class outTuple() :
 
 	    Lep1.SetPtEtaPhiM(entry.Muon_pt[jl1], entry.Muon_eta[jl1], entry.Muon_phi[jl1], entry.Muon_mass[jl1])
 	    tmass= self.tauMass
-	    if entry.Tau_decayMode[jl2] == 0 : tmass= 0.13957 #pion mass
-            else: tmass = entry.Tau_mass[jl2]
-	    Lep2.SetPtEtaPhiM(entry.Tau_pt[jl2],  entry.Tau_eta[jl2],  entry.Tau_phi[jl2], tmass)
+	    if entry.Tau_decayMode[jl2] == 0 : tmass= 0.13960 #pion mass
+	    Lep2.SetPtEtaPhiM(entry.Tau_pt[jl2],  entry.Tau_eta[jl2],  entry.Tau_phi[jl2],  entry.Tau_mass[jl2])
 
 	
 	# Fill variables for Leg3 and Leg4, where 3->tau(had) and 4->tau(had)
@@ -3303,13 +3192,11 @@ class outTuple() :
 	    except AttributeError : self.decayMode_1[0] = -1
 
 	    tmass= self.tauMass
-	    if entry.Tau_decayMode[jl1] == 0 : tmass= 0.13957 #pion mass
-            else: tmass = entry.Tau_mass[jl1]
-	    Lep1.SetPtEtaPhiM(entry.Tau_pt[jl1], entry.Tau_eta[jl1], entry.Tau_phi[jl1], tmass)
+	    if entry.Tau_decayMode[jl1] == 0 : tmass= 0.13960 #pion mass
+	    Lep1.SetPtEtaPhiM(entry.Tau_pt[jl1], entry.Tau_eta[jl1], entry.Tau_phi[jl1], entry.Tau_mass[jl1])
 	    tmass= self.tauMass
-	    if entry.Tau_decayMode[jl2] == 0 : tmass= 0.13957 #pion mass
-            else: tmass = entry.Tau_mass[jl2]
-	    Lep2.SetPtEtaPhiM(entry.Tau_pt[jl2], entry.Tau_eta[jl2], entry.Tau_phi[jl2], tmass)
+	    if entry.Tau_decayMode[jl2] == 0 : tmass= 0.13960 #pion mass
+	    Lep2.SetPtEtaPhiM(entry.Tau_pt[jl2], entry.Tau_eta[jl2], entry.Tau_phi[jl2], entry.Tau_mass[jl2])
 	    
 	else :
 	    print("Invalid channel={0:s} in outTuple(). Exiting.".format(channel))
@@ -3404,17 +3291,7 @@ class outTuple() :
 		self.GenPart_statusFlags_2[0]    = entry.GenPart_statusFlags[idx_Lep2_tr]
 		self.GenPart_status_2[0]    = entry.GenPart_status[idx_Lep2_tr]
 	'''
-
-        if jl3>-1: 
-	    self.cat[0]  = tauFunDCH.catToNumber3L(cat)
-	    Lep3 = TLorentzVector()
         if dch_2 == 'e':
-            '''self.pt_3[0] = entry.Electron_pt[jl3]
-            self.phi_3[0] = entry.Electron_phi[jl3]
-            self.eta_3[0] = entry.Electron_eta[jl3]
-            self.m_3[0] = entry.Electron_mass[jl3]
-            '''
-            
             self.iso_3[0]  = entry.Electron_pfRelIso03_all[jl3]
             self.q_3[0]  = entry.Electron_charge[jl3]
             self.d0_3[0]   = entry.Electron_dxy[jl3]
@@ -3433,15 +3310,10 @@ class outTuple() :
                 self.m_uncor_4[0] = -1
 
             if isMC :
-                self.gen_match_3[0] = ord(entry.Electron_genPartFlav[jl3])
-                #self.gen_match_4[0] = ord(entry.Muon_genPartFlav[jl4])
-	    Lep3.SetPtEtaPhiM(entry.Electron_pt[jl3],entry.Electron_eta[jl3],entry.Electron_phi[jl3],entry.Electron_mass[jl3])
-	elif dch_2 == 'm':
-            '''self.pt_3[0] = entry.Muon_pt[jl3]
-            self.phi_3[0] = entry.Muon_phi[jl3]
-            self.eta_3[0] = entry.Muon_eta[jl3]
-            self.m_3[0] = entry.Muon_mass[jl3]
-            '''
+                self.gen_match_3[0] = ord(entry.Electron_genPartFlav[jl1])
+                #self.gen_match_4[0] = ord(entry.Muon_genPartFlav[jl2])
+
+        if dch_2 == 'm':
             self.iso_3[0]  = entry.Muon_pfRelIso04_all[jl3]
             self.q_3[0]  = entry.Muon_charge[jl3]
             self.d0_3[0]   = entry.Muon_dxy[jl3]
@@ -3460,24 +3332,19 @@ class outTuple() :
                 self.m_uncor_4[0] = -1
 
             if isMC :
-                self.gen_match_3[0] = ord(entry.Muon_genPartFlav[jl3])
-                #self.gen_match_4[0] = ord(entry.Muon_genPartFlav[jl4])
-            Lep3.SetPtEtaPhiM(entry.Muon_pt[jl3],entry.Muon_eta[jl3],entry.Muon_phi[jl3],entry.Muon_mass[jl3])
+                self.gen_match_3[0] = ord(entry.Muon_genPartFlav[jl1])
+                #self.gen_match_4[0] = ord(entry.Muon_genPartFlav[jl2])
 
-        elif dch_2 == 't':
-            '''self.pt_3[0] = entry.Tau_pt[jl3]
-            self.phi_3[0] = entry.Tau_phi[jl3]
-            self.eta_3[0] = entry.Tau_eta[jl3]
-            '''
-            self.q_3[0]  = entry.Tau_charge[jl3]
-            self.d0_3[0]   = entry.Tau_dxy[jl3]
-            self.dZ_3[0]   = entry.Tau_dz[jl3]
-            '''self.idDecayModeNewDMs_3[0] = entry.Tau_idDecayModeNewDMs[jl3]
-            self.idDeepTau2017v2p1VSe_3[0] = ord(entry.Tau_idDeepTau2017v2p1VSe[jl3])
-            self.idDeepTau2017v2p1VSjet_3[0] = ord(entry.Tau_idDeepTau2017v2p1VSjet[jl3])
-            self.idDeepTau2017v2p1VSmu_3[0] = ord(entry.Tau_idDeepTau2017v2p1VSmu[jl3])
-            self.idMVAnewDM2017v2_3[0] = ord(entry.Tau_idMVAnewDM2017v2[jl3])
-            self.rawMVAnewDM2017v2_3[0] = entry.Tau_rawMVAnewDM2017v2[jl3]
+        if dch_2 == 't':
+            self.q_1[0]  = entry.Tau_charge[jl1]
+            self.d0_2[0]   = entry.Tau_dxy[jl2]
+            self.dZ_2[0]   = entry.Tau_dz[jl2]
+            '''self.idDecayModeNewDMs_1[0] = entry.Tau_idDecayModeNewDMs[jl1]
+            self.idDeepTau2017v2p1VSe_1[0] = ord(entry.Tau_idDeepTau2017v2p1VSe[jl1])
+            self.idDeepTau2017v2p1VSjet_1[0] = ord(entry.Tau_idDeepTau2017v2p1VSjet[jl1])
+            self.idDeepTau2017v2p1VSmu_1[0] = ord(entry.Tau_idDeepTau2017v2p1VSmu[jl1])
+            self.idMVAnewDM2017v2_1[0] = ord(entry.Tau_idMVAnewDM2017v2[jl1])
+            self.rawMVAnewDM2017v2_1[0] = entry.Tau_rawMVAnewDM2017v2[jl1]
             '''
             if SystIndex ==0 and  isMC :
                 self.pt_uncor_3[0] = tPt[jl3]
@@ -3486,48 +3353,8 @@ class outTuple() :
                 self.m_uncor_4[0] = -1
 
             if isMC :
-                self.gen_match_3[0] = ord(entry.Tau_genPartFlav[jl3])
-                idx_t1_gen = GF.genMatchTau(entry, jl3, 'had')
-                if idx_t1_gen >= 0:
-                    self.pt_3_tr[0]  = entry.GenVisTau_pt[idx_t1_gen]
-                    self.phi_3_tr[0] = entry.GenVisTau_phi[idx_t1_gen]
-                    self.eta_3_tr[0] = entry.GenVisTau_eta[idx_t1_gen]
-                    self.GenPart_statusFlags_3[0]    = entry.GenPart_statusFlags[idx_t1_gen]
-                    self.GenPart_status_3[0]    = entry.GenPart_status[idx_t1_gen]
-                else:
-                    self.pt_3_tr[0]  = 1.2*entry.Tau_pt[jl3]
-                    self.phi_3_tr[0] = 1.2*entry.Tau_phi[jl3]
-                    self.eta_3_tr[0] = 1.2*entry.Tau_eta[jl3]
-
-                try : self.gen_match_3[0] = ord(entry.Tau_genPartFlav[jl3])
-                except AttributeError : self.gen_match_3[0] = -1
-
-            try : self.decayMode_3[0] = int(entry.Tau_decayMode[jl3])
-            except AttributeError : self.decayMode_3[0] = -1
-
-            tmass= self.tauMass
-            if entry.Tau_decayMode[jl3] == 0 : tmass= 0.13957 #pion mass
-            else: tmass = entry.Tau_mass[jl3]
-            Lep3.SetPtEtaPhiM(entry.Tau_pt[jl3],entry.Tau_eta[jl3],entry.Tau_phi[jl3],tmass)
-
-        self.pt_1[0]   = Lep1.Pt()
-        self.pt_2[0]   = Lep2.Pt()
-        self.pt_3[0]   = Lep3.Pt()
-        self.phi_2[0]  = Lep2.Phi()
-        self.phi_1[0]  = Lep1.Phi()
-        self.phi_3[0]  = Lep3.Phi()
-        self.eta_1[0]  = Lep1.Eta()
-        self.eta_2[0]  = Lep2.Eta()
-        self.eta_3[0]  = Lep3.Eta()
-        self.m_1[0]    = Lep1.M()
-        self.m_2[0]    = Lep2.M()
-        self.m_3[0]    = Lep3.M()
-
-        self.pt_4[0]   = -1
-        self.phi_4[0]  = -9
-        self.eta_4[0]  = -9
-        self.m_4[0]    = -1
-
+                elf.gen_match_3[0] = ord(entry.Tau_genPartFlav[jl3])
+                #self.gen_match_4[0] = ord(entry.Tau_genPartFlav[lep_index_4])
 
         self.mll[0]       = (Lep1 + Lep2).M()
         self.mll2[0]      = -1
@@ -3543,6 +3370,20 @@ class outTuple() :
         self.dPhil2H[0]  = self.getdPhi(entry,Lep2,Lep3+Lep4)
         self.dPhilH[0]  = self.getdPhi(entry,Lep1+Lep2,Lep3+Lep4)
         '''
+        self.pt_1[0]   = Lep1.Pt()
+        self.pt_2[0]   = Lep2.Pt()
+        self.phi_2[0]  = Lep2.Phi()
+        self.phi_1[0]  = Lep1.Phi()
+        self.eta_1[0]  = Lep1.Eta()
+        self.eta_2[0]  = Lep2.Eta()       
+        self.m_1[0]    = Lep1.M()
+        self.m_2[0]    = Lep2.M()
+        
+        
+        self.pt_4[0]   = -1
+        self.phi_4[0]  = -9
+        self.eta_4[0]  = -9
+        self.m_4[0]    = -1
         
         #self.btagWeightDeepCSVB[0]  = entry.btagWeight_DeepCSVB
         #print 'inside after filling----------------------->', entry.MET_pt,  self.met[0], met_pt

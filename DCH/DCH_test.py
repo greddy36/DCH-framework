@@ -121,7 +121,8 @@ else :
 
 era=str(args.year)
 
-outFileName = GF.getOutFileName(args).replace(".root",".ntup")
+#outFileName = GF.getOutFileName(args).replace(".root",".ntup")
+outFileName = GF.getOutFileName(args)
 
 if MC : 
     if "WJetsToLNu" in outFileName and 'TWJets' not in outFileName:
@@ -244,7 +245,7 @@ for cat in cats:
     n_lepton[cat]=[0,0,0]
 
 for count, e in enumerate( inTree) :
-    #if count != 70957: continue #to run only over a single event
+    #if count != 738: continue #to run only over a single event
     if count % countMod == 0 :
         print("Count={0:d}".format(count))
         if count >= 10000 : countMod = 10000
@@ -344,12 +345,12 @@ for count, e in enumerate( inTree) :
 	    for j in range(e.nTau):
 		tauMass.append(e.Tau_mass[j])
 		tauPt.append(e.Tau_pt[j])
-    '''
-    if 'Hpp' in  args.nickName :
-       #if not 't' in GF.printGenDecayMode(e): continue
-       if not GF.printGenDecayMode(e)=='eeee': continue
-       #GF.printMC(e)
-       #print 'Gen channel is', GF.printGenDecayMode(e)
+    
+    '''if 'Hpp' in  args.nickName :
+       if 't' not in GF.printGenDecayMode(e): continue
+       #if not GF.printGenDecayMode(e)=='eeee': continue
+       GF.printMC(e)
+       print 'Gen channel is', GF.printGenDecayMode(e)
     else:
        if not GF.printGenDecayModeBkg(e,bkg=args.nickName) == args.category : continue
        #GF.printMC(e)
@@ -457,10 +458,21 @@ for count, e in enumerate( inTree) :
                                         else: lep_3 = i
                         if lep_3 == -99: continue
 
-			SVFit = True
+
+	                if MC :
+            		    outTuple.setWeight(PU.getWeight(e.PV_npvs))
+	                    outTuple.setWeightPU(PU.getWeight(e.Pileup_nPU))
+            		    outTuple.setWeightPUtrue(PU.getWeight(e.Pileup_nTrueInt))
+              		    ##print 'nPU', e.Pileup_nPU, e.Pileup_nTrueInt, PU.getWeight(e.Pileup_nPU), PU.getWeight(e.Pileup_nTrueInt), PU.getWeight(e.PV_npvs), PU.getWeight(e.PV_npvsGood)
+            		else :
+                	   outTuple.setWeight(1.)
+                	   outTuple.setWeightPU(1.) ##
+                	   outTuple.setWeightPUtrue(1.)
+
+			SVFit = False
 			if not MC : isMC = False 
 			outTuple.Fill3L(e,SVFit,cat3L,bestDCH1,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
-			#=========================================================	
+			#=========================================================
 
         if len(goodElectronList)+len(goodMuonList)+len(goodTauList) > 4:
             evts_5lep += 1
@@ -641,7 +653,7 @@ for count, e in enumerate( inTree) :
 	    cutCounter[cat].count("GoodTauPair")
 	    if  MC:   cutCounterGenWeight[cat].countGenWeight('GoodTauPair', e.genWeight)
             '''
-
+            
 	    if MC :
 		outTuple.setWeight(PU.getWeight(e.PV_npvs)) 
 		outTuple.setWeightPU(PU.getWeight(e.Pileup_nPU)) 
@@ -652,8 +664,8 @@ for count, e in enumerate( inTree) :
 		outTuple.setWeightPU(1.) ##
 		outTuple.setWeightPUtrue(1.)
             #print("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT")#ggr
-
-	    SVFit = True
+	    
+	    SVFit = False
             #continue	    
 	    if not MC : isMC = False
 
@@ -688,6 +700,9 @@ hCutFlowW=[]
 outTuple.writeTree()
 fW = TFile( outFileName, 'update' )
 fW.cd()
+hNEvts = TH1D("hNEvts", "nEntries", 1, 0,1)
+hNEvts.Fill(0,nentries) 
+hNEvts.Write()
 #print '------------------------->',fW, outFileName
 for icat,cat in enumerate(cats) :
     print('\nSummary for {0:s}'.format(cat))

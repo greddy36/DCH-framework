@@ -254,24 +254,29 @@ def printGenDecayMode(entry,printOn=False) :#works only for signal MC
                 pID = entry.GenPart_pdgId[j]
                 if pID in PDG_ID.keys() : pID = PDG_ID[pID]
                 mother = entry.GenPart_genPartIdxMother[j]
-                if mother > 0 and abs(entry.GenPart_pdgId[mother]) == 9900041:#making sure the particles come from DCH
-                   if abs(entry.GenPart_pdgId[j]) == 11 :
-                      cat += 'e'
+                if mother <= 0 or abs(entry.GenPart_pdgId[mother]) != 9900041: continue#making sure the particles come from DCH
+                if abs(entry.GenPart_pdgId[j]) == 11 :
+                   cat += 'e'
+                   if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
+                elif abs(entry.GenPart_pdgId[j]) == 13 :
+                   cat += 'm'
+                   if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
+                elif abs(entry.GenPart_pdgId[j]) == 15 :
+                   '''for i in range(j+1, entry.nGenPart, 1):#hadronic tau selection
+                      mom = entry.GenPart_genPartIdxMother[i]
+                      if mom <= 0 or abs(entry.GenPart_pdgId[mom]) != 15: continue
+                      if mom in tau_idx : continue#make sure this is not previously recognised tau
+                      if abs(entry.GenPart_pdgId[i])==11 or abs(entry.GenPart_pdgId[i])==12 or abs(entry.GenPart_pdgId[i])==13 or abs(entry.GenPart_pdgId[i])==14 or abs(entry.GenPart_pdgId[i])==15 or abs(entry.GenPart_pdgId[i])==16 or entry.GenPart_pdgId[i]==22: continue
+                      cat += 't'
+                      tau_idx.append(mom)
                       if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
-                   if abs(entry.GenPart_pdgId[j]) == 13 :
-                      cat += 'm'
-                      if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
-                   if abs(entry.GenPart_pdgId[j]) == 15 :#hadronic tau selection. 
-                      for i in range(j+1, entry.nGenPart, 1):
-                         mom = entry.GenPart_genPartIdxMother[i]
-                         if mom <= 0 or abs(entry.GenPart_pdgId[mom]) != 15: continue
-                         if mom in tau_idx : continue#make sure this is not previously recognised tau
-                         if abs(entry.GenPart_pdgId[i])!=11 and abs(entry.GenPart_pdgId[i])!=12 and abs(entry.GenPart_pdgId[i])!=13 and abs(entry.GenPart_pdgId[i])!=14 and abs(entry.GenPart_pdgId[i])!=15 and abs(entry.GenPart_pdgId[i])!=16 and entry.GenPart_pdgId[i]!=22:
-                            cat += 't'
-                            tau_idx.append(mom)
-                            if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
-                            if printOn: print entry.GenPart_pdgId[i]
-                            break
+                      if printOn: print entry.GenPart_pdgId[i]
+                      break
+                   '''
+                   cat += 't'
+                   if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
+                   if printOn: print entry.GenPart_pdgId[i]
+                   break
     except AttributeError :
         pass
     return cat
