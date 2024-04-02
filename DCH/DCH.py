@@ -155,17 +155,17 @@ if args.weights > 0 :
     hWeightScaleSTXSDown.Sumw2()
 
 
-
-    for count, e in enumerate(inTree) :
-        hWeight.Fill(0, e.genWeight)
+    if MC:
+        for count, e in enumerate(inTree) :
+            hWeight.Fill(0, e.genWeight)
     
-        if "WJetsToLNu" in outFileName and 'TWJets' not in outFileName:
+            if "WJetsToLNu" in outFileName and 'TWJets' not in outFileName:
 
-            npartons = ord(e.LHE_Njets)
-	    if  npartons <= 4: 	hWxGenweightsArr[npartons].Fill(0, e.genWeight)
-        if "DYJetsToLL" in outFileName :
-            npartons = ord(e.LHE_Njets)
-	    if  npartons <= 4 : hDYxGenweightsArr[npartons].Fill(0, e.genWeight)
+                npartons = ord(e.LHE_Njets)
+	        if  npartons <= 4: 	hWxGenweightsArr[npartons].Fill(0, e.genWeight)
+            if "DYJetsToLL" in outFileName :
+                npartons = ord(e.LHE_Njets)
+	        if  npartons <= 4 : hDYxGenweightsArr[npartons].Fill(0, e.genWeight)
 
     fName = GF.getOutFileName(args).replace(".root",".weights")
     fW = TFile( fName, 'recreate' )

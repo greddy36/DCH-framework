@@ -2,7 +2,7 @@
 
 from ROOT import TLorentzVector, TH1
 from math import sqrt, sin, cos, pi
-import tauFunDCH_test as tauFunDCH
+import tauFunDCH as tauFunDCH
 import ROOT, array
 import os
 import sys
