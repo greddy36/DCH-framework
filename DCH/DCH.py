@@ -122,8 +122,7 @@ else :
 era=str(args.year)
 
 #outFileName = GF.getOutFileName(args).replace(".root",".ntup")
-outFileName = args.outFileName
-
+outFileName = GF.getOutFileName(args)
 
 if MC : 
     if "WJetsToLNu" in outFileName and 'TWJets' not in outFileName:
@@ -156,17 +155,17 @@ if args.weights > 0 :
     hWeightScaleSTXSDown.Sumw2()
 
 
-
-    for count, e in enumerate(inTree) :
-        hWeight.Fill(0, e.genWeight)
+    if MC:
+        for count, e in enumerate(inTree) :
+            hWeight.Fill(0, e.genWeight)
     
-        if "WJetsToLNu" in outFileName and 'TWJets' not in outFileName:
+            if "WJetsToLNu" in outFileName and 'TWJets' not in outFileName:
 
-            npartons = ord(e.LHE_Njets)
-	    if  npartons <= 4: 	hWxGenweightsArr[npartons].Fill(0, e.genWeight)
-        if "DYJetsToLL" in outFileName :
-            npartons = ord(e.LHE_Njets)
-	    if  npartons <= 4 : hDYxGenweightsArr[npartons].Fill(0, e.genWeight)
+                npartons = ord(e.LHE_Njets)
+	        if  npartons <= 4: 	hWxGenweightsArr[npartons].Fill(0, e.genWeight)
+            if "DYJetsToLL" in outFileName :
+                npartons = ord(e.LHE_Njets)
+	        if  npartons <= 4 : hDYxGenweightsArr[npartons].Fill(0, e.genWeight)
 
     fName = GF.getOutFileName(args).replace(".root",".weights")
     fW = TFile( fName, 'recreate' )
@@ -246,7 +245,7 @@ for cat in cats:
     n_lepton[cat]=[0,0,0]
 
 for count, e in enumerate( inTree) :
-    #if count != 31156: continue #to run only over a single event
+    #if count != 738: continue #to run only over a single event
     if count % countMod == 0 :
         print("Count={0:d}".format(count))
         if count >= 10000 : countMod = 10000
@@ -346,12 +345,12 @@ for count, e in enumerate( inTree) :
 	    for j in range(e.nTau):
 		tauMass.append(e.Tau_mass[j])
 		tauPt.append(e.Tau_pt[j])
-    '''
-    if 'Hpp' in  args.nickName :
-       #if not 't' in GF.printGenDecayMode(e): continue
-       if not GF.printGenDecayMode(e)=='eeee': continue
-       #GF.printMC(e)
-       #print 'Gen channel is', GF.printGenDecayMode(e)
+    
+    '''if 'Hpp' in  args.nickName :
+       if 't' not in GF.printGenDecayMode(e): continue
+       #if not GF.printGenDecayMode(e)=='eeee': continue
+       GF.printMC(e)
+       print 'Gen channel is', GF.printGenDecayMode(e)
     else:
        if not GF.printGenDecayModeBkg(e,bkg=args.nickName) == args.category : continue
        #GF.printMC(e)
@@ -443,7 +442,8 @@ for count, e in enumerate( inTree) :
 				#print "DCH1 charge:",netS
 			##print 'signC ',signC
 			pairList1 = TF.make4Vec(bestDCH1,dch1,e)
-                        lep_3 = -99
+                        list1 = goodElectronList+goodMuonList+goodTauList
+			lep_3 = -99
 			if dch2 =='e':
 				for i in goodElectronList:
 					if e.Electron_charge[i] == signC : continue 
@@ -457,11 +457,10 @@ for count, e in enumerate( inTree) :
                                         if e.Tau_charge[i] == signC : continue
                                         else: lep_3 = i
                         if lep_3 == -99: continue
-			#print(lep_3,count)
-                        
-			SVFit = True
+
+			SVFit = False
 			if not MC : isMC = False 
-			outTuple.Fill3L(e,SVFit,cat3L,pairList1[0],pairList1[1],bestDCH1,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+			outTuple.Fill3L(e,SVFit,cat3L,bestDCH1,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
 			#=========================================================	
 
         if len(goodElectronList)+len(goodMuonList)+len(goodTauList) > 4:
@@ -659,8 +658,8 @@ for count, e in enumerate( inTree) :
             #continue	    
 	    if not MC : isMC = False
 
-            #if cat[2:] !='et' and cat[2:] !='mt' and cat[2:] !='tt': continue
-	    outTuple.Fill(e,SVFit,cat,bestDCH2[0],bestDCH2[1],pairList1[0],pairList1[1],bestDCH1,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+            #outTuple.Fill(e,SVFit,cat,bestDCH2[0],bestDCH2[1],pairList1[0],pairList1[1],bestDCH1,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+	    outTuple.Fill(e,SVFit,cat,bestDCH1,bestDCH2,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
             '''
 	    if maxPrint > 0 :
 		maxPrint -= 1
@@ -690,6 +689,9 @@ hCutFlowW=[]
 outTuple.writeTree()
 fW = TFile( outFileName, 'update' )
 fW.cd()
+hNEvts = TH1D("hNEvts", "nEntries", 1, 0,1)
+hNEvts.Fill(0,nentries) 
+hNEvts.Write()
 #print '------------------------->',fW, outFileName
 for icat,cat in enumerate(cats) :
     print('\nSummary for {0:s}'.format(cat))

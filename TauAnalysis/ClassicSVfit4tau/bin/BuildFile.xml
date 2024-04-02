@@ -4,3 +4,9 @@
   <use name="root"/>
   <Flags CPPDEFINES="USE_SVFITTF"/>
 </bin>
+<bin   file="testDCH4tau.cc" name="testDCH4tau">
+  <use name="TauAnalysis/ClassicSVfit4tau"/>
+  <use name="TauAnalysis/SVfitTF"/>
+  <use name="root"/>
+  <Flags CPPDEFINES="USE_SVFITTF"/>
+</bin>
