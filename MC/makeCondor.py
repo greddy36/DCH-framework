@@ -15,6 +15,7 @@ def getArgs() :
     parser.add_argument("-j","--doSystematics",default='yes',type=str,help="do JME systematics")
     parser.add_argument("-l","--islocal",default='no',type=str,help="get list from /eos/ not DAS")
     parser.add_argument("-w","--weights",default='1',type=str,help="store genWeights in a TH1")
+    parser.add_argument("-d","--dataType",default='MC',help="Data or MC")
     return parser.parse_args()
 
 def beginBatchScript(baseFileName, Systematics) :
@@ -27,12 +28,15 @@ def beginBatchScript(baseFileName, Systematics) :
     outLines.append("cmsenv\n")
     #outLines.append("git clone --recursive https://github.com/cms-nanoAOD/correctionlib.git\n")
     outLines.append("cd ${_CONDOR_SCRATCH_DIR}/CMSSW_10_6_5/src/\n")
-    #outLines.append("git clone https://github.com/cms-tau-pog/TauIDSFs TauPOG/TauIDSFs\n")
+    outLines.append("git clone https://github.com/greddy36/TauIDSFs TauPOG/TauIDSFs\n")
     outLines.append("scram b -j 4\n")
     outLines.append("echo ${_CONDOR_SCRATCH_DIR}\n")
     outLines.append("cd ${_CONDOR_SCRATCH_DIR}/CMSSW_10_6_5/src/\n")
-    outLines.append("cp ${_CONDOR_SCRATCH_DIR}/* .\n")
-    outLines.append("tar -zxvf correctionlib.tar.gz\n")
+    outLines.append("tar -zxvf ${_CONDOR_SCRATCH_DIR}/funcs.tar.gz\n")
+    outLines.append("tar -zxvf ${_CONDOR_SCRATCH_DIR}/tools.tar.gz\n")
+    outLines.append("tar -zxvf ${_CONDOR_SCRATCH_DIR}/DCH.tar.gz\n")
+    #outLines.append("tar -zxvf correctionlib.tar.gz\n")
+    outLines.append("cd ${_CONDOR_SCRATCH_DIR}/CMSSW_10_6_5/src/DCH\n")
     outLines.append("ls -altrh\n")
     outLines.append("echo 'this is the working dir' ${_CONDOR_SCRATCH_DIR}\n")
     return outLines
@@ -136,9 +140,9 @@ for nFile in range(0, len(dataset),mjobs) :
 	#else : 
 	infile = "inFile.root"
 
-        outLines.append("xrdcp  root://cmseos.fnal.gov/{0:s} {1:s}\n".format(fileloop, infile)) 
-        outLines.append("if [ ! -f inFile.root ] ; \n then \n xrdcp root://cmsxrootdfnal.gov/{0:s} {1:s}\n fi \n".format(fileloop, infile))
-        outLines.append("if [ ! -f inFile.root ] ; \n then \n xrdcp root://cms-xrd-global.cern.ch/{0:s} {1:s}\n fi \n".format(fileloop, infile))
+        outLines.append("xrdcp  root://cms-xrd-global.cern.ch/{0:s} {1:s}\n".format(fileloop, infile)) 
+        #outLines.append("if [ ! -f inFile.root ] ; \n then \n xrdcp root://cmsxrootdfnal.gov/{0:s} {1:s}\n fi \n".format(fileloop, infile))
+        #outLines.append("if [ ! -f inFile.root ] ; \n then \n xrdcp root://cmseos.fnal.gov/{0:s} {1:s}\n fi \n".format(fileloop, infile))
         
 
 
@@ -153,14 +157,14 @@ for nFile in range(0, len(dataset),mjobs) :
 	    #outLines.append("python SystWeights.py -f {4:s}  -o {0:s} --nickName {1:s} -y {2:s} -s {3:s} -w 1 -j {5:s}\n".format(outFileName,args.nickName, args.year, args.selection,infile, args.doSystematics, executable, str(weightSwitch)))
 
 	if not runLocal : 
-	    outLines.append("python {6:s}.py -f {4:s} -o {0:s} --nickName {1:s} -y {2:s} -s {3:s} -w 1 -j {5:s}\n".format(outFileName,args.nickName, args.year, args.selection,infile, args.doSystematics, executable ))
+	    outLines.append("python {6:s}.py -f {4:s} -d {7:s} -o {0:s} --nickName {1:s} -y {2:s} -s {3:s} -w 1 -j {5:s}\n".format(outFileName,args.nickName, args.year, args.selection,infile, args.doSystematics, executable, args.dataType ))
     
 	outLines.append("rm inFile*.root\n")
 
-        ntupfile = outFileName.replace(".root", ".ntup")
-        weightsfile = outFileName.replace(".root", ".weights")
+        #ntupfile = outFileName.replace(".root", ".ntup")
+        #weightsfile = outFileName.replace(".root", ".weights")
  
-	outLines.append("xrdcp {5:s} root://cmseos.fnal.gov//eos/uscms/store/user/greddy/DCH_files/{6:s}_out/{0:s}/{7:s}\n".format(args.nickName+'_'+eraD, nFile+1+j, executable, args.year, fend, ntupfile, dirout, outFileName))
+	outLines.append("xrdcp {5:s} root://cmseos.fnal.gov//eos/uscms/store/user/greddy/DCH_files/{6:s}_out/{0:s}/{7:s}\n".format(args.nickName+'_'+eraD, nFile+1+j, executable, args.year, fend, outFileName, dirout, outFileName))
 	outLines.append("\n")
 
     outLines.append("rm  *root *.ntup  *.so\nrm *.pcm\nrm *cc.d\n")
@@ -175,7 +179,7 @@ for nFile in range(0, len(dataset),mjobs) :
     counter += mjobs
 
 
-wdir='/eos/uscms/store/user/greddy/KSU/CMSSW_10_6_5/src/'
+wdir='/uscms_data/d3/greddy/CMSSW_10_6_5/src/'
 dirMC = wdir+"/MC/"
 dirCode = wdir+"/DCH/"
 #dirData = wdir+"/data/"
@@ -193,16 +197,20 @@ for file in scriptList :
     outLines.append('Error = {0:s}.err\n'.format(base))
     outLines.append('Log = {0:s}.log\n'.format(base))
     #outLines.append('transfer_input_files = {0:s}ZH.py, {0:s}MC_{1:s}.root, {0:s}data_pileup_{1:s}.root, {0:s}MCsamples_{1:s}.csv, {0:s}ScaleFactor.py, {0:s}SFs.tar.gz, {0:s}cuts_{2:s}.yaml, '.format(dir,args.year, args.selection))
-    outLines.append('transfer_input_files = {0:s}{1:s}.py, '.format(dirCode,executable))
-    outLines.append('{0:s}pileup_{1:s}UL_MC.root, {0:s}pileup_{1:s}UL_data.root, {0:s}cuts_{2:s}_{1:s}.yaml, '.format(dirMC,args.year, args.selection, executable))
+    #outLines.append('transfer_input_files = {0:s}{1:s}.py, '.format(dirCode,executable))
+    #outLines.append('{0:s}pileup_{1:s}UL_MC.root, {0:s}pileup_{1:s}UL_data.root, {0:s}cuts_{2:s}_{1:s}.yaml, '.format(dirMC,args.year, args.selection, executable))
     #outLines.append('{0:s}*txt, '.format(dirData))
-    outLines.append('{0:s}/METCorrections.py, {0:s}tauFunDCH.py, {0:s}generalFunctions.py, {0:s}outTuple.py, {0:s}Weights.py, '.format(funcsDir))
-    outLines.append('{0:s}Electron_RunUL2016postVFP_Ele25_EtaLt2p1.root, {0:s}Electron_RunUL2016preVFP_Ele25_EtaLt2p1.root,  {0:s}Electron_RunUL2017_Ele35.root, {0:s}Electron_RunUL2018_Ele35.root, {0:s}muon_Z_{1:s}.json.gz, {0:s}electron_{1:s}.json.gz, {0:s}photon_{1:s}.json.gz, {0:s}correctionlib.tar.gz\n'.format(toolsDir, args.year))
+    #outLines.append('{0:s}/METCorrections.py, {0:s}tauFunDCH.py, {0:s}generalFunctions.py, {0:s}outTuple.py, {0:s}Weights.py, '.format(funcsDir))
+    #outLines.append('{0:s}Electron_RunUL2016postVFP_Ele25_EtaLt2p1.root, {0:s}Electron_RunUL2016preVFP_Ele25_EtaLt2p1.root,  {0:s}Electron_RunUL2017_Ele35.root, {0:s}Electron_RunUL2018_Ele35.root, {0:s}muon_Z_{1:s}.json.gz, {0:s}electron_{1:s}.json.gz, {0:s}photon_{1:s}.json.gz, {0:s}correctionlib.tar.gz\n'.format(toolsDir, args.year))
     #outLines.append('{0:s}make_jme.py, {0:s}branchselection.py, {0:s}keep_and_drop.txt, {0:s}taupog.tar.gz\n'.format(toolsDir))
+    outLines.append('transfer_input_files = {0:s}/funcs.tar.gz, {0:s}/tools.tar.gz, {0:s}/DCH.tar.gz\n'.format(wdir))
+    outLines.append('Requirements = OpSys == "LINUX" && (Arch != "DUMMY" ) \n')
     outLines.append('priority = 1\n')
     outLines.append('should_transfer_files = YES\n')
     outLines.append('when_to_transfer_output = ON_EXIT\n')
-    outLines.append('x509userproxy = $ENV(X509_USER_PROXY)\n')
+    #outLines.append('x509userproxy = $ENV(X509_USER_PROXY)\n')
+    outLines.append('use_x509userproxy = true\n')
+    outLines.append('x509userproxy = /uscms/home/greddy/x509up_u56712\n')
     outLines.append('Queue 1\n')
     open('{0:s}.jdl'.format(base),'w').writelines(outLines)
 
