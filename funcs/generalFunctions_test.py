@@ -249,8 +249,9 @@ def printGenDecayMode(entry,printOn=False) :#works only for signal MC
     try :
         if entry.nGenPart > 0 :
             if printOn: print("    \n #  Stat  ID  Mother")
-            tau_idx = []
+            tau_decay_idx = []
             for j in range(entry.nGenPart) :
+                if len(cat) == 4: break
                 pID = entry.GenPart_pdgId[j]
                 if pID in PDG_ID.keys() : pID = PDG_ID[pID]
                 mother = entry.GenPart_genPartIdxMother[j]
@@ -262,23 +263,30 @@ def printGenDecayMode(entry,printOn=False) :#works only for signal MC
                    cat += 'm'
                    if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
                 elif abs(entry.GenPart_pdgId[j]) == 15 :
-                   '''for i in range(j+1, entry.nGenPart, 1):#hadronic tau selection
+                   tau_decay_idx.append(j)
+                   for i in range(j+1, entry.nGenPart, 1):#hadronic tau selection
+                      if len(cat) == 4: break
+                      if abs(entry.GenPart_pdgId[i])==12 or abs(entry.GenPart_pdgId[i])==14 or abs(entry.GenPart_pdgId[i])==16 or abs(entry.GenPart_pdgId[i])==22: continue #nutrino and gamma discard
                       mom = entry.GenPart_genPartIdxMother[i]
-                      if mom <= 0 or abs(entry.GenPart_pdgId[mom]) != 15: continue
-                      if mom in tau_idx : continue#make sure this is not previously recognised tau
-                      if abs(entry.GenPart_pdgId[i])==11 or abs(entry.GenPart_pdgId[i])==12 or abs(entry.GenPart_pdgId[i])==13 or abs(entry.GenPart_pdgId[i])==14 or abs(entry.GenPart_pdgId[i])==15 or abs(entry.GenPart_pdgId[i])==16 or entry.GenPart_pdgId[i]==22: continue
-                      cat += 't'
-                      tau_idx.append(mom)
+                      if mom < j : continue
+                      elif abs(entry.GenPart_pdgId[i])==11 and mom in tau_decay_idx:
+                          cat += 'e'
+                          tau_decay_idx.append(i)
+                          continue
+                      elif abs(entry.GenPart_pdgId[i])==13 and mom in tau_decay_idx:
+                          cat += 'm'
+                          tau_decay_idx.append(i)
+                          continue
+                      elif abs(entry.GenPart_pdgId[i])==15 and mom in tau_decay_idx:
+                          tau_decay_idx.append(i)
+                          continue
+                      elif mom in  tau_decay_idx:#hadronic taus
+                          cat += 't'
+                          tau_decay_idx.append(mom)                          
                       if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
                       if printOn: print entry.GenPart_pdgId[i]
-                      break
-                   '''
-                   cat += 't'
-                   if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
-                   if printOn: print entry.GenPart_pdgId[i]
-                   break
-    except AttributeError :
-        pass
+                      #if len(cat) == 4: break 
+    except AttributeError : pass
     return cat
 
 def printGenDecayModeBkg(entry,bkg,printOn=False) :#works only for bkg MC

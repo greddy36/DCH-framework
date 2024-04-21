@@ -88,6 +88,8 @@ cutflow['ele'] = GF.cutCounter()
 cutflow['muon'] = GF.cutCounter()
 cutflow['tau'] = GF.cutCounter()
 
+TrigCount = GF.cutCounter()
+
 inFileName = args.inFileName
 print("Opening {0:s} as input.  Event category {1:s}".format(inFileName,cat))
 
@@ -275,7 +277,21 @@ for count, e in enumerate( inTree) :
     if not TF.goodTrigger(e,args.year) and printOn :   print cat, e.run, e.luminosityBlock,  e.event, 'Triggers not present...'
     if not TF.goodTrigger(e, args.year) : continue
 
-
+    if MC and args.year == 2018:                                                    
+        TrigCount.count('notrig')
+        if e.HLT_Ele32_WPTight_Gsf or e.HLT_Ele35_WPTight_Gsf or e.HLT_IsoMu24 or  e.HLT_IsoMu27 : TrigCount.count('sin_lep')
+        if e.HLT_Ele32_WPTight_Gsf or e.HLT_Ele35_WPTight_Gsf or e.HLT_IsoMu24 or e.HLT_IsoMu27 or e.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ or e.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ : TrigCount.count('di_lep')
+        #if e.HLT_Ele32_WPTight_Gsf or e.HLT_Ele35_WPTight_Gsf or e.HLT_IsoMu24 or e.HLT_IsoMu27 or e.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ or e.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ : TrigCount.count('di_lepT')
+        #if e.HLT_Ele32_WPTight_Gsf : TrigCount.count('eTrig1')
+        #if e.HLT_Ele35_WPTight_Gsf : TrigCount.count('eTrig2')
+        #if e.HLT_IsoMu24 :  TrigCount.count('muTrig1')
+        #if e.HLT_IsoMu27 :  TrigCount.count('muTrig2')
+        if not (e.HLT_Ele32_WPTight_Gsf or e.HLT_Ele35_WPTight_Gsf or e.HLT_IsoMu24 or  e.HLT_IsoMu27) : continue 
+    elif not MC and args.year == 2018:
+        if "Tau" in args.nickName and not e.HLT_DoubleMediumChargedIsoPFTauHPS35_Trk1_TightID_eta2p1_Reg : continue
+        if "MuonEG" in args.nickName and not e.HLT_DoubleMediumChargedIsoPFTauHPS35_Trk1_TightID_eta2p1_Reg : continue
+   
+ 
     for cat in cats: 
         isTrig=False
 	if cat[:2] =='ee' : isTrig = e.HLT_Ele27_WPTight_Gsf or e.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ 
@@ -692,6 +708,21 @@ fW.cd()
 hNEvts = TH1D("hNEvts", "nEntries", 1, 0,1)
 hNEvts.Fill(0,nentries) 
 hNEvts.Write()
+hTrigCount = TH1D("hTrigCount", "Trigger count", 10, 0,10)
+hTrigCount.GetXaxis().SetBinLabel(1, "notrig")
+hTrigCount.GetXaxis().SetBinLabel(2, "sin_lep")
+hTrigCount.GetXaxis().SetBinLabel(3, "di_lep")
+hTrigCount.GetXaxis().SetBinLabel(4, "di_lepT")
+hTrigCount.GetXaxis().SetBinLabel(5, "eTrig1")
+hTrigCount.GetXaxis().SetBinLabel(6, "eTrig2")
+hTrigCount.GetXaxis().SetBinLabel(7, "muTrig1")
+hTrigCount.GetXaxis().SetBinLabel(8, "muTrig2")
+hTrigCount.GetXaxis().SetBinLabel(9, "data_logic")
+
+for i in range(0,9):
+    hTrigCount.Fill(i, TrigCount.getYield()[i])
+hTrigCount.Sumw2()
+hTrigCount.Write()
 #print '------------------------->',fW, outFileName
 for icat,cat in enumerate(cats) :
     print('\nSummary for {0:s}'.format(cat))

@@ -13,14 +13,14 @@ sys.path.insert(1,'../funcs/')
 import tauFunDCH_test as TF
 import generalFunctions_test as GF 
 import Weights 
-import outTuple_test
+import outTuple
 import time
 
 def getArgs() :
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("-v","--verbose",default=0,type=int,help="Print level.")
-    parser.add_argument("-f","--inFileName",default='ZHtoTauTau_test.root',help="File to be analyzed.")
+    parser.add_argument("-f","--inFileName",default='ZHtoTauTau.root',help="File to be analyzed.")
     parser.add_argument("-c","--category",default='none',help="Event category to analyze.")
     parser.add_argument("--nickName",default='',help="MC sample nickname") 
     parser.add_argument("-d","--dataType",default='MC',help="Data or MC") 
@@ -87,6 +87,8 @@ for cat in cats :
 cutflow['ele'] = GF.cutCounter()
 cutflow['muon'] = GF.cutCounter()
 cutflow['tau'] = GF.cutCounter()
+
+TrigCount = GF.cutCounter()
 
 inFileName = args.inFileName
 print("Opening {0:s} as input.  Event category {1:s}".format(inFileName,cat))
@@ -155,17 +157,17 @@ if args.weights > 0 :
     hWeightScaleSTXSDown.Sumw2()
 
 
-
-    for count, e in enumerate(inTree) :
-        hWeight.Fill(0, e.genWeight)
+    if MC:
+        for count, e in enumerate(inTree) :
+            hWeight.Fill(0, e.genWeight)
     
-        if "WJetsToLNu" in outFileName and 'TWJets' not in outFileName:
+            if "WJetsToLNu" in outFileName and 'TWJets' not in outFileName:
 
-            npartons = ord(e.LHE_Njets)
-	    if  npartons <= 4: 	hWxGenweightsArr[npartons].Fill(0, e.genWeight)
-        if "DYJetsToLL" in outFileName :
-            npartons = ord(e.LHE_Njets)
-	    if  npartons <= 4 : hDYxGenweightsArr[npartons].Fill(0, e.genWeight)
+                npartons = ord(e.LHE_Njets)
+	        if  npartons <= 4: 	hWxGenweightsArr[npartons].Fill(0, e.genWeight)
+            if "DYJetsToLL" in outFileName :
+                npartons = ord(e.LHE_Njets)
+	        if  npartons <= 4 : hDYxGenweightsArr[npartons].Fill(0, e.genWeight)
 
     fName = GF.getOutFileName(args).replace(".root",".weights")
     fW = TFile( fName, 'recreate' )
@@ -219,7 +221,7 @@ if not MC :
 
 #sysT = ["Central"]
 doSyst= False
-outTuple = outTuple_test.outTuple(outFileName, era, doSyst, sysT, isMC)
+outTuple = outTuple.outTuple(outFileName, era, doSyst, sysT, isMC)
 
 
 
@@ -275,6 +277,19 @@ for count, e in enumerate( inTree) :
     if not TF.goodTrigger(e,args.year) and printOn :   print cat, e.run, e.luminosityBlock,  e.event, 'Triggers not present...'
     if not TF.goodTrigger(e, args.year) : continue
 
+    if MC and args.year == 2018:
+        TrigCount.count('notrig')
+        if e.HLT_Ele32_WPTight_Gsf or e.HLT_Ele35_WPTight_Gsf or e.HLT_IsoMu24 or  e.HLT_IsoMu27 : 
+    	    TrigCount.count('sin_lep')
+        if e.HLT_Ele32_WPTight_Gsf or e.HLT_Ele35_WPTight_Gsf or e.HLT_IsoMu24 or e.HLT_IsoMu27 or e.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ or e.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ :
+            TrigCount.count('di_lep')
+        if e.HLT_Ele32_WPTight_Gsf or e.HLT_Ele35_WPTight_Gsf or e.HLT_IsoMu24 or e.HLT_IsoMu27 or e.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ or e.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ :
+            TrigCount.count('di_lepT')    
+        if e.HLT_Ele32_WPTight_Gsf : TrigCount.count('eTrig1')
+        if e.HLT_Ele35_WPTight_Gsf : TrigCount.count('eTrig2')
+        if e.HLT_IsoMu24 :  TrigCount.count('muTrig1')
+        if e.HLT_IsoMu27 :  TrigCount.count('muTrig2')
+        #if( e.HLT_Ele32_WPTight_Gsf or e.HLT_Ele35_WPTight_Gsf or e.HLT_IsoMu24 or  e.HLT_IsoMu27 ): continue
 
     for cat in cats: 
         isTrig=False
@@ -356,6 +371,8 @@ for count, e in enumerate( inTree) :
        #GF.printMC(e)
        #print 'Gen channel is', GF.printGenDecayMode(e)
     '''
+    print "Gen cat is : ",GF.printGenDecayMode(e) 
+
     for isyst, systematic in enumerate(sysT) : 
 	if isyst>0 : #use the default pT/mass for Ele/Muon/Taus before doing any systematic
 	#if 'Central' in systematic or 'prong' in systematic : #use the default pT/mass for Ele/Muon/Taus before doing the Central or the tau_scale systematics ; otherwise keep the correction
@@ -458,21 +475,10 @@ for count, e in enumerate( inTree) :
                                         else: lep_3 = i
                         if lep_3 == -99: continue
 
-
-	                if MC :
-            		    outTuple.setWeight(PU.getWeight(e.PV_npvs))
-	                    outTuple.setWeightPU(PU.getWeight(e.Pileup_nPU))
-            		    outTuple.setWeightPUtrue(PU.getWeight(e.Pileup_nTrueInt))
-              		    ##print 'nPU', e.Pileup_nPU, e.Pileup_nTrueInt, PU.getWeight(e.Pileup_nPU), PU.getWeight(e.Pileup_nTrueInt), PU.getWeight(e.PV_npvs), PU.getWeight(e.PV_npvsGood)
-            		else :
-                	   outTuple.setWeight(1.)
-                	   outTuple.setWeightPU(1.) ##
-                	   outTuple.setWeightPUtrue(1.)
-
 			SVFit = False
 			if not MC : isMC = False 
-			outTuple.Fill3L(e,SVFit,cat3L,bestDCH1,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
-			#=========================================================
+			#outTuple.Fill3L(e,SVFit,cat3L,bestDCH1,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+			#=========================================================	
 
         if len(goodElectronList)+len(goodMuonList)+len(goodTauList) > 4:
             evts_5lep += 1
@@ -621,8 +627,9 @@ for count, e in enumerate( inTree) :
             cutCounter[cat].count(dch1+dch2)
             if  MC:   cutCounterGenWeight[cat].countGenWeight(dch1+dch2, e.genWeight)
             #continue
-	    #GF.printMC(e)
-            
+	    GF.printMC(e)
+            print "Gen cat is : ",GF.printGenDecayMode(e), "Reco cat is : ", cat
+
             dupl+=1
 	    if dupl>1:
                print 'AHA',count,'has a fake channel'
@@ -653,7 +660,7 @@ for count, e in enumerate( inTree) :
 	    cutCounter[cat].count("GoodTauPair")
 	    if  MC:   cutCounterGenWeight[cat].countGenWeight('GoodTauPair', e.genWeight)
             '''
-            
+
 	    if MC :
 		outTuple.setWeight(PU.getWeight(e.PV_npvs)) 
 		outTuple.setWeightPU(PU.getWeight(e.Pileup_nPU)) 
@@ -664,13 +671,12 @@ for count, e in enumerate( inTree) :
 		outTuple.setWeightPU(1.) ##
 		outTuple.setWeightPUtrue(1.)
             #print("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT")#ggr
-	    
+
 	    SVFit = False
             #continue	    
 	    if not MC : isMC = False
 
-            #outTuple.Fill(e,SVFit,cat,bestDCH2[0],bestDCH2[1],pairList1[0],pairList1[1],bestDCH1,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
-	    outTuple.Fill(e,SVFit,cat,bestDCH1,bestDCH2,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+	    #outTuple.Fill(e,SVFit,cat,bestDCH1,bestDCH2,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
             '''
 	    if maxPrint > 0 :
 		maxPrint -= 1
@@ -703,6 +709,22 @@ fW.cd()
 hNEvts = TH1D("hNEvts", "nEntries", 1, 0,1)
 hNEvts.Fill(0,nentries) 
 hNEvts.Write()
+hTrigCount = TH1D("hTrigCount", "Trigger count", 10, 0,10)
+hTrigCount.GetXaxis().SetBinLabel(1, "notrig")
+hTrigCount.GetXaxis().SetBinLabel(2, "sin_lep")
+hTrigCount.GetXaxis().SetBinLabel(3, "di_lep")
+hTrigCount.GetXaxis().SetBinLabel(4, "di_lepT")
+hTrigCount.GetXaxis().SetBinLabel(5, "eTrig1")
+hTrigCount.GetXaxis().SetBinLabel(6, "eTrig2")
+hTrigCount.GetXaxis().SetBinLabel(7, "muTrig1")
+hTrigCount.GetXaxis().SetBinLabel(8, "muTrig2")
+hTrigCount.GetXaxis().SetBinLabel(9, "data_logic")
+
+for i in range(0,9):
+    hTrigCount.Fill(i, TrigCount.getYield()[i])
+hTrigCount.Sumw2()
+hTrigCount.Write()
+
 #print '------------------------->',fW, outFileName
 for icat,cat in enumerate(cats) :
     print('\nSummary for {0:s}'.format(cat))

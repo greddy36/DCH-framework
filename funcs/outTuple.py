@@ -1585,17 +1585,17 @@ class outTuple() :
 	    if isMC:
 		idx_genEle = entry.Electron_genPartIdx[jl1]
 
-	    # if idx_genEle = -1, no match was found
-	    if idx_genEle >= 0:
-	    	idx_genEle_mom      = entry.GenPart_genPartIdxMother[idx_genEle]
-	    	self.pt_1_tr[0]     = entry.GenPart_pt[idx_genEle]
-	    	self.phi_1_tr[0]    = entry.GenPart_phi[idx_genEle]
-	    	self.eta_1_tr[0]    = entry.GenPart_eta[idx_genEle]
-	    	self.GenPart_statusFlags_1[0]    = entry.GenPart_statusFlags[idx_genEle]
-	    	self.GenPart_status_1[0]    = entry.GenPart_status[idx_genEle]
+	        # if idx_genEle = -1, no match was found
+	        if idx_genEle >= 0:
+	    	    idx_genEle_mom      = entry.GenPart_genPartIdxMother[idx_genEle]
+	    	    self.pt_1_tr[0]     = entry.GenPart_pt[idx_genEle]
+	    	    self.phi_1_tr[0]    = entry.GenPart_phi[idx_genEle]
+	    	    self.eta_1_tr[0]    = entry.GenPart_eta[idx_genEle]
+	    	    self.GenPart_statusFlags_1[0]    = entry.GenPart_statusFlags[idx_genEle]
+	    	    self.GenPart_status_1[0]    = entry.GenPart_status[idx_genEle]
 
-	    try : self.gen_match_1[0] = ord(entry.Electron_genPartFlav[jl1])
-	    except AttributeError : self.gen_match_1[0] = -1
+	        try : self.gen_match_1[0] = ord(entry.Electron_genPartFlav[jl1])
+	        except AttributeError : self.gen_match_1[0] = -1
 
 	    Lep1.SetPtEtaPhiM(entry.Electron_pt[jl1], entry.Electron_eta[jl1], entry.Electron_phi[jl1], entry.Electron_mass[jl1])
 
@@ -1637,17 +1637,17 @@ class outTuple() :
 	    if isMC:
 	    	idx_genEle = entry.Electron_genPartIdx[jl1]
 
-	    # if idx_genMu = -1, no match was found
-	    if idx_genEle >= 0:
-	    	idx_genEle_mom      = entry.GenPart_genPartIdxMother[idx_genEle]
-	    	self.pt_1_tr[0]     = entry.GenPart_pt[idx_genEle]
-	    	self.phi_1_tr[0]    = entry.GenPart_phi[idx_genEle]
-	    	self.eta_1_tr[0]    = entry.GenPart_eta[idx_genEle]
-	    	self.GenPart_statusFlags_1[0]    = entry.GenPart_statusFlags[idx_genEle]
-	    	self.GenPart_status_1[0]    = entry.GenPart_status[idx_genEle]
+	        # if idx_genMu = -1, no match was found
+	        if idx_genEle >= 0:
+	    	    idx_genEle_mom      = entry.GenPart_genPartIdxMother[idx_genEle]
+	    	    self.pt_1_tr[0]     = entry.GenPart_pt[idx_genEle]
+	    	    self.phi_1_tr[0]    = entry.GenPart_phi[idx_genEle]
+	    	    self.eta_1_tr[0]    = entry.GenPart_eta[idx_genEle]
+	    	    self.GenPart_statusFlags_1[0]    = entry.GenPart_statusFlags[idx_genEle]
+	    	    self.GenPart_status_1[0]    = entry.GenPart_status[idx_genEle]
 
-	    try: self.gen_match_1[0] = ord(entry.Electron_genPartFlav[jl1])
-	    except AttributeError: self.gen_match_1[0] = -1
+	        try: self.gen_match_1[0] = ord(entry.Electron_genPartFlav[jl1])
+	        except AttributeError: self.gen_match_1[0] = -1
 	    
 	    #print '---------------------------->', self.pt_1[0], ePt[jl1], entry.Tau_pt[jl2], tPt[jl2] , jl1, jl2, cat, entry.event, SystIndex
 	    Lep1.SetPtEtaPhiM(entry.Electron_pt[jl1],entry.Electron_eta[jl1], entry.Electron_phi[jl1], entry.Electron_mass[jl1])
@@ -3077,17 +3077,17 @@ class outTuple() :
 	    if isMC:
 		idx_genEle = entry.Electron_genPartIdx[jl1]
 
-	    # if idx_genEle = -1, no match was found
-	    if idx_genEle >= 0:
-	    	idx_genEle_mom      = entry.GenPart_genPartIdxMother[idx_genEle]
-	    	self.pt_1_tr[0]     = entry.GenPart_pt[idx_genEle]
-	    	self.phi_1_tr[0]    = entry.GenPart_phi[idx_genEle]
-	    	self.eta_1_tr[0]    = entry.GenPart_eta[idx_genEle]
-	    	self.GenPart_statusFlags_1[0]    = entry.GenPart_statusFlags[idx_genEle]
-	    	self.GenPart_status_1[0]    = entry.GenPart_status[idx_genEle]
+	        # if idx_genEle = -1, no match was found
+	        if idx_genEle >= 0:
+	    	    idx_genEle_mom      = entry.GenPart_genPartIdxMother[idx_genEle]
+	    	    self.pt_1_tr[0]     = entry.GenPart_pt[idx_genEle]
+	    	    self.phi_1_tr[0]    = entry.GenPart_phi[idx_genEle]
+	    	    self.eta_1_tr[0]    = entry.GenPart_eta[idx_genEle]
+	    	    self.GenPart_statusFlags_1[0]    = entry.GenPart_statusFlags[idx_genEle]
+	    	    self.GenPart_status_1[0]    = entry.GenPart_status[idx_genEle]
 
-	    try : self.gen_match_1[0] = ord(entry.Electron_genPartFlav[jl1])
-	    except AttributeError : self.gen_match_1[0] = -1
+	        try : self.gen_match_1[0] = ord(entry.Electron_genPartFlav[jl1])
+	        except AttributeError : self.gen_match_1[0] = -1
 
 	    Lep1.SetPtEtaPhiM(entry.Electron_pt[jl1], entry.Electron_eta[jl1], entry.Electron_phi[jl1], entry.Electron_mass[jl1])
 
@@ -3129,17 +3129,17 @@ class outTuple() :
 	    if isMC:
 	    	idx_genEle = entry.Electron_genPartIdx[jl1]
 
-	    # if idx_genMu = -1, no match was found
-	    if idx_genEle >= 0:
-	    	idx_genEle_mom      = entry.GenPart_genPartIdxMother[idx_genEle]
-	    	self.pt_1_tr[0]     = entry.GenPart_pt[idx_genEle]
-	    	self.phi_1_tr[0]    = entry.GenPart_phi[idx_genEle]
-	    	self.eta_1_tr[0]    = entry.GenPart_eta[idx_genEle]
-	    	self.GenPart_statusFlags_1[0]    = entry.GenPart_statusFlags[idx_genEle]
-	    	self.GenPart_status_1[0]    = entry.GenPart_status[idx_genEle]
+	        # if idx_genMu = -1, no match was found
+	        if idx_genEle >= 0:
+	    	    idx_genEle_mom      = entry.GenPart_genPartIdxMother[idx_genEle]
+	    	    self.pt_1_tr[0]     = entry.GenPart_pt[idx_genEle]
+	    	    self.phi_1_tr[0]    = entry.GenPart_phi[idx_genEle]
+	    	    self.eta_1_tr[0]    = entry.GenPart_eta[idx_genEle]
+	    	    self.GenPart_statusFlags_1[0]    = entry.GenPart_statusFlags[idx_genEle]
+	    	    self.GenPart_status_1[0]    = entry.GenPart_status[idx_genEle]
 
-	    try: self.gen_match_1[0] = ord(entry.Electron_genPartFlav[jl1])
-	    except AttributeError: self.gen_match_1[0] = -1
+	        try: self.gen_match_1[0] = ord(entry.Electron_genPartFlav[jl1])
+	        except AttributeError: self.gen_match_1[0] = -1
 	    
 	    #print '---------------------------->', self.pt_1[0], ePt[jl1], entry.Tau_pt[jl2], tPt[jl2] , jl1, jl2, cat, entry.event, SystIndex
 	    Lep1.SetPtEtaPhiM(entry.Electron_pt[jl1],entry.Electron_eta[jl1], entry.Electron_phi[jl1], entry.Electron_mass[jl1])
