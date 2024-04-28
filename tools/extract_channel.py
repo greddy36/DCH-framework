@@ -65,7 +65,7 @@ for channel in channels :
                 fOut.cd()
                 htest.Write()
 
-    print 'Succesfully made', outFile, ' for', channel, 'channel'
+    print('Succesfully made', outFile, ' for', channel, 'channel')
     fOut.Close()
     
 

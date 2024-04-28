@@ -32,8 +32,8 @@ def getLepIdxFrom4Vec(entry, lep_4vec, lep_type):
 def printTriggerObjects(e) :
     print(' i    pt     phi   eta   ID   filter')
     for i in range(e.nTrigObj) :
-        print('{0:3d}\t{1:5.1f}\t{2:5.2f}\t{3:5.2f}\t{4:5d}0x\t{5:04x}'.format(
-            i,e.TrigObj_pt[i],  e.TrigObj_phi[i], e.TrigObj_eta[i], e.TrigObj_id[i], e.TrigObj_filterBits[i]))
+        print(('{0:3d}\t{1:5.1f}\t{2:5.2f}\t{3:5.2f}\t{4:5d}0x\t{5:04x}'.format(
+            i,e.TrigObj_pt[i],  e.TrigObj_phi[i], e.TrigObj_eta[i], e.TrigObj_id[i], e.TrigObj_filterBits[i])))
     return
 
 def genMatch(entry, jl,lep_type):#matches e/m/t to a gen paricle regardless of pID
@@ -143,22 +143,22 @@ def checkMETFlags(entry, year, isMC=False, proc="EOY") :
 
 def printEvent(entry) :
 
-    print("** Run={0:d} LS={1:d} Event={2:d} MET={3:.1f}".format(entry.run,entry.luminosityBlock,entry.event,entry.MET_pt))
+    print(("** Run={0:d} LS={1:d} Event={2:d} MET={3:.1f}".format(entry.run,entry.luminosityBlock,entry.event,entry.MET_pt)))
     if entry.nMuon > 0 :
         print("Muons\n # Q    Pt   Eta   Phi   Iso  tkRelIso Medium Tight Soft    dxy     dz   MC     dR     Pt   eta   phi, genMatch")
         for j in range(entry.nMuon) :
             muSign = '+'
             if entry.Muon_charge[j] < 0 : muSign = '-'
             try : 
-		print("{0:2d} {1:2s}{2:5.1f}{3:6.2f}{4:6.2f}{12:6.2f}{5:7.3f} {6:5s} {7:5s} {8:5s}{9:7.3f}{10:7.3f}{11:s}".format(
+		print(("{0:2d} {1:2s}{2:5.1f}{3:6.2f}{4:6.2f}{12:6.2f}{5:7.3f} {6:5s} {7:5s} {8:5s}{9:7.3f}{10:7.3f}{11:s}".format(
 		    #j,muSign,entry.Muon_pt[j],entry.Muon_eta[j],entry.Muon_phi[j],entry.Muon_pfRelIso04_all[j],str(entry.Muon_mediumId[j]),str(entry.Muon_tightId[j]),
 		    j,muSign,entry.Muon_pt[j],entry.Muon_eta[j],entry.Muon_phi[j],entry.Muon_tkRelIso[j],str(entry.Muon_mediumId[j]),str(entry.Muon_tightId[j]),
 		    str(entry.Muon_softId[j]),entry.Muon_dxy[j],entry.Muon_dz[j],
-		    getMCmatchString(entry.Muon_eta[j],entry.Muon_phi[j],entry), entry.Muon_tkRelIso[j])), ord(entry.Muon_genPartFlav[j])
+		    getMCmatchString(entry.Muon_eta[j],entry.Muon_phi[j],entry), entry.Muon_tkRelIso[j])), ord(entry.Muon_genPartFlav[j]))
             except AttributeError :  
-		print("{0:2d} {1:2s}{2:5.1f}{3:6.2f}{4:6.2f}{5:7.3f} {6:5s} {7:5s} {8:5s}".format(
+		print(("{0:2d} {1:2s}{2:5.1f}{3:6.2f}{4:6.2f}{5:7.3f} {6:5s} {7:5s} {8:5s}".format(
 		    j,muSign,entry.Muon_pt[j],entry.Muon_eta[j],entry.Muon_phi[j],entry.Muon_pfRelIso04_all[j],str(entry.Muon_mediumId[j]),str(entry.Muon_tightId[j]),
-		    str(entry.Muon_softId[j]),entry.Muon_dxy[j],entry.Muon_dz[j]))
+		    str(entry.Muon_softId[j]),entry.Muon_dxy[j],entry.Muon_dz[j])))
 
     if entry.nElectron > 0 :
         print("Electrons                           Lost  \n # Q    Pt   Eta   Phi   Iso   Qual Hits  MVA  WP90    dxy     dz   MC     dR     Pt   eta   phi genMatch cutBased ")
@@ -167,15 +167,15 @@ def printEvent(entry) :
             eSign = '+'
             if entry.Electron_charge[j] < 0 : eSign = '-'
             try :
-		print("{0:2d} {1:2s}{2:5.1f}{3:6.2f}{4:6.2f}{5:7.3f}{6:6d}{7:5d}{8:7.3f} {9} {10:7.3f}{11:7.3f}{12:s} {13:f}".format(j,eSign,
+		print(("{0:2d} {1:2s}{2:5.1f}{3:6.2f}{4:6.2f}{5:7.3f}{6:6d}{7:5d}{8:7.3f} {9} {10:7.3f}{11:7.3f}{12:s} {13:f}".format(j,eSign,
 		  entry.Electron_pt[j],entry.Electron_eta[j],entry.Electron_phi[j],entry.Electron_miniPFRelIso_all[j],
 		  entry.Electron_cutBased[j],ord(entry.Electron_lostHits[j]),entry.Electron_mvaFall17V2noIso[j],entry.Electron_mvaFall17V2noIso_WP90[j],
 		  entry.Electron_dxy[j],entry.Electron_dz[j],                                             
-		  getMCmatchString(entry.Electron_eta[j],entry.Electron_phi[j],entry))), ord(entry.Electron_genPartFlav[j]), entry.Electron_cutBased[j]
+		  getMCmatchString(entry.Electron_eta[j],entry.Electron_phi[j],entry))), ord(entry.Electron_genPartFlav[j]), entry.Electron_cutBased[j])
             except AttributeError :  
 		#print("{0:2d} {1:2s} {2:5.1f} {3:6.2f} {4:6.2f} {5:7.3f}{6:7.3f} {7} {8:7.3f} {9:f} {10:f}  {11:f}".format(j,eSign, entry.Electron_pt[j], entry.Electron_eta[j], entry.Electron_phi[j], entry.Electron_pfRelIso03_all[j],
 		#  entry.Electron_cutBased[j],  ord(entry.Electron_lostHits[j]), entry.Electron_dxy[j], entry.Electron_dz[j]), ord(entry.Electron_genPartFlav[j]), entry.Electron_cutBased[j])
-		print("{0:2d} {1:2s} {2:5.1f} {3:6.2f} {4:6.2f} {5:7.3f} {6:7.3f} {7:f} {8:f} ".format(j,eSign, entry.Electron_pt[j], entry.Electron_pfRelIso03_all[j], ord(entry.Electron_lostHits[j]), entry.Electron_dxy[j], entry.Electron_dz[j], ord(entry.Electron_genPartFlav[j]), entry.Electron_cutBased[j]))
+		print(("{0:2d} {1:2s} {2:5.1f} {3:6.2f} {4:6.2f} {5:7.3f} {6:7.3f} {7:f} {8:f} ".format(j,eSign, entry.Electron_pt[j], entry.Electron_pfRelIso03_all[j], ord(entry.Electron_lostHits[j]), entry.Electron_dxy[j], entry.Electron_dz[j], ord(entry.Electron_genPartFlav[j]), entry.Electron_cutBased[j])))
 
 
     #print("Lepton List\n    Pt    Eta    Phi ")
@@ -185,8 +185,8 @@ def printEvent(entry) :
     if entry.nJet > 0 :
         print("Jets\n #   Pt   Eta   Phi  jetId btagCSVV2  MC")
         for j in range(entry.nJet) :
-            print("{0:2d} {1:5.1f}{2:6.2f}{3:6.2f}{4:6d}{5:8.3f}".format(
-                j,entry.Jet_pt[j],entry.Jet_eta[j],entry.Jet_phi[j],entry.Jet_jetId[j],entry.Jet_btagCSVV2[j]))
+            print(("{0:2d} {1:5.1f}{2:6.2f}{3:6.2f}{4:6d}{5:8.3f}".format(
+                j,entry.Jet_pt[j],entry.Jet_eta[j],entry.Jet_phi[j],entry.Jet_jetId[j],entry.Jet_btagCSVV2[j])))
         #print("JetList\n     Pt     Eta    Phi ")
         #i = 0 
         #for jet in makeJetList(entry) :
@@ -196,31 +196,31 @@ def printEvent(entry) :
     if False and entry.nPhoton > 0 :
         print("Photons\n # Pt   Eta   Phi ")
         for j in range(entry.nPhoton) :
-            print("{0:2d} {1:5.1f}{2:6.2f}{3:6.2f}".format(
-                j,entry.Photon_pt[j],entry.Photon_eta[j],entry.Photon_phi[j]))
+            print(("{0:2d} {1:5.1f}{2:6.2f}{3:6.2f}".format(
+                j,entry.Photon_pt[j],entry.Photon_eta[j],entry.Photon_phi[j])))
 
     if False and entry.nTau > 0:
         print("Taus                                    |-Deep Tau-||-------Iso------|")
         print(" #    Pt   Eta   Phi   Mode ID   DMID    vJ  vM  vE  Raw   Chg   Neu  jetIdx antiEl antiMu  dxy     dz  idMVA   rawIso  MC, genMatch")
         for j in range(entry.nTau) :
             try:
-		print("{0:2d} {1:5.1f}{2:6.2f}{3:6.2f}{4:5d}  {5:5s} {6:5s}{18:4d}{19:4d}{20:4d} {7:6.2f}{8:6.2f}{9:6.2f}{10:6d}{11:6d}{12:6d}  {13:7.3f}{14:7.3f} {15:5d} {16:8.4f} {17:6s}".format(
+		print(("{0:2d} {1:5.1f}{2:6.2f}{3:6.2f}{4:5d}  {5:5s} {6:5s}{18:4d}{19:4d}{20:4d} {7:6.2f}{8:6.2f}{9:6.2f}{10:6d}{11:6d}{12:6d}  {13:7.3f}{14:7.3f} {15:5d} {16:8.4f} {17:6s}".format(
 		    j,entry.Tau_pt[j],entry.Tau_eta[j],entry.Tau_phi[j],entry.Tau_decayMode[j],
 		    str(entry.Tau_idDecayMode[j]),str(entry.Tau_idDecayModeNewDMs[j]),
 		    entry.Tau_rawIso[j],entry.Tau_chargedIso[j],entry.Tau_neutralIso[j],
 		    entry.Tau_jetIdx[j],ord(entry.Tau_idAntiEle[j]),ord(entry.Tau_idAntiMu[j]),
 		    entry.Tau_dxy[j],entry.Tau_dz[j],ord(entry.Tau_idMVAoldDM2017v2[j]),entry.Tau_rawMVAoldDM2017v2[j],
 		    getMCmatchString(entry.Tau_eta[j],entry.Tau_phi[j],entry)[0:6],
-		    ord(entry.Tau_idDeepTau2017v2p1VSjet[j]),ord(entry.Tau_idDeepTau2017v2p1VSmu[j]),ord(entry.Tau_idDeepTau2017v2p1VSe[j]))), ord(entry.Tau_genPartFlav[j])
+		    ord(entry.Tau_idDeepTau2017v2p1VSjet[j]),ord(entry.Tau_idDeepTau2017v2p1VSmu[j]),ord(entry.Tau_idDeepTau2017v2p1VSe[j]))), ord(entry.Tau_genPartFlav[j]))
             except AttributeError :  
-		print("{0:2d} {1:5.1f}{2:6.2f}{3:6.2f}{4:5d}  {5:5s} {6:5s}{18:4d}{19:4d}{20:4d} {7:6.2f}{8:6.2f}{9:6.2f}{10:6d}{11:6d}{12:6d}  {13:7.3f}{14:7.3f} {15:5d} {16:8.4f}".format(
+		print(("{0:2d} {1:5.1f}{2:6.2f}{3:6.2f}{4:5d}  {5:5s} {6:5s}{18:4d}{19:4d}{20:4d} {7:6.2f}{8:6.2f}{9:6.2f}{10:6d}{11:6d}{12:6d}  {13:7.3f}{14:7.3f} {15:5d} {16:8.4f}".format(
 		    j,entry.Tau_pt[j],entry.Tau_eta[j],entry.Tau_phi[j],entry.Tau_decayMode[j],
 		    str(entry.Tau_idDecayMode[j]),str(entry.Tau_idDecayModeNewDMs[j]),
 		    entry.Tau_rawIso[j],entry.Tau_chargedIso[j],entry.Tau_neutralIso[j],
 		    entry.Tau_jetIdx[j],ord(entry.Tau_idAntiEle[j]),ord(entry.Tau_idAntiMu[j]),
 		    entry.Tau_dxy[j],entry.Tau_dz[j],ord(entry.Tau_idMVAoldDM2017v2[j]),entry.Tau_rawMVAoldDM2017v2[j],
 		    getMCmatchString(entry.Tau_eta[j],entry.Tau_phi[j],entry)[0:6],
-		    ord(entry.Tau_idDeepTau2017v2p1VSjet[j]),ord(entry.Tau_idDeepTau2017v2p1VSmu[j]),ord(entry.Tau_idDeepTau2017v2p1VSe[j])))
+		    ord(entry.Tau_idDeepTau2017v2p1VSjet[j]),ord(entry.Tau_idDeepTau2017v2p1VSmu[j]),ord(entry.Tau_idDeepTau2017v2p1VSe[j]))))
 
     if True and entry.nTrigObj > 0 :
         trigID = { 11:"Electr", 22:"Photon", 13:"  Muon",15:"   Tau", 1:"   Jet", 6:"FatJet", 2:"   MET", 3:"    HT" , 4:"   MHT" }
@@ -229,8 +229,8 @@ def printEvent(entry) :
         for j in range(entry.nTrigObj) :
             tID = trigID[entry.TrigObj_id[j]]
             if tID == "   Tau": 
-                print("{0:2d} {1:5.1f}{2:6.2f}{3:6.2f} {4:8s}{5:4X}".format(j,entry.TrigObj_pt[j],entry.TrigObj_eta[j],entry.TrigObj_phi[j],
-                                                                            tID,entry.TrigObj_filterBits[j]))
+                print(("{0:2d} {1:5.1f}{2:6.2f}{3:6.2f} {4:8s}{5:4X}".format(j,entry.TrigObj_pt[j],entry.TrigObj_eta[j],entry.TrigObj_phi[j],
+                                                                            tID,entry.TrigObj_filterBits[j])))
         
     return
 
@@ -245,22 +245,22 @@ def getPDG_ID() :
 def printGenDecayMode(entry,printOn=False) :#works only for signal MC
     PDG_ID = getPDG_ID()
     cat =''
-    if printOn: print("\n Run={0:d} Event={1:d}".format(entry.run,entry.event))
+    if printOn: print(("\n Run={0:d} Event={1:d}".format(entry.run,entry.event)))
     try :
         if entry.nGenPart > 0 :
             if printOn: print("    \n #  Stat  ID  Mother")
             tau_idx = []
             for j in range(entry.nGenPart) :
                 pID = entry.GenPart_pdgId[j]
-                if pID in PDG_ID.keys() : pID = PDG_ID[pID]
+                if pID in list(PDG_ID.keys()) : pID = PDG_ID[pID]
                 mother = entry.GenPart_genPartIdxMother[j]
                 if mother > 0 and abs(entry.GenPart_pdgId[mother]) == 9900041:#making sure the particles come from DCH
                    if abs(entry.GenPart_pdgId[j]) == 11 :
                       cat += 'e'
-                      if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
+                      if printOn: print(("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother)))
                    if abs(entry.GenPart_pdgId[j]) == 13 :
                       cat += 'm'
-                      if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
+                      if printOn: print(("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother)))
                    if abs(entry.GenPart_pdgId[j]) == 15 :#hadronic tau selection. 
                       for i in range(j+1, entry.nGenPart, 1):
                          mom = entry.GenPart_genPartIdxMother[i]
@@ -269,8 +269,8 @@ def printGenDecayMode(entry,printOn=False) :#works only for signal MC
                          if abs(entry.GenPart_pdgId[i])!=11 and abs(entry.GenPart_pdgId[i])!=12 and abs(entry.GenPart_pdgId[i])!=13 and abs(entry.GenPart_pdgId[i])!=14 and abs(entry.GenPart_pdgId[i])!=15 and abs(entry.GenPart_pdgId[i])!=16 and entry.GenPart_pdgId[i]!=22:
                             cat += 't'
                             tau_idx.append(mom)
-                            if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
-                            if printOn: print entry.GenPart_pdgId[i]
+                            if printOn: print(("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother)))
+                            if printOn: print(entry.GenPart_pdgId[i])
                             break
     except AttributeError :
         pass
@@ -279,14 +279,14 @@ def printGenDecayMode(entry,printOn=False) :#works only for signal MC
 def printGenDecayModeBkg(entry,bkg,printOn=False) :#works only for bkg MC
     PDG_ID = getPDG_ID()
     cat =''
-    if printOn: print("\n Run={0:d} Event={1:d}".format(entry.run,entry.event))
+    if printOn: print(("\n Run={0:d} Event={1:d}".format(entry.run,entry.event)))
     try :
         if entry.nGenPart > 0 :
             tau_idx = []
             if printOn: print("    \n #  Stat  ID  Mother")
             for j in range(entry.nGenPart) :
                 pID = entry.GenPart_pdgId[j]
-                if pID in PDG_ID.keys() : pID = PDG_ID[pID]
+                if pID in list(PDG_ID.keys()) : pID = PDG_ID[pID]
                 mother = entry.GenPart_genPartIdxMother[j]
                 if bkg=='TTTo2L' and not (mother > 0 and abs(entry.GenPart_pdgId[mother]) == 24): continue#making sure leptons come from W (top decay)
                 if bkg=='TTW' and not (mother > 0 and abs(entry.GenPart_pdgId[mother]) == 24): continue
@@ -294,10 +294,10 @@ def printGenDecayModeBkg(entry,bkg,printOn=False) :#works only for bkg MC
                 if bkg=='DY' and not (mother in [0,1] and abs(entry.GenPart_pdgId[mother]) in [23, 1,2,3,4,5,6,21]): continue#making sure leptons come Z or from virutal photons  
                 if abs(entry.GenPart_pdgId[j]) == 11 :
                    cat += 'e'
-                   if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
+                   if printOn: print(("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother)))
                 if abs(entry.GenPart_pdgId[j]) == 13 :
                    cat += 'm'
-                   if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
+                   if printOn: print(("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother)))
                 if abs(entry.GenPart_pdgId[j]) == 15 :#hadronic tau selection. 
                    for i in range(j+1, entry.nGenPart, 1):
                       mom = entry.GenPart_genPartIdxMother[i]
@@ -306,8 +306,8 @@ def printGenDecayModeBkg(entry,bkg,printOn=False) :#works only for bkg MC
                       if abs(entry.GenPart_pdgId[i])!=11 and abs(entry.GenPart_pdgId[i])!=12 and abs(entry.GenPart_pdgId[i])!=13 and abs(entry.GenPart_pdgId[i])!=14 and abs(entry.GenPart_pdgId[i])!=15 and abs(entry.GenPart_pdgId[i])!=16 and entry.GenPart_pdgId[i]!=22:
                          cat += 't'
                          tau_idx.append(mom)
-                         if printOn: print("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother))
-                         if printOn: print entry.GenPart_pdgId[i]
+                         if printOn: print(("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother)))
+                         if printOn: print(entry.GenPart_pdgId[i])
                          break
     except AttributeError :
         pass
@@ -316,17 +316,17 @@ def printGenDecayModeBkg(entry,bkg,printOn=False) :#works only for bkg MC
 
 def printMC(entry) :
     PDG_ID = getPDG_ID() 
-    print("\n** MC ** Run={0:d} LS={1:d} Event={2:d} MET={3:.1f}".format(entry.run,entry.luminosityBlock,entry.event,entry.MET_pt))
+    print(("\n** MC ** Run={0:d} LS={1:d} Event={2:d} MET={3:.1f}".format(entry.run,entry.luminosityBlock,entry.event,entry.MET_pt)))
     try :
         if entry.nGenPart > 0 :
             print("    \n #  Stat  ID  Mass  Mother   Pt      Eta     Phi   ")
             for j in range(entry.nGenPart) :
                 pID = entry.GenPart_pdgId[j]
-                if pID in PDG_ID.keys() : pID = PDG_ID[pID]
+                if pID in list(PDG_ID.keys()) : pID = PDG_ID[pID]
                 mother = entry.GenPart_genPartIdxMother[j]
                 #if mother in PDG_ID.keys() : mother = PDG_ID[mother]
-                print("{0:2d}{1:4d}  {2:6s}{3:6.1f} {4:6d}{5:7.1f}{6:9.2f}{7:6.2f}".format(
-                    j,entry.GenPart_status[j],str(pID),entry.GenPart_mass[j],mother,entry.GenPart_pt[j],entry.GenPart_eta[j],entry.GenPart_phi[j]))
+                print(("{0:2d}{1:4d}  {2:6s}{3:6.1f} {4:6d}{5:7.1f}{6:9.2f}{7:6.2f}".format(
+                    j,entry.GenPart_status[j],str(pID),entry.GenPart_mass[j],mother,entry.GenPart_pt[j],entry.GenPart_eta[j],entry.GenPart_phi[j])))
         #print("goodMC={0:s}".format(str(goodMC(entry))))    
     except AttributeError :
         pass 
@@ -374,7 +374,7 @@ def getMCmatchString(eta, phi, entry) :
 
     PDG_ID = getPDG_ID() 
     pID = entry.GenPart_pdgId[jBest]
-    if pID in PDG_ID.keys() :
+    if pID in list(PDG_ID.keys()) :
         pID = PDG_ID[pID]
     else :
         pID = str(pID)
@@ -662,8 +662,8 @@ def findSingleLeptTrigger(goodLeptonList,entry,flavour,era, printOn=False):
 
         
 	    if printOn : 
-		print ''
-		print entry.luminosityBlock, entry.run, entry.event
+		print('')
+		print(entry.luminosityBlock, entry.run, entry.event)
 	    #print("mm, iobj={7:d}, nTrigObj_id={0:d}, filter_bit={1:x}, dR_leading={2:f}, dR_subleading={3:f}, Muon_pT={4:f}, Muon_eta={5:f},  Muon_phi={6:f}, isbit2={8:b} isbit8={9:b}".format(entry.TrigObj_id[iobj], entry.TrigObj_filterBits[iobj], dR, dRr, entry.Muon_pt[leadL], abs(entry.Muon_eta[leadL]), entry.Muon_phi[leadL], iobj, isbit2, isbit8))
 	    #print 'HLT_? ', HLT_IsoMu24, HLT_IsoMu27, entry.Muon_pt[leadL], abs(entry.Muon_eta[leadL]), isbit2
 
@@ -688,8 +688,8 @@ def findSingleLeptTrigger(goodLeptonList,entry,flavour,era, printOn=False):
 
         
 	    if printOn : 
-		print ''
-		print entry.luminosityBlock, entry.run, entry.event
+		print('')
+		print(entry.luminosityBlock, entry.run, entry.event)
 	    #print("mm, iobj={7:d}, nTrigObj_id={0:d}, filter_bit={1:x}, dR_leading={2:f}, dR_subleading={3:f}, Muon_pT={4:f}, Muon_eta={5:f},  Muon_phi={6:f}, isbit2={8:b} isbit8={9:b}".format(entry.TrigObj_id[iobj], entry.TrigObj_filterBits[iobj], dR, dRr, entry.Muon_pt[leadL], abs(entry.Muon_eta[leadL]), entry.Muon_phi[leadL], iobj, isbit2, isbit8))
 	    #print 'HLT_? ', HLT_IsoMu24, HLT_IsoMu27, entry.Muon_pt[leadL], abs(entry.Muon_eta[leadL]), isbit2
 
@@ -701,9 +701,9 @@ def findSingleLeptTrigger(goodLeptonList,entry,flavour,era, printOn=False):
                 #        sel.qualityBitsDoc = cms.string("1 = TrkIsoVVL, 2 = Iso, 4 = OverlapFilter PFTau, 8 = IsoTkMu, 1024 = 1mu (Mu50)")
                 if entry.Muon_pt[leadL] > 26 and abs(entry.Muon_eta[leadL]) < 2.4:
                     if printOn : 
-			print ''
-			print entry.luminosityBlock, entry.run, entry.event
-			print("mm, iobj={7:d}, nTrigObj_id={0:d}, filter_bit={1:x}, dR_leading={2:f}, dR_subleading={3:f}, Muon_pT={4:f}, Muon_eta={5:f},  Muon_phi={6:f}, isbit2={8:b} isbit8={9:b}".format(entry.TrigObj_id[iobj], entry.TrigObj_filterBits[iobj], dR, dRr, entry.Muon_pt[leadL], abs(entry.Muon_eta[leadL]), entry.Muon_phi[leadL], iobj, isbit2, isbit8))
+			print('')
+			print(entry.luminosityBlock, entry.run, entry.event)
+			print(("mm, iobj={7:d}, nTrigObj_id={0:d}, filter_bit={1:x}, dR_leading={2:f}, dR_subleading={3:f}, Muon_pT={4:f}, Muon_eta={5:f},  Muon_phi={6:f}, isbit2={8:b} isbit8={9:b}".format(entry.TrigObj_id[iobj], entry.TrigObj_filterBits[iobj], dR, dRr, entry.Muon_pt[leadL], abs(entry.Muon_eta[leadL]), entry.Muon_phi[leadL], iobj, isbit2, isbit8)))
 			#print 'HLT_IsoMu22:', HLT_IsoMu22, 'HLT_IsoMu22_eta2p1:', HLT_IsoMu22_eta2p1, 'HLT_IsoTkMu22:', HLT_IsoTkMu22, 'HLT_IsoTkMu22_eta2p1:', HLT_IsoTkMu22_eta2p1   
 			#print 'HLT_IsoMu24:', HLT_IsoMu24, 'HLT_IsoTkMu24:', HLT_IsoTkMu24
                     #printTriggerObjects(entry)
@@ -718,11 +718,11 @@ def findSingleLeptTrigger(goodLeptonList,entry,flavour,era, printOn=False):
                     '''
 		    if  HLT_IsoMu24 and isbit2 :
 			hltList.append(True)
-                        if printOn: print 'HLT_IsoMu24:', HLT_IsoMu24
+                        if printOn: print('HLT_IsoMu24:', HLT_IsoMu24)
 
 		    if  HLT_IsoTkMu24 and isbit8 :
 			hltListSubL.append(True)
-                        if printOn: print 'HLT_IsoTkMu24:', HLT_IsoTkMu24
+                        if printOn: print('HLT_IsoTkMu24:', HLT_IsoTkMu24)
 
                     
 		    #if  (HLT_IsoTkMu22_eta2p1 and isbit8 and abs(entry.Muon_eta[leadL]) < 2.1) :
@@ -733,10 +733,10 @@ def findSingleLeptTrigger(goodLeptonList,entry,flavour,era, printOn=False):
 	    if  '2016' not in era and (flavour == 'mm' or flavour == 'mnu'): 
 
 		if printOn : 
-		    print ''
-		    print entry.luminosityBlock, entry.run, entry.event
-		    print("mm, iobj={7:d}, nTrigObj_id={0:d}, filter_bit={1:x}, dR_leading={2:f}, dR_subleading={3:f}, Muon_pT={4:f}, Muon_eta={5:f},  Muon_phi={6:f}, isbit2={8:b} isbit8={9:b}".format(entry.TrigObj_id[iobj], entry.TrigObj_filterBits[iobj], dR, dRr, entry.Muon_pt[leadL], abs(entry.Muon_eta[leadL]), entry.Muon_phi[leadL], iobj, isbit2, isbit8))
-                    print 'HLT_? ', HLT_IsoMu27, entry.Muon_pt[leadL], abs(entry.Muon_eta[leadL]), isbit2, isbit8
+		    print('')
+		    print(entry.luminosityBlock, entry.run, entry.event)
+		    print(("mm, iobj={7:d}, nTrigObj_id={0:d}, filter_bit={1:x}, dR_leading={2:f}, dR_subleading={3:f}, Muon_pT={4:f}, Muon_eta={5:f},  Muon_phi={6:f}, isbit2={8:b} isbit8={9:b}".format(entry.TrigObj_id[iobj], entry.TrigObj_filterBits[iobj], dR, dRr, entry.Muon_pt[leadL], abs(entry.Muon_eta[leadL]), entry.Muon_phi[leadL], iobj, isbit2, isbit8)))
+                    print('HLT_? ', HLT_IsoMu27, entry.Muon_pt[leadL], abs(entry.Muon_eta[leadL]), isbit2, isbit8)
 
 		#if  HLT_IsoMu24  and entry.Muon_pt[leadL] > 25 and abs(entry.Muon_eta[leadL]) < 2.4 and isbit2 :
 		#    hltList.append(True)
@@ -750,15 +750,15 @@ def findSingleLeptTrigger(goodLeptonList,entry,flavour,era, printOn=False):
 
 	    if '2016' in era and (flavour == 'ee' or flavour=='enu'): 
                 if printOn:
-		    print ''
-		    print entry.luminosityBlock, entry.run, entry.event
+		    print('')
+		    print(entry.luminosityBlock, entry.run, entry.event)
 
 		    #print("ee, nTrigObj_id={0:d}, filter_bit={1:x}, dR_leading={2:f}, dR_subleading={3:f}, Electron_pT={4:f}, Electron_eta={5:f},  Electron_phi={9:f}, iobj={6:d}, obj_pt={10:f}, obj_eta={7:f}, obj_phi={8:f}".format(entry.TrigObj_id[iobj], entry.TrigObj_filterBits[iobj], dR, dRr, entry.Electron_pt[leadL], abs(entry.Electron_eta[leadL]), iobj, entry.TrigObj_eta[iobj], entry.TrigObj_phi[iobj], entry.Electron_phi[leadL], entry.TrigObj_pt[iobj])) 
-		    print("ee, iobj={7:d}, nTrigObj_id={0:d}, filter_bit={1:x}, dR_leading={2:f}, dR_subleading={3:f}, Electron_pT={4:f}, Electron_eta={5:f},  Electron_phi={6:f}, , isbit2={8:b} isbit8={9:b}".format(entry.TrigObj_id[iobj], entry.TrigObj_filterBits[iobj], dR, dRr, entry.Electron_pt[subleadL], abs(entry.Electron_eta[subleadL]), entry.Electron_phi[subleadL], iobj, isbit2, isbit8)) 
+		    print(("ee, iobj={7:d}, nTrigObj_id={0:d}, filter_bit={1:x}, dR_leading={2:f}, dR_subleading={3:f}, Electron_pT={4:f}, Electron_eta={5:f},  Electron_phi={6:f}, , isbit2={8:b} isbit8={9:b}".format(entry.TrigObj_id[iobj], entry.TrigObj_filterBits[iobj], dR, dRr, entry.Electron_pt[subleadL], abs(entry.Electron_eta[subleadL]), entry.Electron_phi[subleadL], iobj, isbit2, isbit8))) 
                 if HLT_Ele25_eta2p1_WPTight_Gsf and abs(entry.Electron_eta[leadL]) < 2.1 and entry.Electron_pt[leadL] > 27 :
 		    if isbit2 : 
                         hltList.append(True)
-                        if printOn:print 'HLT_Ele25_eta2p1_WPTight_Gsf: ',HLT_Ele25_eta2p1_WPTight_Gsf
+                        if printOn:print('HLT_Ele25_eta2p1_WPTight_Gsf: ',HLT_Ele25_eta2p1_WPTight_Gsf)
 
 	    if '2016' not in era and (flavour == 'ee' or flavour == 'enu'): 
 
@@ -777,31 +777,31 @@ def findSingleLeptTrigger(goodLeptonList,entry,flavour,era, printOn=False):
                 if entry.Muon_pt[subleadL] > 23 and abs(entry.Muon_eta[subleadL])<2.4:
                     #print("mm, subL nTrigObj_id={0:d}, filter_bit={1:x}, dR_leading={2:f}, dR_subleading={3:f}, Muon_pT={4:f}, Muon_eta={5:f},  Muon_phi={9:f}, iobj={6:d}, obj_pt={10:f}, obj_eta={7:f}, obj_phi={8:f}".format(entry.TrigObj_id[iobj], entry.TrigObj_filterBits[iobj], dR, dRr, entry.Muon_pt[subleadL], abs(entry.Muon_eta[subleadL]), iobj, entry.TrigObj_eta[iobj], entry.TrigObj_phi[iobj], entry.Muon_phi[subleadL], entry.TrigObj_pt[iobj])) 
                     if printOn: 
-                        print("mm, subL iobj={7:d}, nTrigObj_id={0:d}, filter_bit={1:x}, dR_leading={2:f}, dR_subleading={3:f}, Muon_pT={4:f}, Muon_eta={5:f},  Muon_phi={6:f}, isbit2={8:b} isbit8={9:b}".format(entry.TrigObj_id[iobj], entry.TrigObj_filterBits[iobj], dR, dRr, entry.Muon_pt[subleadL], abs(entry.Muon_eta[subleadL]), entry.Muon_phi[subleadL], iobj, isbit2, isbit8)) 
-                        print 'HLT_IsoMu22:', HLT_IsoMu22, 'HLT_IsoMu22_eta2p1:', HLT_IsoMu22_eta2p1, 'HLT_IsoTkMu22:', HLT_IsoTkMu22, 'HLT_IsoTkMu22_eta2p1:', HLT_IsoTkMu22_eta2p1   
+                        print(("mm, subL iobj={7:d}, nTrigObj_id={0:d}, filter_bit={1:x}, dR_leading={2:f}, dR_subleading={3:f}, Muon_pT={4:f}, Muon_eta={5:f},  Muon_phi={6:f}, isbit2={8:b} isbit8={9:b}".format(entry.TrigObj_id[iobj], entry.TrigObj_filterBits[iobj], dR, dRr, entry.Muon_pt[subleadL], abs(entry.Muon_eta[subleadL]), entry.Muon_phi[subleadL], iobj, isbit2, isbit8))) 
+                        print('HLT_IsoMu22:', HLT_IsoMu22, 'HLT_IsoMu22_eta2p1:', HLT_IsoMu22_eta2p1, 'HLT_IsoTkMu22:', HLT_IsoTkMu22, 'HLT_IsoTkMu22_eta2p1:', HLT_IsoTkMu22_eta2p1)   
 		    if (HLT_IsoMu22  and isbit2)  :
 			hltListSubL.append(True)
-                        if printOn: print 'subL HLT_IsoMu22:', HLT_IsoMu22, 'dR', dRr
+                        if printOn: print('subL HLT_IsoMu22:', HLT_IsoMu22, 'dR', dRr)
 
 		    if (HLT_IsoMu22_eta2p1 and isbit2 and abs(entry.Muon_eta[subleadL])<2.1)  :
 			hltListSubL.append(True)
-                        if printOn: print 'subL HLT_IsoMu22_eta2p1:', HLT_IsoMu22_eta2p1, 'dR', dRr
+                        if printOn: print('subL HLT_IsoMu22_eta2p1:', HLT_IsoMu22_eta2p1, 'dR', dRr)
 
 		    if  (HLT_IsoTkMu22 and isbit8) :
 			hltListSubL.append(True)
-                        if printOn: print 'subL HLT_IsoTkMu22:', HLT_IsoTkMu22, 'dR', dRr
+                        if printOn: print('subL HLT_IsoTkMu22:', HLT_IsoTkMu22, 'dR', dRr)
 
 		    if  (HLT_IsoTkMu22_eta2p1 and isbit8 and abs(entry.Muon_eta[subleadL])<2.1) :
 			hltListSubL.append(True)
-                        if printOn: print 'subL HLT_IsoTkMu22_eta2p1:', HLT_IsoTkMu22_eta2p1, 'dR', dRr
+                        if printOn: print('subL HLT_IsoTkMu22_eta2p1:', HLT_IsoTkMu22_eta2p1, 'dR', dRr)
 
 
 	    if '2016' not in era and flavour == 'mm':
 		if printOn : 
-		    print ''
-		    print entry.luminosityBlock, entry.run, entry.event
-		    print("mm sub, iobj={7:d}, nTrigObj_id={0:d}, filter_bit={1:x}, dR_leading={2:f}, dR_subleading={3:f}, Muon_pT={4:f}, Muon_eta={5:f},  Muon_phi={6:f}, isbit2={8:b} isbit8={9:b}".format(entry.TrigObj_id[iobj], entry.TrigObj_filterBits[iobj], dR, dRr, entry.Muon_pt[subleadL], abs(entry.Muon_eta[subleadL]), entry.Muon_phi[subleadL], iobj, isbit2, isbit8))
-                    print 'HLT_? sub', HLT_IsoMu24, HLT_IsoMu27, entry.Muon_pt[subleadL], abs(entry.Muon_eta[subleadL]), isbit2
+		    print('')
+		    print(entry.luminosityBlock, entry.run, entry.event)
+		    print(("mm sub, iobj={7:d}, nTrigObj_id={0:d}, filter_bit={1:x}, dR_leading={2:f}, dR_subleading={3:f}, Muon_pT={4:f}, Muon_eta={5:f},  Muon_phi={6:f}, isbit2={8:b} isbit8={9:b}".format(entry.TrigObj_id[iobj], entry.TrigObj_filterBits[iobj], dR, dRr, entry.Muon_pt[subleadL], abs(entry.Muon_eta[subleadL]), entry.Muon_phi[subleadL], iobj, isbit2, isbit8)))
+                    print('HLT_? sub', HLT_IsoMu24, HLT_IsoMu27, entry.Muon_pt[subleadL], abs(entry.Muon_eta[subleadL]), isbit2)
 
 
 		if  HLT_IsoMu24  and entry.Muon_pt[subleadL] > 25 and abs(entry.Muon_eta[subleadL]) < 2.4 and isbit2 and isbit8:
@@ -816,8 +816,8 @@ def findSingleLeptTrigger(goodLeptonList,entry,flavour,era, printOn=False):
 		    hltListSubL.append(True)
                     #print("ee, subL nTrigObj_id={0:d}, filter_bit={1:x}, dR_leading={2:f}, dR_subleading={3:f}, Electron_pT={4:f}, Electron_eta={5:f},  Electron_phi={9:f}, iobj={6:d},  obj_pt={10:f}, obj_eta={7:f}, obj_phi={8:f}".format(entry.TrigObj_id[iobj], entry.TrigObj_filterBits[iobj], dR, dRr, entry.Electron_pt[subleadL], abs(entry.Electron_eta[subleadL]), iobj, entry.TrigObj_eta[iobj], entry.TrigObj_phi[iobj], entry.Electron_phi[subleadL], entry.TrigObj_eta[iobj])) 
                     if printOn: 
-                        print("ee, subL iobj={7:d}, nTrigObj_id={0:d}, filter_bit={1:x}, dR_leading={2:f}, dR_subleading={3:f}, Electron_pT={4:f}, Electron_eta={5:f},  Electron_phi={6:f}".format(entry.TrigObj_id[iobj], entry.TrigObj_filterBits[iobj], dR, dRr, entry.Electron_pt[subleadL], abs(entry.Electron_eta[subleadL]), entry.Electron_phi[subleadL], iobj)) 
-                        print 'subL HLT_Ele25_eta2p1_WPTight_Gsf:', HLT_Ele25_eta2p1_WPTight_Gsf, 'dR', dRr
+                        print(("ee, subL iobj={7:d}, nTrigObj_id={0:d}, filter_bit={1:x}, dR_leading={2:f}, dR_subleading={3:f}, Electron_pT={4:f}, Electron_eta={5:f},  Electron_phi={6:f}".format(entry.TrigObj_id[iobj], entry.TrigObj_filterBits[iobj], dR, dRr, entry.Electron_pt[subleadL], abs(entry.Electron_eta[subleadL]), entry.Electron_phi[subleadL], iobj))) 
+                        print('subL HLT_Ele25_eta2p1_WPTight_Gsf:', HLT_Ele25_eta2p1_WPTight_Gsf, 'dR', dRr)
 
 	    if '2017' in era and flavour == 'ee': 
 
@@ -886,7 +886,7 @@ class cutCounter() :
             sFrac = '   N/A'
             if fraction < 1.0 : sFrac = "{0:6.1f}%".format(100.*fraction)
             if fraction < 0.01 : sFrac = "{0:6.3f}%".format(100.*fraction)
-            print("{0:16s}{1:6d} {2:s}".format(nn,self.counter[nn],sFrac))
+            print(("{0:16s}{1:6d} {2:s}".format(nn,self.counter[nn],sFrac)))
 
         return
 
@@ -921,12 +921,12 @@ class cutCounter() :
         if 'cmseos.fnal' in args.inFileName :
             CSVfile = CSVfile.split('/')[-1].replace('.root','.csv')
 
-        print("Writing CSV to {0:s}".format(CSVfile))
+        print(("Writing CSV to {0:s}".format(CSVfile)))
         open(CSVfile,'w').writelines(outLines)
         return
 
 def getOutFileName(args) :
-    print("In generalFunctions.getOutFileName() args.outFileName={0:s}".format(args.outFileName))
+    print(("In generalFunctions.getOutFileName() args.outFileName={0:s}".format(args.outFileName)))
     if len(args.outFileName) > 2 : return args.outFileName
     if ('cmseos.fnal' in args.inFileName) or ('cms-xrd-global' in args.inFileName) :
         outFileBase = args.inFileName.split('/')[-1]
@@ -952,7 +952,7 @@ class dupeDetector() :
             return False
 
     def printSummary(self) :
-        print("Duplicate Event Summary: Calls={0:d} Unique Events={1:d}".format(self.nCalls,len(self.runEventList)))
+        print(("Duplicate Event Summary: Calls={0:d} Unique Events={1:d}".format(self.nCalls,len(self.runEventList))))
         return
 
 
@@ -965,7 +965,7 @@ class pileUpWeight() :
         # get data pileup histogram
         fData = TFile('pileup_{0:s}UL_data.root'.format(str(year)))
         hData = fData.Get('pileup')
-        print("hData={0:s}".format(str(hData)))
+        print(("hData={0:s}".format(str(hData))))
         binWidth = hData.GetBinWidth(1)
         xMin = hData.GetBinLowEdge(1)
         nBins = hData.GetNbinsX()
@@ -981,9 +981,9 @@ class pileUpWeight() :
                  
         # get MC pileup histograms
         MCfile = "pileup_{0:s}UL_MC.root".format(str(year))
-        print("Opening MC pileup file = {0:s}".format(MCfile))
+        print(("Opening MC pileup file = {0:s}".format(MCfile)))
         fMC = TFile(MCfile)
-        print("fMC={0:s}".format(str(fMC)))
+        print(("fMC={0:s}".format(str(fMC))))
 
 	#temp hack given that we dont have all histos
         #hMC = fData.Get('pileup')
@@ -1000,12 +1000,12 @@ class pileUpWeight() :
 
         nData = hData.GetSumOfWeights()
         pData = np.array(hData)[1:-1]/nData
-        print("sum of pData={0:f}".format(np.sum(pData)))
+        print(("sum of pData={0:f}".format(np.sum(pData))))
         nMC = hMC.GetSumOfWeights()
         pMC = np.array(hMC)[1:-1]
         pMC /= nMC 
         pMC = np.maximum(1.e-5*np.ones_like(pMC),pMC)
-        print("sum of pMC={0:f}".format(np.sum(pMC)))
+        print(("sum of pMC={0:f}".format(np.sum(pMC))))
         weights = np.divide(pData,pMC)
         self.PUweights = weights
 	#print 'inside', weights, len(weights)
@@ -1057,7 +1057,7 @@ class pileUpWeight() :
         gWeights.SetMarkerStyle(22)
         gWeights.Draw("AP")
         c1.Draw()
-        raw_input()
+        input()
             
 # find ID of first child of parent
 def findFirst(e, vetoList, parent) :
@@ -1065,8 +1065,8 @@ def findFirst(e, vetoList, parent) :
         if e.GenPart_genPartIdxMother[i] == parent :
             if not e.GenPart_pdgId[i] in vetoList :
                 return i
-    print("In generalFunction.findFirst() parent not found: parent={0:d} vetoList={1:s}".format(
-        parent,str(vetoList)))
+    print(("In generalFunction.findFirst() parent not found: parent={0:d} vetoList={1:s}".format(
+        parent,str(vetoList))))
     return -1
 
 # find last instance of a particle of a given parent  
@@ -1076,7 +1076,7 @@ def findLast(e, ID, parent) :
         if e.GenPart_pdgId[i] == ID :
             last = i
     if last < 0 :
-        print("In generalFunction.findLast() particle not found: ID={0:d} parent={1:d}".format(ID,parent))
+        print(("In generalFunction.findLast() particle not found: ID={0:d} parent={1:d}".format(ID,parent)))
 
     return last 
         
@@ -1122,7 +1122,7 @@ class checkJSON() :
     
     def __init__(self,filein) :
         self.good, self.bad  = 0, 0
-        print 'inside json function : will use the JSON', filein
+        print('inside json function : will use the JSON', filein)
         input_file = open (filein)
         self.json_array = json.load(input_file)  
       
@@ -1141,7 +1141,7 @@ class checkJSON() :
         return False
         
     def printJSONsummary(self) :
-        print("check JSON summary:  nCalls={0:d} nGood={1:d} nBad={2:d}".format(self.good+self.bad,self.good,self.bad))
+        print(("check JSON summary:  nCalls={0:d} nGood={1:d} nBad={2:d}".format(self.good+self.bad,self.good,self.bad)))
         return
     
 

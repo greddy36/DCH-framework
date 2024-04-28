@@ -19,7 +19,7 @@ class dupeDetector() :
             return False 
 
     def printSummary(self) :
-        print("Duplicate Event Summary: Calls={0:d} Unique Events={1:d}".format(self.nCalls,len(self.runEventList.keys())))
+        print(("Duplicate Event Summary: Calls={0:d} Unique Events={1:d}".format(self.nCalls,len(list(self.runEventList.keys())))))
         return
 
 DD = dupeDetector()
@@ -33,10 +33,10 @@ nentries = inTree.GetEntries()
 outFileName = sys.argv[2]
 outFile = TFile(outFileName,'recreate')
 outTree = inTree.CloneTree(0)
-print("Number of entries in input tree = {0:d}".format(inTree.GetEntries()))
+print(("Number of entries in input tree = {0:d}".format(inTree.GetEntries())))
 
 for i, e in enumerate(inTree) :
-    if i % 1000 == 0 : print("i={0:d}".format(i))
+    if i % 1000 == 0 : print(("i={0:d}".format(i)))
     if not DD.checkEvent(e) : outTree.Fill() 
 
 outFile.cd()

@@ -31,7 +31,7 @@ from PhysicsTools.NanoAODTools.postprocessing.modules.jme.jetmetHelperRun2 impor
 metbranch = "MET"
 if sys.argv[2]=='2017' : 
     metbranch="METFixEE2017"
-    print 'this is 2017 MET v2', metbranch
+    print('this is 2017 MET v2', metbranch)
 
 if sys.argv[1] =='False' :  jmeCorrections = createJMECorrector(isMC=False, dataYear=sys.argv[2], runPeriod=str(sys.argv[3]),  jesUncert="Merged", jetType = "AK4PFchs",  applyHEMfix=True, splitJER=False, metBranchName = metbranch)
 if sys.argv[1] =='True' :  jmeCorrections = createJMECorrector(isMC=True, dataYear=sys.argv[2], runPeriod=str(sys.argv[3]),  jesUncert="Merged", jetType = "AK4PFchs",  applyHEMfix=True, splitJER=False, metBranchName = metbranch)

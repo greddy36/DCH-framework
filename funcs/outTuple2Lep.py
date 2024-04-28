@@ -32,7 +32,7 @@ class outTuple2Lep() :
         if '2016' in str(era) and 'pre' not in str(era):  self.TriggerSF={'dir' : './', 'fileMuon' : 'Muon/SingleMuon_Run2018_IsoMu24orIsoMu27.root', 'fileElectron' : 'Electron_RunUL2016postVFP_Ele25_EtaLt2p1.root'}
         if '2017' in str(era) :  self.TriggerSF={'dir' : './', 'fileMuon' : 'Muon/SingleMuon_Run2018_IsoMu24orIsoMu27.root', 'fileElectron' : 'Electron_RunUL2017_Ele35.root'}
 
-        print 'era', era, self.TriggerSF['fileElectron']
+        print('era', era, self.TriggerSF['fileElectron'])
         self.sf_EleTrig.ScaleFactor("{0:s}{1:s}".format(self.TriggerSF['dir'],self.TriggerSF['fileElectron']))
 
         #lines above with .root files, lines below with correction lib
@@ -58,7 +58,7 @@ class outTuple2Lep() :
 	else:
 	    self.evaluatorEl = _core.CorrectionSet.from_file(self.fnameEl)
 		# Tau Decay types
-        print 'initialized the UL SF from', self.fname, self.fnameEl
+        print('initialized the UL SF from', self.fname, self.fnameEl)
 	# TrackerMuon Reconstruction UL scale factor
 	#self.valsf = self.evaluator["NUM_MediumID_DEN_TrackerMuons"].evaluate("2017_UL", 1.1, 30.0, "sf")
 	#print("sf 1 is: " + str(self.valsf))
@@ -151,8 +151,8 @@ class outTuple2Lep() :
 		
              
 
-        print '------>systematics list', self.allsystMET
-        print '------>jetssystematics list', self.allsystJets
+        print('------>systematics list', self.allsystMET)
+        print('------>jetssystematics list', self.allsystJets)
 
 
         self.f = TFile( fileName, 'recreate' )
@@ -998,7 +998,7 @@ class outTuple2Lep() :
                 #self.t.SetBranchStatus("Smear",1)
                 self.tN[i-1].SetName(isyst)
 
-                print '====================>',self.tN[i-1], self.tN[i-1].GetName()
+                print('====================>',self.tN[i-1], self.tN[i-1].GetName())
 
 	self.t.SetBranchStatus("GenPart*",1)
 	self.t.SetBranchStatus("*_tr*",1)
@@ -1064,7 +1064,7 @@ class outTuple2Lep() :
             dphi = tau.Phi() - entry.PuppiMET_phi
             return sqrt(2.*tau.Pt()*entry.PuppiMET_pt*(1. - cos(dphi)))
         else :
-            print("Invalid METtype={0:s} in outTuple.get_mt().   Exiting".format(METtype))
+            print(("Invalid METtype={0:s} in outTuple.get_mt().   Exiting".format(METtype)))
 
     def getPt_tt(self,entry,tau1,tau2) :
         ptMiss = TLorentzVector() 
@@ -2347,13 +2347,13 @@ class outTuple2Lep() :
 		    for i, v in enumerate(self.allsystJets) : 
 		    #njets_sys, nbtag_sys
 			jetList, jetListFlav, jetListEta, jetListPt, bTagListDeep, bJetListL,bJetListM, bJetListT, bJetListFlav = self.getJetsJMEMV(entry,leplist,era,v) 
-			print 'jessyst===============!!!!!!!!!!!!', systematic, len(jetList), cat
+			print('jessyst===============!!!!!!!!!!!!', systematic, len(jetList), cat)
 			try : 
 			    self.list_of_arraysJetsNjets[i][0] = len(jetList)
 			    self.list_of_arraysJetsNbtagL[i][0] = len(bJetListL)
 			    self.list_of_arraysJetsNbtagM[i][0] = len(bJetListM)
 			    self.list_of_arraysJetsNbtagT[i][0] = len(bJetListT)
-			except IndexError : print 'hit the ceiling', len(jetListPt),  'event', entry.event, 'lumi', entry.luminosityBlock, 'run', entry.run
+			except IndexError : print('hit the ceiling', len(jetListPt),  'event', entry.event, 'lumi', entry.luminosityBlock, 'run', entry.run)
 
 			for ifl in range(len(jetList)) :
 			    try : 
@@ -2361,7 +2361,7 @@ class outTuple2Lep() :
 				self.list_of_arraysJetsEta[i][ifl] = jetListEta[ifl]
 				self.list_of_arraysJetsFlavour[i][ifl] = jetListFlav[ifl]
 				self.list_of_arraysJetsNbtagDeep[i][ifl] = bTagListDeep[ifl]
-			    except IndexError : print 'hit the ceiling', len(jetListPt),  'event', entry.event, 'lumi', entry.luminosityBlock, 'run', entry.run
+			    except IndexError : print('hit the ceiling', len(jetListPt),  'event', entry.event, 'lumi', entry.luminosityBlock, 'run', entry.run)
 
 	    #fill the un-corrected or just in the case you dont care to doUncertainties      
 	    nom_=''
@@ -2382,7 +2382,7 @@ class outTuple2Lep() :
 		    self.jeta[ifl]  = jetListEta[ifl]
 		    self.jpt[ifl]  = jetListPt[ifl]
 		    self.btagDeep[ifl] = bTagListDeep[ifl]
-		except IndexError : print 'we hit the ceiling', len(jetListPt),  'event', entry.event, 'lumi', entry.luminosityBlock, 'run', entry.run
+		except IndexError : print('we hit the ceiling', len(jetListPt),  'event', entry.event, 'lumi', entry.luminosityBlock, 'run', entry.run)
 	    #print self.jpt[0], self.jeta[0]
             '''
 	    if self.nMuon[0] !=1 : print 'failed nMuon', entry.event, self.nMuon[0]
@@ -2433,7 +2433,7 @@ class outTuple2Lep() :
         self.t.Fill()
 
     def writeTree(self) :
-        print("In outTuple.writeTree() entries={0:d}".format(self.entries))
+        print(("In outTuple.writeTree() entries={0:d}".format(self.entries)))
         self.f.Write()
         self.f.Close()
         return

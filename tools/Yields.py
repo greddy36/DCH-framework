@@ -42,7 +42,7 @@ if scale=="1" or scale=="true" or scale=="True" :
     ScaleToLumi = True
     header=header+'_'+str(lumi)+'invfb'
 
-if ScaleToLumi : print "Events scaled to {0:.2f}/fb for xsec = {1:.2f} pb".format(float(lumi),float(xsec))
+if ScaleToLumi : print("Events scaled to {0:.2f}/fb for xsec = {1:.2f} pb".format(float(lumi),float(xsec)))
 
 
 rows, cols = (8, 9) 
@@ -60,7 +60,7 @@ if 'all' not in channel :
     h1 = inFile.Get(hist)
     
     for i in range(1,h1.GetNbinsX()) :
-        print h1.GetXaxis().GetBinLabel(i), h1.GetBinContent(i)*product
+        print(h1.GetXaxis().GetBinLabel(i), h1.GetBinContent(i)*product)
 
 else:
     count=0
@@ -74,31 +74,31 @@ else:
                 arr[count][i-1] = '{0:.2f}'.format(htest.GetBinContent(i)*product)
                 if cat == 'mmmt' : cuts.append(htest.GetXaxis().GetBinLabel(i))
             except IndexError :
-                print("Index error in histogram loop:  i={0:d}".format(i))
+                print(("Index error in histogram loop:  i={0:d}".format(i)))
         count+=1
 
 
 with open(header+'_yields.txt', 'w') as f:
 
-        print >> f,'\\documentclass[10pt]{report}'
-        print >> f,'\\begin{document}'
-	print >> f,'\\begin{table}[htp]'
+        print('\\documentclass[10pt]{report}', file=f)
+        print('\\begin{document}', file=f)
+	print('\\begin{table}[htp]', file=f)
         hh = header.replace('_','\\_')
-	print >> f,'\\caption{' + '{0:s}'.format(hh) + '}'  
-	print >> f,'\\begin{center}'
-	print >> f,'\\begin{tabular}{l r r r r r r r r }  \hline'
+	print('\\caption{' + '{0:s}'.format(hh) + '}', file=f)  
+	print('\\begin{center}', file=f)
+	print('\\begin{tabular}{l r r r r r r r r }  \hline', file=f)
         
         arrDict = {}
         topLine = 'Cut'
         for i,cat in enumerate(cats) :
-            print("**cat={0:s}".format(cat))
+            print(("**cat={0:s}".format(cat)))
             topLine += '& {0:s}'.format(cat)
             row = arr[i]
-            print("cat={0:s} row={1:s}".format(cat,str(row)))
+            print(("cat={0:s} row={1:s}".format(cat,str(row))))
             for j,cut in enumerate(cuts) :
                 arrDict[cut+cat] = row[j]
                 
-        print >> f, topLine + '\\\\ \\hline'
+        print(topLine + '\\\\ \\hline', file=f)
         for cut in cuts :
             line = '{0:s}'.format(cut)
             
@@ -110,12 +110,12 @@ with open(header+'_yields.txt', 'w') as f:
                     line += " & {0:9.2f}".format(val)
                     
             line += '\\\\ \\hline '
-	    print >> f,line
+	    print(line, file=f)
 
-	print >> f,'\\end{tabular}'
-        print >> f,'\\end{center}'
-	print >> f,'\\end{table}'
-        print >> f,'\\end{document}'
+	print('\\end{tabular}', file=f)
+        print('\\end{center}', file=f)
+	print('\\end{table}', file=f)
+        print('\\end{document}', file=f)
 
 
 	#np.savetxt('text.txt',arr, delimiter=' & ', fmt='%.2f', newline=' \n')

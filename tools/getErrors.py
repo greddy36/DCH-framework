@@ -23,11 +23,11 @@ for root, directories, filenames in os.walk('.'):
                 if '^~~' in line : continue
                 if 'checking out files' in lineLower : continue 
                 if i > iLast+1 : 
-                    print('***\nError in file{0:s}'.format(fName)) 
+                    print(('***\nError in file{0:s}'.format(fName))) 
                     nError += 1 
-                print("    [{0:4d}]={1:s}".format(i,line.strip()))
+                print(("    [{0:4d}]={1:s}".format(i,line.strip())))
                 iLast = i
         
-print("Checked {0:d} files.  {1:d} errors found.".format(nFile,nError))
+print(("Checked {0:d} files.  {1:d} errors found.".format(nFile,nError)))
 
  
