@@ -5,7 +5,7 @@ oldfile.cd()
 inTree = oldfile.Get("Events")
 nentries = inTree.GetEntries()
 
-print("Read {0:d} events on input file".format(nentries))
+print(("Read {0:d} events on input file".format(nentries)))
 
 #Create a new file + a clone of old tree in new file
 newfile = TFile.Open("small.root","recreate");

@@ -50,7 +50,7 @@ def correctedMET (originalMet, originalMet_phi, npv, runnb, isMC, yeara, isUL =T
   elif(not isMC and runnb >=280919 and runnb <=284044 and isUL): runera = "yUL2016H"
 
   else :   
-      print 'failed, ============================================>', year, runera, isMC
+      print('failed, ============================================>', year, runera, isMC)
       return [1, 1, originalMet, originalMet_phi]
   #print 'info', runera, isMC
  

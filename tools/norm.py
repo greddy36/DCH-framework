@@ -66,10 +66,10 @@ for line in open(args.inFileName,'r').readlines() :
     #group = vals[1]
     #nickNames[group].append(nickName)
     if '*' in vals[2] :
-        value1, value2 = map(float, vals[2].split("*"))
+        value1, value2 = list(map(float, vals[2].split("*")))
         xsec[nickName] = float(value1*value2)
     elif '+' in vals[2] :
-        value1, value2 = map(float, vals[2].split("+"))
+        value1, value2 = list(map(float, vals[2].split("+")))
         xsec[nickName] = float(value1+value2)
     else : xsec[nickName] = float(str(vals[2]))
 
@@ -79,14 +79,14 @@ for line in open(args.inFileName,'r').readlines() :
     #else : totalWeight[nickName] = float(vals[4])
 	#sampleWeight[nickName]= Pblumi*weights['lumi']*xsec[nickName]/totalWeight[nickName]
     filein = '/eos/uscms/store/user/alkaloge/ZH/nAODv7/{0:s}/{1:s}_{0:s}/{1:s}_{0:s}.root'.format(era,vals[0])
-    print filein
+    print(filein)
     fIn = TFile.Open(filein,"READ")
     totalW.append(float(fIn.Get("hWeights").GetSumOfWeights()))
     totalWeight[nickName] = float(fIn.Get("hWeights").GetSumOfWeights())
 
 
 
-print totalWeight, sum(totalWeight.values()), sum(totalW)
+print(totalWeight, sum(totalWeight.values()), sum(totalW))
 
 
 listF=[]
@@ -120,16 +120,16 @@ for line in open(args.inFileName,'r').readlines() :
 		#if 'mmtt_m_sv_new_FMjall' in htest.GetName() : print 'for ', fin, nickName, totalWeight[nickName], sum(totalWeight.values()) , 'ratio of weights', totalWeight[nickName]/sum(totalWeight.values()), htest.GetSumOfWeights(), htest.GetSumOfWeights()* (totalWeight[nickName]/sum( (totalWeight.values()))), totalWeight[nickName]/sum( (totalWeight.values())) , htest.GetBinContent(3), htest.GetBinContent(3)*(totalWeight[nickName]/sum( (totalWeight.values())))
 		
 		htest.Scale(float(totalWeight[nickName]))
-		htest.Scale(1/sum( (totalWeight.values())))
+		htest.Scale(1/sum( (list(totalWeight.values()))))
 
 		fOut.cd()
 		htest.Write()
 
-        except ReferenceError: print 'PROBLEM !!!!!!!!!!!! CHECK THIS ONE', fin
+        except ReferenceError: print('PROBLEM !!!!!!!!!!!! CHECK THIS ONE', fin)
 	fOut.Write()
 	fOut.Close()
 	command="cp {0:s} ../.".format(fout)
-	print command
+	print(command)
 	os.system(command)
    
 

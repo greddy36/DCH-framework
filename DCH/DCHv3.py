@@ -38,7 +38,7 @@ def getArgs() :
     return parser.parse_args()
 
 args = getArgs()
-print("args={0:s}".format(str(args)))
+print(("args={0:s}".format(str(args))))
 maxPrint = args.maxPrint 
 
 cutCounter = {}
@@ -77,7 +77,7 @@ for cat in cats :
     cutCounterGenWeight[cat] = GF.cutCounter()
 
 inFileName = args.inFileName
-print("Opening {0:s} as input.  Event category {1:s}".format(inFileName,cat))
+print(("Opening {0:s} as input.  Event category {1:s}".format(inFileName,cat)))
 
 
 inFile = TFile.Open(inFileName)
@@ -86,7 +86,7 @@ inFile.cd()
 inTree = inFile.Get("Events")
 nentries = inTree.GetEntries()
 nMax = nentries
-print("nentries={0:d} nMax={1:d}".format(nentries,nMax))
+print(("nentries={0:d} nMax={1:d}".format(nentries,nMax)))
 if args.nEvents > 0 : nMax = min(args.nEvents-1,nentries)
 
 
@@ -95,7 +95,7 @@ if args.dataType == 'Data' or args.dataType == 'data' : MC = False
 if args.dataType == 'MC' or args.dataType == 'mc' : MC = True
 
 if MC :
-    print "this is MC, will get PU etc", args.dataType
+    print(("this is MC, will get PU etc", args.dataType))
     PU = GF.pileUpWeight()
     PU.calculateWeights(args.nickName,args.year)
 else :
@@ -105,7 +105,7 @@ else :
     if args.year == 2018 : CJ = GF.checkJSON(filein='Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt')
 
 
-print 'systematics', doJME
+print(('systematics', doJME))
 
 era=str(args.year)
 
@@ -156,7 +156,7 @@ if args.weights > 0 :
 
     fName = GF.getOutFileName(args).replace(".root",".weights")
     fW = TFile( fName, 'recreate' )
-    print 'Will be saving the Weights in', fName
+    print(('Will be saving the Weights in', fName))
     fW.cd()
 
     if "WJetsToLNu" in outFileName and 'TWJets' not in outFileName:
@@ -180,7 +180,7 @@ if args.weights > 0 :
 
 # read a CSV file containing a list of unique events to be studied 
     
-print("Opening {0:s} as output.".format(outFileName))
+print(("Opening {0:s} as output.".format(outFileName)))
 
 sysT = ["Central"]
 
@@ -197,7 +197,7 @@ for i, sys in enumerate(sysall) :
 
 
 sysT=['Central']
-print sysT
+print(sysT)
 
 isMC = True
 if not MC : 
@@ -213,7 +213,7 @@ outTuple = outTuple.outTuple(outFileName, era, doSyst, sysT, isMC)
 tStart = time.time()
 countMod = 1000
 
-print outTuple.allsystMET
+print((outTuple.allsystMET))
 
 allMET=[]
 for i,j in enumerate(outTuple.allsystMET):
@@ -232,7 +232,7 @@ for cat in cats:
 for count, e in enumerate( inTree) :
     
     if count % countMod == 0 :
-        print("Count={0:d}".format(count))
+        print(("Count={0:d}".format(count)))
         if count >= 10000 : countMod = 10000
     if count == nMax : break    
     
@@ -259,7 +259,7 @@ for count, e in enumerate( inTree) :
 	if  MC :   cutCounterGenWeight[cat].countGenWeight('METfilter', e.genWeight)
 
 
-    if not TF.goodTrigger(e,args.year) and printOn :   print cat, e.run, e.luminosityBlock,  e.event, 'Triggers not present...'
+    if not TF.goodTrigger(e,args.year) and printOn :   print((cat, e.run, e.luminosityBlock,  e.event, 'Triggers not present...'))
     if not TF.goodTrigger(e, args.year) : continue
 
 
@@ -367,7 +367,7 @@ for count, e in enumerate( inTree) :
         if len(goodElectronList)+len(goodMuonList)+len(goodTauList) < 4: 
             veto_evts += 1
             continue# remove to print details of all the vetoed evts
-        print 'Event: ', count, ' #e: ',len(goodElectronList), ' #mu: ',len(goodMuonList), ' #t: ', len(goodTauList)
+        print(('Event: ', count, ' #e: ',len(goodElectronList), ' #mu: ',len(goodMuonList), ' #t: ', len(goodTauList)))
         #its faster to modify the pair functions to use these good lists rather than passing all the candidates through the cuts. 
 	for cat in cats :
             dch1 = cat[:2]
@@ -411,38 +411,38 @@ for count, e in enumerate( inTree) :
                 if len(bestDCH1) < 2: continue
                 signC = e.Electron_charge[bestDCH1[0]]
                 netS = e.Electron_charge[bestDCH1[0]] + e.Electron_charge[bestDCH1[1]]
-                print "DCH1 charge:",netS
+                print(("DCH1 charge:",netS))
             if dch1 == 'em':
                 bestDCH1 = TF.getBestEMuTauPair(entry=e, cat=cat, pairList=[])
                 if len(bestDCH1) < 2: continue
                 signC = e.Electron_charge[bestDCH1[0]]
                 netS = e.Electron_charge[bestDCH1[0]] + e.Muon_charge[bestDCH1[1]]
-                print "DCH1 charge:",netS
+                print(("DCH1 charge:",netS))
             if dch1 == 'et':
                 bestDCH1 = TF.getBestETauPair(entry=e, cat=cat, pairList=[])
                 if len(bestDCH1) < 2: continue
                 signC = e.Electron_charge[bestDCH1[0]]
                 netS = e.Electron_charge[bestDCH1[0]] + e.Tau_charge[bestDCH1[1]]
-                print "DCH1 charge:",netS
+                print(("DCH1 charge:",netS))
             if dch1 == 'mm':
                 bestDCH1 = TF.getBestMuMuPair(entry=e, cat=cat, pairList=[])
                 if len(bestDCH1) < 2: continue 
                 signC = e.Muon_charge[bestDCH1[0]]
                 netS = e.Muon_charge[bestDCH1[0]] + e.Muon_charge[bestDCH1[1]]
-                print "DCH1 charge:",netS
+                print(("DCH1 charge:",netS))
             if dch1 == 'mt':
                 bestDCH1 = TF.getBestMuTauPair(entry=e, cat=cat, pairList=[])
                 if len(bestDCH1) < 2: continue
                 signC = e.Muon_charge[bestDCH1[0]]
                 netS = e.Muon_charge[bestDCH1[0]] + e.Tau_charge[bestDCH1[1]]
-                print "DCH1 charge:",netS
+                print(("DCH1 charge:",netS))
             if dch1 == 'tt':
                 tauList = TF.getTauList(cat, entry=e, pairList=[])
                 bestDCH1 = TF.getBestTauPair(cat, entry=e, tauList=tauList)
                 if len(bestDCH1) < 2: continue
                 signC = e.Tau_charge[bestDCH1[0]]
                 netS = e.Tau_charge[bestDCH1[0]] + e.Tau_charge[bestDCH1[1]]
-                print "DCH1 charge:",netS
+                print(("DCH1 charge:",netS))
             #print 'signC ',signC
             pairList1 = TF.make4Vec(bestDCH1,dch1,e)
             bestDCH2 = []
@@ -451,41 +451,41 @@ for count, e in enumerate( inTree) :
                 if len(bestDCH2) < 2: continue
                 signC = e.Electron_charge[bestDCH2[0]]
                 netS = e.Electron_charge[bestDCH2[0]] + e.Electron_charge[bestDCH2[1]]
-                print "DCH2 charge:",netS
+                print(("DCH2 charge:",netS))
             if dch2 == 'em':
                 bestDCH2 = TF.getBestEMuTauPair(entry=e, cat=cat, pairList=pairList1, isDCH2=True,signC=signC)
                 if len(bestDCH2) < 2: continue
                 signC = e.Electron_charge[bestDCH2[0]]
                 netS = e.Electron_charge[bestDCH2[0]] + e.Muon_charge[bestDCH2[1]]
-                print "DCH2 charge:",netS
+                print(("DCH2 charge:",netS))
             if dch2 == 'et':
                 bestDCH2 = TF.getBestETauPair(entry=e, cat=cat, pairList=pairList1, isDCH2=True,signC=signC)
                 if len(bestDCH2) < 2: continue
                 signC = e.Electron_charge[bestDCH2[0]]
                 netS = e.Electron_charge[bestDCH2[0]] + e.Tau_charge[bestDCH2[1]]
-                print "DCH2 charge:",netS
+                print(("DCH2 charge:",netS))
             if dch2 == 'mm':
                 bestDCH2 = TF.getBestMuMuPair(entry=e, cat=cat, pairList=pairList1, isDCH2=True,signC=signC)
                 if len(bestDCH2) < 2: continue
                 signC = e.Muon_charge[bestDCH2[0]]
                 netS = e.Muon_charge[bestDCH2[0]] + e.Muon_charge[bestDCH2[1]]
-                print "DCH2 charge:",netS
+                print(("DCH2 charge:",netS))
             if dch2 == 'mt':
                 bestDCH2 = TF.getBestMuTauPair(entry=e, cat=cat, pairList=pairList1, isDCH2=True,signC=signC)
                 if len(bestDCH2) < 2: continue
                 signC = e.Muon_charge[bestDCH2[0]]
                 netS = e.Muon_charge[bestDCH2[0]] + e.Tau_charge[bestDCH2[1]]
-                print "DCH2 charge:",netS
+                print(("DCH2 charge:",netS))
             if dch2 == 'tt':
                 tauList = TF.getTauList(cat, entry=e, pairList=pairList1, isDCH2=True,signC=signC)
                 bestDCH2 = TF.getBestTauPair(cat, entry=e, tauList=tauList)
                 if len(bestDCH2) < 2: continue
                 signC = e.Tau_charge[bestDCH2[0]]
                 netS = e.Tau_charge[bestDCH2[0]] + e.Tau_charge[bestDCH2[1]]
-                print "DCH2 charge:",netS
+                print(("DCH2 charge:",netS))
 
             pairList2 = TF.make4Vec(bestDCH2,dch2,e)
-            print count, cat, 'e:', len(goodElectronList), 'm:',len(goodMuonList), 't:',len(goodTauList)
+            print((count, cat, 'e:', len(goodElectronList), 'm:',len(goodMuonList), 't:',len(goodTauList)))
 
             cutCounter[cat].count(dch1+dch2)
             if  MC:   cutCounterGenWeight[cat].countGenWeight(dch1+dch2, e.genWeight)
@@ -493,11 +493,11 @@ for count, e in enumerate( inTree) :
             #cat_yield[cat] += 1
             #continue
             for i in goodElectronList:
-                print 'Ele ', i, GF.genMatch(e,i,'e')
+                print(('Ele ', i, GF.genMatch(e,i,'e')))
             for i in goodMuonList:
-                print 'Mu ', i, GF.genMatch(e,i,'m')
+                print(('Mu ', i, GF.genMatch(e,i,'m')))
             for i in goodTauList:
-                print 'Tau ', i, GF.genMatch(e,i,'t')
+                print(('Tau ', i, GF.genMatch(e,i,'t')))
 	    GF.printMC(e)
             continue
 
@@ -633,15 +633,15 @@ for count, e in enumerate( inTree) :
 
 	    if maxPrint > 0 :
 		maxPrint -= 1
-		print("\n\nGood Event={0:d} cat={1:s}  MCcat={2:s}".format(e.event,cat,GF.eventID(e)))
-		print("goodMuonList={0:s} goodElectronList={1:s} Mll={2:.1f} bestTauPair={3:s}".format(
-		    str(goodMuonList),str(goodElectronList),M,str(bestTauPair)))
-		print("Lep1.pt() = {0:.1f} Lep2.pt={1:.1f}".format(pairList[0].Pt(),pairList[1].Pt()))
+		print(("\n\nGood Event={0:d} cat={1:s}  MCcat={2:s}".format(e.event,cat,GF.eventID(e))))
+		print(("goodMuonList={0:s} goodElectronList={1:s} Mll={2:.1f} bestTauPair={3:s}".format(
+		    str(goodMuonList),str(goodElectronList),M,str(bestTauPair))))
+		print(("Lep1.pt() = {0:.1f} Lep2.pt={1:.1f}".format(pairList[0].Pt(),pairList[1].Pt())))
 		GF.printEvent(e)
-		print("Event ID={0:s} cat={1:s}".format(GF.eventID(e),cat))
+		print(("Event ID={0:s} cat={1:s}".format(GF.eventID(e),cat)))
 
 dT = time.time() - tStart
-print("Run time={0:.2f} s  time/event={1:.1f} us".format(dT,1000000.*dT/count))
+print(("Run time={0:.2f} s  time/event={1:.1f} us".format(dT,1000000.*dT/count)))
 
 
 hLabels=[]
@@ -662,16 +662,16 @@ outTuple.writeTree()
 fW = TFile( outFileName, 'update' )
 fW.cd()
 
-print '------------------------->',fW, outFileName
+print(('------------------------->',fW, outFileName))
 for icat,cat in enumerate(cats) :
-    print('\nSummary for {0:s}'.format(cat))
+    print(('\nSummary for {0:s}'.format(cat)))
     cutCounter[cat].printSummary()
     hName="hCutFlow_"+str(cat)
     hNameW="hCutFlowWeighted_"+str(cat)
     lcount=len(hLabels)
     hCutFlow.append( TH1D(hName,hName,lcount,0.5,lcount+0.5))
     if MC  : hCutFlowW.append( TH1D(hNameW,hNameW,lcount,0.5,lcount+0.5))
-    print lcount, cat, icat
+    print((lcount, cat, icat))
     for i in range(len(hLabels)) :
         hCutFlow[icat].GetXaxis().SetBinLabel(i+1,hLabels[i])
         if MC : hCutFlowW[icat].GetXaxis().SetBinLabel(i+1,hLabels[i])
@@ -696,6 +696,6 @@ for icat,cat in enumerate(cats) :
 
 if not MC : CJ.printJSONsummary()
 
-print 'Yields in each channel ', cat_yield
-print 'n_leptons in each channel [e, mu, tau]',n_lepton
-print '# of < 4 lepton events', veto_evts
+print(('Yields in each channel ', cat_yield))
+print(('n_leptons in each channel [e, mu, tau]',n_lepton))
+print(('# of < 4 lepton events', veto_evts))

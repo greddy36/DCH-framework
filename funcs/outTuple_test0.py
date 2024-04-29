@@ -118,8 +118,8 @@ class outTuple() :
 		
              
 
-        print '------>systematics list', self.allsystMET
-        print '------>jetssystematics list', self.allsystJets
+        print('------>systematics list', self.allsystMET)
+        print('------>jetssystematics list', self.allsystJets)
 
 
         self.f = TFile( fileName, 'recreate' )
@@ -767,7 +767,7 @@ class outTuple() :
                 #self.t.SetBranchStatus("Smear",1)
                 self.tN[i-1].SetName(isyst)
 
-                print '====================>',self.tN[i-1], self.tN[i-1].GetName()
+                print('====================>',self.tN[i-1], self.tN[i-1].GetName())
 
 	#self.t.SetBranchStatus("*Up",1)
 	#self.t.SetBranchStatus("*Down",1)
@@ -794,7 +794,7 @@ class outTuple() :
             dphi = tau.Phi() - entry.PuppiMET_phi
             return sqrt(2.*tau.Pt()*entry.PuppiMET_pt*(1. - cos(dphi)))
         else :
-            print("Invalid METtype={0:s} in outTuple.get_mt().   Exiting".format(METtype))
+            print(("Invalid METtype={0:s} in outTuple.get_mt().   Exiting".format(METtype)))
 
     def getPt_tt(self,entry,tau1,tau2) :
         ptMiss = TLorentzVector() 
@@ -1669,7 +1669,7 @@ class outTuple() :
 		tau2.SetPtEtaPhiM(entry.Tau_pt[jt2], entry.Tau_eta[jt2], entry.Tau_phi[jt2], tmass)
 		
 	    else :
-		print("Invalid channel={0:s} in outTuple(). Exiting.".format(channel))
+		print(("Invalid channel={0:s} in outTuple(). Exiting.".format(channel)))
 		exit()
 		
 	    self.mt_3[0]      = self.get_mt('MVAMet',   entry,tau1)
@@ -3197,7 +3197,7 @@ class outTuple() :
         self.t.Fill()
   
     def writeTree(self) :
-        print("In outTuple.writeTree() entries={0:d}".format(self.entries)) 
+        print(("In outTuple.writeTree() entries={0:d}".format(self.entries))) 
         self.f.Write()
         self.f.Close()
         return

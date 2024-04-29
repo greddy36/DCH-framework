@@ -49,17 +49,17 @@ def latex_with_lines(df, *args, **kwargs):
 
 def WriteLatexGroup (fileOut,array) :
     f = open(fileOut,'w')
-    print >> f,'\\documentclass[10pt]{report}'
-    print >> f,'\\usepackage{adjustbox}'
-    print >> f,'\\begin{document}'
-    print >> f,'\\begin{table}[htp]'
-    print >> f,'\\caption{' + '{0:s} {1:s}'.format(args.selection, era) + '}'  
-    print >> f,'\\begin{center}'
+    print('\\documentclass[10pt]{report}', file=f)
+    print('\\usepackage{adjustbox}', file=f)
+    print('\\begin{document}', file=f)
+    print('\\begin{table}[htp]', file=f)
+    print('\\caption{' + '{0:s} {1:s}'.format(args.selection, era) + '}', file=f)  
+    print('\\begin{center}', file=f)
     #print >>f, cc.to_latex()
     f.write(array.to_latex(column_format = "l | " + " | ".join(["r"] * len(array.columns))))
-    print >> f,'\\end{center}'
-    print >> f,'\\end{table}'
-    print >> f,'\\end{document}'
+    print('\\end{center}', file=f)
+    print('\\end{table}', file=f)
+    print('\\end{document}', file=f)
     f.write(fileOut)
     f.close()
 
@@ -142,8 +142,8 @@ for line in open(fIn,'r').readlines() :
     xsec[nickName] = float(vals[2])
     totalWeight[nickName] = float(vals[4])
     sampleWeight[nickName]= float(lumi[era])*xsec[nickName]/totalWeight[nickName]
-    print("group={0:10s} nickName={1:20s} xSec={2:10.3f} totalWeight={3:11.1f} sampleWeight={4:10.6f}".format(
-        group,nickName,xsec[nickName],totalWeight[nickName],sampleWeight[nickName]))
+    print(("group={0:10s} nickName={1:20s} xSec={2:10.3f} totalWeight={3:11.1f} sampleWeight={4:10.6f}".format(
+        group,nickName,xsec[nickName],totalWeight[nickName],sampleWeight[nickName])))
 
 # Stitch the DYJets and WJets samples
 '''
@@ -206,7 +206,7 @@ for group in groups :
 	#inTree = inFile.Get("Events")
 	
     header=nickName
-    print ' opening ', fIn, nickName, group
+    print(' opening ', fIn, nickName, group)
 
     scale=str(args.normalize)
     ScaleToLumi= False
@@ -215,8 +215,8 @@ for group in groups :
 	ScaleToLumi = True
 	header=header+'_'+'{0:.3f}'.format(float(lumi[era]/1000))+'invfb'
 
-    if ScaleToLumi : print "Events scaled to {0:.1f}/pb for xsec = {1:.3f} pb".format(float(lumi[era]),float(xsec[nickName]))
-    if not ScaleToLumi : print "Events WILL NOT BE scaled to {0:.1f}/pb for xsec = {1:.3f} pb".format(float(lumi[era]),float(xsec[nickName]))
+    if ScaleToLumi : print("Events scaled to {0:.1f}/pb for xsec = {1:.3f} pb".format(float(lumi[era]),float(xsec[nickName])))
+    if not ScaleToLumi : print("Events WILL NOT BE scaled to {0:.1f}/pb for xsec = {1:.3f} pb".format(float(lumi[era]),float(xsec[nickName])))
 
 
 
@@ -279,7 +279,7 @@ for group in groups :
 	    #if len(cuts[i]) != 0 : 
 	    #print cuts[i], lines[i]
 	    #if cuts[i] == '' and group == 'data' : cuts[i] = 'NextCut'
-	    print >> f, '{0:s}  {1:s} '.format(cuts[i], lines[i])
+	    print('{0:s}  {1:s} '.format(cuts[i], lines[i]), file=f)
 
     #for i in range(rows):
     #    for j in range(columns):
@@ -400,7 +400,7 @@ for icat, cat in enumerate(cats[1:]) :
                 
         #    'DY','WZ','ZZ']
 	sizes = [other[icat][12]+top[icat][12] , dy[icat][12],wz[icat][12] ,zz[icat][12] ]
-        print '-->', sizes, cat
+        print('-->', sizes, cat)
 	#colors = ['gold','Orange', 'ForestGreen', 'LightCoral','Cyan']
 	colors = ['gold','limegreen', 'LightCoral','Cyan']
         lab=["","","",""]
@@ -436,12 +436,12 @@ for cat in cats[1:]:
     fIn = 'txt/All_'+cat+'_'+args.selection+'_'+era+'yields.txt'
 
     with open(fIn, 'w') as f:
-	print >> f,'\\documentclass[10pt]{report}'
-	print >> f,'\\usepackage{adjustbox}'
-	print >> f,'\\begin{document}'
-	print >> f,'\\begin{table}[htp]'
-	print >> f,'\\caption{' + '{0:s} {1:s} {2:s}'.format(cat, args.selection, era) +'}'  
-	print >> f,'\\begin{center}'
+	print('\\documentclass[10pt]{report}', file=f)
+	print('\\usepackage{adjustbox}', file=f)
+	print('\\begin{document}', file=f)
+	print('\\begin{table}[htp]', file=f)
+	print('\\caption{' + '{0:s} {1:s} {2:s}'.format(cat, args.selection, era) +'}', file=f)  
+	print('\\begin{center}', file=f)
         '''
 	print >> f,'\\begin{adjustbox}{width=1\\textwidth}'
 	#print >> f,'\\begin{tabular}{l r r r r r r r r }  \hline'
@@ -456,9 +456,9 @@ for cat in cats[1:]:
 	print >> f, '\hline'
         '''
         f.write(cc.to_latex(column_format = "l | " + " | ".join(["r"] * len(cc.columns))))
-        print >> f,'\\end{center}'
-        print >> f,'\\end{table}'
-        print >> f,'\\end{document}'
+        print('\\end{center}', file=f)
+        print('\\end{table}', file=f)
+        print('\\end{document}', file=f)
 
         '''
 	print >> f,'\\end{tabular}'
@@ -499,4 +499,4 @@ os.system(command1)
 os.system(command2)
 os.system(command3)
 
-print 'All txt files can be found in the ./txt dir....exiting'
+print('All txt files can be found in the ./txt dir....exiting')

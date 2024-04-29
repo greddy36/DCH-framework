@@ -4,7 +4,7 @@ class BranchSelection:
     def __init__(self,filename='keep_and_drop.txt'):
         comment = re.compile(r"#.*")
         ops = []
-        print 'filename--------->||', filename
+        print('filename--------->||', filename)
         filename='keep_and_drop.txt'
         for line in open(filename,'r'):
             line = line.strip()
@@ -20,9 +20,9 @@ class BranchSelection:
                 elif op == "keepmatch": ops.append( (re.compile("(:?%s)$" % sel), 1) )
                 elif op == "dropmatch": ops.append( (re.compile("(:?%s)$" % sel), 0) )
                 else:
-                    print "Error in file %s, line '%s': it's not (keep|keepmatch|drop|dropmatch) <branch_pattern>" % (filename, line)
-            except ValueError, e:
-                print "Error in file %s, line '%s': it's not (keep|keepmatch|drop|dropmatch) <branch_pattern>" % (filename, line)
+                    print("Error in file %s, line '%s': it's not (keep|keepmatch|drop|dropmatch) <branch_pattern>" % (filename, line))
+            except ValueError as e:
+                print("Error in file %s, line '%s': it's not (keep|keepmatch|drop|dropmatch) <branch_pattern>" % (filename, line))
         self._ops = ops
     def selectBranches(self,tree):
         tree.SetBranchStatus("*",1)

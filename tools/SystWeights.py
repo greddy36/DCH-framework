@@ -42,7 +42,7 @@ def getArgs() :
     return parser.parse_args()
 
 args = getArgs()
-print("args={0:s}".format(str(args)))
+print(("args={0:s}".format(str(args))))
 maxPrint = args.maxPrint 
 
 cutCounter = {}
@@ -59,11 +59,11 @@ for cat in cats :
     cutCounterGenWeight[cat] = GF.cutCounter()
 
 inFileName = args.inFileName
-print("Opening {0:s} as input.  Event category {1:s}".format(inFileName,cat))
+print(("Opening {0:s} as input.  Event category {1:s}".format(inFileName,cat)))
 
 isAZH=False
 if str(args.selection) == 'AZH' : isAZH = True
-if isAZH : print 'You are running on the AZH mode !!!'
+if isAZH : print('You are running on the AZH mode !!!')
 
 inFile = TFile.Open(inFileName)
 inFile.cd()
@@ -71,7 +71,7 @@ inFile.cd()
 inTree = inFile.Get("Events")
 nentries = inTree.GetEntries()
 nMax = nentries
-print("nentries={0:d} nMax={1:d}".format(nentries,nMax))
+print(("nentries={0:d} nMax={1:d}".format(nentries,nMax)))
 if args.nEvents > 0 : nMax = min(args.nEvents-1,nentries)
 
 
@@ -92,7 +92,7 @@ else :
     if args.year == 2018 : CJ = GF.checkJSON(filein='Cert_314472-325175_13TeV_Legacy2018_Collisions18_JSON.txt')
 
 '''
-print 'systematics', doJME
+print('systematics', doJME)
 
 era=str(args.year)
 
@@ -187,7 +187,7 @@ if args.weights > 0 :
 
     fName = GF.getOutFileName(args).replace(".root",".weights")
     fW = TFile( fName, 'recreate' )
-    print 'Will be saving the Weights in', fName
+    print('Will be saving the Weights in', fName)
     fW.cd()
 
     if "WJetsToLNu" in outFileName and 'TWJets' not in outFileName:

@@ -131,8 +131,8 @@ class outTuple() :
 		
              
 
-        print '------>systematics list', self.allsystMET
-        print '------>jetssystematics list', self.allsystJets
+        print('------>systematics list', self.allsystMET)
+        print('------>jetssystematics list', self.allsystJets)
 
 
         self.f = TFile( fileName, 'recreate' )
@@ -383,8 +383,6 @@ class outTuple() :
         # trigger info
         self.isTrig_2   = array('f',[0])
         self.isTrig_1   = array('f',[0])
-        self.isTrig_3   = array('f',[0])
-        self.isTrig_4   = array('f',[0])
         self.isDoubleTrig   = array('f',[0])
 
 
@@ -691,8 +689,6 @@ class outTuple() :
         # trigger sf
         self.t.Branch('isTrig_2',  self.isTrig_2, 'isTrig_2/F' )
         self.t.Branch('isTrig_1',  self.isTrig_1, 'isTrig_1/F' )
-        self.t.Branch('isTrig_3',  self.isTrig_3, 'isTrig_3/F' )
-        self.t.Branch('isTrig_4',  self.isTrig_4, 'isTrig_4/F' )
         self.t.Branch('isDoubleTrig',  self.isDoubleTrig, 'isDoubleTrig/F' )
 
 
@@ -799,7 +795,7 @@ class outTuple() :
                 #self.t.SetBranchStatus("Smear",1)
                 self.tN[i-1].SetName(isyst)
 
-                print '====================>',self.tN[i-1], self.tN[i-1].GetName()
+                print('====================>',self.tN[i-1], self.tN[i-1].GetName())
 
 	#self.t.SetBranchStatus("*Up",1)
 	#self.t.SetBranchStatus("*Down",1)
@@ -826,7 +822,7 @@ class outTuple() :
             dphi = tau.Phi() - entry.PuppiMET_phi
             return sqrt(2.*tau.Pt()*entry.PuppiMET_pt*(1. - cos(dphi)))
         else :
-            print("Invalid METtype={0:s} in outTuple.get_mt().   Exiting".format(METtype))
+            print(("Invalid METtype={0:s} in outTuple.get_mt().   Exiting".format(METtype)))
 
     def getPt_tt(self,entry,tau1,tau2) :
         ptMiss = TLorentzVector() 
@@ -1254,15 +1250,22 @@ class outTuple() :
         
         if SystIndex ==0 : 
 
-	    is_trig_1, is_trig_2, is_trig_3, is_trig_4, is_Dtrig_1 = 0., 0., 0., 0., 0.
-	    TrigListLep = []
-	    TrigListTau = []
-	    hltListLep  = []
-	    hltListLepSubL  = []
+	    is_trig_1, is_trig_2, is_Dtrig_1 = 0., 0., 0.
+	    TrigListLep_1 = []
+	    TrigListTau_1 = []
+	    hltListLep_1  = []
+	    hltListLepSubL_1  = []
 
-	    TrigListLep, hltListLep, hltListLepSubL  = GF.findSingleLeptTrigger(idx_DCH1, entry, dch_1, era)
+            TrigListLep_2 = []
+            TrigListTau_2 = []
+            hltListLep_2  = []
+            hltListLepSubL_2  = []
 
-	    TrigListLep = list(dict.fromkeys(TrigListLep))
+	    TrigListLep_1, hltListLep_1, hltListLepSubL_1  = GF.findSingleLeptTriggerDCH(idx_DCH1, entry, dch_1, era)
+            TrigListLep_2, hltListLep_2, hltListLepSubL_2  = GF.findSingleLeptTriggerDCH(idx_DCH2, entry, dch_2, era)
+     
+	    TrigListLep_1 = list(dict.fromkeys(TrigListLep_1))
+            TrigListLep_2 = list(dict.fromkeys(TrigListLep_2))
 	    #if len(hltListLep) > 0 or len(hltListLepSubL)>0 :     print GF.printEvent(entry), SystIndex
 
 	    #TrigListLepD, hltListLepD  = GF.findDoubleLeptTrigger(idx_DCH1, entry, dch_1, era)
@@ -1277,24 +1280,31 @@ class outTuple() :
 	    #        is_Dtrig_1 = -1
 
 
-	    if len(hltListLep) > 0 and  len(hltListLepSubL) == 0 :
+	    if len(hltListLep_1) > 0 and  len(hltListLepSubL_1) == 0 :
 		is_trig_1 = 1
-	    if len(hltListLep) == 0 and len(hltListLepSubL) > 0 :
+	    if len(hltListLep_1) == 0 and len(hltListLepSubL_1) > 0 :
 		is_trig_1 = -1
-	    if len(hltListLep) > 0 and len(hltListLepSubL)>0 :
+	    if len(hltListLep_1) > 0 and len(hltListLepSubL_1)>0 :
 		is_trig_1 = 2
+
+            if len(hltListLep_2) > 0 and  len(hltListLepSubL_2) == 0 :
+                is_trig_2 = 1
+            if len(hltListLep_2) == 0 and len(hltListLepSubL_2) > 0 :
+                is_trig_2 = -1
+            if len(hltListLep_2) > 0 and len(hltListLepSubL_2)>0 :
+                is_trig_2 = 2
 
 	    self.whichTriggerWord[0]=0
 	    self.whichTriggerWordSubL[0]=0
 
 	    #if len(TrigListLep) >0 : print 'TrigerList ===========>', TrigListLep, idx_DCH1, hltListLep, dch_1, 'istrig_1', is_trig_1, 'istrig_2', is_trig_2, 'lenTrigList', len(TrigListLep),  'lenLept', len(idx_DCH1), 'idx_DCH1_0', idx_DCH1[0], 'TrigList_0', TrigListLep[0], hltListLep
 	    
-	    for i,bit in enumerate(hltListLep):
+	    for i,bit in enumerate(hltListLep_1):
 		    
 		if bit : 
 		    self.whichTriggerWord[0] += 2**i
 
-	    for j,bitt in enumerate(hltListLepSubL):
+	    for j,bitt in enumerate(hltListLepSubL_1):
 		if bitt : self.whichTriggerWordSubL[0] += 2**j
 
 
@@ -1820,7 +1830,7 @@ class outTuple() :
 	    Lep2.SetPtEtaPhiM(entry.Tau_pt[jl2], entry.Tau_eta[jl2], entry.Tau_phi[jl2], tmass)
 	    
 	else :
-	    print("Invalid channel={0:s} in outTuple(). Exiting.".format(channel))
+	    print(("Invalid channel={0:s} in outTuple(). Exiting.".format(channel)))
 	    exit()
 	    
 	#self.mt_1[0]      = self.get_mt('MVAMet',   entry,Lep1)
@@ -2238,7 +2248,7 @@ class outTuple() :
 		Lep4.SetPtEtaPhiM(entry.Tau_pt[jl4], entry.Tau_eta[jl4], entry.Tau_phi[jl4], tmass)
 		
 	    else :
-		print("Invalid channel={0:s} in outTuple(). Exiting.".format(channel))
+		print(("Invalid channel={0:s} in outTuple(). Exiting.".format(channel)))
 		exit()
 		
 	    self.mt_3[0]      = self.get_mt('MVAMet',   entry,Lep3)
@@ -2541,8 +2551,6 @@ class outTuple() :
         if SystIndex ==0 : 
 	    self.isTrig_1[0]   = is_trig_1
 	    self.isTrig_2[0]   = is_trig_2
-            self.isTrig_3[0]   = is_trig_3
-            self.isTrig_4[0]   = is_trig_4
 	    self.isDoubleTrig[0]   = is_Dtrig_1
 
         leplist=[]
@@ -2743,19 +2751,27 @@ class outTuple() :
 
         #dch_1 = 'mm' or 'ee'
         dch_1 = cat[:2]
-	dch_2 = cat[2:]
+        dch_2 = cat[2:]
         
         if SystIndex ==0 : 
 
-	    is_trig_1, is_trig_2, is_trig_3, is_trig_4, is_Dtrig_1 = 0., 0., 0., 0., 0.
-	    TrigListLep = []
-	    TrigListTau = []
-	    hltListLep  = []
-	    hltListLepSubL  = []
+	    is_trig_1, is_trig_2, is_Dtrig_1 = 0., 0., 0.
+	    TrigListLep_1 = []
+	    TrigListTau_1 = []
+	    hltListLep_1  = []
+	    hltListLepSubL_1  = []
 
-	    TrigListLep, hltListLep, hltListLepSubL  = GF.findSingleLeptTrigger(idx_DCH1, entry, dch_1, era)
+            TrigListLep_2 = []
+            TrigListTau_2 = []
+            hltListLep_2  = []
+            hltListLepSubL_2  = []
 
-	    TrigListLep = list(dict.fromkeys(TrigListLep))
+	    TrigListLep_1, hltListLep_1, hltListLepSubL_1  = GF.findSingleLeptTriggerDCH(idx_DCH1, entry, dch_1, era)
+            idx_DCH2 = [jl3]
+            TrigListLep_2, hltListLep_2, hltListLepSubL_2  = GF.findSingleLeptTriggerDCH(idx_DCH2, entry, dch_2, era)
+
+            TrigListLep_1 = list(dict.fromkeys(TrigListLep_1))
+            TrigListLep_2 = list(dict.fromkeys(TrigListLep_2))
 	    #if len(hltListLep) > 0 or len(hltListLepSubL)>0 :     print GF.printEvent(entry), SystIndex
 
 	    #TrigListLepD, hltListLepD  = GF.findDoubleLeptTrigger(idx_DCH1, entry, dch_1, era)
@@ -2770,24 +2786,31 @@ class outTuple() :
 	    #        is_Dtrig_1 = -1
 
 
-	    if len(hltListLep) > 0 and  len(hltListLepSubL) == 0 :
+	    if len(hltListLep_1) > 0 and  len(hltListLepSubL_1) == 0 :
 		is_trig_1 = 1
-	    if len(hltListLep) == 0 and len(hltListLepSubL) > 0 :
+	    if len(hltListLep_1) == 0 and len(hltListLepSubL_1) > 0 :
 		is_trig_1 = -1
-	    if len(hltListLep) > 0 and len(hltListLepSubL)>0 :
+	    if len(hltListLep_1) > 0 and len(hltListLepSubL_1)>0 :
 		is_trig_1 = 2
+
+            if len(hltListLep_2) > 0 and  len(hltListLepSubL_2) == 0 :
+                is_trig_2 = 1
+            if len(hltListLep_2) == 0 and len(hltListLepSubL_2) > 0 :
+                is_trig_2 = -1
+            if len(hltListLep_2) > 0 and len(hltListLepSubL_2)>0 :
+                is_trig_2 = 2
 
 	    self.whichTriggerWord[0]=0
 	    self.whichTriggerWordSubL[0]=0
 
 	    #if len(TrigListLep) >0 : print 'TrigerList ===========>', TrigListLep, idx_DCH1, hltListLep, dch_1, 'istrig_1', is_trig_1, 'istrig_2', is_trig_2, 'lenTrigList', len(TrigListLep),  'lenLept', len(idx_DCH1), 'idx_DCH1_0', idx_DCH1[0], 'TrigList_0', TrigListLep[0], hltListLep
 	    
-	    for i,bit in enumerate(hltListLep):
+	    for i,bit in enumerate(hltListLep_1):
 		    
 		if bit : 
 		    self.whichTriggerWord[0] += 2**i
 
-	    for j,bitt in enumerate(hltListLepSubL):
+	    for j,bitt in enumerate(hltListLepSubL_1):
 		if bitt : self.whichTriggerWordSubL[0] += 2**j
 
 
@@ -3312,7 +3335,7 @@ class outTuple() :
 	    Lep2.SetPtEtaPhiM(entry.Tau_pt[jl2], entry.Tau_eta[jl2], entry.Tau_phi[jl2], tmass)
 	    
 	else :
-	    print("Invalid channel={0:s} in outTuple(). Exiting.".format(channel))
+	    print(("Invalid channel={0:s} in outTuple(). Exiting.".format(channel)))
 	    exit()
 	    
 	#self.mt_1[0]      = self.get_mt('MVAMet',   entry,Lep1)
@@ -3748,8 +3771,6 @@ class outTuple() :
         if SystIndex ==0 : 
 	    self.isTrig_1[0]   = is_trig_1
 	    self.isTrig_2[0]   = is_trig_2
-            self.isTrig_3[0]   = is_trig_3
-            self.isTrig_4[0]   = is_trig_4
 	    self.isDoubleTrig[0]   = is_Dtrig_1
 
         leplist=[]
@@ -3903,7 +3924,7 @@ class outTuple() :
         self.t.Fill()
   
     def writeTree(self) :
-        print("In outTuple.writeTree() entries={0:d}".format(self.entries)) 
+        print(("In outTuple.writeTree() entries={0:d}".format(self.entries))) 
         self.f.Write()
         self.f.Close()
         return
