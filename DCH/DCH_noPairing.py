@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+# doesn't do pairing. only goes over good leptons
 
 # import external modules 
 import sys
@@ -10,10 +10,10 @@ from math import sqrt, pi
 
 # import from ZH_Run2/funcs/
 sys.path.insert(1,'../funcs/')
-import tauFunDCH as TF
-import generalFunctions as GF 
+import tauFunDCH_test as TF
+import generalFunctions_test as GF 
 #import Weights 
-import outTuple as outTuple
+import outTuple_test as outTuple
 import time
 
 def getArgs() :
@@ -89,7 +89,11 @@ cutflow['muon'] = GF.cutCounter()
 cutflow['tau'] = GF.cutCounter()
 
 TrigCount = GF.cutCounter()
-GenCat = GF.cutCounter()
+#GenCat = GF.cutCounter()
+#TruCat = GF.cutCounter()
+
+GenCat = {cat: 0 for cat in cats}
+TruCat = {cat: 0 for cat in cats}
 
 inFileName = args.inFileName
 print(("Opening {0:s} as input.  Event category {1:s}".format(inFileName,cat)))
@@ -253,6 +257,24 @@ for count, e in enumerate( inTree) :
     if count == nMax : break    
     printOn=False
 
+    gen_cat = ''
+    if MC:
+        '''if 'Hpp' in  args.nickName :
+           if 't' not in GF.printGenDecayMode(e): continue
+           #if not GF.printGenDecayMode(e)=='eeee': continue
+           GF.printMC(e)
+           print ('Gen channel is', GF.printGenDecayMode(e))
+        else:
+           if not GF.printGenDecayModeBkg(e,bkg=args.nickName) == args.category : continue
+           #GF.printMC(e)
+           #print ('Gen channel is', GF.printGenDecayMode(e))
+        '''
+        if "Hpp" in args.nickName:
+            gen_cat = GF.printGenDecayMode(e,isPrompt=True)
+            GenCat[gen_cat] += 1
+            #print("Gen cat is : ",gen_cat)
+            #GF.printMC(e)
+    '''
     for cat in cats : 
         cutCounter[cat].count('All')
     if  MC :   cutCounterGenWeight[cat].countGenWeight('All', e.genWeight)
@@ -272,7 +294,7 @@ for count, e in enumerate( inTree) :
     for cat in cats: 
         cutCounter[cat].count('METfilter') 
     if  MC :   cutCounterGenWeight[cat].countGenWeight('METfilter', e.genWeight)
-
+    '''
     if not TF.goodTrigger(e,args.year) and printOn :   print((cat, e.run, e.luminosityBlock,  e.event, 'Triggers not present...'))
     if not TF.goodTrigger(e, args.year) : continue
 
@@ -367,20 +389,6 @@ for count, e in enumerate( inTree) :
                 tauMass.append(e.Tau_mass[j])
                 tauPt.append(e.Tau_pt[j])
             
-        '''if 'Hpp' in  args.nickName :
-           if 't' not in GF.printGenDecayMode(e): continue
-           #if not GF.printGenDecayMode(e)=='eeee': continue
-           GF.printMC(e)
-           print ('Gen channel is', GF.printGenDecayMode(e))
-        else:
-           if not GF.printGenDecayModeBkg(e,bkg=args.nickName) == args.category : continue
-           #GF.printMC(e)
-           #print ('Gen channel is', GF.printGenDecayMode(e))
-        '''
-        if "Hpp" in args.nickName: 
-            GenCat.count(GF.printGenDecayMode(e) )
-            print(("Gen cat is : ",GF.printGenDecayMode(e) ))
-     
     for isyst, systematic in enumerate(sysT) : 
         if isyst>0 : #use the default pT/mass for Ele/Muon/Taus before doing any systematic
         #if 'Central' in systematic or 'prong' in systematic : #use the default pT/mass for Ele/Muon/Taus before doing the Central or the tau_scale systematics ; otherwise keep the correction
@@ -414,6 +422,56 @@ for count, e in enumerate( inTree) :
         #=============3-lep=====================================
         if len(goodElectronList)+len(goodMuonList)+len(goodTauList) == 3:
             evts_3lep += 1
+            #---------no pairing------------------
+            cat3L = ''
+            lep3 = -99
+            bestDCH1 = [] #these are just containers for keeping the code simple, no pairing is done!
+            if len(goodElectronList) == 3:
+                cat3L = 'eee'
+                bestDCH1 = [goodElectronList[0],goodElectronList[1]]
+                lep_3 = goodElectronList[2]
+            elif len(goodMuonList) == 3:
+                cat3L = 'mmm'
+                bestDCH1 = [goodMuonList[0],goodMuonList[1]]
+                lep_3 = goodMuonList[2]
+            elif len(goodTauList) == 3:
+                cat3L = 'ttt'
+                bestDCH1 = [goodTauList[0],goodTauList[1]]
+                lep_3 = goodTauList[2]
+            elif len(goodElectronList) == 2 and len(goodMuonList) == 1:
+                cat3L = 'eem'
+                bestDCH1 = [goodElectronList[0],goodElectronList[1]]
+                lep_3 = goodMuonList[0]
+            elif len(goodElectronList) == 2 and len(goodTauList) == 1:
+                cat3L = 'eet'
+                bestDCH1 = [goodElectronList[0],goodElectronList[1]]
+                lep_3 = goodTauList[0]
+            elif len(goodElectronList) == 1 and len(goodMuonList) == 2:
+                cat3L = 'emm'
+                bestDCH1 = [goodElectronList[0],goodMuonList[0]]
+                lep_3 = goodMuonList[1]
+            elif len(goodElectronList) == 1 and len(goodTauList) == 2:
+                cat3L = 'ett'
+                bestDCH1 = [goodElectronList[0],goodTauList[0]]
+                lep_3 = goodTauList[1]
+            elif len(goodElectronList) == 1 and len(goodMuonList) == 1 and len(goodTauList) == 1:
+                cat3L = 'emt'
+                bestDCH1 = [goodElectronList[0],goodMuonList[0]]
+                lep_3 = goodTauList[0]
+            elif len(goodMuonList) == 2 and len(goodTauList) == 1:
+                cat3L = 'mmt'
+                bestDCH1 = [goodMuonList[0],goodMuonList[1]]
+                lep_3 = goodTauList[0]
+            elif len(goodMuonList) == 1 and len(goodTauList) == 2:
+                cat3L = 'mtt'
+                bestDCH1 = [goodMuonList[0],goodTauList[0]]
+                lep_3 = goodTauList[1]
+
+            SVFit = False
+            if not MC : isMC = False
+            outTuple.Fill3L(e,SVFit,cat3L,gen_cat, bestDCH1,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+
+            '''
             for cat3L in cats3L :
                 if(e.nElectron < cat3L.count('e') or e.nMuon < cat3L.count('m') or e.nTau < cat3L.count('t')): continue
                 if(len(goodElectronList) < cat3L.count('e') or len(goodMuonList) < cat3L.count('m') or len(goodTauList) < cat3L.count('t')): continue
@@ -485,7 +543,8 @@ for count, e in enumerate( inTree) :
 
                 SVFit = False
                 if not MC : isMC = False 
-                outTuple.Fill3L(e,SVFit,cat3L,bestDCH1,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+                outTuple.Fill3L(e,SVFit,cat3L,gen_cat, bestDCH1,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+                '''
                 #=========================================================    
 
             if len(goodElectronList)+len(goodMuonList)+len(goodTauList) > 4:
@@ -683,8 +742,8 @@ for count, e in enumerate( inTree) :
                 SVFit = False
                 #continue        
                 if not MC : isMC = False
-
-                outTuple.Fill(e,SVFit,cat,bestDCH1,bestDCH2,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+                TruCat[gen_cat] += 1
+                outTuple.Fill(e,SVFit,cat,gen_cat, bestDCH1,bestDCH2,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
                 '''
                 if maxPrint > 0 :
                 maxPrint -= 1
@@ -735,12 +794,17 @@ hTrigCount.Sumw2()
 hTrigCount.Write()
 '''
 if MC and "Hpp" in args.nickName:
-    hGenCat = TH1D("hGenCat", "Gen Cat", 30, 0, 30)
+    hGenCat = TH1D("hGenCat", "Gen decay channels", 22, 0, 22)
+    hTruCat = TH1D("hTruCat", "True decay channels", 22, 0, 22)
     for icat,cat in enumerate(cats):
         hGenCat.GetXaxis().SetBinLabel(icat+1, str(cat))
-        hGenCat.Fill(icat, GenCat.getYield()[icat])
+        hGenCat.Fill(icat, GenCat[cat])
+        hTruCat.GetXaxis().SetBinLabel(icat+1, str(cat))
+        hTruCat.Fill(icat, TruCat[cat])
 hGenCat.Sumw2()
 hGenCat.Write()
+hTruCat.Sumw2()
+hTruCat.Write()
 
 #print '------------------------->',fW, outFileName
 for icat,cat in enumerate(cats) :

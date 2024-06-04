@@ -89,6 +89,11 @@ cutflow['muon'] = GF.cutCounter()
 cutflow['tau'] = GF.cutCounter()
 
 TrigCount = GF.cutCounter()
+#GenCat = GF.cutCounter()
+#TruCat = GF.cutCounter()
+
+GenCat = {cat: 0 for cat in cats}
+TruCat = {cat: 0 for cat in cats}
 
 inFileName = args.inFileName
 print(("Opening {0:s} as input.  Event category {1:s}".format(inFileName,cat)))
@@ -252,6 +257,24 @@ for count, e in enumerate( inTree) :
     if count == nMax : break    
     printOn=False
 
+    gen_cat = ''
+    if MC:
+        '''if 'Hpp' in  args.nickName :
+           if 't' not in GF.printGenDecayMode(e): continue
+           #if not GF.printGenDecayMode(e)=='eeee': continue
+           GF.printMC(e)
+           print ('Gen channel is', GF.printGenDecayMode(e))
+        else:
+           if not GF.printGenDecayModeBkg(e,bkg=args.nickName) == args.category : continue
+           #GF.printMC(e)
+           #print ('Gen channel is', GF.printGenDecayMode(e))
+        '''
+        if "Hpp" in args.nickName:
+            gen_cat = GF.printGenDecayMode(e,isPrompt=True)
+            GenCat[gen_cat] += 1
+            print("Gen cat is : ",gen_cat)
+            #GF.printMC(e)
+    '''
     for cat in cats : 
         cutCounter[cat].count('All')
     if  MC :   cutCounterGenWeight[cat].countGenWeight('All', e.genWeight)
@@ -271,12 +294,12 @@ for count, e in enumerate( inTree) :
     for cat in cats: 
         cutCounter[cat].count('METfilter') 
     if  MC :   cutCounterGenWeight[cat].countGenWeight('METfilter', e.genWeight)
-
+    '''
     if not TF.goodTrigger(e,args.year) and printOn :   print((cat, e.run, e.luminosityBlock,  e.event, 'Triggers not present...'))
     if not TF.goodTrigger(e, args.year) : continue
 
     if MC and args.year == 2018:
-        TrigCount.count('notrig')
+        '''TrigCount.count('notrig')
         if e.HLT_Ele32_WPTight_Gsf or e.HLT_Ele35_WPTight_Gsf or e.HLT_IsoMu24 or  e.HLT_IsoMu27 : 
             TrigCount.count('sin_lep')
         if e.HLT_Ele32_WPTight_Gsf or e.HLT_Ele35_WPTight_Gsf or e.HLT_IsoMu24 or e.HLT_IsoMu27 or e.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ or e.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ :
@@ -287,9 +310,16 @@ for count, e in enumerate( inTree) :
         if e.HLT_Ele35_WPTight_Gsf : TrigCount.count('eTrig2')
         if e.HLT_IsoMu24 :  TrigCount.count('muTrig1')
         if e.HLT_IsoMu27 :  TrigCount.count('muTrig2')
-        #if( e.HLT_Ele32_WPTight_Gsf or e.HLT_Ele35_WPTight_Gsf or e.HLT_IsoMu24 or  e.HLT_IsoMu27 ): continue
+        '''
+        if not ( e.HLT_Ele32_WPTight_Gsf or e.HLT_Ele35_WPTight_Gsf or e.HLT_IsoMu24 or  e.HLT_IsoMu27 ): continue
 
-    for cat in cats: 
+    elif not MC and args.year == 2018:
+        #TrigCount.count('notrig')
+        if 'EGamma' in args.nickName and not (e.HLT_Ele32_WPTight_Gsf or e.HLT_Ele35_WPTight_Gsf): continue
+        elif 'SingleMuon' in args.nickName and (e.HLT_Ele32_WPTight_Gsf or e.HLT_Ele35_WPTight_Gsf) and not (e.HLT_IsoMu24 or  e.HLT_IsoMu27 ) : continue
+        
+
+    '''for cat in cats: 
         isTrig=False
         if cat[:2] =='ee' : isTrig = e.HLT_Ele27_WPTight_Gsf or e.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ 
         if cat[:2] =='em' : isTrig = (e.HLT_Ele27_WPTight_Gsf or e.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ) and e.HLT_IsoMu24
@@ -309,7 +339,7 @@ for count, e in enumerate( inTree) :
         if isTrig :
             cutCounter[cat].count('Lep_Trig2')
             if  MC :   cutCounterGenWeight[cat].countGenWeight('Lep_Trig2', e.genWeight)
-
+    '''
 
     met_pt = float(e.MET_pt)
     met_phi = float(e.MET_phi)
@@ -358,19 +388,7 @@ for count, e in enumerate( inTree) :
             for j in range(e.nTau):
                 tauMass.append(e.Tau_mass[j])
                 tauPt.append(e.Tau_pt[j])
-        
-    '''if 'Hpp' in  args.nickName :
-       if 't' not in GF.printGenDecayMode(e): continue
-       #if not GF.printGenDecayMode(e)=='eeee': continue
-       GF.printMC(e)
-       print ('Gen channel is', GF.printGenDecayMode(e))
-    else:
-       if not GF.printGenDecayModeBkg(e,bkg=args.nickName) == args.category : continue
-       #GF.printMC(e)
-       #print ('Gen channel is', GF.printGenDecayMode(e))
-    '''
-    print(("Gen cat is : ",GF.printGenDecayMode(e) ))
-
+            
     for isyst, systematic in enumerate(sysT) : 
         if isyst>0 : #use the default pT/mass for Ele/Muon/Taus before doing any systematic
         #if 'Central' in systematic or 'prong' in systematic : #use the default pT/mass for Ele/Muon/Taus before doing the Central or the tau_scale systematics ; otherwise keep the correction
@@ -475,7 +493,7 @@ for count, e in enumerate( inTree) :
 
                 SVFit = False
                 if not MC : isMC = False 
-                outTuple.Fill3L(e,SVFit,cat3L,bestDCH1,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+                outTuple.Fill3L(e,SVFit,cat3L,gen_cat, bestDCH1,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
                 #=========================================================    
 
             if len(goodElectronList)+len(goodMuonList)+len(goodTauList) > 4:
@@ -625,12 +643,12 @@ for count, e in enumerate( inTree) :
                 cutCounter[cat].count(dch1+dch2)
                 if  MC:   cutCounterGenWeight[cat].countGenWeight(dch1+dch2, e.genWeight)
                 #continue
-            #GF.printMC(e)
-                print(("Gen cat is : ",GF.printGenDecayMode(e), "Reco cat is : ", cat))
+                #GF.printMC(e)
+                #print(("Gen cat is : ",GF.printGenDecayMode(e), "Reco cat is : ", cat))
 
                 dupl+=1
                 if dupl>1:
-                   print(('AHA',count,'has a fake channel'))
+                   #print('AHA',count,'has a fake channel')
                    continue
                 pass_evts += 1
                 #continue
@@ -673,8 +691,8 @@ for count, e in enumerate( inTree) :
                 SVFit = False
                 #continue        
                 if not MC : isMC = False
-
-                outTuple.Fill(e,SVFit,cat,bestDCH1,bestDCH2,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+                TruCat[gen_cat] += 1
+                outTuple.Fill(e,SVFit,cat,gen_cat, bestDCH1,bestDCH2,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
                 '''
                 if maxPrint > 0 :
                 maxPrint -= 1
@@ -704,10 +722,11 @@ hCutFlowW=[]
 outTuple.writeTree()
 fW = TFile( outFileName, 'update' )
 fW.cd()
+
 hNEvts = TH1D("hNEvts", "nEntries", 1, 0,1)
 hNEvts.Fill(0,nentries) 
 hNEvts.Write()
-hTrigCount = TH1D("hTrigCount", "Trigger count", 10, 0,10)
+'''hTrigCount = TH1D("hTrigCount", "Trigger count", 10, 0,10)
 hTrigCount.GetXaxis().SetBinLabel(1, "notrig")
 hTrigCount.GetXaxis().SetBinLabel(2, "sin_lep")
 hTrigCount.GetXaxis().SetBinLabel(3, "di_lep")
@@ -722,6 +741,19 @@ for i in range(0,9):
     hTrigCount.Fill(i, TrigCount.getYield()[i])
 hTrigCount.Sumw2()
 hTrigCount.Write()
+'''
+if MC and "Hpp" in args.nickName:
+    hGenCat = TH1D("hGenCat", "Gen decay channels", 22, 0, 22)
+    hTruCat = TH1D("hTruCat", "True decay channels", 22, 0, 22)
+    for icat,cat in enumerate(cats):
+        hGenCat.GetXaxis().SetBinLabel(icat+1, str(cat))
+        hGenCat.Fill(icat, GenCat[cat])
+        hTruCat.GetXaxis().SetBinLabel(icat+1, str(cat))
+        hTruCat.Fill(icat, TruCat[cat])
+hGenCat.Sumw2()
+hGenCat.Write()
+hTruCat.Sumw2()
+hTruCat.Write()
 
 #print '------------------------->',fW, outFileName
 for icat,cat in enumerate(cats) :
@@ -756,7 +788,7 @@ for icat,cat in enumerate(cats) :
     icat+=1
 if not MC : CJ.printJSONsummary()
 
-print(('# Yields in each channel ', cat_yield, 'Total entries ',nentries))
+print('# Yields in each channel ', cat_yield, 'Total entries ',nentries)
 #print 'n_leptons in each channel [e, mu, tau]',n_lepton
 '''cutflow_ele   = TH1D( 'cutflow_ele', 'Good Ele cutflow', 15, 0., 15 )
 cutflow_mu   = TH1D( 'cutflow_mu', 'Good Muon cutflow', 15, 0., 15 )
@@ -769,6 +801,6 @@ cutflow_ele.Write()
 cutflow_mu.Write()
 cutflow_tau.Write()
 '''
-print(('# of selected events', selected_evts,'\n# of 3 lep events', evts_3lep, '\n# of 5 lep evts',evts_5lep,'\n# of passed events',pass_evts ))
+print('# of selected events', selected_evts,'\n# of 3 lep events', evts_3lep, '\n# of 5 lep evts',evts_5lep,'\n# of passed events',pass_evts )
 #file.close()  # Close the file
 

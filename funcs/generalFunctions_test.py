@@ -242,7 +242,8 @@ def getPDG_ID() :
                -11:'e+',  -12:'nue', -13:'mu+', -14:'numu', -15:'tau+', -16:'nu_tau',
                 21:'g' ,   25:'H', 111:'pi0',  211:'pi+', -211:'pi-' }
 
-def printGenDecayMode(entry,printOn=False) :#works only for signal MC
+
+def printGenDecayMode(entry,printOn=False, isPrompt=True) :#works only for signal MC
     PDG_ID = getPDG_ID()
     cat =''
     if printOn: print(("\n Run={0:d} Event={1:d}".format(entry.run,entry.event)))
@@ -263,6 +264,9 @@ def printGenDecayMode(entry,printOn=False) :#works only for signal MC
                    cat += 'm'
                    if printOn: print(("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother)))
                 elif abs(entry.GenPart_pdgId[j]) == 15 :
+                   if isPrompt: 
+                       cat += 't'
+                       continue
                    tau_decay_idx.append(j)
                    for i in range(j+1, entry.nGenPart, 1):#hadronic tau selection
                       if len(cat) == 4: break
@@ -286,6 +290,16 @@ def printGenDecayMode(entry,printOn=False) :#works only for signal MC
                       if printOn: print(("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother)))
                       if printOn: print(entry.GenPart_pdgId[i])
                       #if len(cat) == 4: break 
+        #sorting the leptons to make differnt categories
+        if cat[:2] == 'me': cat = 'em' + cat[2:]
+        elif cat[:2] == 'te': cat = 'et' + cat[2:]
+        elif cat[:2] == 'tm': cat = 'mt' + cat[2:]
+        if cat[2:] == 'me': cat = cat[:2] + 'em'
+        elif cat[2:] == 'te': cat = cat[:2] + 'et'
+        elif cat[2:] == 'tm': cat = cat[:2] + 'mt'
+        mass_dict = {'ee': 1, 'em':2, 'et':3, 'mm':4, 'mt':5, 'tt':6}
+        if mass_dict[cat[:2]] > mass_dict[cat[2:]]: 
+            cat = cat[2:]+cat[:2]
     except AttributeError : pass
     return cat
 
