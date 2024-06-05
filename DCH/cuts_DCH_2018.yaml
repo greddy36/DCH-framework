@@ -135,16 +135,16 @@ mextra:
   mu_ID: true
   mu_iso_f: true
   mu_iso: 0.2
-  mu_dxy: 0.045
-  mu_dz: 0.3
+  mu_dxy: 0.2
+  mu_dz: 0.5
   mu_type: true
   ll_DR: 0.3
 eextra: 
   ele_pt: 20.
   ele_eta: 2.5
-  ele_dxy: 0.045
-  ele_dz: 0.2
-  ele_lostHits: 1
+  ele_dxy: 0.05
+  ele_dz: 0.1
+  ele_lostHits: 0
   ele_convVeto: true
   ele_ID: true
   ele_iso_f : false
