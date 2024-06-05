@@ -152,6 +152,7 @@ class outTuple() :
         self.nPV              = array('l',[0])
         self.nPVGood              = array('l',[0])
         self.cat              = array('l',[0])
+        self.gen_cat              = array('l',[0])
         self.weight           = array('f',[0])
         self.weightPU           = array('f',[0])
         self.weightPUtrue           = array('f',[0])
@@ -458,6 +459,7 @@ class outTuple() :
         self.t.Branch('nPV',              self.nPV,               'nPV/I' )
         self.t.Branch('nPVGood',              self.nPVGood,               'nPVGood/I' )
         self.t.Branch('cat',              self.cat,               'cat/I' )
+        self.t.Branch('gen_cat',              self.gen_cat,               'gen_cat/I' )
         self.t.Branch('weight',           self.weight,            'weight/F' )
         self.t.Branch('weightPU',           self.weightPU,            'weightPU/F' )
         self.t.Branch('weightPUtrue',           self.weightPUtrue,            'weightPUtrue/F' )
@@ -1180,7 +1182,7 @@ class outTuple() :
         '''
         return dch1_mass, dch2_mass
     
-    def Fill(self, entry, SVFit, cat, idx_DCH1, idx_DCH2, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0, tMass=[], tPt=[], eMass=[], ePt=[], mMass=[], mPt=[], proc="EOY") : 
+    def Fill(self, entry, SVFit, cat, gen_cat, idx_DCH1, idx_DCH2, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0, tMass=[], tPt=[], eMass=[], ePt=[], mMass=[], mPt=[], proc="EOY") : 
     #def Fill(self, entry, SVFit, cat, jl3, jl4, Lep1, Lep2, idx_DCH1, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0) : 
     #def Fill(self, entry, SVFit, cat, jl3, jl4, Lep1, Lep2, idx_DCH1, isMC, era,  doUncertainties=False , sysVariations=[]) :
         ''' - jl3 and jl4 point to the selected tau candidates according to the table below.
@@ -1402,7 +1404,7 @@ class outTuple() :
                 self.weight[0]           = entry.genWeight
                 self.LHEweight[0]        = entry.LHEWeight_originalXWGTUP
                 self.Generator_weight[0] = entry.Generator_weight
-                self.LHE_Njets[0]        = ord(chr(entry.LHE_Njets))
+                self.LHE_Njets[0]        = ord(entry.LHE_Njets)
                 if SystIndex == 0 : 
                     for i in range(0, int(entry.nLHEScaleWeight)) : 
                         self.LHEScaleWeights[i] = entry.LHEScaleWeight[i]
@@ -1925,7 +1927,9 @@ class outTuple() :
         
         jl3 = idx_DCH2[0]
         jl4 = idx_DCH2[1]    
-        if jl3>-1 or jl4 >-1 :        self.cat[0]  = tauFunDCH.catToNumber(cat)
+        if jl3>-1 or jl4 >-1 : 
+            self.cat[0]  = tauFunDCH.catToNumber(cat)
+            #self.gen_cat[0] = tauFunDCH.catToNumber(gen_cat)
         if jl3>-1 or jl4 >-1 :
             Lep3, Lep4 = TLorentzVector(), TLorentzVector()
 
@@ -2686,7 +2690,7 @@ class outTuple() :
 
         return
 
-    def Fill3L(self, entry, SVFit, cat, idx_DCH1, jl3, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0, tMass=[], tPt=[], eMass=[], ePt=[], mMass=[], mPt=[], proc="EOY") :
+    def Fill3L(self, entry, SVFit, cat,gen_cat, idx_DCH1, jl3, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0, tMass=[], tPt=[], eMass=[], ePt=[], mMass=[], mPt=[], proc="EOY") :
 
         ''' - jl3 and jl4 point to the selected tau candidates according to the table below.
             - if e.g., dch_2 = 'et', the jl3 points to the electron list and jl4 points to the tau list.
@@ -2908,7 +2912,7 @@ class outTuple() :
                 self.weight[0]           = entry.genWeight
                 self.LHEweight[0]        = entry.LHEWeight_originalXWGTUP
                 self.Generator_weight[0] = entry.Generator_weight
-                self.LHE_Njets[0]        = ord(chr(entry.LHE_Njets))
+                self.LHE_Njets[0]        = ord(entry.LHE_Njets)
                 if SystIndex == 0 : 
                     for i in range(0, int(entry.nLHEScaleWeight)) : 
                         self.LHEScaleWeights[i] = entry.LHEScaleWeight[i]
@@ -3430,6 +3434,7 @@ class outTuple() :
 
         if jl3>-1: 
             self.cat[0]  = tauFunDCH.catToNumber3L(cat)
+            #self.gen_cat[0] = tauFunDCH.catToNumber(gen_cat)
             Lep3 = TLorentzVector()
         if dch_2 == 'e':
             '''self.pt_3[0] = entry.Electron_pt[jl3]

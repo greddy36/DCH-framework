@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+# doesn't do pairing. only goes over good leptons
 
 # import external modules 
 import sys
@@ -10,10 +10,10 @@ from math import sqrt, pi
 
 # import from ZH_Run2/funcs/
 sys.path.insert(1,'../funcs/')
-import tauFunDCH_test as TF
-import generalFunctions_test as GF 
+import tauFunDCH as TF
+import generalFunctions as GF 
 #import Weights 
-import outTuple_test as outTuple
+import outTuple as outTuple
 import time
 
 def getArgs() :
@@ -272,7 +272,7 @@ for count, e in enumerate( inTree) :
         if "Hpp" in args.nickName:
             gen_cat = GF.printGenDecayMode(e,isPrompt=True)
             GenCat[gen_cat] += 1
-            print("Gen cat is : ",gen_cat)
+            #print("Gen cat is : ",gen_cat)
             #GF.printMC(e)
     '''
     for cat in cats : 
@@ -419,6 +419,18 @@ for count, e in enumerate( inTree) :
         goodTauList = TF.makeGoodTauList(e,cutflow['tau'])
         dupl = 0 #to count duplicate channels
         selected_evts += 1
+        #=========3-lep Z(ll) + extra lepton =====================================
+        #print(len(goodElectronList),len(goodMuonList),len(goodTauList))
+        if len(goodElectronList) < 2 and len(goodMuonList) < 2 and len(goodTauList) < 2: continue
+        bestZpair, lep_3, cat3L = TF.findZandL(e, goodElectronList, goodMuonList, goodTauList, isTightLep=False)
+        print (bestZpair, lep_3, cat3L)
+        if len(bestZpair) == 0 or lep_3 < 0 or cat3L == '': continue
+        SVFit = False
+        if not MC : isMC = False
+        outTuple.Fill3L(e,SVFit,cat3L,gen_cat, bestZpair,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+
+        ######## BELOW IS FOR DCH ANALYSIS, NOT NEEDED FOR FAKE RATE#####################
+        continue 
         #=============3-lep=====================================
         if len(goodElectronList)+len(goodMuonList)+len(goodTauList) == 3:
             evts_3lep += 1
@@ -509,7 +521,7 @@ for count, e in enumerate( inTree) :
         for i in goodTauList:
             evt_charge += e.Tau_charge[i]
         #if evt_charge !=0: 
-      #    continue
+       #    continue
         #print 'Event: ', count, ' #e: ',len(goodElectronList), ' #mu: ',len(goodMuonList), ' #t: ', len(goodTauList), '--> Good candidates'
         #print 'Event: ', count, ' #e: ',e.nElectron, ' #mu: ',e.nMuon, ' #t: ', e.nTau, '--> All reco'
         #its faster to modify the pair functions to use these good lists rather than passing all the candidates through the cuts. 
