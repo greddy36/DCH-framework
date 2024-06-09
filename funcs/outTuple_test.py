@@ -1832,7 +1832,7 @@ class outTuple() :
             Lep2.SetPtEtaPhiM(entry.Tau_pt[jl2], entry.Tau_eta[jl2], entry.Tau_phi[jl2], tmass)
             
         else :
-            print(("Invalid channel={0:s} in outTuple(). Exiting.".format(channel)))
+            print(("Invalid channel={0:s} in outTuple(). Exiting.".format(cat)))
             exit()
             
         #self.mt_1[0]      = self.get_mt('MVAMet',   entry,Lep1)
@@ -2252,7 +2252,7 @@ class outTuple() :
                 Lep4.SetPtEtaPhiM(entry.Tau_pt[jl4], entry.Tau_eta[jl4], entry.Tau_phi[jl4], tmass)
                 
             else :
-                print(("Invalid channel={0:s} in outTuple(). Exiting.".format(channel)))
+                print(("Invalid channel={0:s} in outTuple(). Exiting.".format(cat)))
                 exit()
                 
             self.mt_3[0]      = self.get_mt('MVAMet',   entry,Lep3)
@@ -3339,7 +3339,7 @@ class outTuple() :
             Lep2.SetPtEtaPhiM(entry.Tau_pt[jl2], entry.Tau_eta[jl2], entry.Tau_phi[jl2], tmass)
             
         else :
-            print(("Invalid channel={0:s} in outTuple(). Exiting.".format(channel)))
+            print(("Invalid channel={0:s} in outTuple(). Exiting.".format(cat)))
             exit()
             
         #self.mt_1[0]      = self.get_mt('MVAMet',   entry,Lep1)

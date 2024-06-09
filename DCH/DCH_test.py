@@ -272,7 +272,7 @@ for count, e in enumerate( inTree) :
         if "Hpp" in args.nickName:
             gen_cat = GF.printGenDecayMode(e,isPrompt=True)
             GenCat[gen_cat] += 1
-            print("Gen cat is : ",gen_cat)
+            #print("Gen cat is : ",gen_cat)
             #GF.printMC(e)
     '''
     for cat in cats : 
@@ -419,6 +419,29 @@ for count, e in enumerate( inTree) :
         goodTauList = TF.makeGoodTauList(e,cutflow['tau'])
         dupl = 0 #to count duplicate channels
         selected_evts += 1
+
+        #===================no pairing==============
+        if len(goodElectronList)+len(goodMuonList)+len(goodTauList) == 3:
+            evts_3lep += 1
+            bestDCH1 = [] #these are just containers for keeping the code simple, no pairing is done!
+            lep1, lep2, lep3, lep4, cat3L = TF.simpleDCHpairing(e, goodElectronList, goodMuonList, goodTauList)
+            print(lep1, lep2, lep3, lep4, cat3L)
+            bestDCH1 = [lep1, lep2]
+            if lep1 + lep2 + lep3 < 0 or cat3L == '': continue
+            SVFit = False
+            if not MC : isMC = False
+            outTuple.Fill3L(e,SVFit,cat3L,gen_cat, bestDCH1,lep3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+        elif len(goodElectronList)+len(goodMuonList)+len(goodTauList) == 4:
+            bestDCH1, bestDCH2 = [], [] #these are just containers for keeping the code simple, no pairing is done!
+            lep1, lep2, lep3, lep4, cat = TF.simpleDCHpairing(e, goodElectronList, goodMuonList, goodTauList)
+            print(lep1, lep2, lep3, lep4, cat)
+            bestDCH1 = [lep1, lep2]
+            bestDCH2 = [lep3, lep4]
+            if lep1 + lep2 + lep3 + lep4 < 0 or cat == '': continue
+            SVFit = False
+            if not MC : isMC = False
+            outTuple.Fill(e,SVFit,cat,gen_cat, bestDCH1,bestDCH2,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+        continue
         #=============3-lep=====================================
         if len(goodElectronList)+len(goodMuonList)+len(goodTauList) == 3:
             evts_3lep += 1

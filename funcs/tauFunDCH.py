@@ -2155,4 +2155,104 @@ def numberToCat2Lep(number) :
     cat = { 1:'ee', 2:'mm'}
     return cat[number]
 
+def simpleDCHpairing(entry, goodElectronList, goodMuonList, goodTauList):
+    cat = ''
+    lep1, lep2, lep3, lep4 = -99, -99, -99, -99
+    nEle, nMu, nTau = len(goodElectronList), len(goodMuonList), len(goodTauList)
+    if (nEle + nMu + nTau) < 3 or (nEle + nMu + nTau) > 4:
+        return lep1, lep2, lep3, lep4, cat 
+    if nEle + nMu + nTau == 3:
+        if nEle == 3:
+            cat = 'eee'
+            lep1, lep2 = goodElectronList[0],goodElectronList[1]
+            lep3 = goodElectronList[2]
+        elif nEle == 2:
+            cat = 'ee'
+            lep1, lep2 = goodElectronList[0],goodElectronList[1]
+            if nMu == 1:
+                lep3 = goodMuonList[0]
+                cat += 'm'
+            elif nTau == 1:
+                lep3 = goodTauList[0]
+                cat += 't'
+        elif nEle == 1: 
+            cat = 'e'
+            lep1 = goodElectronList[0]
+            if nMu == 2:
+                lep2, lep3 = goodMuonList[0],goodMuonList[1]
+                cat += 'mm'
+            elif nTau == 2:
+                lep2, lep3 = goodTauList[0],goodTauList[1]
+                cat += 'tt'				
+            elif nMu == 1 and nTau == 1:
+                lep2, lep3 = goodMuonList[0],goodTauList[0]
+                cat += 'mt'
+        elif nMu == 3:
+            cat = 'mmm'
+            lep1, lep2 = goodMuonList[0],goodMuonList[1]
+            lep3 = goodMuonList[2]
+        elif nMu == 2 and nTau == 1:
+            cat = 'mmt'
+            lep1, lep2 = goodMuonList[0],goodMuonList[1]
+            lep3 = goodTauList[0]
+        elif nMu == 1 and nTau == 2:
+            cat = 'mtt'
+            lep1 = goodMuonList[0]
+            lep2, lep3 = goodTauList[0],goodTauList[1]
+        elif nTau == 3:
+            cat = 'ttt'
+            lep1, lep2, lep3 = goodTauList[0],goodTauList[1],goodTauList[2]
 
+    elif nEle + nMu + nTau == 4:
+        if nEle == 4:
+            cat = 'eeee'
+            lep1, lep2, lep3, lep4 = goodElectronList[0],goodElectronList[1],goodElectronList[2],goodElectronList[3]
+        elif nEle == 3:
+            cat = 'eee'
+            lep1, lep2, lep3 = goodElectronList[0],goodElectronList[1],goodElectronList[2]
+            if nMu == 1:
+                lep4 = goodMuonList[0]
+                cat += 'm'
+            elif nTau == 1:
+                lep4 = goodTauList[0]
+                cat += 't' 
+            elif nEle == 2:
+                cat = 'ee'
+                lep1, lep2 = goodElectronList[0],goodElectronList[1]
+            if nMu == 2:
+                lep3, lep4 = goodMuonList[0],goodMuonList[1]
+                cat += 'mm'
+            elif nMu == 1 and nTau == 1:
+                lep3, lep4 = goodMuonList[0], goodTauList[0]
+                cat += 'mt'    
+            elif nTau == 2:
+                lep3, lep4 = goodTauList[0], goodTauList[1]
+                cat += 'tt'
+        elif nMu == 4:
+            cat = 'mmmm'
+            lep1, lep2, lep3, lep4 = goodMuonList[0],goodMuonList[1],goodMuonList[2],goodMuonList[3]
+        elif nMu == 3 and nEle == 1:
+            cat = 'emmm'
+            lep1, lep2, lep3, lep4 = goodElectronList[0],goodMuonList[0],goodMuonList[1],goodMuonList[2]
+        elif nMu == 3 and nTau == 1:
+            cat = 'mmmt'
+            lep1, lep2, lep3, lep4 = goodMuonList[0],goodMuonList[1],goodMuonList[2],goodTauList[0]
+        elif nMu == 2 and nTau == 2:
+            cat = 'mmtt'
+            lep1, lep2, lep3, lep4 = goodMuonList[0],goodMuonList[1],goodTauList[0],goodTauList[1]
+        elif nMu == 2 and nEle == 1 and nTau ==1:
+            cat = 'emmt'
+            lep1, lep2, lep3, lep4 = goodElectronList[0],goodMuonList[0],goodMuonList[1],goodTauList[0]
+        elif nTau == 4:
+            cat = 'tttt'
+            lep1, lep2, lep3, lep4 = goodTauList[0],goodTauList[1],goodTauList[2],goodTauList[3]
+        elif nTau == 3 and nEle == 1:
+            cat = 'ettt'
+            lep1, lep2, lep3, lep4 = goodElectronList[0],goodTauList[0],goodTauList[1],goodTauList[2]
+        elif nTau == 3 and nMu == 1:
+            cat = 'mttt'
+            lep1, lep2, lep3, lep4 = goodMuonList[0],goodTauList[0],goodTauList[1],goodTauList[2]
+        elif nTau == 2 and nEle == 1 and nMu == 1:
+            cat = 'emtt'
+            lep1, lep2, lep3, lep4 = goodElectronList[0],goodMuonList[0],goodTauList[0],goodTauList[1]
+    return lep1, lep2, lep3, lep4, cat
