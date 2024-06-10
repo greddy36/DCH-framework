@@ -169,10 +169,10 @@ if args.weights > 0 :
             if "WJetsToLNu" in outFileName and 'TWJets' not in outFileName:
 
                 npartons = ord(e.LHE_Njets)
-            if  npartons <= 4:     hWxGenweightsArr[npartons].Fill(0, e.genWeight)
+                if  npartons <= 4:     hWxGenweightsArr[npartons].Fill(0, e.genWeight)
             if "DYJetsToLL" in outFileName :
                 npartons = ord(e.LHE_Njets)
-            if  npartons <= 4 : hDYxGenweightsArr[npartons].Fill(0, e.genWeight)
+                if  npartons <= 4 : hDYxGenweightsArr[npartons].Fill(0, e.genWeight)
 
     fName = GF.getOutFileName(args).replace(".root",".weights")
     fW = TFile( fName, 'recreate' )
@@ -425,7 +425,7 @@ for count, e in enumerate( inTree) :
             evts_3lep += 1
             bestDCH1 = [] #these are just containers for keeping the code simple, no pairing is done!
             lep1, lep2, lep3, lep4, cat3L = TF.simpleDCHpairing(e, goodElectronList, goodMuonList, goodTauList)
-            print(lep1, lep2, lep3, lep4, cat3L)
+            #print(lep1, lep2, lep3, lep4, cat3L)
             bestDCH1 = [lep1, lep2]
             if lep1 + lep2 + lep3 < 0 or cat3L == '': continue
             SVFit = False
@@ -434,7 +434,7 @@ for count, e in enumerate( inTree) :
         elif len(goodElectronList)+len(goodMuonList)+len(goodTauList) == 4:
             bestDCH1, bestDCH2 = [], [] #these are just containers for keeping the code simple, no pairing is done!
             lep1, lep2, lep3, lep4, cat = TF.simpleDCHpairing(e, goodElectronList, goodMuonList, goodTauList)
-            print(lep1, lep2, lep3, lep4, cat)
+            #print(lep1, lep2, lep3, lep4, cat)
             bestDCH1 = [lep1, lep2]
             bestDCH2 = [lep3, lep4]
             if lep1 + lep2 + lep3 + lep4 < 0 or cat == '': continue

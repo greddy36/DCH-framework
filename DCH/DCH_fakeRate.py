@@ -169,10 +169,10 @@ if args.weights > 0 :
             if "WJetsToLNu" in outFileName and 'TWJets' not in outFileName:
 
                 npartons = ord(e.LHE_Njets)
-            if  npartons <= 4:     hWxGenweightsArr[npartons].Fill(0, e.genWeight)
+                if  npartons <= 4:     hWxGenweightsArr[npartons].Fill(0, e.genWeight)
             if "DYJetsToLL" in outFileName :
                 npartons = ord(e.LHE_Njets)
-            if  npartons <= 4 : hDYxGenweightsArr[npartons].Fill(0, e.genWeight)
+                if  npartons <= 4 : hDYxGenweightsArr[npartons].Fill(0, e.genWeight)
 
     fName = GF.getOutFileName(args).replace(".root",".weights")
     fW = TFile( fName, 'recreate' )
