@@ -271,9 +271,24 @@ for count, e in enumerate( inTree) :
         '''
         if "Hpp" in args.nickName:
             gen_cat = GF.printGenDecayMode(e,isPrompt=True)
-            GenCat[gen_cat] += 1
+            #GenCat[gen_cat] += 1
             #print("Gen cat is : ",gen_cat)
             #GF.printMC(e)
+            #----for testing-----
+            br_weight = 1
+            if gen_cat[:2] == 'ee' or gen_cat[:2] == 'mm' or gen_cat[:2] == 'tt':
+                br_weight = br_weight*3/2
+            elif gen_cat[:2] == 'em' or gen_cat[:2] == 'et' or gen_cat[:2] == 'mt':
+                br_weight = br_weight*3/4
+            if gen_cat[2:] == 'ee' or gen_cat[2:] == 'mm' or gen_cat[2:] == 'tt':
+                br_weight = br_weight*3/2
+            elif gen_cat[2:] == 'em' or gen_cat[2:] == 'et' or gen_cat[2:] == 'mt':
+                br_weight = br_weight*3/4
+            #if gen_cat[:2] == gen_cat[2:]:
+            #    br_weight = br_weight*2
+            #GenCat[gen_cat] += br_weight
+            GenCat[GF.printGenDecayMode(e,isPrompt=False)] += br_weight
+            #--------------------
     '''
     for cat in cats : 
         cutCounter[cat].count('All')
@@ -421,11 +436,11 @@ for count, e in enumerate( inTree) :
         selected_evts += 1
 
         #===================no pairing==============
-        if len(goodElectronList)+len(goodMuonList)+len(goodTauList) == 3:
+        '''if len(goodElectronList)+len(goodMuonList)+len(goodTauList) == 3:
             evts_3lep += 1
             bestDCH1 = [] #these are just containers for keeping the code simple, no pairing is done!
             lep1, lep2, lep3, lep4, cat3L = TF.simpleDCHpairing(e, goodElectronList, goodMuonList, goodTauList)
-            #print(lep1, lep2, lep3, lep4, cat3L)
+            print(lep1, lep2, lep3, lep4, cat3L)
             bestDCH1 = [lep1, lep2]
             if lep1 + lep2 + lep3 < 0 or cat3L == '': continue
             SVFit = False
@@ -434,7 +449,7 @@ for count, e in enumerate( inTree) :
         elif len(goodElectronList)+len(goodMuonList)+len(goodTauList) == 4:
             bestDCH1, bestDCH2 = [], [] #these are just containers for keeping the code simple, no pairing is done!
             lep1, lep2, lep3, lep4, cat = TF.simpleDCHpairing(e, goodElectronList, goodMuonList, goodTauList)
-            #print(lep1, lep2, lep3, lep4, cat)
+            print(lep1, lep2, lep3, lep4, cat)
             bestDCH1 = [lep1, lep2]
             bestDCH2 = [lep3, lep4]
             if lep1 + lep2 + lep3 + lep4 < 0 or cat == '': continue
@@ -442,6 +457,7 @@ for count, e in enumerate( inTree) :
             if not MC : isMC = False
             outTuple.Fill(e,SVFit,cat,gen_cat, bestDCH1,bestDCH2,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
         continue
+        '''
         #=============3-lep=====================================
         if len(goodElectronList)+len(goodMuonList)+len(goodTauList) == 3:
             evts_3lep += 1

@@ -243,20 +243,21 @@ def getPDG_ID() :
                 21:'g' ,   25:'H', 111:'pi0',  211:'pi+', -211:'pi-' }
 
 
-def printGenDecayMode(entry,printOn=False, isPrompt=True) :#works only for signal MC
+def printGenDecayMode(entry,printOn=False, isPrompt=False) :#works only for signal MC
     PDG_ID = getPDG_ID()
     cat =''
     if printOn: print(("\n Run={0:d} Event={1:d}".format(entry.run,entry.event)))
     try :
         if entry.nGenPart > 0 :
             if printOn: print("    \n #  Stat  ID  Mother")
-            tau_decay_idx = []
-            for j in range(entry.nGenPart) :
+            #tau_decay_idx = []#taus and their daughters
+            for j in range(entry.nGenPart):
                 if len(cat) == 4: break
                 pID = entry.GenPart_pdgId[j]
                 if pID in list(PDG_ID.keys()) : pID = PDG_ID[pID]
                 mother = entry.GenPart_genPartIdxMother[j]
-                if mother <= 0 or abs(entry.GenPart_pdgId[mother]) != 9900041: continue#making sure the particles come from DCH
+                if mother <= 0: continue
+                if abs(entry.GenPart_pdgId[mother]) != 9900041: continue#making sure the particles come from DCH
                 if abs(entry.GenPart_pdgId[j]) == 11 :
                    cat += 'e'
                    if printOn: print(("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother)))
@@ -267,28 +268,31 @@ def printGenDecayMode(entry,printOn=False, isPrompt=True) :#works only for signa
                    if isPrompt: 
                        cat += 't'
                        continue
+                   tau_decay_idx = []
                    tau_decay_idx.append(j)
                    for i in range(j+1, entry.nGenPart, 1):#hadronic tau selection
                       if len(cat) == 4: break
                       if abs(entry.GenPart_pdgId[i])==12 or abs(entry.GenPart_pdgId[i])==14 or abs(entry.GenPart_pdgId[i])==16 or abs(entry.GenPart_pdgId[i])==22: continue #nutrino and gamma discard
                       mom = entry.GenPart_genPartIdxMother[i]
-                      if mom < j : continue
-                      elif abs(entry.GenPart_pdgId[i])==11 and mom in tau_decay_idx:
+                      if mom < j: continue
+                      if abs(entry.GenPart_pdgId[i])==11 and mom in tau_decay_idx and abs(entry.GenPart_pdgId[mom])==15:
                           cat += 'e'
                           tau_decay_idx.append(i)
-                          continue
-                      elif abs(entry.GenPart_pdgId[i])==13 and mom in tau_decay_idx:
+                          if printOn: print(("{0:2d}{1:4d}  {2:6d}{3:6d}".format(i,entry.GenPart_status[i],entry.GenPart_pdgId[i],mom)))
+                          break
+                      elif abs(entry.GenPart_pdgId[i])==13 and mom in tau_decay_idx and abs(entry.GenPart_pdgId[mom])==15:
                           cat += 'm'
                           tau_decay_idx.append(i)
-                          continue
-                      elif abs(entry.GenPart_pdgId[i])==15 and mom in tau_decay_idx:
+                          if printOn: print(("{0:2d}{1:4d}  {2:6d}{3:6d}".format(i,entry.GenPart_status[i],entry.GenPart_pdgId[i],mom)))
+                          break
+                      elif abs(entry.GenPart_pdgId[i])==15 and mom in tau_decay_idx and abs(entry.GenPart_pdgId[mom])==15:
                           tau_decay_idx.append(i)
                           continue
-                      elif mom in  tau_decay_idx:#hadronic taus
+                      elif abs(entry.GenPart_pdgId[i])>=211 and mom in tau_decay_idx and abs(entry.GenPart_pdgId[mom])==15:#hadronic taus
                           cat += 't'
-                          tau_decay_idx.append(mom)                          
-                      if printOn: print(("{0:2d}{1:4d}  {2:6s}{3:6d}".format(j,entry.GenPart_status[j],str(pID),mother)))
-                      if printOn: print(entry.GenPart_pdgId[i])
+                          tau_decay_idx.append(i)
+                          if printOn: print(("{0:2d}{1:4d}  {2:6d}{3:6d}".format(i,entry.GenPart_status[i],entry.GenPart_pdgId[i],mom)))
+                          break
                       #if len(cat) == 4: break 
         #sorting the leptons to make differnt categories
         if cat[:2] == 'me': cat = 'em' + cat[2:]

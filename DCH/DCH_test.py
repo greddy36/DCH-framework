@@ -260,20 +260,35 @@ for count, e in enumerate( inTree) :
     gen_cat = ''
     if MC:
         '''if 'Hpp' in  args.nickName :
-           if 't' not in GF.printGenDecayMode(e): continue
-           #if not GF.printGenDecayMode(e)=='eeee': continue
-           GF.printMC(e)
-           print ('Gen channel is', GF.printGenDecayMode(e))
+           #if 't' not in GF.printGenDecayMode(e, isPrompt=True): continue
+           if not GF.printGenDecayMode(e, isPrompt=True)=='etet': continue
+           #GF.printMC(e)
+           #print ('Gen channel is', GF.printGenDecayMode(e,isPrompt=True))
         else:
            if not GF.printGenDecayModeBkg(e,bkg=args.nickName) == args.category : continue
            #GF.printMC(e)
            #print ('Gen channel is', GF.printGenDecayMode(e))
         '''
+        br_weight = 1
         if "Hpp" in args.nickName:
-            gen_cat = GF.printGenDecayMode(e,isPrompt=True)
-            GenCat[gen_cat] += 1
-            #print("Gen cat is : ",gen_cat)
+            gen_cat = GF.printGenDecayMode(e,printOn=False,isPrompt=True)
+            #GenCat[gen_cat] += 1
             #GF.printMC(e)
+            #print("Gen cat is : ",gen_cat)
+            #----for testing-----
+            if gen_cat[:2] == 'ee' or gen_cat[:2] == 'mm' or gen_cat[:2] == 'tt':
+                br_weight = br_weight*3/2
+            elif gen_cat[:2] == 'em' or gen_cat[:2] == 'et' or gen_cat[:2] == 'mt':
+                br_weight = br_weight*3/4
+            if gen_cat[2:] == 'ee' or gen_cat[2:] == 'mm' or gen_cat[2:] == 'tt':
+                br_weight = br_weight*3/2
+            elif gen_cat[2:] == 'em' or gen_cat[2:] == 'et' or gen_cat[2:] == 'mt':
+                br_weight = br_weight*3/4
+            #if gen_cat[:2] == gen_cat[2:]:
+            #    br_weight = br_weight*2
+            gen_cat = GF.printGenDecayMode(e,printOn=False,isPrompt=False)#this one redirects gen_cat to non-prompt gen ch.
+            GenCat[gen_cat] += br_weight
+            #--------------------
     '''
     for cat in cats : 
         cutCounter[cat].count('All')
@@ -425,23 +440,22 @@ for count, e in enumerate( inTree) :
             evts_3lep += 1
             bestDCH1 = [] #these are just containers for keeping the code simple, no pairing is done!
             lep1, lep2, lep3, lep4, cat3L = TF.simpleDCHpairing(e, goodElectronList, goodMuonList, goodTauList)
-            print(lep1, lep2, lep3, lep4, cat3L)
             bestDCH1 = [lep1, lep2]
             if lep1 + lep2 + lep3 < 0 or cat3L == '': continue
             SVFit = False
             if not MC : isMC = False
-            outTuple.Fill3L(e,SVFit,cat3L,gen_cat, bestDCH1,lep3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+            outTuple.Fill3L(e,SVFit,cat3L,gen_cat,br_weight, bestDCH1,lep3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
         elif len(goodElectronList)+len(goodMuonList)+len(goodTauList) == 4:
             bestDCH1, bestDCH2 = [], [] #these are just containers for keeping the code simple, no pairing is done!
             lep1, lep2, lep3, lep4, cat = TF.simpleDCHpairing(e, goodElectronList, goodMuonList, goodTauList)
-            print(lep1, lep2, lep3, lep4, cat)
             bestDCH1 = [lep1, lep2]
             bestDCH2 = [lep3, lep4]
             if lep1 + lep2 + lep3 + lep4 < 0 or cat == '': continue
             SVFit = False
             if not MC : isMC = False
-            outTuple.Fill(e,SVFit,cat,gen_cat, bestDCH1,bestDCH2,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+            outTuple.Fill(e,SVFit,cat,gen_cat, br_weight, bestDCH1,bestDCH2,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
         continue
+        
         #=============3-lep=====================================
         if len(goodElectronList)+len(goodMuonList)+len(goodTauList) == 3:
             evts_3lep += 1
@@ -516,7 +530,7 @@ for count, e in enumerate( inTree) :
 
                 SVFit = False
                 if not MC : isMC = False 
-                outTuple.Fill3L(e,SVFit,cat3L,gen_cat, bestDCH1,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+                outTuple.Fill3L(e,SVFit,cat3L,gen_cat, br_weight, bestDCH1,lep_3, isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
                 #=========================================================    
 
         if len(goodElectronList)+len(goodMuonList)+len(goodTauList) > 4:
@@ -715,7 +729,7 @@ for count, e in enumerate( inTree) :
                 #continue        
                 if not MC : isMC = False
                 TruCat[gen_cat] += 1
-                outTuple.Fill(e,SVFit,cat,gen_cat, bestDCH1,bestDCH2,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
+                outTuple.Fill(e,SVFit,cat,gen_cat, br_weight, bestDCH1,bestDCH2,isMC,era,doJME, met_pt, met_phi,  isyst, tauMass, tauPt, eleMass, elePt, muMass, muPt, args.era)
                 '''
                 if maxPrint > 0 :
                 maxPrint -= 1

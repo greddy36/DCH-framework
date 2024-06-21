@@ -7,6 +7,9 @@ import ROOT, array
 import os
 import sys
 import generalFunctions_test as GF
+import ScaleFactor as SF
+
+from correctionlib import _core
 
 electronMass = 0.0005
 muonMass  = 0.105
@@ -39,7 +42,55 @@ class outTuple() :
           except RuntimeError:
             ROOT.gROOT.LoadMacro(macropath_4tau + baseName+".cc" + " ++g")
         self.kUndefinedDecayType, self.kTauToHadDecay,  self.kTauToElecDecay, self.kTauToMuDecay = 0, 1, 2, 3
+
+        '''
+        self.sf_EleTrig = ''
+        self.sf_EleTrig = SF.SFs()
+        #Electron_RunUL2016postVFP_Ele25_EtaLt2p1.root  Electron_RunUL2016preVFP_Ele25_EtaLt2p1.root   Electron_RunUL2017_Ele35.root                  Electron_RunUL2018_Ele35.root
+        self.TriggerSF={'dir' : './', 'fileMuon' : 'Muon/SingleMuon_Run2018_IsoMu24orIsoMu27.root', 'fileElectron' : 'Electron_RunUL2018_Ele35.root'}
+        if '2016pre' in str(era):  self.TriggerSF={'dir' : './', 'fileMuon' : 'Muon/SingleMuon_Run2018_IsoMu24orIsoMu27.root', 'fileElectron' : 'Electron_RunUL2016preVFP_Ele25_EtaLt2p1.root'}
+        if '2016' in str(era) and 'pre' not in str(era):  self.TriggerSF={'dir' : './', 'fileMuon' : 'Muon/SingleMuon_Run2018_IsoMu24orIsoMu27.root', 'fileElectron' : 'Electron_RunUL2016postVFP_Ele25_EtaLt2p1.root'}
+        if '2017' in str(era) :  self.TriggerSF={'dir' : './', 'fileMuon' : 'Muon/SingleMuon_Run2018_IsoMu24orIsoMu27.root', 'fileElectron' : 'Electron_RunUL2017_Ele35.root'}
+
+        print ('era', era, self.TriggerSF['fileElectron'])
+        self.sf_EleTrig.ScaleFactor("{0:s}{1:s}".format(self.TriggerSF['dir'],self.TriggerSF['fileElectron']))
         
+        self.evaluatorPU=''
+        self.fnamePU = "./puWeights_{0:s}.json.gz".format(str(era))
+        if self.fnamePU.endswith(".json.gz"):
+            import gzip
+            with gzip.open(self.fnamePU,'rt') as file:
+                self.datasfPU = file.read().strip()
+                self.evaluatorPU = _core.CorrectionSet.from_string(self.datasfPU)
+        else:
+            self.evaluatorPU = _core.CorrectionSet.from_file(self.fnamePU)
+        # Tau Decay types
+
+        self.evaluator=''
+        self.fname = "./muon_Z_{0:s}.json.gz".format(str(era))
+        if self.fname.endswith(".json.gz"):
+            import gzip
+            with gzip.open(self.fname,'rt') as file:
+                self.datasf = file.read().strip()
+                self.evaluator = _core.CorrectionSet.from_string(self.datasf)
+        else:
+            self.evaluator = _core.CorrectionSet.from_file(self.fname)
+        # Tau Decay types
+        self.evaluatorEl=''
+        self.fnameEl = "./electron_{0:s}.json.gz".format(str(era))
+        if self.fnameEl.endswith(".json.gz"):
+            import gzip
+            with gzip.open(self.fnameEl,'rt') as file:
+                self.datasfEl = file.read().strip()
+                self.evaluatorEl = _core.CorrectionSet.from_string(self.datasfEl)
+        else:
+            self.evaluatorEl = _core.CorrectionSet.from_file(self.fnameEl)
+        # Tau Decay types
+        print ('initialized the UL SF from', self.fname, self.fnameEl)
+        # TrackerMuon Reconstruction UL scale factor
+        #self.valsf = self.evaluator["NUM_MediumID_DEN_TrackerMuons"].evaluate("2017_UL", 1.1, 30.0, "sf")
+        #print("sf 1 is: " + str(self.valsf))
+        '''
         ########### JetMet systematics
         #self.listsyst=['njets', 'nbtag', 'jpt', 'jeta', 'jflavour','MET_T1_pt', 'MET_T1_phi', 'MET_pt', 'MET_phi', 'MET_T1Smear_pt', 'MET_T1Smear_phi']
         self.jessyst=['_nom']
@@ -153,6 +204,7 @@ class outTuple() :
         self.nPVGood              = array('l',[0])
         self.cat              = array('l',[0])
         self.gen_cat              = array('l',[0])
+        self.brWeight           = array('l',[0])
         self.weight           = array('f',[0])
         self.weightPU           = array('f',[0])
         self.weightPUtrue           = array('f',[0])
@@ -460,6 +512,7 @@ class outTuple() :
         self.t.Branch('nPVGood',              self.nPVGood,               'nPVGood/I' )
         self.t.Branch('cat',              self.cat,               'cat/I' )
         self.t.Branch('gen_cat',              self.gen_cat,               'gen_cat/I' )
+        self.t.Branch('brWeight',              self.brWeight,               'brWeight/I' )
         self.t.Branch('weight',           self.weight,            'weight/F' )
         self.t.Branch('weightPU',           self.weightPU,            'weightPU/F' )
         self.t.Branch('weightPUtrue',           self.weightPUtrue,            'weightPUtrue/F' )
@@ -1182,7 +1235,7 @@ class outTuple() :
         '''
         return dch1_mass, dch2_mass
     
-    def Fill(self, entry, SVFit, cat, gen_cat, idx_DCH1, idx_DCH2, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0, tMass=[], tPt=[], eMass=[], ePt=[], mMass=[], mPt=[], proc="EOY") : 
+    def Fill(self, entry, SVFit, cat, gen_cat, br_weight, idx_DCH1, idx_DCH2, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0, tMass=[], tPt=[], eMass=[], ePt=[], mMass=[], mPt=[], proc="EOY") : 
     #def Fill(self, entry, SVFit, cat, jl3, jl4, Lep1, Lep2, idx_DCH1, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0) : 
     #def Fill(self, entry, SVFit, cat, jl3, jl4, Lep1, Lep2, idx_DCH1, isMC, era,  doUncertainties=False , sysVariations=[]) :
         ''' - jl3 and jl4 point to the selected tau candidates according to the table below.
@@ -1929,7 +1982,8 @@ class outTuple() :
         jl4 = idx_DCH2[1]    
         if jl3>-1 or jl4 >-1 : 
             self.cat[0]  = tauFunDCH.catToNumber(cat)
-            #self.gen_cat[0] = tauFunDCH.catToNumber(gen_cat)
+            self.gen_cat[0] = tauFunDCH.catToNumber(gen_cat)
+            self.brWeight[0] = br_weight
         if jl3>-1 or jl4 >-1 :
             Lep3, Lep4 = TLorentzVector(), TLorentzVector()
 
@@ -2690,7 +2744,7 @@ class outTuple() :
 
         return
 
-    def Fill3L(self, entry, SVFit, cat,gen_cat, idx_DCH1, jl3, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0, tMass=[], tPt=[], eMass=[], ePt=[], mMass=[], mPt=[], proc="EOY") :
+    def Fill3L(self, entry, SVFit, cat,gen_cat,br_weight, idx_DCH1, jl3, isMC, era, doUncertainties=False ,  met_pt=-99, met_phi=-99, systIndex=0, tMass=[], tPt=[], eMass=[], ePt=[], mMass=[], mPt=[], proc="EOY") :
 
         ''' - jl3 and jl4 point to the selected tau candidates according to the table below.
             - if e.g., dch_2 = 'et', the jl3 points to the electron list and jl4 points to the tau list.
@@ -3434,7 +3488,8 @@ class outTuple() :
 
         if jl3>-1: 
             self.cat[0]  = tauFunDCH.catToNumber3L(cat)
-            #self.gen_cat[0] = tauFunDCH.catToNumber(gen_cat)
+            self.gen_cat[0] = tauFunDCH.catToNumber(gen_cat)
+            self.brWeight[0] = br_weight
             Lep3 = TLorentzVector()
         if dch_2 == 'e':
             '''self.pt_3[0] = entry.Electron_pt[jl3]
